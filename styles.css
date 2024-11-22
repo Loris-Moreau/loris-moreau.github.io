@@ -150,7 +150,7 @@ h3
     width: 100%;
     text-align: center;
     padding: 5px 0;
-    color: #86CECB;
+    color: #aecece;
     font-size: 1.45em;
     margin: 0;
 }
@@ -158,7 +158,7 @@ h3
 #underline
 {
     text-decoration: underline;
-    text-decoration-color: #E12885; /*Color */
+    text-decoration-color: #0077ff; /*Color */
     text-decoration-thickness: 3px; /* Size */
 }
 
