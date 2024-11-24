@@ -532,63 +532,12 @@ a:active
     text-decoration: underline;
 }
 
-/* Blog Entries */
-.blog-entry 
-{
-    background: #fff;
-    margin: 15px 0;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.blog-entry h3 
-{
-    margin-top: 0;
-    color: #333;
-}
-
-.blog-entry p 
-{
-    color: #555;
-}
-
-.blog-entry .delete-btn 
-{
-    background: #ff4d4d;
-    color: #fff;
-    border: none;
-    padding: 8px 12px;
-    cursor: pointer;
-    border-radius: 4px;
-}
-
-.blog-entry .delete-btn:hover 
-{
-    background: #e63939;
-}
-
-#new-blog-btn {
-    display: block;
-    padding: 10px 20px;
-    background-color: #4CAF50;
-    color: white;
-    font-size: 16px;
-    border: none;
-    cursor: pointer;
-    margin: 20px 0;
-}
-
-#new-blog-btn:hover {
-    background-color: #45a049;
-}
-
 /* Cards */
 .card {
     box-sizing: border-box;
     width: 250px;
     height: 125px;
-    background: rgba(175, 175, 175, 0.75);
+    background: rgba(145, 145, 145, 0.75);
     border: 2px solid black;
     /*box-shadow: 12px 17px 51px rgba(0, 0, 0, 0.22);
     backdrop-filter: blur(6px);*/
@@ -607,7 +556,7 @@ a:active
 
 .card:hover 
 {
-    border: 2px solid white;
+    border: 2px solid lightgray;
     transform: scale(1.05);
 }
 
