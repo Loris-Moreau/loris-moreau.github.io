@@ -17,14 +17,29 @@
         </button>
     </a>
 </div>
-<div>
+
 <!-- Blog Content -->
+<div>
+
 <h2>Raytracing in one weekend in c++</h2>
 <h4><a href="https://github.com/Loris-Moreau/RayTracing">
     GitHub Repository
 </a></h4>
-<h3>Welcome, this is my adventure following the <a href="https://raytracing.github.io/">raytracing in one weekend</a> series.</h3>
+    <h3 style="padding-bottom: 25px">Welcome, this is my adventure following the <a href="https://raytracing.github.io/">raytracing in one weekend</a> series.</h3>
     
+    <h3>The ray of light hits the object and can go through non-opaque surfaces <i>"refraction"</i> or bounce back <i>"reflection"</i>, or both.</h3>
+    <h3>In case of reflection, the light ray will take the color information from the surface with it <i>(depending on the material)</i> and go in a new direction.</h3>
+    <h3>A lot of the bounces coming from the light source never reach the eye and use a lot of resources to compute because we never know if a given ray has the capacity to bounce all the way to the camera.
+        How can we improve this ?
+    </h3>
+    <h3>While this technique is the closest to how real light works, it is really inefficient.
+        So, instead of using rays from the light source that have a tiny chance of hitting the tiny viewport of the camera, let’s do the opposite !
+    </h3>
+    <h3>We will shoot rays from the camera in random directions and try to hit a light.
+        This way, we are sure that every ray is a ray we can see !
+        Then, we resolve the color changes of the ray by tracing it back from the light, to the camera.
+    </h3>
+    <h1>Slide 9</h1>
 </div>
 
 <br>

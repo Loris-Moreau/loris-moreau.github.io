@@ -63,12 +63,14 @@ h2
 h3
 {
     position: relative;
-    width: 100%;
+    width: 95%;
     text-align: center;
-    padding: 5px 0;
+    padding: 7px 0 7px 2.5%;
     color: rgb(200, 200, 200);
     font-size: 1.5em;
     margin: 0;
+    word-wrap: normal;
+    overflow-wrap: anywhere;
 }
 
 h4
