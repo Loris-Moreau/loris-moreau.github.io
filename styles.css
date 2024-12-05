@@ -42,7 +42,7 @@ header
     padding-bottom: 45px;
 }
 
-header h1
+h1
 {
     color: rgb(255, 255, 255);
     font-size: 2em;
@@ -297,11 +297,11 @@ ul
     --nav-padding-x: 0.25em;
     --nav-padding-y: 0.625em;
     --nav-border-radius: 0.375em;
-    --nav-border-color: #ccc;
+    --nav-border-color: #c8c8c8;
     --nav-border-width: 0.0625em;
     --nav-shadow-color: rgba(0, 0, 0, .2);
     --nav-shadow-width: 0 1px 5px;
-    --nav-bg: #eee;
+    --nav-bg: #e6e6e6;
     --nav-font-family: Arial, Open-Dyslexic, Verdana, Helvetica, monospace;
     --nav-text-color: rgba(25, 25, 25, 1);
     --nav-default-scale: .8;

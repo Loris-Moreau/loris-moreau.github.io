@@ -25,21 +25,54 @@
 <h4><a href="https://github.com/Loris-Moreau/RayTracing">
     GitHub Repository
 </a></h4>
-    <h3 style="padding-bottom: 25px">Welcome, this is my adventure following the <a href="https://raytracing.github.io/">raytracing in one weekend</a> series.</h3>
+    <h3 style="padding-bottom: 25px">Welcome to my adventure following the <a href="https://raytracing.github.io/">raytracing in one weekend</a> series.</h3>
     
-    <h3>The ray of light hits the object and can go through non-opaque surfaces <i>"refraction"</i> or bounce back <i>"reflection"</i>, or both.</h3>
-    <h3>In case of reflection, the light ray will take the color information from the surface with it <i>(depending on the material)</i> and go in a new direction.</h3>
-    <h3>A lot of the bounces coming from the light source never reach the eye and use a lot of resources to compute because we never know if a given ray has the capacity to bounce all the way to the camera.
+   
+    <h2>First Lets talk about Raytracing & how light works.</h2>
+    
+    <h3>
+        Our perception of objects in the world is bound to the way a light source projects a ray of light, bouncing on it and eventually reaching the cornea of our eyes.
+        The color of the object, as well as its texture define the way the light bounces and the color we perceive in the end
+    </h3>
+    <h3>
+        The ray of light hits the object and can go through non-opaque surfaces <i>(refraction)</i> or bounce back <i>(reflection)</i>, or both.
+        In case of reflection, the light ray will take with it color information from the surface <i>(depending on the material)</i> and go in a new direction.
+
+    </h3>
+    <h3>
+        Because each ray of light that hits an object makes its own bounce and because any object can be bounced on both by the light source and by the rays bouncing from other objects it can create a lot of rays really quickly.
+
+    </h3>
+    <h3>
+        Every other light source adds even <strong>more</strong> bounces
+    </h3>
+    <h3>
+        A lot of the bounces coming from the light source never reach the eye (camera) and use a lot of resources to compute because we never know if a given ray has the capacity to bounce all the way to the camera.
+    </h3>
+    <h3>
         How can we improve this ?
     </h3>
-    <h3>While this technique is the closest to how real light works, it is really inefficient.
-        So, instead of using rays from the light source that have a tiny chance of hitting the tiny viewport of the camera, let’s do the opposite !
+    <h3>
+        While this technique is the closest to how real light works, it is really inefficient.
+        So, instead of using rays from the light source that have a tiny chance of hitting the tiny viewport of the camera, we will do the opposite.
     </h3>
-    <h3>We will shoot rays from the camera in random directions and try to hit a light.
+    <h3>
+        We will shoot rays from the camera in random directions and try to hit a light.
         This way, we are sure that every ray is a ray we can see !
         Then, we resolve the color changes of the ray by tracing it back from the light, to the camera.
     </h3>
-    <h1>Slide 9</h1>
+    <h3>
+        A few definitions :
+        The viewport is the frame within which we see the projection of the world from the perspective of the camera.
+        The resolution is the amount of pixels in width and height that will be used to build the image of the viewport. It can also be described as a ratio.
+    </h3>
+    <h3>
+        The focal point is a specific point in space towards which the rays of light will converge. Adjusting the focal point lets us control the Depth of Field.
+    </h3>
+    <h3>
+        If a ray does not hit anything during its lifetime, it can send background color information if it comes directly from the camera, or it will simply return the accumulated information thus far if it comes from a bounce
+    </h3>
+    <!--Slide 14-->
 </div>
 
 <br>
