@@ -22,14 +22,14 @@
 <!-- Blog Content -->
 <div>
 
-<h2 id="underline">Raytracing in one weekend in c++</h2>
+<h2 class="underline">Raytracing in one weekend in c++</h2>
 <h4><a href="https://github.com/Loris-Moreau/RayTracing" target="_blank">
     GitHub Repository
 </a></h4>
     <h3 style="padding-bottom: 20px">Welcome to my adventure following the <a href="https://raytracing.github.io/" target="_blank">raytracing in one weekend</a> series in C++.</h3>
 
 
-    <h3 style="padding-top: 45px; text-decoration-color: royalblue" id="underline"> Understanding Ray Tracing and Light </h3>
+    <h3 style="padding-top: 45px; text-decoration-color: royalblue" class="underline"> Understanding Ray Tracing and Light </h3>
     <h3>
         Our perception of objects depends on light rays emitted from a source, bouncing off surfaces, and reaching our eyes.
     </h3>
@@ -46,7 +46,7 @@
         While this technique is the closest to how real light works, it is really inefficient,
         with multiple light sources amplifying this complexity, & many rays never reaching the camera, wasting computational resources.
     </h3>
-    <h3 style="padding-top: 45px; text-decoration-color: royalblue" id="underline"> Improving Efficiency </h3>
+    <h3 style="padding-top: 45px; text-decoration-color: royalblue" class="underline"> Improving Efficiency </h3>
     <h3>
         Instead of simulating rays from the light source, which rarely hit the camera, we reverse the process <i>(shoot rays from the camera outward)</i>.
     </h3>
@@ -54,21 +54,21 @@
         Rays that hit light sources are guaranteed to contribute to the visible image. 
         The ray’s color changes are then resolved backward from the light to the camera.
     </h3>
-    <h3 style="padding-top: 45px; text-decoration-color: royalblue" id="underline"> Key Definitions </h3>
+    <h3 style="padding-top: 45px; text-decoration-color: royalblue" class="underline"> Key Definitions </h3>
     <h3>
-        <i id="underline" style="text-decoration-color: cadetblue">Viewport :</i> The visible frame of the world from the camera’s perspective.
+        <i class="underline" style="text-decoration-color: cadetblue">Viewport :</i> The visible frame of the world from the camera’s perspective.
     </h3>
     <h3>
-        <i id="underline" style="text-decoration-color: cadetblue">Resolution :</i> The pixel count used to construct the viewport image, also known as ratio.
+        <i class="underline" style="text-decoration-color: cadetblue">Resolution :</i> The pixel count used to construct the viewport image, also known as ratio.
     </h3>
     <h3>
-        <i id="underline" style="text-decoration-color: cadetblue">Focal Point :</i> The point where light rays converge, controlling Depth of Field.
+        <i class="underline" style="text-decoration-color: cadetblue">Focal Point :</i> The point where light rays converge, controlling Depth of Field.
     </h3>
     <h3>
         Rays that don’t hit objects either return background color <i>(if directly from the camera)</i> or accumulated information from prior bounces.
     </h3>
     
-    <h2  style="padding-top: 75px; text-decoration-color: dodgerblue" id="underline">Now let's do some practice</h2>
+    <h2  style="padding-top: 75px; text-decoration-color: dodgerblue" class="underline">Now let's do some practice</h2>
     
     <h3>First we need an IDE <i>(I'm using Rider)</i>
         & since I will write the image to a ppm file I will need a plugin/extension to view .ppm files like "Simple PPM Viewer".</h3>
@@ -148,10 +148,6 @@
         </li>
     </ul>
 </div>
-
-<!--
-<script src="../script.js" defer></script>
--->
 
 </body>
 </html>
