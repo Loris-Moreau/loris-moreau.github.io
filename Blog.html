@@ -1,82 +1,90 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>RayTracing-1</title>
-    <link rel="stylesheet" href="../styles.css">
+    <title>Main Page</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
 </head>
-
 <body>
+<!-- BG, Dropdown & Socials are outside the pages to be the same on every page -->
+<!-- Background -->
 <div class="background"></div>
 
-<!-- Back Button -->
-<div style="text-align: right; margin-top: 10px;">
-    <a href="../Blog.html">
-        <button style="padding: 10px 20px; background-color: rgba(170,170,170,0.7); color: white; border: none; cursor: pointer; font-size: 16px;">
-            Back
-        </button>
-    </a>
+
+<!-- Page 2 Blog entries -->
+<div id="BlogPage" class="page">
+    <header>
+        <h1>Entries</h1>
+    </header>
+
+    <!-- Blog entries -->
+    <div id="blog-entries" align="center">
+        <ul>
+            <!-- Add post here -->
+            <!--
+            <a href="BlogEntries/PostName.html" target="_blank">
+                <div class="card">
+                    <h3>Post Name</h3>
+                </div>
+            </a> 
+            -->
+            <a class="card" href="BlogEntries/TemplatePost_05-12-2024.html" style="background: rgba(145, 145, 145, 0.75)">
+                <h3>Test Post
+                </h3>
+            </a>
+            <a class="card" href="BlogEntries/RayTracing-1.html" style="background: rgba(145, 145, 145, 0.75)">
+                <h3>Raytracing</h3>
+            </a>
+
+        </ul>
+    </div>
 </div>
 
 
-<!-- Blog Content -->
-<div>
-
-<h2 id="underline">Raytracing in one weekend in c++</h2>
-<h4><a href="https://github.com/Loris-Moreau/RayTracing" target="_blank">
-    GitHub Repository
-</a></h4>
-    <h3 style="padding-bottom: 20px">Welcome to my adventure following the <a href="https://raytracing.github.io/" target="_blank">raytracing in one weekend</a> series in C++.</h3>
-
-
-    <h3 style="padding-top: 45px; text-decoration-color: royalblue" id="underline"> Understanding Ray Tracing and Light </h3>
-    <h3>
-        Our perception of objects depends on light rays emitted from a source, bouncing off surfaces, and reaching our eyes.
-    </h3>
-    <h3>
-        The object's color and texture influence how light reflects & refracts, shaping the color we perceive.
-    </h3>
-    <h3>
-        A light ray hitting an object can reflect <i>(carrying surface color information)</i>, refract through transparent surfaces, or both.
-    </h3>
-    <h3>
-        Each ray bounces off objects, including other reflected rays, creating a complex network of light paths.
-    </h3>
-    <h3>
-        While this technique is the closest to how real light works, it is really inefficient,
-        with multiple light sources amplifying this complexity, & many rays never reaching the camera, wasting computational resources.
-    </h3>
-    <h3 style="padding-top: 45px; text-decoration-color: royalblue" id="underline"> Improving Efficiency </h3>
-    <h3>
-        Instead of simulating rays from the light source, which rarely hit the camera, we reverse the process <i>(shoot rays from the camera outward)</i>.
-    </h3>
-    <h3>
-        Rays that hit light sources are guaranteed to contribute to the visible image. 
-        The ray’s color changes are then resolved backward from the light to the camera.
-    </h3>
-    <h3 style="padding-top: 45px; text-decoration-color: royalblue" id="underline"> Key Definitions </h3>
-    <h3>
-        <i id="underline" style="text-decoration-color: cadetblue">Viewport :</i> The visible frame of the world from the camera’s perspective.
-    </h3>
-    <h3>
-        <i id="underline" style="text-decoration-color: cadetblue">Resolution :</i> The pixel count used to construct the viewport image, also known as ratio.
-    </h3>
-    <h3>
-        <i id="underline" style="text-decoration-color: cadetblue">Focal Point :</i> The point where light rays converge, controlling Depth of Field.
-    </h3>
-    <h3>
-        Rays that don’t hit objects either return background color <i>(if directly from the camera)</i> or accumulated information from prior bounces.
-    </h3>
-    
-    <h2  style="padding-top: 75px; text-decoration-color: dodgerblue" id="underline">Now let's do some practice</h2>
-    
-    <h3>First we need an IDE <i>(I'm using Rider)</i>
-        & since I will write the image to a ppm file I will need a plugin/extension to view .ppm files like "Simple PPM Viewer".</h3>
-    
-    <h3>Until we meet again, hehehe</h3>
-    
-    <!--Slide 20-->
-</div>
+<!-- Dropdown Menu -->
+<label class="popup">
+    <input type="checkbox">
+    <div class="burger" tabindex="0">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+    <nav class="popup-window">
+        <legend>Actions</legend>
+        <ul>
+            <li>
+                <!-- Main Page -->
+                    <svg stroke-linejoin="round" stroke-linecap="round" stroke-width="2" stroke="currentColor" fill="none" viewBox="0 0 24 24" height="14" width="14" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                        <circle r="4" cy="7" cx="9"></circle>
+                        <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                        <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                    </svg>
+                    <a href="index.html">Main</a>
+                </button>
+            </li>
+            <li>
+                <!-- Blog Page -->
+                    <svg stroke-linejoin="round" stroke-linecap="round" stroke-width="2" stroke="currentColor" fill="none" viewBox="0 0 24 24" height="14" width="14" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+                        <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+                    </svg>
+                    <a href="Blog.html">Blog</a>
+                </button>
+            </li>
+            <li>
+                <!-- External Resources -->
+                    <svg stroke-linejoin="round" stroke-linecap="round" stroke-width="2" stroke="currentColor" fill="none" viewBox="0 0 24 24" height="14" width="14" xmlns="http://www.w3.org/2000/svg">
+                        <rect ry="2" rx="2" height="13" width="13" y="9" x="9"></rect>
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                    </svg>
+                    <a href="ExternalResources.html">Resources</a>
+                </button>
+            </li>
+        </ul>
+    </nav>
+</label>
 
 <br>
 <br>
@@ -149,9 +157,6 @@
     </ul>
 </div>
 
-<!--
-<script src="../script.js" defer></script>
--->
 
 </body>
 </html>

@@ -1,7 +1,7 @@
 /* Hide all pages initially */
 .page 
 {
-    display: none;
+    display: block;
 }
 
 /* Show the page corresponding to the anchor link */

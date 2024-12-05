@@ -28,22 +28,3 @@ document.addEventListener('DOMContentLoaded', () => {
 
     videos.forEach((video) => observer.observe(video));
 });
-
-// Navigation Functionality
-function navigateTo(sectionId) {
-    // Hide all pages
-    document.querySelectorAll('.page').forEach((page) => {
-        page.style.display = 'none'; // Hide all sections
-    });
-
-    // Show the selected page
-    const targetPage = document.getElementById(sectionId);
-    if (targetPage) {
-        targetPage.style.display = 'block'; // Show the target section
-    }
-}
-
-// Ensure Main Page Opens by Default
-document.addEventListener('DOMContentLoaded', () => {
-    navigateTo('MainPage'); // Show main page on load
-});
