@@ -30,7 +30,7 @@ header
     padding-bottom: 45px;
 }
 
-h1
+header h1
 {
     color: rgb(255, 255, 255);
     font-size: 2em;
@@ -309,7 +309,7 @@ ul
     --nav-button-padding-x: 1rem;
     --nav-button-padding-y: 0.375em;
     --nav-button-border-radius: 0.375em;
-    --nav-button-font-size: 12px;
+    --nav-button-font-size: 10px;
     --nav-button-hover-bg: #6495ed;
     --nav-button-hover-text-color: #fff;
     --nav-button-distance: 0.875em;
@@ -387,7 +387,7 @@ ul
     position: absolute;
     padding: var(--nav-padding-y) var(--nav-padding-x);
     background: var(--nav-bg);
-    font-family: var(--nav-font-family);
+    font-family: var(--nav-font-family), serif;
     font-size: 15px;
     color: var(--nav-text-color);
     border-radius: var(--nav-border-radius);
