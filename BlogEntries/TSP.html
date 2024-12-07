@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>TSP</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+
+<body>
+<div class="background"></div>
+
+<!-- Back Button -->
+<div style="text-align: left; margin-top: 12px; margin-left: 5px">
+    <a href="../Blog.html">
+        <button>
+            Back
+        </button>
+    </a>
+</div>
+
+<!-- Blog Content -->
+<div>
+    <!-- Title/Header of the blog -->
+    <h2 class="underline">Traveling Salesman Problem <i>(TSP)</i></h2>
+    <h4 style="padding-bottom: 25px"><a href="https://github.com/Loris-Moreau/TSP" target="_blank">GitHub Repository</a></h4>
+
+    <!-- Content -->
+    <h3 class="underline" style="text-decoration-color: dodgerblue; padding-top: 25px">Explanation of the code.</h3>
+
+    <h3>Basic Image</h3>
+    <!--<img src="../Images/Refraction-Reflection.png" alt="Test Image"/>  add images to explain or code snippets -->
+    
+    <h3>
+        This code implements a brute-force solution to the Traveling Salesman Problem <i>(TSP)</i> for five cities.
+    </h3>
+    <h3>
+        The goal is to find the shortest round-trip route that visits each city exactly once and returns to the starting point.
+    </h3>
+    
+    <h3>
+        Key Parts of the Code : 
+    </h3>
+    <h3 class="underline" style="text-decoration-color: royalblue">
+        1. Distance Matrix <i>(distMatrix)</i>:
+    </h3>
+    <h3>
+        A vector(vector(int)) matrix represents distances between each pair of cities. For example, distMatrix[0][1] is the distance from city A to city B.
+    </h3>
+    <h3>
+        INT_MAX is used to represent an unreachable path between two cities, making the route invalid if it includes that segment.
+    </h3>
+
+    <div class="snippet">
+        <div class="Swindow">
+            <div class="Swindow-title">
+                <p>Distance Matrix</p>
+            </div>
+            <div class="Sconsole">
+      <pre><code>// INT_MAX = unreachable paths
+    const vector&lt;vector&lt;int>> dist_matrix =
+        {
+        {0, 2, 2, INT_MAX, INT_MAX}, // A
+        {2, 0, 3, 3, 1},            // B
+        {2, 3, 0, 1, 3},           // C
+        {INT_MAX, 3, 1, 0, 3},    // D
+        {INT_MAX, 1, 3, 3, 0}    // E
+        };</code></pre>
+            </div>
+        </div>
+    </div>
+    
+    <h3 class="underline" style="text-decoration-color: royalblue">
+        2. Route Representation:
+    </h3>
+    <h3>
+        Cities are indexed (e.g., 0 for A, 1 for B, etc.), and the route is stored as a vector(int).
+    </h3>
+    <h3>
+        The cityNames vector maps city indices to names for more readable output when printing the final route.
+    </h3>
+    <h3 class="underline" style="text-decoration-color: royalblue">
+        3. calculateDistance Function:
+    </h3>
+    <h3>
+        This function calculates the total distance of a route, ensuring that every leg of the route is reachable.
+    </h3>
+
+    <div class="snippet">
+        <div class="Swindow">
+            <div class="Swindow-title">
+                <p>Distance Calculation</p>
+            </div>
+            <div class="Sconsole">
+      <pre><code>int calculateDistance(const vector&lt;vector&lt;int>>& dist_matrix, const vector&lt;int>& route)
+{
+    int totalDistance = 0;
+    for (int i = 0; i < (int)route.size() - 1; i++)
+    {
+        if (dist_matrix[route[i]][route[i + 1]] == INT_MAX) // Check for unreachable path
+        {
+            return INT_MAX; // Unreachable (stupidly high num)
+        }
+        totalDistance += dist_matrix[route[i]][route[i + 1]];
+    }
+    // Check return path
+    if (dist_matrix[route[route.size() - 1]][route[0]] == INT_MAX) 
+    {
+        return INT_MAX;
+    }
+    totalDistance += dist_matrix[route[route.size() - 1]][route[0]];
+    return totalDistance;
+}</code></pre>
+            </div>
+        </div>
+    </div>
+    
+    <h3 class="underline" style="text-decoration-color: cadetblue">
+        Inputs:
+    </h3>
+    <h3>
+        distMatrix: The distance matrix for city pairs.
+    </h3>
+    <h3>
+        route: The tested route, represented as a sequence of city indices.
+    </h3>
+    <h3 class="underline" style="text-decoration-color: cadetblue">
+        How It Works:
+    </h3>
+    <h3 class="underline" style="text-decoration-color: darkblue">
+        Loop through the Route:
+    </h3>
+    <h3>
+        The distance between each pair of consecutive cities in the route is added to the total distance.
+    </h3>
+    <h3 class="underline" style="text-decoration-color: darkblue">
+        Unreachable Path Check:
+    </h3>
+    <h3>
+        If any distance is INT_MAX, the function immediately returns INT_MAX, marking the route as unreachable.
+    </h3>
+    <h3 class="underline" style="text-decoration-color: darkblue">
+        Return to Start Check:
+    </h3>
+    <h3>
+        After looping through all pairs in the route, the distance from the last city back to the starting city is added. If this distance is INT_MAX, the route is unreachable.
+    </h3>
+
+    <div class="snippet">
+        <div class="Swindow">
+            <div class="Swindow-title">
+                <p>Distance Matrix</p>
+            </div>
+            <div class="Sconsole">
+      <pre><code>// Try every possible route by generating permutations
+    do
+    {
+        const int current_distance = calculateDistance(dist_matrix, cities);
+        if (current_distance < minDistance)
+        {
+            minDistance = current_distance;
+            bestRoute = cities;
+        }
+    }
+    while (next_permutation(cities.begin() + 1, cities.end())); // Fix the first city to reduce duplicate routes</code></pre>
+            </div>
+        </div>
+    </div>
+    <h3 class="underline" style="text-decoration-color: darkblue">
+        Output:
+    </h3>
+    <h3>
+        The function returns the total distance for the route if it is valid, or INT_MAX if any segment is unreachable.
+    </h3>
+
+    <div class="snippet">
+        <div class="Swindow">
+            <div class="Swindow-title">
+                <p>Distance Matrix</p>
+            </div>
+            <div class="Sconsole">
+      <pre><code>// Output the results
+    cout << "Minimum distance : " << minDistance << '\n';
+    cout << "Best route : ";
+    for (const int city : bestRoute)
+    {
+        cout << cityNames[city] << " ";
+    }
+    cout << cityNames[bestRoute[0]] << '\n'; // Return to starting city
+
+    return 0;</code></pre>
+            </div>
+        </div>
+    </div>
+    <h3 class="underline" style="text-decoration-color: royalblue">
+        4. Main Algorithm <i>(Main Function)</i>:
+    </h3>
+    <h3 class="underline" style="text-decoration-color: darkblue">
+        Initialization:
+    </h3>
+    <h3>
+        distMatrix defines distances between cities.
+    </h3>
+    <h3>
+        cities holds indices representing each city.
+    </h3>
+    <h3>
+        cityNames is used to translate city indices to names for output.
+    </h3>
+    <h3>
+        minDistance is initialized to INT_MAX to track the minimum distance found.
+    </h3>
+    <h3>
+        bestRoute stores the optimal route.
+    </h3>
+    <h3 class="underline" style="text-decoration-color: darkblue">
+        Generating Permutations:
+    </h3>
+    <h3>
+        The program generates all possible routes by permutating cities <i>(except the first city, which is fixed for optimization)</i>.
+    </h3>
+    <h3 class="underline" style="text-decoration-color: darkblue">
+        Route Evaluation:
+    </h3>
+    <h3>
+        For each permutation of cities, calculateDistance() computes the route's total distance.
+    </h3>
+    <h3>
+        If the distance is smaller than minDistance, the route and its distance become the new bestRoute and minDistance.
+    </h3>
+    <h3 class="underline" style="text-decoration-color: darkblue">
+        Output:
+    </h3>
+    <h3>
+        After evaluating all permutations, the program prints the minimum distance and the optimal route <i>(in terms of city names)</i>.
+    </h3>
+    <h3 class="underline" style="text-decoration-color: royalblue">
+        5. Additional Notes
+    </h3>
+    <h3 class="underline" style="text-decoration-color: darkblue">
+        next_permutation:
+    </h3>
+    <h3>
+        This function generates the next lexicographical permutation of the cities vector, enabling a brute-force approach to try all possible city sequences.
+    </h3>
+    <h3>
+        Fixing the first city (using cities.begin() + 1) avoids duplicate routes that differ only in starting points.
+    </h3>
+    <h3 class="underline" style="text-decoration-color: darkblue">
+        Efficiency:
+    </h3>
+    <h3>
+        This brute-force approach has factorial time complexity (O(n! * n)), so it only works efficiently with a small number of cities.
+    </h3>
+    <h3>
+        For more than 5-10 cities, more advanced algorithms like Dynamic Programming (Held-Karp algorithm) or Heuristic Methods (e.g., Nearest Neighbor, Simulated Annealing) are needed to solve the problem in a reasonable time frame.
+    </h3>
+    
+    <!-- The End -->
+    <h3 style="padding-top: 100px">bye, bye.</h3>
+</div>
+
+<br>
+<br>
+
+<!-- Next Button -->
+<div style="text-align: center; margin-top: 10px;">
+    <!-- If latest post: href="../Blog.html" -->
+    <a href="../Blog.html">
+        <button>
+            Next
+        </button>
+    </a>
+</div>
+
+<br>
+
+<!-- Socials -->
+<div>
+    <ul class="example-2">
+        <li class="icon-content">
+            <a href="https://linkedin.com/in/loris-moreau" aria-label="LinkedIn" data-social="linkedin">
+                <div class="filled"></div>
+                <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="16"
+                        height="16"
+                        fill="currentColor"
+                        class="bi bi-linkedin"
+                        viewBox="0 0 16 16"
+                        xml:space="preserve"
+                >
+                <path
+                        d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854zm4.943 12.248V6.169H2.542v7.225zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248S2.4 3.226 2.4 3.934c0 .694.521 1.248 1.327 1.248zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016l.016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225z"
+                        fill="currentColor"
+                ></path>
+            </svg>
+            </a>
+            <div class="tooltip">LinkedIn</div>
+        </li>
+        <li class="icon-content">
+            <a href="https://github.com/Loris-Moreau" aria-label="GitHub" data-social="github">
+                <div class="filled"></div>
+                <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="16"
+                        height="16"
+                        fill="currentColor"
+                        class="bi bi-github"
+                        viewBox="0 0 16 16"
+                        xml:space="preserve"
+                >
+                <path
+                        d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8"
+                        fill="currentColor"
+                ></path>
+            </svg>
+            </a>
+            <div class="tooltip">GitHub</div>
+        </li>
+        <li class="icon-content">
+            <a href="https://www.youtube.com/channel/UCRfo2k8XLOiRMOcuQEtNz5g" aria-label="Youtube" data-social="youtube">
+                <div class="filled"></div>
+                <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="16"
+                        height="16"
+                        fill="currentColor"
+                        class="bi bi-youtube"
+                        viewBox="0 0 16 16"
+                        xml:space="preserve"
+                >
+                <path
+                        d="M8.051 1.999h.089c.822.003 4.987.033 6.11.335a2.01 2.01 0 0 1 1.415 1.42c.101.38.172.883.22 1.402l.01.104.022.26.008.104c.065.914.073 1.77.074 1.957v.075c-.001.194-.01 1.108-.082 2.06l-.008.105-.009.104c-.05.572-.124 1.14-.235 1.558a2.01 2.01 0 0 1-1.415 1.42c-1.16.312-5.569.334-6.18.335h-.142c-.309 0-1.587-.006-2.927-.052l-.17-.006-.087-.004-.171-.007-.171-.007c-1.11-.049-2.167-.128-2.654-.26a2.01 2.01 0 0 1-1.415-1.419c-.111-.417-.185-.986-.235-1.558L.09 9.82l-.008-.104A31 31 0 0 1 0 7.68v-.123c.002-.215.01-.958.064-1.778l.007-.103.003-.052.008-.104.022-.26.01-.104c.048-.519.119-1.023.22-1.402a2.01 2.01 0 0 1 1.415-1.42c.487-.13 1.544-.21 2.654-.26l.17-.007.172-.006.086-.003.171-.007A100 100 0 0 1 7.858 2zM6.4 5.209v4.818l4.157-2.408z"
+                        fill="currentColor"
+                ></path>
+            </svg>
+            </a>
+            <div class="tooltip">Youtube</div>
+        </li>
+    </ul>
+</div>
+
+</body>
+</html>
