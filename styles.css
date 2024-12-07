@@ -98,6 +98,9 @@ button:hover{
     background-color: rgba(155,155,155,0.6);
     
     transform: scale(var(--Button-Hover-Scale));
+    
+    box-shadow: 12px 17px 51px rgba(0, 0, 0, 0.22);
+    backdrop-filter: blur(6px);
 }
 
 button:active{
