@@ -581,7 +581,8 @@ a:active
 /* Cards */
 .card {
     box-sizing: border-box;
-    width: 700px;
+    /*width: 500px;*/
+    width: 35%;
     height: 125px;
     background: rgba(145, 145, 145, 0.75);
     border: 2px solid black;
