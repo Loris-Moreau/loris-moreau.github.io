@@ -324,7 +324,7 @@ ul
     --burger-line-height: 0.125em;
     --burger-offset: 0.625em;
     --burger-bg: rgba(175, 175, 175, 1);
-    --burger-color: #222;
+    --burger-color: rgb(34, 34, 34);
     --burger-line-border-radius: 0.1875em;
     --burger-diameter: 2.125em;
     --burger-btn-border-radius: calc(var(--burger-diameter) / 2);
@@ -340,11 +340,11 @@ ul
     --nav-padding-x: 0.25em;
     --nav-padding-y: 0.625em;
     --nav-border-radius: 0.375em;
-    --nav-border-color: #c8c8c8;
+    --nav-border-color: rgb(200, 200, 200);
     --nav-border-width: 0.0625em;
     --nav-shadow-color: rgba(0, 0, 0, .2);
     --nav-shadow-width: 0 1px 5px;
-    --nav-bg: #e6e6e6;
+    --nav-bg: rgb(230, 230, 230);
     --nav-font-family: Arial, Open-Dyslexic, Verdana, Helvetica, monospace;
     --nav-text-color: rgba(25, 25, 25, 1);
     --nav-default-scale: .8;
@@ -356,7 +356,7 @@ ul
     
     /* title */
     --nav-title-size: 0.625em;
-    --nav-title-color: #777;
+    --nav-title-color: rgb(119, 119, 119);
     --nav-title-padding-x: 1rem;
     --nav-title-padding-y: 0.25em;
     
@@ -365,13 +365,13 @@ ul
     --nav-button-padding-y: 0.375em;
     --nav-button-border-radius: 0.375em;
     --nav-button-font-size: 10px;
-    --nav-button-hover-bg: #6495ed;
-    --nav-button-hover-text-color: #fff;
+    --nav-button-hover-bg: rgb(100, 149, 237);
+    --nav-button-hover-text-color: rgb(255, 255, 255);
     --nav-button-distance: 0.875em;
     
     /* underline */
     --underline-border-width: 0.0625em;
-    --underline-border-color: #ccc;
+    --underline-border-color: rgb(204, 204, 204);
     --underline-margin-y: 0.3125em;
 }
 
@@ -383,6 +383,10 @@ ul
     position: fixed;
     top: 10px;
     left: 10px;
+    
+    /* Box Size */
+    width: 100%;
+    height: 100%;
 }
 
 .popup input
@@ -558,7 +562,7 @@ a
 {
     text-decoration: none;
     font-weight: bold;
-    color: deepskyblue;
+    color: dodgerblue;
 }
 
 a:link 
@@ -570,7 +574,7 @@ a:link
 
 a:visited 
 {
-    color: aqua;
+    color: royalblue;
     background-color: transparent;
     text-decoration: none;
 }
