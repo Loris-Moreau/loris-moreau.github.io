@@ -13,8 +13,8 @@
       <change beforePath="$PROJECT_DIR$/BlogEntries/VFX-1.html" beforeDir="false" afterPath="$PROJECT_DIR$/BlogEntries/VFX-1.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BlogEntries/VFX-2.html" beforeDir="false" afterPath="$PROJECT_DIR$/BlogEntries/VFX-2.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BlogEntries/Workflow.html" beforeDir="false" afterPath="$PROJECT_DIR$/BlogEntries/Workflow.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ExternalResources.html" beforeDir="false" afterPath="$PROJECT_DIR$/ExternalResources.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/styles.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,6 +71,7 @@
       <workItem from="1733571008398" duration="6236000" />
       <workItem from="1733579578981" duration="9614000" />
       <workItem from="1733595073733" duration="1861000" />
+      <workItem from="1733596970753" duration="1069000" />
     </task>
     <servers />
   </component>
