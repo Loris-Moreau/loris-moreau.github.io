@@ -39,6 +39,9 @@
     <h3>
         A light ray hitting an object can reflect <i>(carrying surface color information)</i>, refract through transparent surfaces, or both.
     </h3>
+    
+    <img src="../Images/Refraction-Reflection.png" style="width: 25%;" alt="Reflection, refraction & both"/>
+    
     <h3>
         Each ray bounces off objects, including other reflected rays, creating a complex network of light paths.
     </h3>
@@ -46,6 +49,9 @@
         While this technique is the closest to how real light works, it is really inefficient,
         with multiple light sources amplifying this complexity, & many rays never reaching the camera, wasting computational resources.
     </h3>
+    
+    <img src="../Images/LotsOfRays.png" style="width: 25%;" alt="Too Many Rays"/>
+    
     <h3 style="padding-top: 45px; text-decoration-color: royalblue" class="underline"> Improving Efficiency </h3>
     <h3>
         Instead of simulating rays from the light source, which rarely hit the camera, we reverse the process <i>(shoot rays from the camera outward)</i>.
@@ -64,6 +70,7 @@
     <h3>
         <i class="underline" style="text-decoration-color: cadetblue">Focal Point :</i> The point where light rays converge, controlling Depth of Field.
     </h3>
+    <img src="../Images/Focal.png" style="width: 20%;" alt="Focal Point"/>
     <h3>
         Rays that don’t hit objects either return background color <i>(if directly from the camera)</i> or accumulated information from prior bounces.
     </h3>

@@ -118,6 +118,18 @@ h4
     }
 }
 
+/* Images */
+img{
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    
+    border-radius: 4px;
+    
+    align-items: center;
+    justify-content: center;
+}
 
 /* Video Player */
 .video-wrapper
