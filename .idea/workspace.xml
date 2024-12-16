@@ -5,22 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="df844061-607d-4516-8926-0cdf558aec54" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Blog.html" beforeDir="false" afterPath="$PROJECT_DIR$/Blog.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BlogEntries/RayTracing-1.html" beforeDir="false" afterPath="$PROJECT_DIR$/BlogEntries/RayTracing-1.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BlogEntries/RayTracing-2.html" beforeDir="false" afterPath="$PROJECT_DIR$/BlogEntries/RayTracing-2.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BlogEntries/RayTracing-3.html" beforeDir="false" afterPath="$PROJECT_DIR$/BlogEntries/RayTracing-3.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BlogEntries/RayTracing-4.html" beforeDir="false" afterPath="$PROJECT_DIR$/BlogEntries/RayTracing-4.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BlogEntries/RayTracing-5.html" beforeDir="false" afterPath="$PROJECT_DIR$/BlogEntries/RayTracing-5.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BlogEntries/RayTracing-6.html" beforeDir="false" afterPath="$PROJECT_DIR$/BlogEntries/RayTracing-6.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BlogEntries/RayTracing-7.html" beforeDir="false" afterPath="$PROJECT_DIR$/BlogEntries/RayTracing-7.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BlogEntries/TSP.html" beforeDir="false" afterPath="$PROJECT_DIR$/BlogEntries/TSP.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BlogEntries/TemplatePost_27-04-2024.html" beforeDir="false" afterPath="$PROJECT_DIR$/BlogEntries/TemplatePost_27-04-2024.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BlogEntries/VFX-1.html" beforeDir="false" afterPath="$PROJECT_DIR$/BlogEntries/VFX-1.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BlogEntries/VFX-2.html" beforeDir="false" afterPath="$PROJECT_DIR$/BlogEntries/VFX-2.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BlogEntries/Workflow.html" beforeDir="false" afterPath="$PROJECT_DIR$/BlogEntries/Workflow.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ExternalResources.html" beforeDir="false" afterPath="$PROJECT_DIR$/ExternalResources.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TemplatePage.html" beforeDir="false" afterPath="$PROJECT_DIR$/TemplatePage.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BlogEntries/PSVitaJailbreak.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -98,6 +83,7 @@
       <workItem from="1733774303042" duration="2261000" />
       <workItem from="1734086032884" duration="7746000" />
       <workItem from="1734094280847" duration="289000" />
+      <workItem from="1734355346369" duration="3770000" />
     </task>
     <servers />
   </component>
