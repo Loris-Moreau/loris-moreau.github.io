@@ -6,7 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="df844061-607d-4516-8926-0cdf558aec54" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/Blog.html" beforeDir="false" afterPath="$PROJECT_DIR$/Blog.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BlogEntries/PSVitaJailbreak.html" beforeDir="false" afterPath="$PROJECT_DIR$/BlogEntries/PSVitaJailbreak.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -87,6 +86,7 @@
       <workItem from="1734355346369" duration="3770000" />
       <workItem from="1734381868455" duration="160000" />
       <workItem from="1734440983611" duration="779000" />
+      <workItem from="1734441894713" duration="53000" />
     </task>
     <servers />
   </component>
