@@ -8,11 +8,21 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Blog.html" beforeDir="false" afterPath="$PROJECT_DIR$/Blog.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BlogEntries/PSVitaJailbreak.html" beforeDir="false" afterPath="$PROJECT_DIR$/BlogEntries/PSVitaJailbreak.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BlogEntries/RayTracing-1.html" beforeDir="false" afterPath="$PROJECT_DIR$/BlogEntries/RayTracing-1.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BlogEntries/RayTracing-2.html" beforeDir="false" afterPath="$PROJECT_DIR$/BlogEntries/RayTracing-2.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BlogEntries/RayTracing-3.html" beforeDir="false" afterPath="$PROJECT_DIR$/BlogEntries/RayTracing-3.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BlogEntries/RayTracing-4.html" beforeDir="false" afterPath="$PROJECT_DIR$/BlogEntries/RayTracing-4.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BlogEntries/RayTracing-5.html" beforeDir="false" afterPath="$PROJECT_DIR$/BlogEntries/RayTracing-5.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BlogEntries/RayTracing-6.html" beforeDir="false" afterPath="$PROJECT_DIR$/BlogEntries/RayTracing-6.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BlogEntries/RayTracing-7.html" beforeDir="false" afterPath="$PROJECT_DIR$/BlogEntries/RayTracing-7.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BlogEntries/TSP.html" beforeDir="false" afterPath="$PROJECT_DIR$/BlogEntries/TSP.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BlogEntries/TemplatePost_27-04-2024.html" beforeDir="false" afterPath="$PROJECT_DIR$/BlogEntries/TemplatePost_27-04-2024.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BlogEntries/VFX-1.html" beforeDir="false" afterPath="$PROJECT_DIR$/BlogEntries/VFX-1.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BlogEntries/VFX-2.html" beforeDir="false" afterPath="$PROJECT_DIR$/BlogEntries/VFX-2.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BlogEntries/Workflow.html" beforeDir="false" afterPath="$PROJECT_DIR$/BlogEntries/Workflow.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ExternalResources.html" beforeDir="false" afterPath="$PROJECT_DIR$/ExternalResources.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Images/PS Img/pspemugametxt.png" beforeDir="false" afterPath="$PROJECT_DIR$/Images/PS Img/pspemugametxt.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TemplatePage.html" beforeDir="false" afterPath="$PROJECT_DIR$/TemplatePage.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/styles.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -96,6 +106,7 @@
       <workItem from="1734441894713" duration="53000" />
       <workItem from="1734442009041" duration="1449000" />
       <workItem from="1734446006279" duration="8306000" />
+      <workItem from="1734781209249" duration="5154000" />
     </task>
     <servers />
   </component>
