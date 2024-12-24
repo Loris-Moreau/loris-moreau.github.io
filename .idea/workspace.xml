@@ -6,7 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="df844061-607d-4516-8926-0cdf558aec54" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BlogEntries/PSVitaJailbreak.html" beforeDir="false" afterPath="$PROJECT_DIR$/BlogEntries/PSVitaJailbreak.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ExternalResources.html" beforeDir="false" afterPath="$PROJECT_DIR$/ExternalResources.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -93,7 +92,7 @@
       <workItem from="1734446006279" duration="8306000" />
       <workItem from="1734781209249" duration="5154000" />
       <workItem from="1734790033187" duration="2499000" />
-      <workItem from="1735035384941" duration="2136000" />
+      <workItem from="1735035384941" duration="2599000" />
     </task>
     <servers />
   </component>
