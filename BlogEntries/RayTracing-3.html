@@ -37,32 +37,198 @@
 
     <p style="padding: 5px"></p>
 
-    <h2 class="underline" style="text-decoration-color: dodgerblue"> Part 3 </h2>
+    <h2 class="underline" style="text-decoration-color: dodgerblue"> Part 3 <i>(Time for Maths)</i></h2>
     
     <h2 class="underline" style="text-decoration-color: royalblue">Now to add shapes</h2>
     <h3>Let's start with spheres</h3>
     
+    <p style="padding: 2px"></p>
     
+    <h2 class="underline" style="text-decoration-color: royalblue">First we have to talk about Ray-Sphere Intersection</h2>
     
+    <h3>A sphere is the easiest thing to test for an intersection with a ray.
+    </h3>
+    <h3>The equation for a sphere of radius r is :</h3>
+    <h3><b style="color: red">X</b><sup>2</sup> 
+        + <b style="color: limegreen">Y</b><sup>2</sup> + 
+        <b style="color: dodgerblue">Z</b><sup>2</sup> 
+        = r<sup>2</sup></h3>
     
+    <h3>This equation is true for the surface of a sphere at the center of the world.</h3>
+    <h3>That means that any point for which :</h3>
+    <h3><b style="color: red">X</b><sup>2</sup> 
+        + <b style="color: limegreen">Y</b><sup>2</sup> + 
+        <b style="color: dodgerblue">Z</b><sup>2</sup> &lt r<sup>2</sup></h3>
     
+    <h3>is true is inside, and outside for the opposite (>)</h3>
+
+    <p style="padding: 2px"></p>
+
+    <h2 class="underline" style="text-decoration-color: royalblue">Displacing the sphere</h2>
     
+    <h3>If the sphere is not placed at the center of the world and its center is at a 
+        C<sub style="color: red;">X</sub>, 
+        C<sub style="color: limegreen">Y</sub>, 
+        C<sub style="color: dodgerblue">Z</sub> 
+        then the equation becomes :</h3>
     
+    <h3>(<b style="color: red">X</b> - C<sub style="color: red">x</sub>)<sup>2</sup> + 
+        (<b style="color: limegreen">X</b> - C<sub style="color: limegreen">X</sub>)<sup>2</sup> + 
+        (<b style="color: dodgerblue">X</b> - C<sub style="color: dodgerblue">X</sub>)<sup>2</sup> 
+        = r<sup>2</sup></h3>
     
+    <h3>If we simplify this with vectors C the center of the  sphere and P the point we want to check</h3>
+    <h3>The vector from the center to the point is (P - C)</h3>
     
+    <h2 class="underline" style="text-decoration-color: royalblue">DOT Product</h2>
+    <h3>We can then obtain the formula by doing:</h3>
+    <h3>(P - C) * (P - C) = 
+        (<b style="color: red">X</b> - C<sub style="color: red">X</sub>)<sup>2</sup> + 
+        (<b style="color: limegreen">Y</b> - C<sub style="color: limegreen">Y</sub>)<sup>2</sup> + 
+        (<b style="color: dodgerblue">Z</b> - C<sub style="color: dodgerblue">Z</sub>)<sup>2</sup></h3>
     
+    <h3>Any point <i>P</i> that satisfies this equation is on the sphere.</h3>
+
+    <p style="padding: 2px"></p>
+
+    <h2 class="underline" style="text-decoration-color: royalblue">Do we hit tho ?</h2>
     
+    <h3>We want to know if our ray P(<b style="color: limegreen">t</b>) = <b style="color: hotpink">O</b> 
+        + <b style="color: limegreen">t</b><b style="color: dodgerblue">d</b> ever hits the sphere anywhere.</h3>
+    <h3> That would mean that there exists some <b style="color: limegreen">t</b> for which P(<b style="color: limegreen">t</b>) satisfies the equation</h3>
+    <h3>(P(<b style="color: limegreen">t</b>) - C) * (P(<b style="color: limegreen">t</b>) - C) = r<sup>2</sup></h3>
+    <h3>which can be found by replacing P(t) by its expanded :</h3>
+    <h3>((<b style="color: hotpink">O</b> + <b style="color: limegreen">t</b><b style="color: dodgerblue">d</b>) - C) 
+        * ((<b style="color: hotpink">O</b> + <b style="color: limegreen">t</b><b style="color: dodgerblue">d</b>) - C = r<sup>2</sup></h3>
     
+    <p style="padding: 2px"></p>
     
+    <h2 class="underline" style="text-decoration-color: cadetblue">Resolving - Developing</h2>
     
+    <h3>((<b style="color: hotpink">O</b> + <b style="color: limegreen">t</b><b style="color: dodgerblue">d</b>) - C) 
+        * ((<b style="color: hotpink">O</b> + <b style="color: limegreen">t</b><b style="color: dodgerblue">d</b>) - C) = r<sup>2</sup></h3>
+    <h3>Remember that we only care for the <b style="color: limegreen">t</b> related components of the resolution.</h3>
+    <h3>(<b style="color: limegreen">t</b><b style="color: dodgerblue">d</b> + (<b style="color: hotpink">O</b> - C)) 
+        * ( <b style="color: limegreen">t</b><b style="color: dodgerblue">d</b> + (<b style="color: hotpink">O</b> - C)) = r<sup>2</sup></h3>
+    <h3><b style="color: limegreen">t</b><sup>2</sup><b style="color: dodgerblue">d</b> * <b style="color: dodgerblue">d</b> 
+        + 2<b style="color: limegreen">t</b><b style="color: dodgerblue">d</b> * (<b style="color: hotpink">O</b> - C) 
+        + (<b style="color: hotpink">O</b> - C) * (<b style="color: hotpink">O</b> - C) = r<sup>2</sup>
+    </h3>
+    <h3><b style="color: limegreen">t</b><sup>2</sup><b style="color: dodgerblue">d</b> * <b style="color: dodgerblue">d</b> 
+        + 2<b style="color: limegreen">t</b><b style="color: dodgerblue">d</b> * (<b style="color: hotpink">O</b> - C) 
+        + (<b style="color: hotpink">O</b> - C) * (<b style="color: hotpink">O</b> - C) - r<sup>2</sup> = 0</h3>
     
+    <p style="padding: 2px"></p>
+
+    <h2 class="underline" style="text-decoration-color: cadetblue">Resolving - Quadratic Solve ;)</h2>
     
+    <h3><b style="color: limegreen">t</b>2<b style="color: dodgerblue">d</b> * <b style="color: dodgerblue">d</b> + 2<b style="color: limegreen">t</b><b style="color: dodgerblue">d</b> 
+        * (<b style="color: hotpink">O</b> - C) + (<b style="color: hotpink">O</b> - C) * (<b style="color: hotpink">O</b> - C) - r<sup>2</sup> = 0
+    </h3>
+    <h3>We know the radius and the <b style="color: dodgerblue">direction</b> of the ray. The vectors are now scalars thanks to the dot product.</h3>
+    <h3>Our only unknown is now <b style="color: limegreen">t</b> and we have <b style="color: limegreen">t</b><sup>2</sup>.</h3>
+    <h3>We can solve for a quadratic equation the question :</h3>
+    <h3><i>What are the times <b style="color: limegreen">t</b> for which the ray touches the surface of the sphere ?</i></h3>
     
+    <h2 class="underline" style="text-decoration-color: cadetblue">Quadratic Solve</h2>
+    <h3> <!-- Quadratic Equation -->
+        <math display="block">
+            <mrow>
+                <mfrac>
+                    <mrow>
+                        <mrow>
+                            <mo>−</mo>
+                            <mi>b</mi>
+                        </mrow>
+                        <mo>±</mo>
+                        <msqrt>
+                            <mrow>
+                                <msup>
+                                    <mi>b</mi>
+                                    <mn>2</mn>
+                                </msup>
+                                <mo>−</mo>
+                                <mrow>
+                                    <mn>4</mn>
+                                    <mo>⁢</mo>
+                                    <mi>a</mi>
+                                    <mo>⁢</mo>
+                                    <mi>c</mi>
+                                </mrow>
+                            </mrow>
+                        </msqrt>
+                    </mrow>
+                    <mrow>
+                        <mn>2</mn>
+                        <mo>⁢</mo>
+                        <mi>a</mi>
+                    </mrow>
+                </mfrac>
+            </mrow>
+        </math>
+    </h3>
+    <h3>Where :</h3>
+    <h3>- a = <b style="color: dodgerblue">d</b> * <b style="color: dodgerblue">d</b></h3>
+    <h3>- b = 2<b style="color: dodgerblue">d</b> * (<b style="color: hotpink">O</b> - C)</h3>
+    <h3>- c = (<b style="color: hotpink">O</b> - C) * (<b style="color: hotpink">O</b> - C) - r<sup>2</sup></h3>
     
-    <p style="padding: 15px"></p>
-    <h3>Onto the next</h3>
-    <p style="padding: 15px"></p>
-    <!--Slide 20-->
+    <img src="../Images/RayTracing/CircleIntersection.png" alt="Circle Intersection"/> <!-- base width is 25%, height is automatic so the image doesn't stretch -->
+    
+    <p style="padding: 5px"></p>
+
+    <h2 class="underline" style="text-decoration-color: royalblue">Now to actually Raytrace</h2>
+
+    <h3><i>The discriminant is :</i></h3>
+    <h3><i> 0 : 2 real solutions</i></h3>
+    <h3><i>= 0 : 1 real solution</i></h3>
+    <h3><i>&lt 0 : 2 irrational solutions</i></h3>
+    
+    <p></p>
+    
+    <h3>We will test our code by hard coding the formula</h3>
+    <!-- Code Snippet -->
+    <div class="snippet">
+        <div class="Swindow">
+            <div class="Swindow-title">
+                <p>Raytracing.cpp</p>
+            </div>
+            <div class="Sconsole">
+      <pre><code>bool HitSphere(const Position& rCenter, double radius, const Ray& rRay)
+{
+   Vector3 oC = rRay.GetOrigin() - rCenter;
+   double a = Dot(rRay.GetDirection(), rRay.GetDirection());
+   double b = 2.0 * Dot(oC, rRay.GetDirection());
+   double c = Dot(oC, oC) - radius * radius;
+
+   double discriminant = b * b - 4 * a * c;
+   return (discriminant >= 0);
+}
+
+Color RayColor(const Ray& rRay)
+{
+   if(HitSphere(Position(0, 0, -1), 0.5, rRay))
+       return Color(1, 0, 0);
+   Vector3 unitDirection = Unit(rRay.GetDirection());
+   double blue = 0.5 * (unitDirection.y + 1.0);
+   return (1.0 - blue) * Color(1.0, 1.0, 1.0) + blue * Color (0, 0, 1.0);
+
+}</code></pre>
+            </div>
+        </div>
+    </div>
+    
+    <p style="padding: 2px"></p>
+    
+    <h3>You should now see a sphere emerge from the background.</h3>
+    <h3>It has no shading yet, but it’s a start !</h3>
+    <h3>Be aware though that this solution we have for now allows negative <b style="color: limegreen">t</b> values <i>(behind the camera)</i> but we will fix it later !</h3>
+    
+    <p style="padding: 5px"></p>
+    
+    <h2>We will see shading in the next one</h2>
+    
+    <h3>see ya</h3>
+    <p style="padding: 5px"></p>
 </div>
 
 <!-- Buttons -->
