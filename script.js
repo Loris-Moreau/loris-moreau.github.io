@@ -1,5 +1,4 @@
 // JavaScript Enhancements for Lazy Loading (Video Player)
-
 // Lazy Load YouTube iframe
 document.addEventListener('DOMContentLoaded', () => {
     const videos = document.querySelectorAll('.lazy-video');
