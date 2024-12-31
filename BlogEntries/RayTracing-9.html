@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>RayTracing 9</title>
+    <link rel="icon" type="image/x-icon" href="../Images/Suprise.png">
+    <link rel="stylesheet" href="../styles.css">
+
+    <!-- Meta Tags for SEO -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Loris Moreau">
+    <meta name="description" content="Raytracing Blog">
+    <meta name="keywords" content="Showcase, Loris, Moreau, Loris Moreau, Programmer, coding adventure, Blog, Post, Raytracing, C++, CPP, Raytracing in one weekend">
+</head>
+
+<body>
+<div class="background"></div>
+
+<!-- Back Button -->
+<div style="text-align: left; margin-top: 12px; margin-left: 5px;">
+    <a href="../Blog.html">
+        <button>
+            Back
+        </button>
+    </a>
+</div>
+
+
+<!-- Blog Content -->
+<div id="BlogPost" class="page">
+
+    <h2 class="underline">Raytracing in one weekend in c++</h2>
+    <h4><a href="https://github.com/Loris-Moreau/RayTracing" target="_blank">
+        GitHub Repository
+    </a></h4>
+    <h3>Welcome to my adventure following the <a href="https://raytracing.github.io/" target="_blank">raytracing in one weekend</a> series in C++.</h3>
+
+    <p style="padding: 5px"></p>
+
+    <h2 class="underline" style="text-decoration-color: dodgerblue"> Part 9 </h2>
+    <h4><i>(Final Render of book 1)</i></h4>
+    <h2 class="underline" style="text-decoration-color: dodgerblue">Positionable Camera</h2>
+    
+    <p style="padding: 1px"></p>
+    
+    <h2 class="underline" style="text-decoration-color: royalblue">Camera Viewing Geometry</h2>
+    <h3>First, we’ll keep the rays coming from the origin and heading to the <b>z = -1</b> plane.</h3>
+
+
+    <!-- Code Snippet -->
+    <div class="snippet">
+        <div class="Swindow">
+            <div class="Swindow-title">
+                <p>Camera.h</p>
+            </div>
+            <div class="Sconsole">
+      <pre><code>#pragma once
+
+#include "Color.h"
+#include "Hittable.h"
+
+class Camera
+{
+public:
+   Camera() = default;
+   Camera(double imageWidth, double ratio, int samplePerPixel = 10, int bounces = 10, double vFoV = 90):
+   aspectRatio(ratio), width(imageWidth), sampleCount(samplePerPixel), maxBounces(bounces), verticalFoV(vFoV){}
+   void Render(const Hittable& rWorld);
+
+private:
+   int height;
+   double aspectRatio, width;
+   int sampleCount;
+   int maxBounces;
+   double verticalFoV;
+   Position center, originPixelLocation;
+   Vector3 pixelDeltaX, pixelDeltaY;
+  
+   void Initialize();
+   Color RayColor(const Ray& rRay, int bouncesLeft, const Hittable& rWorld) const;
+   Ray GetRay(int x, int y) const;
+   Vector3 PixelSampleSquared() const;
+};
+</code></pre>
+            </div>
+        </div>
+    </div>
+    <div class="snippet">
+        <div class="Swindow">
+            <div class="Swindow-title">
+                <p>Camera.cpp</p>
+            </div>
+            <div class="Sconsole">
+      <pre><code>void Camera::Initialize()
+{
+   height = static_cast&ltint>(width / aspectRatio);
+   if(height &lt 1) height = 1;
+  
+   center = Position(0, 0, 0);
+   double focalLength = 1;
+   double theta = DegToRad(verticalFoV);
+   double h = tan(theta / 2);
+   double viewportHeight = 2 * h * focalLength;
+   double viewportWidth = viewportHeight * (static_cast&ltdouble>(width)/height);
+
+   Vector3 viewportX = Vector3(viewportWidth, 0, 0);
+   Vector3 viewportY = Vector3(0, -viewportHeight, 0); // invert Y
+  
+   // Delta vector between pixels
+   pixelDeltaX = viewportX / width;
+   pixelDeltaY = viewportY / height;
+
+   //Position of the top left pixel
+   Vector3 viewportOrigin = center - Vector3(0, 0, focalLength) - viewportX / 2 - viewportY / 2;
+
+   originPixelLocation = viewportOrigin + 0.5 * (pixelDeltaX + pixelDeltaY);
+}
+</code></pre>
+            </div>
+        </div>
+    </div>
+    
+    <h3>Test it out & see how it goes</h3>
+    <div class="snippet">
+        <div class="Swindow">
+            <div class="Swindow-title">
+                <p>Raytracing.cpp</p>
+            </div>
+            <div class="Sconsole">
+      <pre><code>int main(int argc, char* argv[])
+{
+   // World
+   HittableCollection world;
+  
+   double radius = cos(pi / 4);
+
+   shared_ptr&ltMaterial> leftMat = make_shared&ltLambertianMaterial>(Color(0, 0, 1));
+   shared_ptr&ltMaterial> rightMat = make_shared&ltLambertianMaterial>(Color(1, 0, 0));
+  
+   world.Add(make_shared&ltSphere>(Position(-radius,0,-1), radius, leftMat));
+   world.Add(make_shared&ltSphere>(Position(radius, 0,-1), radius, rightMat));
+   
+   Camera camera(400, 16.0/9.0, 100, 50, 90);
+   camera.Render(world);
+   return 0;
+}
+</code></pre>
+            </div>
+        </div>
+    </div>
+    
+    <p style="padding: 2px"></p>
+    
+    <h3>We will start by setting up the point in space where the camera is located and the rotation of the camera to test our scene from a different point of view.</h3>
+    <h3>We will also add a parameter for the tilt of our camera, so we need to know which way is up.</h3>
+    
+    <h3>let's add Field of view</h3>
+    <div class="snippet">
+        <div class="Swindow">
+            <div class="Swindow-title">
+                <p>Camera.h</p>
+            </div>
+            <div class="Sconsole">
+      <pre><code>class Camera
+{
+public:
+   Camera() = default;
+   Camera(double imageWidth, double ratio, int samplePerPixel = 10, int bounces = 10, double vFoV = 90):
+   aspectRatio(ratio), width(imageWidth), sampleCount(samplePerPixel), maxBounces(bounces), verticalFoV(vFoV){}
+   void SetTransform(Position origin = Position(0, 0, 0), Position lookAt = Vector3(0, 0, -1), Vector3 upDirection = Vector3(0, 1, 0));
+   void Render(const Hittable& rWorld);
+
+private:
+   int height;
+   double aspectRatio, width;
+   int sampleCount;
+   int maxBounces;
+   double verticalFoV;
+   Position position, target;
+   Vector3 viewUp;
+   Vector3 right, up, forward;
+   Position center, originPixelLocation;
+   Vector3 pixelDeltaX, pixelDeltaY;
+  
+   void Initialize();
+   Color RayColor(const Ray& rRay, int bouncesLeft, const Hittable& rWorld) const;
+   Ray GetRay(int x, int y) const;
+   Vector3 PixelSampleSquared() const;
+};
+</code></pre>
+            </div>
+        </div>
+    </div>
+    
+    <div class="snippet">
+        <div class="Swindow">
+            <div class="Swindow-title">
+                <p>Camera.cpp</p>
+            </div>
+            <div class="Sconsole">
+      <pre><code>void Camera::Initialize()
+{
+   height = static_cast&ltint>(width / aspectRatio);
+   if(height &lt 1) height = 1;
+  
+   center = position;
+   double focalLength =  (position - target).Length();
+   double theta = DegToRad(verticalFoV);
+   double h = tan(theta / 2);
+   double viewportHeight = 2 * h * focalLength;
+   double viewportWidth = viewportHeight * (static_cast&ltdouble>(width)/height);
+
+   forward = Unit(position - target);
+   right = Unit(Cross(viewUp, forward));
+   up = Cross(forward, right);
+  
+   Vector3 viewportX = viewportWidth * right;
+   Vector3 viewportY = viewportHeight * -up; // invert Y
+  
+   // Delta vector between pixels
+   pixelDeltaX = viewportX / width;
+   pixelDeltaY = viewportY / height;
+
+   // Position of the top left pixel
+   Vector3 viewportOrigin = center - (focalLength * forward) - viewportX / 2 - viewportY / 2;
+
+   originPixelLocation = viewportOrigin + 0.5 * (pixelDeltaX + pixelDeltaY);
+}
+          
+void Camera::SetTransform(Position origin, Position lookAt, Vector3 upDirection)
+{
+   position = origin;
+   target = lookAt;
+   viewUp = upDirection;
+}
+</code></pre>
+            </div>
+        </div>
+    </div>
+    
+    <h3>now to test it out</h3>
+    
+    <div class="snippet">
+        <div class="Swindow">
+            <div class="Swindow-title">
+                <p>Raytracing.cpp</p>
+            </div>
+            <div class="Sconsole">
+      <pre><code>int main(int argc, char* argv[])
+{
+   // World
+   HittableCollection world;
+
+   shared_ptr&ltMaterial> groundMat = make_shared&ltLambertianMaterial>(Color(0.8, 0.8, 0.0));
+   shared_ptr&ltMaterial> centerMat = make_shared&ltLambertianMaterial>(Color(0.1, 0.2, 0.5));
+   shared_ptr&ltMaterial> leftMat = make_shared&ltDialectricMaterial>(1.5);
+   shared_ptr&ltMaterial> rightMat = make_shared&ltMetalMaterial>(Color(0.8, 0.6, 0.2), 0.0);
+  
+   world.Add(make_shared&ltSphere>(Position(0,-100.5,-1), 100, groundMat));
+   world.Add(make_shared&ltSphere>(Position(0,0,-1), 0.5, centerMat));
+   world.Add(make_shared&ltSphere>(Position(-1,0,-1), 0.5, leftMat));
+   world.Add(make_shared&ltSphere>(Position(-1,0,-1), -0.4, leftMat));
+   world.Add(make_shared&ltSphere>(Position(1, 0,-1), 0.5, rightMat));
+  
+   Camera camera(400, 16.0/9.0, 100, 50, 90);  // Here
+   camera.SetTransform(Position(-2, 2, 1), Position(0, 0, -1), Vector3(0, 1, 0));  // and Here
+   camera.Render(world);
+   
+   return 0;
+}
+</code></pre>
+            </div>
+        </div>
+    </div>
+
+    <p style="padding: 5px"></p>
+    
+    <h2 class="underline" style="text-decoration-color: royalblue">Defocus Blur</h2>
+
+    <h4>Thin lens in Cameras :</h4>
+    <img src="../Images/RayTracing/ThinLens.png" alt="Thin Lens in Cameras"/>
+    <h3>If you wanna know more about lens go <a href="https://paulbourke.net/miscellaneous/lens/">here</a></h3>
+    
+    <h2>Thin Lens Approximation</h2>
+    
+    <h3>We could simulate how a real camera work by using its sensor, lens and aperture parameters and then flip the image <i>(as the lens renders the picture upside down)</i>.</h3>
+    <h3>Instead, we use an approximation that is easier to use and close enough to the desired result.</h3>
+
+    <h3>Let"s get a random point on a disk</h3>
+    <!-- Code Snippet -->
+    <div class="snippet">
+        <div class="Swindow">
+            <div class="Swindow-title">
+                <p>Vector.h</p>
+            </div>
+            <div class="Sconsole">
+      <pre><code>inline Position RandomInUnitSphere()
+{
+   while(true)
+   {
+       Position position = Vector3::Random(-1, 1);
+       if(position.SquaredLength() &lt 1) return position;
+   }
+}
+
+inline Vector3 RandomInUnitDisk()
+{
+   while(true)
+   {
+       Vector3 position = Vector3(RandomDouble(-1, 1), RandomDouble(-1, 1), 0);
+       if(position.SquaredLength() < 1)
+           return position;
+   }
+}
+</code></pre>
+            </div>
+        </div>
+    </div>
+    
+    <h3>Complete the cam with focus</h3>
+    <!-- Code Snippet -->
+    <div class="snippet">
+        <div class="Swindow">
+            <div class="Swindow-title">
+                <p>Camera.h</p>
+            </div>
+            <div class="Sconsole">
+      <pre><code>#pragma once
+
+#include "Color.h"
+#include "Hittable.h"
+
+class Camera
+{
+public:
+   Camera() = default;
+   Camera(double imageWidth, double ratio, int samplePerPixel = 10, int bounces = 10, double vFoV = 90):
+   aspectRatio(ratio), width(imageWidth), sampleCount(samplePerPixel), maxBounces(bounces), verticalFoV(vFoV), defocusAngle(0), focusDistance(10){}
+   void SetTransform(Position origin = Position(0, 0, 0), Position lookAt = Vector3(0, 0, -1), Vector3 upDirection = Vector3(0, 1, 0));
+   void SetFocus(double angle = 0, double distance = 10);
+   void Render(const Hittable& rWorld);
+
+private:
+   int height;
+   double aspectRatio, width;
+   int sampleCount;
+   int maxBounces;
+   double verticalFoV;
+   double defocusAngle, focusDistance;
+   Position position, target;
+   Vector3 viewUp;
+   Vector3 right, up, forward;
+   Vector3 defocusDiskX, defocusDiskY;
+   Position center, originPixelLocation;
+   Vector3 pixelDeltaX, pixelDeltaY;
+  
+   void Initialize();
+   Color RayColor(const Ray& rRay, int bouncesLeft, const Hittable& rWorld) const;
+   Ray GetRay(int x, int y) const;
+   Vector3 PixelSampleSquared() const;
+   Position DefocusDiskSample() const;
+};
+</code></pre>
+            </div>
+        </div>
+    </div>
+    <div class="snippet">
+        <div class="Swindow">
+            <div class="Swindow-title">
+                <p>Camera.cpp</p>
+            </div>
+            <div class="Sconsole">
+      <pre><code>void Camera::SetFocus(double angle, double distance)
+{
+   defocusAngle = angle;
+   focusDistance = distance;
+}
+
+Position Camera::DefocusDiskSample() const
+{
+   Position position = RandomInUnitDisk();
+   return center + (position.x * defocusDiskX) + (position.y * defocusDiskY);
+}
+          
+Ray Camera::GetRay(int x, int y) const
+{
+   // Get a randomly sampled camera ray for the pixel at location i, j.
+
+   Vector3 pixelCenter = originPixelLocation + (x * pixelDeltaX) + (y * pixelDeltaY);
+   Vector3 pixelSample = pixelCenter + PixelSampleSquared();
+
+   Position rayOrigin = defocusAngle &lt= 0 ? center : DefocusDiskSample();
+   Vector3 rayDirection = pixelSample - rayOrigin;
+
+   return Ray(rayOrigin, rayDirection);
+}
+</code></pre>
+            </div>
+        </div>
+    </div>
+    <h3>and</h3>
+    <div class="snippet">
+        <div class="Swindow">
+            <div class="Swindow-title">
+                <p>Camera.cpp</p>
+            </div>
+            <div class="Sconsole">
+      <pre><code>void Camera::Initialize()
+{
+   height = static_cast&ltint>(width / aspectRatio);
+   if(height &lt 1) height = 1;
+  
+   center = position;
+   double theta = DegToRad(verticalFoV);
+   double h = tan(theta / 2);
+   double viewportHeight = 2 * h * focusDistance;
+   double viewportWidth = viewportHeight * (static_cast&ltdouble>(width)/height);
+
+   forward = Unit(position - target);
+   right = Unit(Cross(viewUp, forward));
+   up = Cross(forward, right);
+  
+   Vector3 viewportX = viewportWidth * right;
+   Vector3 viewportY = viewportHeight * -up; //We invert Y
+  
+   //Delta vector between pixels
+   pixelDeltaX = viewportX / width;
+   pixelDeltaY = viewportY / height;
+
+   //Position of the top left pixel
+   Vector3 viewportOrigin = center - (focusDistance * forward) - viewportX / 2 - viewportY / 2;
+
+   originPixelLocation = viewportOrigin + 0.5 * (pixelDeltaX + pixelDeltaY);
+
+   //Calculate the camera defocus disk basis vectors
+   double defocusRadius = focusDistance * tan(DegToRad(defocusAngle / 2));
+   defocusDiskX = right * defocusRadius;
+   defocusDiskY = up * defocusRadius;
+}
+</code></pre>
+            </div>
+        </div>
+    </div>
+    
+    <h3>test it out</h3>
+
+    <div class="snippet">
+        <div class="Swindow">
+            <div class="Swindow-title">
+                <p>Raytracing.cpp</p>
+            </div>
+            <div class="Sconsole">
+      <pre><code>int main(int argc, char* argv[])
+{
+   // World
+   HittableCollection world;
+
+   shared_ptr&ltMaterial> groundMat = make_shared&ltLambertianMaterial>(Color(0.8, 0.8, 0.0));
+   shared_ptr&ltMaterial> centerMat = make_shared&ltLambertianMaterial>(Color(0.1, 0.2, 0.5));
+   shared_ptr&ltMaterial> leftMat = make_shared&ltDielectricMaterial>(1.5);
+   shared_ptr&ltMaterial> rightMat = make_shared&ltMetalMaterial>(Color(0.8, 0.6, 0.2), 0.0);
+  
+   world.Add(make_shared&ltSphere>(Position(0,-100.5,-1), 100, groundMat));
+   world.Add(make_shared&ltSphere>(Position(0,0,-1), 0.5, centerMat));
+   world.Add(make_shared&ltSphere>(Position(-1,0,-1), 0.5, leftMat));
+   world.Add(make_shared&ltSphere>(Position(-1,0,-1), -0.4, leftMat));
+   world.Add(make_shared&ltSphere>(Position(1, 0,-1), 0.5, rightMat));
+  
+   Camera camera(400, 16.0/9.0, 100, 50, 20);
+   camera.SetTransform(Position(-2, 2, 1), Position(0, 0, -1), Vector3(0, 1, 0));
+   camera.SetFocus(10.0, 3.4);
+   camera.Render(world);
+   
+   return 0;
+}
+</code></pre>
+            </div>
+        </div>
+    </div>
+
+    <p style="padding: 5px"></p>
+    
+    <h2 class="underline" style="text-decoration-color: royalblue">Time for the final render of Book 1</h2>
+    
+    <!-- Code Snippet -->
+    <div class="snippet">
+        <div class="Swindow">
+            <div class="Swindow-title">
+                <p>Raytracing.cpp</p>
+            </div>
+            <div class="Sconsole">
+      <pre><code>int main(int argc, char* argv[])
+{
+   // World
+   HittableCollection world;
+
+   shared_ptr&ltMaterial> groundMat = make_shared&ltLambertianMaterial>(Color(0.5, 0.5, 0.5));
+   world.Add(make_shared&ltSphere>(Position(0, -1000, 0), 1000, groundMat));
+
+   for(int i = -11; i < 11; i ++)
+   {
+       for(int j = -11; j < 11; j++)
+       {
+           double materialChoice = RandomDouble();
+           Position center(i + 0.9 * RandomDouble(), 0.2, j + 0.9 * RandomDouble());
+
+           if((center - Position(4, 0.2, 0)).Length() > 0.9)
+           {
+               shared_ptr&ltMaterial> chosenMat;
+               if(materialChoice < 0.8)
+               {
+                   Color albedo = Color::Random() * Color::Random();
+                   chosenMat = make_shared&ltLambertianMaterial>(albedo);
+               }
+
+...
+
+else if(materialChoice < 0.95)
+               {
+                   Color albedo = Color::Random(0.5, 1);
+                   double fuzz = RandomDouble(0, 0.5);
+                   chosenMat = make_shared&ltMetalMaterial>(albedo, fuzz);
+               } else
+               {
+                   chosenMat = make_shared&ltDialectricMaterial>(1.5);
+               }
+               world.Add(make_shared&ltSphere>(center, 0.2, chosenMat));
+           }
+       }
+   }
+   
+   Camera camera(1200, 16.0/9.0, 500, 50, 20);
+   camera.SetTransform(Position(13, 2, 3), Position(0, 0, 0), Vector3(0, 1, 0));
+   camera.SetFocus(0.6, 10.0);
+   camera.Render(world);
+
+   return 0;
+}
+</code></pre>
+            </div>
+        </div>
+    </div>
+
+    <p style="padding: 2px"></p>
+    
+    <h2>And it should look like :</h2>
+    <img src="../Images/RayTracing/Final%20Render%20(B1).png" alt="Final Result of book 1" style="width: 35%">
+
+    <p style="padding: 15px"></p>
+
+    <h3>Next we will start book 2</h3>
+
+    <h3>See you later </h3>
+    <h5><i>alligator</i></h5>
+    <p style="padding: 5px"></p>
+</div>
+
+<!-- Buttons -->
+<div style="text-align: center; margin-top: 10px;">
+    <!-- Previous Button, if none: href="../Blog.html" -->
+    <a href="RayTracing-8.html">
+        <button>
+            Previous
+        </button>
+    </a>
+    <!-- Back to blog -->
+    <a href="../Blog.html">
+        <button>
+            Entries
+        </button>
+    </a>
+    <!-- Next button, if none: go back to first post currently: href="Workflow.html" -->
+    <a href=VFX-1.html>
+        <button>
+            Next
+        </button>
+    </a>
+    <p style="padding: 7px"></p>
+</div>
+
+<!-- Date -->
+<h5>15-1-2024</h5>
+<p style="padding: 7px"></p>
+
+<!-- Socials -->
+<div>
+    <ul class="example-2">
+        <li class="icon-content">
+            <a href="https://linkedin.com/in/loris-moreau" aria-label="LinkedIn" data-social="linkedin" target="_blank">
+                <div class="filled"></div>
+                <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="16"
+                        height="16"
+                        fill="currentColor"
+                        class="bi bi-linkedin"
+                        viewBox="0 0 16 16"
+                        xml:space="preserve"
+                >
+                <path
+                        d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854zm4.943 12.248V6.169H2.542v7.225zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248S2.4 3.226 2.4 3.934c0 .694.521 1.248 1.327 1.248zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016l.016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225z"
+                        fill="currentColor"
+                ></path>
+            </svg>
+            </a>
+            <div class="tooltip">LinkedIn</div>
+        </li>
+        <li class="icon-content">
+            <a href="https://github.com/Loris-Moreau" aria-label="GitHub" data-social="github" target="_blank">
+                <div class="filled"></div>
+                <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="16"
+                        height="16"
+                        fill="currentColor"
+                        class="bi bi-github"
+                        viewBox="0 0 16 16"
+                        xml:space="preserve"
+                >
+                <path
+                        d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8"
+                        fill="currentColor"
+                ></path>
+            </svg>
+            </a>
+            <div class="tooltip">GitHub</div>
+        </li>
+        <li class="icon-content">
+            <a href="https://www.youtube.com/channel/UCRfo2k8XLOiRMOcuQEtNz5g" aria-label="Youtube" data-social="youtube" target="_blank">
+                <div class="filled"></div>
+                <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="16"
+                        height="16"
+                        fill="currentColor"
+                        class="bi bi-youtube"
+                        viewBox="0 0 16 16"
+                        xml:space="preserve"
+                >
+                <path
+                        d="M8.051 1.999h.089c.822.003 4.987.033 6.11.335a2.01 2.01 0 0 1 1.415 1.42c.101.38.172.883.22 1.402l.01.104.022.26.008.104c.065.914.073 1.77.074 1.957v.075c-.001.194-.01 1.108-.082 2.06l-.008.105-.009.104c-.05.572-.124 1.14-.235 1.558a2.01 2.01 0 0 1-1.415 1.42c-1.16.312-5.569.334-6.18.335h-.142c-.309 0-1.587-.006-2.927-.052l-.17-.006-.087-.004-.171-.007-.171-.007c-1.11-.049-2.167-.128-2.654-.26a2.01 2.01 0 0 1-1.415-1.419c-.111-.417-.185-.986-.235-1.558L.09 9.82l-.008-.104A31 31 0 0 1 0 7.68v-.123c.002-.215.01-.958.064-1.778l.007-.103.003-.052.008-.104.022-.26.01-.104c.048-.519.119-1.023.22-1.402a2.01 2.01 0 0 1 1.415-1.42c.487-.13 1.544-.21 2.654-.26l.17-.007.172-.006.086-.003.171-.007A100 100 0 0 1 7.858 2zM6.4 5.209v4.818l4.157-2.408z"
+                        fill="currentColor"
+                ></path>
+            </svg>
+            </a>
+            <div class="tooltip">Youtube</div>
+        </li>
+    </ul>
+</div>
+
+<p style="padding: 2px"></p>
+
+</body>
+</html>
