@@ -37,10 +37,473 @@
 
     <p style="padding: 5px"></p>
 
-    <h3 class="underline" style="text-decoration-color: royalblue"> PArt 7 </h3>
+    <h2 class="underline" style="text-decoration-color: dodgerblue"> Part 7 </h2>
+    <h2 class="underline" style="text-decoration-color: dodgerblue; padding-bottom: 5px">Metal Reflection</h2>
+    <h4>Bounces galore</h4>
+    
+    <p style="padding: 5px"></p>
+    
+    <h3>First we need to classify our materials</h3>
+    <!-- Code Snippet -->
+    <div class="snippet">
+        <div class="Swindow">
+            <div class="Swindow-title">
+                <p>Material.h</p>
+            </div>
+            <div class="Sconsole">
+      <pre><code>#pragma once
+
+#include "Color.h"
+#include "Ray.h"
+
+class HitInfo;
+
+class Material
+{
+public:
+   ~Material() = default;
+
+   virtual bool Scatter(const Ray& rayIn, const HitInfo& hitInfo, Color& attenuation, Ray& scattered) const = 0;
+};
+</code></pre>
+            </div>
+        </div>
+    </div>
+
+    
+    <h3>Then we add the material header to HitInfo</h3>
+    <!-- Code Snippet -->
+    <div class="snippet">
+        <div class="Swindow">
+            <div class="Swindow-title">
+                <p>Hittable.h</p>
+            </div>
+            <div class="Sconsole">
+      <pre><code>#pragma once
+          
+#include "Interval.h"
+#include "Material.h"
+#include "Ray.h"
+
+class HitInfo
+{
+public:
+   Position coordinates;
+   Vector3 normal;
+   shared_ptr&ltMaterial> material;
+   double time;
+   bool frontFace;
+
+   void SetFaceNormal(const Ray& rRay, const Vector3& outwardNormal)
+   {
+       // NOTE : The outwardNormal vector should be unit length
+       frontFace = Dot(rRay.GetDirection(), outwardNormal) &lt 0;
+       normal = frontFace ? outwardNormal : -outwardNormal;
+   }
+};
+</code></pre>
+            </div>
+        </div>
+    </div>
+    
+    <h3>As well as spheres</h3>
+    <!-- Code Snippet -->
+    <div class="snippet">
+        <div class="Swindow">
+            <div class="Swindow-title">
+                <p>Sphere.h</p>
+            </div>
+            <div class="Sconsole">
+      <pre><code>#pragma once
+#include "Hittable.h"
+
+class Sphere: public Hittable
+{
+private:
+   Position mCenter;
+   double mRadius;
+   shared_ptr&ltMaterial> material;
+public:
+   Sphere(Position center, double radius, shared_ptr&ltMaterial> mat):mCenter(center), mRadius(radius), material(mat){}
+   bool Hit(const Ray& rRay, Interval rayTime, HitInfo& hitInfo) const override;
+};
+</code></pre>
+            </div>
+        </div>
+    </div>
+    <!-- Code Snippet -->
+    <div class="snippet">
+        <div class="Swindow">
+            <div class="Swindow-title">
+                <p>Sphere.cpp</p>
+            </div>
+            <div class="Sconsole">
+      <pre><code>bool Sphere::Hit(const Ray& rRay, Interval rayTime, HitInfo& hitInfo) const
+{
+      ...
+      ...
+   hitInfo.time = root;
+   hitInfo.coordinates = rRay.At(hitInfo.time);
+   Vector3 outwardNormal = (hitInfo.coordinates - mCenter) / mRadius;
+   hitInfo.SetFaceNormal(rRay, outwardNormal);
+   hitInfo.material = material;
+
+   return true;
+}
+</code></pre>
+            </div>
+        </div>
+    </div>
+    
+    <h3>we also need to add a new utility function</h3>
+    <!-- Code Snippet -->
+    <div class="snippet">
+        <div class="Swindow">
+            <div class="Swindow-title">
+                <p>Sphere.cpp</p>
+            </div>
+            <div class="Sconsole">
+      <pre><code>class Vector3
+{
+...
+...
+...
+
+   static Vector3 Random(double min, double max)
+   {
+       return Vector3(RandomDouble(min, max), RandomDouble(min, max), RandomDouble(min, max));
+   }
+
+   bool NearZero() const
+   {
+       double s = 1e-18;
+       return fabs(x&lts) && fabs(y&lts) && fabs(z&lts);
+   }
+};
+</code></pre>
+            </div>
+        </div>
+    </div>
+
+    <p style="padding: 2px"></p>
+    
+    <h2>Now we can start to make our materials</h2>
+    
+    <h3>We'll start off with a Lambertian material</h3>
+    
+    <!-- Code Snippet -->
+    <div class="snippet">
+        <div class="Swindow">
+            <div class="Swindow-title">
+                <p>LambertianMaterial.h</p>
+            </div>
+            <div class="Sconsole">
+      <pre><code>#pragma once
+
+#include "Material.h"
+
+class LambertianMaterial: public Material
+{
+private:
+   Color albedo;
+
+public:
+   LambertianMaterial(const Color& baseColor): albedo(baseColor){}
+
+   bool Scatter(const Ray& rayIn, const HitInfo& hitInfo, Color& attenuation, Ray& scattered) const override;
+};
+</code></pre>
+            </div>
+        </div>
+    </div>
+    <!-- Code Snippet -->
+    <div class="snippet">
+        <div class="Swindow">
+            <div class="Swindow-title">
+                <p>LambertianMaterial.cpp</p>
+            </div>
+            <div class="Sconsole">
+      <pre><code>#include "LambertianMaterial.h"
+
+#include "Hittable.h"
+
+bool LambertianMaterial::Scatter(const Ray& rayIn, const HitInfo& hitInfo, Color& attenuation, Ray& scattered) const
+{
+   Vector3 scatterDirection = hitInfo.normal + RandomUnitVector();
+
+   // Catch invalid directions
+   if(scatterDirection.NearZero()) scatterDirection = hitInfo.normal;
+
+   scattered = Ray(hitInfo.coordinates, scatterDirection);
+   attenuation = albedo;
+
+   return true;
+}
+</code></pre>
+            </div>
+        </div>
+    </div>
+
+
+    <h3 class="underline" style="text-decoration-color: darkorange"><i>Note :</i></h3>
+    <h3>For polished metals, the ray is not reflected randomly, it is mirrored.</h3>
+
+    <!-- Code Snippet -->
+    <div class="snippet">
+        <div class="Swindow">
+            <div class="Swindow-title">
+                <p>Vector3.h</p>
+            </div>
+            <div class="Sconsole">
+      <pre><code>inline Vector3 RandomOnHemisphere(const Vector3& normal)
+{
+   Vector3 onUnitSphere = RandomUnitVector();
+   // If in the same hemisphere as the normal
+   if(Dot(onUnitSphere, normal) > 0.0)
+   {
+       return onUnitSphere;
+   }
+   return -onUnitSphere;
+}
+
+inline Vector3 Reflect(const Vector3& direction, const Vector3& normal)
+{
+   return direction - 2 * Dot(direction, normal) * normal;
+}
+</code></pre>
+            </div>
+        </div>
+    </div>
+    
+    <h3>We can now make a metal material, like so :</h3>
+    
+    <!-- Code Snippet -->
+    <div class="snippet">
+        <div class="Swindow">
+            <div class="Swindow-title">
+                <p>MetalMaterial.h</p>
+            </div>
+            <div class="Sconsole">
+      <pre><code>#pragma once
+
+#include "Material.h"
+
+class MetalMaterial:public Material
+{
+private:
+   Color albedo;
+
+public:
+   MetalMaterial(const Color& baseColor): albedo(baseColor){}
+
+   bool Scatter(const Ray& rRayIn, const HitInfo& hitInfo, Color& attenuation, Ray& scattered) const override;
+};
+</code></pre>
+            </div>
+        </div>
+    </div>
+    <div class="snippet">
+        <div class="Swindow">
+            <div class="Swindow-title">
+                <p>MetalMaterial.cpp</p>
+            </div>
+            <div class="Sconsole">
+      <pre><code>#include "MetalMaterial.h"
+
+#include "Hittable.h"
+
+bool MetalMaterial::Scatter(const Ray& rRayIn, const HitInfo& hitInfo, Color& attenuation, Ray& scattered) const
+{
+   Vector3 reflected = Reflect(Unit(rRayIn.GetDirection()), hitInfo.normal);
+   scattered = Ray(hitInfo.coordinates, reflected);
+   attenuation = albedo;
+
+   return true;
+}
+
+</code></pre>
+            </div>
+        </div>
+    </div>
+    
+    <h3>then add some scatter to the camera</h3>
+    <!-- Code Snippet -->
+    <div class="snippet">
+        <div class="Swindow">
+            <div class="Swindow-title">
+                <p>Camera.cpp</p>
+            </div>
+            <div class="Sconsole">
+      <pre><code>Color Camera::RayColor(const Ray& rRay, int bouncesLeft, const Hittable& rWorld) const
+{
+   HitInfo hitInfo;
+  
+   if(bouncesLeft &lt= 0) return Color(0, 0, 0);
+   if (rWorld.Hit(rRay, Interval(0.001, infinity), hitInfo)) {
+       Ray scattered;
+       Color attenuation;
+       if(hitInfo.material -> Scatter(rRay, hitInfo, attenuation, scattered))
+       {
+           return attenuation * RayColor(scattered, bouncesLeft - 1, rWorld);
+       }
+       return Color(0,0,0);
+   }
+
+   Vector3 unitDirection = Unit(rRay.GetDirection());
+   double blue = 0.5 * (unitDirection.y + 1.0);
+   return (1.0 - blue) * Color(1.0, 1.0, 1.0) + blue * Color (0.5, 0.7, 1.0);
+}
+</code></pre>
+            </div>
+        </div>
+    </div>
+    
+    <h2>Now to display our new scene</h2>
+    <!-- Code Snippet -->
+    <div class="snippet">
+        <div class="Swindow">
+            <div class="Swindow-title">
+                <p>Raytracing.cpp</p>
+            </div>
+            <div class="Sconsole">
+      <pre><code>int main(int argc, char* argv[])
+{
+   // World
+   HittableCollection world;
+
+   shared_ptr&ltMaterial> groundMat = make_shared&ltLambertianMaterial>(Color(0.8, 0.8, 0.0));
+   shared_ptr&ltMaterial> centerMat = make_shared&ltLambertianMaterial>(Color(0.15, 0.15, 0.75));
+   shared_ptr&ltMaterial> leftMat = make_shared&ltMetalMaterial>(Color(0.8, 0.8, 0.8));
+   shared_ptr&ltMaterial> rightMat = make_shared&ltMetalMaterial>(Color(0.8, 0.6, 0.2));
+
+   world.Add(make_shared&ltSphere>(Position(0,-100.5,-1), 100, groundMat));
+   world.Add(make_shared&ltSphere>(Position(0,0,-1), 0.5, centerMat));
+   world.Add(make_shared&ltSphere>(Position(-1.0,0,-1), 0.5, leftMat));
+   world.Add(make_shared&ltSphere>(Position(1.0,0,-1), 0.5, rightMat));
+
+  
+   Camera camera(400, 16.0/9.0, 100, 50);
+   camera.Render(world);
+   return 0;
+}
+</code></pre>
+            </div>
+        </div>
+    </div>
+    <h3>It should look a little something like this :</h3>
+    <img src="../Images/RayTracing/BasicMaterials.png" alt="Test Image"/> <!-- base width is 25%, height is automatic so the image doesn't stretch -->
+
+    <p style="padding: 5px"></p>
+    
+    <h2 class="underline" style="text-decoration-color: royalblue">Now away from bounces & onto fuzziness</h2>
+    
+    <h3>We can randomize the reflected direction by using a small sphere and choosing a new endpoint for the ray.</h3>
+    <h3>We’ll use a random point from the surface of a sphere centered on the original endpoint, called by the "fuzz factor".</h3>
+    <h3>The bigger the sphere, the fuzzier the reflection.</h3>
+
+
+    <!-- Code Snippet -->
+    <div class="snippet">
+        <div class="Swindow">
+            <div class="Swindow-title">
+                <p>MetalMaterial.h</p>
+            </div>
+            <div class="Sconsole">
+      <pre><code>#pragma once
+
+#include "Material.h"
+
+class MetalMaterial:public Material
+{
+private:
+   Color albedo;
+   double fuzz;  //Here
+
+public:
+   MetalMaterial(const Color& baseColor, double f): albedo(baseColor), fuzz(f&lt1? f : 1){}  //Here too
+
+   bool Scatter(const Ray& rRayIn, const HitInfo& hitInfo, Color& attenuation, Ray& scattered) const override;
+};
+</code></pre>
+            </div>
+        </div>
+    </div>
+    <!-- Code Snippet -->
+    <div class="snippet">
+        <div class="Swindow">
+            <div class="Swindow-title">
+                <p>MetalMaterial.cpp</p>
+            </div>
+            <div class="Sconsole">
+      <pre><code>#include "MetalMaterial.h"
+#include "Hittable.h"
+
+bool MetalMaterial::Scatter(const Ray& rRayIn, const HitInfo& hitInfo, Color& attenuation, Ray& scattered) const
+{
+   Vector3 reflected = Reflect(Unit(rRayIn.GetDirection()), hitInfo.normal);
+   scattered = Ray(hitInfo.coordinates, reflected + fuzz * RandomUnitVector());
+   attenuation = albedo;
+
+   return Dot(scattered.GetDirection(), hitInfo.normal) > 0;
+}
+</code></pre>
+            </div>
+        </div>
+    </div>
+
+    <p style="padding: 5px"></p>
+    
+    <h2>Time to render</h2>
+    
+    <!-- Code Snippet -->
+    <div class="snippet">
+        <div class="Swindow">
+            <div class="Swindow-title">
+                <p>Raytracing.cpp</p>
+            </div>
+            <div class="Sconsole">
+      <pre><code>#include "Camera.h"
+#include "HittableCollection.h"
+#include "LambertianMaterial.h"
+#include "MetalMaterial.h"
+#include "Sphere.h"
+
+using namespace std;
+
+int main(int argc, char* argv[])
+{
+   // World
+   HittableCollection world;
+
+   shared_ptr&ltMaterial> groundMat = make_shared&ltLambertianMaterial>(Color(0.8, 0.8, 0.0));
+   shared_ptr&ltMaterial> centerMat = make_shared&ltLambertianMaterial>(Color(0.15, 0.15, 0.75));
+   shared_ptr&ltMaterial> leftMat = make_shared&ltMetalMaterial>(Color(0.2, 0.3, 0.5), 1.0);
+   shared_ptr&ltMaterial> rightMat = make_shared&ltMetalMaterial>(Color(0.5, 0.3, 0.2), 0.3);
+
+   world.Add(make_shared&ltSphere>(Position(0,-100.5,-1), 100, groundMat));
+   world.Add(make_shared&ltSphere>(Position(0,0,-1), 0.5, centerMat));
+   world.Add(make_shared&ltSphere>(Position(-1.1,0,-1), 0.5, leftMat));
+   world.Add(make_shared&ltSphere>(Position(1.1, 0,-1), 0.5, rightMat));
+
+  
+   Camera camera(400, 16.0/9.0, 100, 50);
+   camera.Render(world);
+   return 0;
+}
+</code></pre>
+            </div>
+        </div>
+    </div>
+    
+    <h3>Like so :</h3>
+    
+    <img src="../Images/RayTracing/FuzzedMetal.png" alt="Fuzzy Metal">
     
     <p style="padding: 15px"></p>
-    <h3>buh bye</h3>
+    
+    <h3>Next up is glass materials</h3>
+    
+    <h3>See ya</h3>
     <p style="padding: 5px"></p>
 </div>
 
