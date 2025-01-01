@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>RayTracing 1</title>
+    <title>RayTracing 10</title>
     <link rel="icon" type="image/x-icon" href="../Images/Suprise.png">
     <link rel="stylesheet" href="../styles.css">
 
@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="Loris Moreau">
     <meta name="description" content="Raytracing Blog">
-    <meta name="keywords" content="Showcase, Loris, Moreau, Loris Moreau, Programmer, coding adventure, Blog, Post, Raytracing, C++, CPP, Raytracing, Raytracing in one weekend">
+    <meta name="keywords" content="Showcase, Loris, Moreau, Loris Moreau, Programmer, coding adventure, Blog, Post, Raytracing, C++, CPP, Raytracing in one weekend">
 </head>
 
 <body>
@@ -29,79 +29,48 @@
 <!-- Blog Content -->
 <div id="BlogPost" class="page">
 
-<h2 class="underline">Raytracing in one weekend in c++</h2>
-<h4><a href="https://github.com/Loris-Moreau/RayTracing" target="_blank">
-    GitHub Repository
-</a></h4>
+    <h2 class="underline">Raytracing in one weekend in c++</h2>
+    <h4><a href="https://github.com/Loris-Moreau/RayTracing" target="_blank">
+        GitHub Repository
+    </a></h4>
     <h3>Welcome to my adventure following the <a href="https://raytracing.github.io/" target="_blank">raytracing in one weekend</a> series in C++.</h3>
-    
-    <p style="padding: 4px"></p>
-    
-    <h3>First I would like to thank my teacher Marie for helping me understand raytracing & 
-        answering all my questions as well as making a more understandable version of the first book</h3>
-    
-    <p style="padding: 2px"></p>
 
-    <h2 class="underline" style="text-decoration-color: royalblue"> Understanding Ray Tracing and Light </h2>
-    <h3>
-        Our perception of objects depends on light rays emitted from a source, bouncing off surfaces, and reaching our eyes.
-    </h3>
-    <h3>
-        The object's color and texture influence how light reflects & refracts, shaping the color we perceive.
-    </h3>
-    <h3>
-        A light ray hitting an object can reflect <i>(carrying surface color information)</i>, refract through transparent surfaces, or both.
-    </h3>
-    
-    <img src="../Images/Refraction-Reflection.png" alt="Reflection, refraction & both"/>
-    
-    <h3>
-        Each ray bounces off objects, including other reflected rays, creating a complex network of light paths.
-    </h3>
-    <h3>
-        While this technique is the closest to how real light works, it is really inefficient,
-        with multiple light sources amplifying this complexity, & many rays never reaching the camera, wasting computational resources.
-    </h3>
-    
-    <img src="../Images/LotsOfRays.png" alt="Too Many Rays"/>
-
-    <p style="padding: 0"></p>
-    
-    <h2 class="underline" style="text-decoration-color: royalblue"> Improving Efficiency </h2>
-    <h3>
-        Instead of simulating rays from the light source, which rarely hit the camera, we reverse the process <i>(shoot rays from the camera outward)</i>.
-    </h3>
-    <h3>
-        Rays that hit light sources are guaranteed to contribute to the visible image. 
-        The ray’s color changes are then resolved backward from the light to the camera.
-    </h3>
     <p style="padding: 5px"></p>
-    <h2 class="underline" style="text-decoration-color: royalblue"> Key Definitions </h2>
-    <h3>
-        <i class="underline" style="text-decoration-color: cadetblue">Viewport :</i> The visible frame of the world from the camera’s perspective.
-    </h3>
-    <h3>
-        <i class="underline" style="text-decoration-color: cadetblue">Resolution :</i> The pixel count used to construct the viewport image, also known as ratio.
-    </h3>
-    <h3>
-        <i class="underline" style="text-decoration-color: cadetblue">Focal Point :</i> The point where light rays converge, controlling Depth of Field.
-    </h3>
+
+    <h2 class="underline" style="text-decoration-color: dodgerblue">Part 10</h2>
+    <h4><i>(Start of book 2)</i></h4>
+    <h2 class="underline" style="text-decoration-color: dodgerblue">More Realistic Camera</h2>
+
+    <p style="padding: 1px"></p>
+
+    <h2 class="underline" style="text-decoration-color: royalblue">Motion Blur</h2>
     
-    <img src="../Images/Focal.png" style="width: 20%;" alt="Focal Point"/>
+    <h3>When we ray trace, we decided to have visual quality over than run-time.</h3>
+    <h3>When rendering fuzzy reflection and defocus blur, we used multiple samples per pixel.</h3>
+    <h3>Once you've taken that step, the good news is that almost all effects can be brute-forced in a similar way.</h3>
+    <h3>Motion blur is certainly one of those.
+        In a real camera, the shutter remains open for a short time, during which the camera and objects in the world may move.</h3>
+    <h3>To accurately reproduce such a camera shot, we seek an average of what the camera senses while its shutter is open to the world.</h3>
     
-    <h3>
-        Rays that don’t hit objects either return background color <i>(if directly from the camera)</i> or accumulated information from prior bounces.
-    </h3>
+    
+    
+    
+    
+    
+    
     
     <p style="padding: 15px"></p>
-    <h3>Now to actually do it, in the next one :3c</h3>
+
+    <h3>Next up is ...</h3>
+
+    <h3>Buh bye</h3>
     <p style="padding: 5px"></p>
 </div>
 
 <!-- Buttons -->
 <div style="text-align: center; margin-top: 10px;">
     <!-- Previous Button, if none: href="../Blog.html" -->
-    <a href="Workflow.html">
+    <a href="RayTracing-8.html">
         <button>
             Previous
         </button>
@@ -112,8 +81,8 @@
             Entries
         </button>
     </a>
-    <!-- Next button, if none: go back to first post currently: href="Workflow.html"" -->
-    <a href="RayTracing-2.html">
+    <!-- Next button, if none: go back to first post currently: href="Workflow.html" -->
+    <a href=VFX-1.html>
         <button>
             Next
         </button>
