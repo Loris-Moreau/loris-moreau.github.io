@@ -38,27 +38,39 @@
     <p style="padding: 5px"></p>
 
     <h2 class="underline" style="text-decoration-color: dodgerblue">Part 10</h2>
-    <h4><i>(Start of book 2)</i></h4>
-    <h2 class="underline" style="text-decoration-color: dodgerblue">More Realistic Camera</h2>
+    <h4><i>This part is going to be hard, for all of us</i>.</h4>
+    <h2 class="underline" style="text-decoration-color: dodgerblue">Bounding Volume</h2>
+    
+    <h2 class="underline" style="text-decoration-color: royalblue; padding-bottom: 7px">Hierarchies</h2>
+    <h4>Also known as <i>"BVH"</i></h4>
 
-    <p style="padding: 1px"></p>
+    <img loading="lazy" src="../Images/RayTracing/bounding_volume_hierarchies.png" alt="Bounding Volume Hierarchies">
 
-    <h2 class="underline" style="text-decoration-color: royalblue">Motion Blur</h2>
-    
-    <h3>When we ray trace, we decided to have visual quality over than run-time.</h3>
-    <h3>When rendering fuzzy reflection and defocus blur, we used multiple samples per pixel.</h3>
-    <h3>Once you've taken that step, the good news is that almost all effects can be brute-forced in a similar way.</h3>
-    <h3>Motion blur is certainly one of those.
-        In a real camera, the shutter remains open for a short time, during which the camera and objects in the world may move.</h3>
-    <h3>To accurately reproduce such a camera shot, we seek an average of what the camera senses while its shutter is open to the world.</h3>
-    
-    
-    
-    
-    
-    
-    
-    
+    <p style="padding: 3px"></p>
+
+    <h3>Ray-object intersection is the main <b>bottleneck</b> in a raytracer, and the rendering time is linear with the number of objects.</h3>
+    <h3>But it's a repeated search on the same scene, so we can make it a logarithmic search.</h3>
+    <h3>Since we are sending millions or even billions of rays into the same scene, we can sort the objects, and then each ray intersection can be a sublinear search.</h3>
+    <h3>The two most common methods are "subdividing the space" and "subdividing the objects".</h3>
+    <h3>The second method is usually far easier to code and just as fast for most models.</h3>
+
+    <p style="padding: 5px"></p>
+
+    <h3 class="underline" style="text-decoration-color: orange">Note : </h3>
+    <h3>we will use these bounding volumes to group the objects in the scene into subgroups.</h3>
+    <h3>We are <b>not</b> dividing the screen or the scene space. </h3>
+    <h3>We want any given object to be in just one bounding volume, though bounding volumes can overlap.</h3>
+
+
+
+
+
+
+
+
+
+
+
     <p style="padding: 15px"></p>
 
     <h3>Next up is ...</h3>
