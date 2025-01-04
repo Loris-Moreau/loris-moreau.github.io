@@ -7,7 +7,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(120deg, #32373c, #41474d);
+    background: linear-gradient(120deg, rgb(50, 55, 60), rgb(65, 71, 77));
     background-size: cover;
     z-index: -1; /* Ensures that the background is behind all content */
 }
@@ -706,4 +706,57 @@ a:active
     color: rgb(25, 245, 25);
     outline: none;
     font-size: 14px;
+}
+
+
+/* Accordion (Showcase Cards) */
+.accordion {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.accordion-item {
+    margin-bottom: 2px;
+}
+
+.accordion-item .content {
+    font-size: 1.5em;
+}
+
+.accordion input[type="radio"] {
+    display: none;
+}
+
+.accordion .content {
+    height: 0px;
+    padding: 0px;
+    background-color: rgb(142, 152, 161);
+    border-top: 2px solid orangered;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+.accordion input[type="radio"]:checked + .accordion-header + .content {
+    height: auto;
+    padding: 15px;
+}
+.accordion-icon {
+    display: flex;
+    align-items: center;
+    transition: all 0.45s ease;
+}
+.accordion input[type="radio"]:checked + .accordion-header .accordion-icon {
+    transform: rotate(180deg);
+}
+.accordion-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    background-color: rgb(115, 126, 137);
+    cursor: pointer;
+    font-weight: bold;
+    text-align: left;
+}
+.accordion-header .accordion-title {
+    font-size: 1.75em;
 }
