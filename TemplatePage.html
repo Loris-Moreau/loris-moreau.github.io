@@ -24,7 +24,7 @@
 <!-- Page 1 (Main Menu) -->
 <div id="TemplatePage" class="page">
 
-    <header>
+    <header id="top">
         <h1>HTML Template</h1>
     </header>
 
@@ -63,6 +63,22 @@
     <img loading="lazy" src="Images/Refraction-Reflection.png" alt="Test Image"/> <!-- base width is 25%, height is automatic so the image doesn't stretch -->
     <h3>Different sized image :</h3>
     <img loading="lazy" src="Images/Refraction-Reflection.png" style="width: 15%;" alt="Test Image"/> <!-- different sized image -->
+
+
+    <!-- Container for 3 images side by side -->
+    <!-- (use 33.33% for three, 25% for four, and 50% for two, etc...) -->
+    <h3>Images Side by side</h3>
+    <div class="row" style="flex: 33.33%">
+        <div class="column">
+            <img loading="lazy" src="Images/Minto.png" alt="Image 1" style="width: 50%"/>
+        </div>
+        <div class="column">
+            <img loading="lazy" src="Images/JupiPipebomb.png" alt="Image 2" style="width: 55%"/>
+        </div>
+        <div class="column">
+            <img loading="lazy" src="Images/Tenma.png" alt="Image 3" style="width: 100%"/>
+        </div>
+    </div>
     
     <p style="padding: 5px"></p>
 
@@ -77,6 +93,16 @@
             ></iframe>
         </div>
     </div>
+
+    <!-- Back to top Button -->
+    <div style="text-align: center;">
+        <a href="#top">
+            <button>
+                Top
+            </button>
+        </a>
+    </div>
+    
 </div>
 
 <!-- Dropdown Menu -->

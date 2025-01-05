@@ -83,22 +83,26 @@ h5
     margin: 0;
 }
 
-/* Multiple image containers (use 33.33% for three, 25% for four, and 50% for two, etc) */
+/* Multiple image containers */
 .row {
     align-items: center;
     justify-content: center;
 
     display: flex;
-}
-
+}  
+/* (use 33.33% for three, 25% for four, 50% for two, etc...) */
 .column {
     flex: 50%;
-    padding: 2px 5px 25px;
+    padding-top: 25px;
+    padding-bottom: 25px;
+    padding-left: 2px;
+    padding-right: 2px;
 
     justify-content: center;
     align-items: center;
 }
 
+/* Underline */
 .underline
 {
     text-decoration: underline;
@@ -733,7 +737,7 @@ a:active
     background-color: rgb(142, 152, 161);
     border-top: 2px solid orangered;
     overflow: hidden;
-    transition: all 0.3s ease;
+    transition: all 0.45s ease;
 }
 .accordion input[type="radio"]:checked + .accordion-header + .content {
     height: auto;
@@ -742,7 +746,7 @@ a:active
 .accordion-icon {
     display: flex;
     align-items: center;
-    transition: all 0.45s ease;
+    transition: all 0.5s ease;
 }
 .accordion input[type="radio"]:checked + .accordion-header .accordion-icon {
     transform: rotate(180deg);
