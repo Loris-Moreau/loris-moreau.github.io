@@ -133,7 +133,6 @@ button:hover{
     box-shadow: 12px 17px 51px rgba(0, 0, 0, 0.22);
     backdrop-filter: blur(6px);
 }
-
 button:active{
     background-color: rgba(195,195,195,0.75);
     
@@ -337,7 +336,7 @@ ul
     background-color: #ff0000;
 }
 
-/* Dropdown */
+/* Popup */
 .popup 
 {
     --burger-line-width: 1.125em;
@@ -763,4 +762,75 @@ a:active
 }
 .accordion-header .accordion-title {
     font-size: 1.75em;
+}
+
+
+/* Dropdown Here */
+
+/* Outer Container */
+.outer-container {
+    position: relative;
+    width: 100%; /* Full width of the viewport */
+    height: 100%; /* Full height of the viewport */
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+}
+
+/* Dropdown Container */
+.dropdown-container {
+    text-align: center;
+    width: auto; /* width for the dropdown */
+}
+
+/* Dropdown Label (Clickable Button) */
+.dropdown-label {
+    display: block;
+    background-color: rgb(142, 152, 161);
+    color: rgb(255, 255, 255);
+    padding: 10px 20px;
+    font-size: 1.25em;
+    text-align: center;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.dropdown-label:hover {
+    background-color: rgb(100, 110, 120);
+}
+
+/* Checkbox for Toggling */
+.dropdown-checkbox {
+    display: none;
+}
+
+/* Dropdown Menu */
+.dropdown-menu {
+    display: none; /* Hidden by default */
+    margin-top: 10px;
+    border: 1px solid orangered;
+    border-radius: 5px;
+    background-color: rgb(142, 152, 161);
+    overflow: hidden;
+}
+
+.dropdown-menu a {
+    display: block;
+    padding: 10px 15px;
+    text-decoration: none;
+    color: rgb(42, 42, 42);
+    border-bottom: 1px solid rgb(255, 69, 0);
+}
+
+.dropdown-menu a:last-child {
+    border-bottom: none;
+}
+
+.dropdown-menu a:hover {
+    background-color: rgb(100, 110, 120);
+}
+
+/* Show Menu When Checkbox is Checked */
+.dropdown-checkbox:checked ~ .dropdown-menu {
+    display: block;
 }
