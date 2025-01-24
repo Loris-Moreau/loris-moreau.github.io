@@ -6,9 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="df844061-607d-4516-8926-0cdf558aec54" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BlogEntries/RayTracing-10.html" beforeDir="false" afterPath="$PROJECT_DIR$/BlogEntries/RayTracing-10.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/styles.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,6 +24,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="jar://$APPLICATION_HOME_DIR$/lib/app.jar!/resources/html5-schema/html5/block.rnc" root0="FORCE_HIGHLIGHTING" />
     <setting file="jar://$APPLICATION_HOME_DIR$/lib/app.jar!/resources/html5-schema/html5/common.rnc" root0="FORCE_HIGHLIGHTING" />
     <setting file="jar://$APPLICATION_HOME_DIR$/lib/app.jar!/resources/html5-schema/html5/embed.rnc" root0="FORCE_HIGHLIGHTING" />
     <setting file="jar://$APPLICATION_HOME_DIR$/lib/app.jar!/resources/html5-schema/html5/phrase.rnc" root0="FORCE_HIGHLIGHTING" />
@@ -108,6 +107,8 @@
       <workItem from="1736688970374" duration="8810000" />
       <workItem from="1737110590542" duration="360000" />
       <workItem from="1737295769363" duration="1909000" />
+      <workItem from="1737723677994" duration="2105000" />
+      <workItem from="1737725801765" duration="606000" />
     </task>
     <servers />
   </component>
