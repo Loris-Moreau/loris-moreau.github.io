@@ -23,12 +23,12 @@
 <!-- Page 1 (Main Menu) -->
 <div id="MainPage" class="page">
     <header id="top">
-        <h1>Showcase</h1>
+        <h1 class="underline" >Showcase</h1>
     </header>
     
     <h3>Hoi,</h3>
     <h3>My name is Loris Moreau I'm a Gameplay programmer, my main interests are Programming, Tech art <i>(procedural stuff)</i>, Game Development & other things</h3>
-    <h3>If you want you can check out some prototypes I made on <a href="https://loris-moreau.itch.io/" target="_blank">Itch.io</a></h3>
+    <h3>Check out some prototypes I made on <a href="https://loris-moreau.itch.io/" target="_blank">Itch.io</a></h3>
 
     <p style="padding: 0"></p>
     
@@ -53,8 +53,8 @@
     - external resources page (all "public" resources I use)
     -->
     
-    <h2>This website contains :</h2>
-    <h3>- The Showcase Page (here).</h3>
+    <h2 class="underline" style="text-decoration-color: dodgerblue">This website contains :</h2>
+    <h3>- The Showcase Page <i>(here)</i>.</h3>
     <h3>- The blog page where my adventures are recorded by a Servo-skull.</h3>
     <h3>- The External Resources page which is a collection of links towards stuff that helped me.</h3>
     <h3>Enjoy.</h3>
@@ -92,7 +92,7 @@
     <p style="padding: 15px"></p>
     
     <div id="Showcase">
-    <h2 class="underline" style="text-decoration-color: royalblue">Projects Showcase</h2>
+    <h2 class="underline" style="text-decoration-color: dodgerblue">Projects Showcase</h2>
     <h4>Some Projects I was a part of or did.</h4>
     
     <!-- 3D Engine -->
@@ -129,11 +129,11 @@
                     <div class="column">
                         <p>I've also spent 2 weeks implementing a <a href="https://en.wikipedia.org/wiki/Descent_(video_game)" target="_blank">Descent</a> like game.</p>
                         <p align="center"><a href="https://github.com/Loris-Moreau/3D-Engine-CPP/tree/Descent-Game" target="_blank">Take a look</a></p>
-                        <img loading="lazy" src="Images/Showcase/Descent-Game.gif" alt="3D Engine Showcase" style="width: 100%"/>
+                        <img loading="lazy" src="Images/Showcase/Descent-Game.gif" alt="Descent Game in Engine Showcase" style="width: 100%"/>
                     </div>
                 </div>
 
-                <!-- Container for 2 images side by side -->
+                <!-- Container for 2 text side by side -->
                 <div class="row" style="flex: 50%;">
                     <div class="column">
                         <p>Pretty basic stuff but I'm quite happy with it</p>
@@ -177,10 +177,10 @@
                 <!-- Container for 2 images side by side -->
                 <div class="row" style="flex: 50%">
                     <div class="column">
-                        <img loading="lazy" src="Images/Showcase/BBA-Showcase.gif" alt="Little Knight Showcase Video" style="width: 65%"/>
+                        <img loading="lazy" src="Images/Showcase/BBA-Showcase.gif" alt="GGJ2024 Game Showcase" style="width: 65%"/>
                     </div>
                     <div class="column">
-                        <img loading="lazy" src="Images/Showcase/BBALogo.png" alt="Little Knight Log Image" style="width: 65%"/>
+                        <img loading="lazy" src="Images/Showcase/BBALogo.png" alt="GGJ2024 Game Logo" style="width: 65%"/>
                     </div>
                 </div>
                 
@@ -256,7 +256,7 @@
             </label>
             <div class="content">
                 <p>This is another prototype I made to learn Godot</p>
-                <p>It's platformer <i>(again)</i> in which windows will appear along your path some to help and other just to block your view.</p>
+                <p>It's platformer in which windows will appear along your path some to help and other just to block your view.</p>
                 <p><a href="https://loris-moreau.itch.io/windows-adventure" target="_blank">Itch.io page</a></p>
 
                 <!-- Container for 3 images side by side -->
@@ -272,6 +272,36 @@
                     </div>
                 </div>
                 
+            </div>
+        </div>
+    </div>
+
+    <!-- Houdini Tools -->
+    <div class="accordion">
+        <div class="accordion-item">
+            <input type="radio" id="Houdini" name="accordion" />
+            <label for="Houdini" class="accordion-header">
+                <label class="accordion-title">Houdini</label>
+                <div class="accordion-icon">
+                    <svg
+                            viewBox="0 0 16 16"
+                            fill="none"
+                            height="16"
+                            width="16"
+                            xmlns="http://www.w3.org/2000/svg"
+                    >
+                        <path
+                                d="M4.293 5.293a1 1 0 0 1 1.414 0L8 7.586l2.293-2.293a1 1 0 0 1 1.414 1.414l-3 3a1 1 0 0 1-1.414 0l-3-3a1 1 0 0 1 0-1.414z"
+                                fill="currentColor"
+                        ></path>
+                    </svg>
+                </div>
+            </label>
+            <div class="content">
+                <p>Some of the tools I made in Houdini.</p>
+
+                <img loading="lazy" src="Images/Showcase/Houdini-Showcase.gif" alt="Houdini Showcase" style="width: 95%"/>
+
             </div>
         </div>
     </div>
@@ -328,7 +358,7 @@
                 </div>
             </label>
             <div class="content">
-                <p>This is the content for UE VFX</p>
+                <p>These are a whole bunch of shaders & VFXs I made in unreal 5 mostly for fun.</p>
                 
                 <img loading="lazy" src="Images/Showcase/UE-VFX.gif" alt="Unreal Engine VFX Showcase" style="width: 65%"/>
 
