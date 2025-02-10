@@ -5,7 +5,7 @@
     <title>RayTracing 1</title>
     <link rel="icon" type="image/x-icon" href="../Images/Suprise.png">
     <link rel="stylesheet" href="../styles.css">
-
+    
     <!-- Meta Tags for SEO -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="Loris Moreau">
@@ -25,7 +25,6 @@
     </a>
 </div>
 
-
 <!-- Blog Content -->
 <div id="BlogPost" class="page">
 
@@ -37,12 +36,15 @@
     
     <p style="padding: 4px"></p>
     
-    <h3>First I would like to thank my teacher Marie for helping me understand raytracing & 
-        answering all my questions as well as making a more understandable version of the first book</h3>
+    <h3>
+        First I would like to thank my teacher Marie for helping me understand raytracing & 
+        answering all my questions as well as making a more understandable version of the first book. 
+        <i>They are the main influence for the blog post R-1 to R-9</i>
+    </h3>
     
     <p style="padding: 2px"></p>
-
-    <h2 class="underline" style="text-decoration-color: royalblue"> Understanding Ray Tracing and Light </h2>
+    
+    <h2 class="underline" style="text-decoration-color: royalblue">Understanding Ray Tracing and Light</h2>
     <h3>
         Our perception of objects depends on light rays emitted from a source, bouncing off surfaces, and reaching our eyes.
     </h3>
@@ -53,7 +55,7 @@
         A light ray hitting an object can reflect <i>(carrying surface color information)</i>, refract through transparent surfaces, or both.
     </h3>
     
-    <img loading="lazy" src="../Images/Refraction-Reflection.png" alt="Reflection, refraction & both"/>
+    <img loading="lazy" src="../Images/Refraction-Reflection.png" alt="Example of Reflection, refraction & both"/>
     
     <h3>
         Each ray bounces off objects, including other reflected rays, creating a complex network of light paths.
@@ -64,6 +66,7 @@
     </h3>
     
     <img loading="lazy" src="../Images/LotsOfRays.png" alt="Too Many Rays"/>
+    <h5><a href="https://www.youtube.com/@JoshsHandle" target="_blank">img. Source</a></h5>
 
     <p style="padding: 0"></p>
     
@@ -87,7 +90,8 @@
         <i class="underline" style="text-decoration-color: cadetblue">Focal Point :</i> The point where light rays converge, controlling Depth of Field.
     </h3>
     
-    <img loading="lazy" src="../Images/Focal.png" style="width: 20%;" alt="Focal Point"/>
+    <img loading="lazy" src="../Images/Focal.png" alt="Focal Point" style="padding-bottom: 5px; width: 20%;" />
+    <h5 style="padding-bottom: 25px"><a href="https://learnopencv.com/technical-aspects-of-a-digital-slr/" target="_blank">img. Source</a></h5>
     
     <h3>
         Rays that don’t hit objects either return background color <i>(if directly from the camera)</i> or accumulated information from prior bounces.
