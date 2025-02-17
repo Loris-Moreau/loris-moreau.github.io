@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="Loris Moreau">
     <meta name="description" content="Raytracing Blog">
-    <meta name="keywords" content="Showcase, Loris, Moreau, Loris Moreau, Programmer, coding adventure, Blog, Post, Raytracing, C++, CPP, Raytracing in one weekend, Camera">
+    <meta name="keywords" content="Showcase, Loris, Moreau, Loris Moreau, Programmer, coding adventure, Blog, Post, Raytracing, C++, CPP, Raytracing in one weekend, Optimization, Compute, Compute Shader, multi threading">
 </head>
 
 <body>
@@ -30,47 +30,56 @@
 <div id="BlogPost" class="page">
 
     <h2 class="underline">Raytracing in one weekend in c++</h2>
-    <h4><a href="https://github.com/Loris-Moreau/RayTracing" target="_blank">
+    <h4><a href="https://github.com/Loris-Moreau/RayTracing/tree/Compute-Shader" target="_blank">
         GitHub Repository
     </a></h4>
-    <h3>Welcome to my adventure following the <a href="https://raytracing.github.io/" target="_blank">raytracing in one weekend</a> series in C++.</h3>
+    <!-- <h3>Welcome to my adventure following the <a href="https://raytracing.github.io/" target="_blank">raytracing in one weekend</a> series in C++.</h3> -->
 
     <p style="padding: 5px"></p>
-
+    
     <h2 class="underline" style="text-decoration-color: dodgerblue">Part 10</h2>
     <h4><i>This part is going to be hard, for all of us</i>.</h4>
-    <h2 class="underline" style="text-decoration-color: dodgerblue">Bounding Volume</h2>
+    <h2 class="underline" style="text-decoration-color: dodgerblue">Optimization</h2>
+
+    <p style="padding: 10px"></p>
     
-    <h2 class="underline" style="text-decoration-color: royalblue; padding-bottom: 7px">Hierarchies</h2>
-    <h4>Also known as <i>"BVH"</i></h4>
-
-    <img loading="lazy" src="../Images/RayTracing/bounding_volume_hierarchies.png" alt="Bounding Volume Hierarchies">
-
-    <p style="padding: 3px"></p>
-
-    <h3>Ray-object intersection is the main <b>bottleneck</b> in a raytracer, and the rendering time is linear with the number of objects.</h3>
-    <h3>But it's a repeated search on the same scene, so we can make it a logarithmic search.</h3>
-    <h3>Since we are sending millions or even billions of rays into the same scene, we can sort the objects, and then each ray intersection can be a sublinear search.</h3>
-    <h3>The two most common methods are "subdividing the space" and "subdividing the objects".</h3>
-    <h3>The second method is usually far easier to code and just as fast for most models.</h3>
-
-    <p style="padding: 5px"></p>
-
-    <h3 class="underline" style="text-decoration-color: orange">Note : </h3>
-    <h3>we will use these bounding volumes to group the objects in the scene into subgroups.</h3>
-    <h3>We are <b>not</b> dividing the screen or the scene space. </h3>
-    <h3>We want any given object to be in just one bounding volume, though bounding volumes can overlap.</h3>
-
-    <p style="padding: 5px"></p>
-
-    <h2 class="underline" style="text-decoration-color: royalblue; padding-bottom: 7px">AABBs</h2>
-    <h4>Axis-Aligned Bounding Boxes</h4>
+    <!-- SIMD -->
+    <h2 class="underline" style="text-decoration-color: royalblue; padding-bottom: 7px">SIMD</h2>
     
-    <img loading="lazy" src="../Images/RayTracing/AABB-collision.png" alt="Bounding Volume Hierarchies">
+    <h2 class="underline" style="text-decoration-color: cadetblue; padding-bottom: 10px">Things to Remember : </h2>
+    <h3>- If you're using the correct memory layouts when implementing <i>SIMD</i>, the rest of the problems will solve themselves.</h3>
+    <h3>- Parallel performance largely depends on the extent to which your program is parallelized.</h3>
+    <h3>- Compiling code with the <code>-march=native</code> flag generates optimized code for your CPU.</h3>
+
+    <p style="padding: 10px"></p>
     
-    <h3>A ray bounding volume intersection needs to be fast, and bounding volumes need to be compact. </h3>
-    <h3>In practice for most models, axis-aligned boxes work better than the alternatives, </h3>
-    <h3>but this design choice is always something to keep in mind if you encounter other types of bounding models.</h3>
+    <!-- MultiThreading -->
+    <h2 class="underline" style="text-decoration-color: royalblue; padding-bottom: 7px">MultiThreading</h2>
+    
+    
+    <h3>
+        After writing shared data, other threads must throw all the work, 
+        retrieve the latest value of the variable since the cached version is no longer valid, 
+        and then restart their tasks. 
+        This phenomenon is often referred to as "<a href="https://en.wikipedia.org/wiki/False_sharing" target="_blank">false sharing.</a>"
+    </h3>
+    <h3>Here is an interesting video talking about <a href="https://www.youtube.com/watch?v=WDIkqP4JbkE" target="_blank">Cpu Caches</a>.</h3>
+
+    <p style="padding: 10px"></p>
+    
+    <!-- Compute Shader -->
+    <h2 class="underline" style="text-decoration-color: royalblue; padding-bottom: 7px">Compute Shaders</h2>
+    
+    <h3>Base Raytracing code & Compute shader code aren't that far apart, so it's not too hard to transfer one to the other just annoying.</h3>
+    <h3>
+        One of the issue with GPU porting is that GLSL doesn't map memory into zeros. 
+        You should be aware that it doesn't have a constructor that we use in C++ for filling struct memory with zeros
+    </h3>
+    <h3>
+        <i>you should take alignment into count</i> since on of the main causes for a black screen was 
+        <a href="https://learn.microsoft.com/en-us/cpp/cpp/alignment-cpp-declarations?view=msvc-170" target="_blank">alignment</a>. 
+        When using UBO or SSBO.
+    </h3>
 
 
 
@@ -116,7 +125,7 @@
 </div>
 
 <!-- Date -->
-<h5>25-1-2024</h5>
+<h5>17-02-2025</h5>
 <p style="padding: 7px"></p>
 
 <!-- Socials -->
