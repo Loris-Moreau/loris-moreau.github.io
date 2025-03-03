@@ -38,10 +38,23 @@
     <p style="padding: 5px"></p>
     
     <h2 class="underline" style="text-decoration-color: dodgerblue">Part 10</h2>
-    <h4><i>This part is going to be hard, for all of us</i>.</h4>
+    <!-- <h4><i>This part is going to be hard, for all of us</i>.</h4> -->
+    <h3>Currently doing a research project & the theme I've chosen for myself is "<i class="underline" style="text-decoration-color: green">Optimization</i>".</h3>
+    <h3>
+        I was kinda annoyed at the render time 
+        especially when going through the <a href="https://raytracing.github.io/books/RayTracingTheNextWeek.html" target="_blank">2nd book</a> 
+        the final render I did took 5 Hrs and was still quite noisy,
+        so today we will be looking into optimization techniques : SIMD, Multithreading & Compute Shaders.
+    </h3>
+    <h3>Each of these should shorten render times by quite a bit and allow us to use more samples & bounces.</h3>
+    
     <h2 class="underline" style="text-decoration-color: dodgerblue">Optimization</h2>
+    <h4><i>This code is the finished code of <a href="https://raytracing.github.io/books/RayTracingTheNextWeek.html" target="_blank">book 2</a></i></h4>
+    <h4><i>Should look a little something like this : </i></h4>
+    <img loading="lazy" src="../Images/RayTracing/Final%20Render%20high-Res%20(B2).png" alt="Final Render of Book 2" style="width: 30%; padding-bottom: 5px;" />
+    <h5><a href="https://github.com/Loris-Moreau/RayTracing/blob/main/Images/Final%20Render%20high-Res%20(B2).png" target="_blank">img. Source</a></h5>
 
-    <p style="padding: 10px"></p>
+    <p style="padding: 5px"></p>
     
     <!-- SIMD -->
     <h2 class="underline" style="text-decoration-color: royalblue; padding-bottom: 7px">SIMD</h2>
@@ -55,8 +68,8 @@
     
     <!-- MultiThreading -->
     <h2 class="underline" style="text-decoration-color: royalblue; padding-bottom: 7px">MultiThreading</h2>
-    
-    
+
+    <h2 class="underline" style="text-decoration-color: cadetblue; padding-bottom: 10px">Things to Remember : </h2>
     <h3>
         After writing shared data, other threads must throw all the work, 
         retrieve the latest value of the variable since the cached version is no longer valid, 
