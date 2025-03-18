@@ -47,7 +47,7 @@
         so today we will be looking into optimization techniques : SIMD, Multithreading & Compute Shaders.
     </h3>
     <h3>Each of these should shorten render times by quite a bit and allow us to use more samples & bounces.</h3>
-    
+    <h3><a href="https://github.com/Loris-Moreau/RayTracing/blob/Compute-Shader/Performance.md" target="_blank">Performance Document</a></h3>
     <h2 class="underline" style="text-decoration-color: dodgerblue">Optimization</h2>
     <h4><i>This code is the finished code of <a href="https://raytracing.github.io/books/RayTracingTheNextWeek.html" target="_blank">book 2</a></i></h4>
     <h4><i>Should look a little something like this : </i></h4>
@@ -64,6 +64,9 @@
     <h3>- Parallel performance largely depends on the extent to which your program is parallelized.</h3>
     <h3>- Compiling code with the <code>-march=native</code> flag generates optimized code for your CPU.</h3>
 
+    <p style="padding: 5px"></p>
+    <h3>In the end we managed to cut render time in 2 using SIMD Optimization.</h3>
+    
     <p style="padding: 10px"></p>
     
     <!-- MultiThreading -->
@@ -78,6 +81,9 @@
     </h3>
     <h3>Here is an interesting video talking about <a href="https://www.youtube.com/watch?v=WDIkqP4JbkE" target="_blank">Cpu Caches</a>.</h3>
 
+    <p style="padding: 5px"></p>
+    <h3>In the end we managed boost render time by 2.5x for renders using Multithreading, but we don't gain as much from <a href="https://en.wikipedia.org/wiki/Hyper-threading" target="_blank">Hyper-Threading</a>.</h3>
+    
     <p style="padding: 10px"></p>
     
     <!-- Compute Shader -->
