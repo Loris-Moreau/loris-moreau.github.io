@@ -82,7 +82,7 @@
     <h3>Here is an interesting video talking about <a href="https://www.youtube.com/watch?v=WDIkqP4JbkE" target="_blank">Cpu Caches</a>.</h3>
 
     <p style="padding: 5px"></p>
-    <h3>In the end we managed boost render time by 2.5x for renders using Multithreading, but we don't gain as much from <a href="https://en.wikipedia.org/wiki/Hyper-threading" target="_blank">Hyper-Threading</a>.</h3>
+    <h3>In the end we managed to boost render time by 2.5x for renders using Multithreading, but we don't gain much from <a href="https://en.wikipedia.org/wiki/Hyper-threading" target="_blank">Hyper-Threading</a>.</h3>
     
     <p style="padding: 10px"></p>
     
@@ -91,11 +91,11 @@
     
     <h3>Base Raytracing code & Compute shader code aren't that far apart, so it's not too hard to transfer one to the other just annoying.</h3>
     <h3>
-        One of the issue with GPU porting is that GLSL doesn't map memory into zeros. 
+        One of the issues with GPU porting is that GLSL doesn't map memory into zeros. 
         You should be aware that it doesn't have a constructor that we use in C++ for filling struct memory with zeros
     </h3>
     <h3>
-        <i>you should take alignment into count</i> since on of the main causes for a black screen was 
+        <i>you should take alignment into count</i> since one of the main causes for a black screen was 
         <a href="https://learn.microsoft.com/en-us/cpp/cpp/alignment-cpp-declarations?view=msvc-170" target="_blank">alignment</a>. 
         When using UBO or SSBO.
     </h3>
