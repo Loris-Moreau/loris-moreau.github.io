@@ -656,7 +656,7 @@ code
     margin: 0 2px;
     border-radius: 5px;
     font-size: 0.97rem;
-
+    
     .dark-theme & 
     {
         background: black;
