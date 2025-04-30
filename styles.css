@@ -648,8 +648,8 @@ a:active
     margin: 5px;
 }
 
-/* code quote */
-code 
+/* quote */
+.quote 
 {
     background: dimgrey;
     padding: 1px 6px;
@@ -664,10 +664,10 @@ code
 }
 
 pre {
-    background: #212020;
+    background: rgb(42, 44, 42);
     padding: 10px 10px 10px 20px;
     border-radius: 8px;
-    font-size: .95rem;
+    font-size: 0.95rem;
     overflow: auto;
 
     @media #{$media-size-phone} 
@@ -676,9 +676,9 @@ pre {
         word-wrap: break-word;
     }
 
-    code {
+    .quote {
         background: none !important;
-        color: #ccc;
+        color: rgb(225, 195, 195);
         margin: 0;
         padding: 0;
         font-size: inherit;
@@ -721,7 +721,7 @@ blockquote
         margin-bottom: 0;
     }
 }
-/* end of code quote */
+/* end of quote */
 
 
 /* Code Snippet */
@@ -742,15 +742,15 @@ blockquote
     position: relative;
     height: auto;
     width: auto;
-    background-color: rgb(61, 66, 72);
-    border: 2px solid rgb(51, 51, 51);
+    background-color: rgb(62, 66, 72);
+    border: 2px solid rgb(50, 50, 50);
     border-radius: 15px;
     overflow: hidden;
 }
 
 .Swindow-title {
     height: 30px;
-    background-color: rgb(51, 51, 51);
+    background-color: rgb(52, 52, 55);
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -759,7 +759,7 @@ blockquote
 }
 
 .Swindow-title p {
-    color: rgb(200, 200, 200);
+    color: rgb(210, 200, 210);
     font-weight: bold;
     margin: 0;
     padding: 0;
@@ -770,7 +770,7 @@ blockquote
 .Sconsole {
     width: 100%;
     height: auto;
-    background-color: rgb(0, 0, 0);
+    background-color: rgb(52, 52, 55);
     color: rgb(255, 255, 255);
     overflow: auto;
 }
