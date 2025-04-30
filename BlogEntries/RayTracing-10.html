@@ -180,8 +180,11 @@
         <h3>
             This image shows us that, although transistor counts continue to climb in a somewhat linear fashion, 
             the era of ever-increasing single-threaded processor speeds is effectively over. 
+        </h3>
+        <h3>
             As a matter of fact, as the gains in single-core performance have tapered off, chip designers have responded by packing ever more logical cores onto each die.
-            
+        </h3>
+        <h3>
             The takeaway is that if your application relies on a purely single-threaded workload, you’ll see diminishing returns on the latest CPUs. 
             To harness their full power, you must divide your work across multiple cores.
         </h3>
@@ -216,8 +219,7 @@
                 <a href="https://www.reddit.com/r/cpp/comments/vg4myt/is_lockfree_programming_is_always_better_than/" target="_blank">an interesting talk about Lock-free vs Mutex</a>)
             </i>, 
             & how compilers and CPUs <a href="https://en.wikipedia.org/wiki/Memory_ordering" target="_blank">reorder memory operations</a>, 
-            the differences between various architectures, 
-            and so on.
+            the differences between various architectures, and so on.
         </h3>
         <h3>
             Much of what I’ve read uses the Windows API, but the underlying principles apply across platforms. 
@@ -225,6 +227,8 @@
         <h3>
             While traditional mutexes are often the easiest way to guard shared data, I plan to use atomic instructions instead, so threads never block one another, 
             since Lock-free programming is only for some rare use cases, typically with lots of threads meeting at the same variable.
+        </h3>
+        <h3>
             In the context of this ray-tracer project where synchronization needs are minimal I believe an atomic-based approach will be straightforward and more performant.
         </h3>
         
@@ -348,7 +352,7 @@ bool RaytraceWork(WorkQueue* workQueue)
         </h3>
         <h3>
             <i>you should take alignment into count</i> since one of the main causes for a black screen was
-            <a href="https://learn.microsoft.com/en-us/cpp/cpp/alignment-cpp-declarations?view=msvc-170" target="_blank">alignment</a>. 
+            <a href="https://learn.microsoft.com/en-us/cpp/cpp/alignment-cpp-declarations?view=msvc-170" target="_blank">alignment</a>, 
             When using UBO or SSBO.
         </h3>
     </div>
