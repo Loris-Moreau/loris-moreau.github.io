@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>RayTracing 10</title>
+    <title>Optimizing a Raytracer</title>
     <link rel="icon" type="image/x-icon" href="../Images/Suprise.png">
     <link rel="stylesheet" href="../styles.css">
     
@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="Loris Moreau">
     <meta name="description" content="Raytracing Blog">
-    <meta name="keywords" content="Showcase, Loris, Moreau, Loris Moreau, Programmer, coding adventure, Blog, Post, Raytracing, C++, CPP, Raytracing in one weekend, Optimization, Compute, Compute Shader, multi threading, SIMD">
+    <meta name="keywords" content="Showcase, Loris, Moreau, Loris Moreau, Programmer, coding adventure, Blog, Post, Raytracing, C++, CPP, Raytracing in one weekend, Optimization, Compute, Compute Shader, multi threading, Hyper threading, SIMD">
 </head>
 
 <body>
@@ -27,72 +27,127 @@
 
 
 <!-- Blog Content -->
-<div id="BlogPost" class="page">
+<div id="BlogPost" class="post">
     
     <h2 class="underline">Raytracing in one weekend in c++</h2>
-    <h4><a href="https://github.com/Loris-Moreau/RayTracing/tree/Compute-Shader" target="_blank">
-        GitHub Repository
-    </a></h4>
-    <!-- <h3>Welcome to my adventure following the <a href="https://raytracing.github.io/" target="_blank">raytracing in one weekend</a> series in C++.</h3> -->
+    <h4><a href="https://github.com/Loris-Moreau/RayTracing/tree/Compute-Shader" target="_blank">GitHub Repository</a></h4>
     
     <p style="padding: 5px"></p>
     
-    <h2 class="underline" style="text-decoration-color: dodgerblue" id="Top">Part 10</h2>
-    <!-- <h4><i>This part is going to be hard, for all of us</i>.</h4> -->
-    <h3>Currently doing a research project & the theme I've chosen for myself is "<i class="underline" style="text-decoration-color: green">Optimization</i>".</h3>
-    <h3>
-        After finishing the first book I was kinda annoyed at the render time, 
-        and as I went through the <a href="https://raytracing.github.io/books/RayTracingTheNextWeek.html" target="_blank">2nd book</a>  it only got worse
-        and the final render I did took 5 Hrs and was still quite noisy <i>(not good)</i>,
-        so today we will be looking into optimization techniques :
-    </h3>
+    <!-- Content Header -->
+    <div>
+        <h2 class="underline" style="text-decoration-color: dodgerblue" id="Top">Part 10</h2>
+        <!-- <h4><i>This part is going to be hard, for all of us</i>.</h4> -->
+        <h3>Currently doing a research project & the theme I've chosen for myself is "<i class="underline" style="text-decoration-color: green">Optimization</i>".</h3>
+        <h3>
+            After finishing the <a href="https://raytracing.github.io/books/RayTracingInOneWeekend.html" target="_blank">1st book</a> I was kinda annoyed at the render time, 
+            and as I went through the <a href="https://raytracing.github.io/books/RayTracingTheNextWeek.html" target="_blank">2nd book</a>  it only got worse 
+            and the final render I did took 5 Hrs and was still quite noisy <i>(not good)</i>, 
+            so today we will be looking into optimization techniques :
+        </h3>
+        
+        <h3><a href="#SIMD">- SIMD</a> <i>(<a href="https://en.wikipedia.org/wiki/Single_instruction,_multiple_data" target="_blank">explanation</a>)</i></h3>
+        <h3><a href="#MultiThreading">- Multithreading</a> <i>(<a href="https://en.wikipedia.org/wiki/Multithreading_(computer_architecture)" target="_blank">explanation</a>)</i></h3>
+        <h3><a href="#Compute">- Compute Shaders</a> <i>(<a href="https://www.khronos.org/opengl/wiki/Compute_Shader" target="_blank">explanation</a>)</i></h3>
+        
+        <p style="padding: 1px"></p>
+        
+        <h4>All of these revolve around parallelizing the existing code <i>(it's annoying but doable)</i>.</h4>
+        <h3>Each of these should shorten render times by quite a bit and allow us to use more samples & bounces.</h3>
+        <h3>Here's the <a href="https://github.com/Loris-Moreau/RayTracing/blob/Compute-Shader/Performance.md" target="_blank">Performance Document</a> where the render times are logged.</h3>
+        
+        <h2 class="underline" style="text-decoration-color: dodgerblue">Optimization</h2>
+        
+        <h4><i>This code is the finished code of <a href="https://raytracing.github.io/books/RayTracingTheNextWeek.html" target="_blank">book 2</a></i></h4>
+        <h4><i>Should look a little something like this : </i></h4>
+        <img loading="lazy" src="../Images/RayTracing/Final%20Render%20high-Res%20(B2).png" alt="Final Render of Book 2" style="width: 55%; padding-bottom: 5px;" />
+        <h5><a href="https://github.com/Loris-Moreau/RayTracing/blob/main/Images/Final%20Render%20high-Res%20(B2).png" target="_blank">img. Source</a></h5>
+    </div>
     
-    <h3><a href="#SIMD">- SIMD</a> <i>(<a href="https://en.wikipedia.org/wiki/Single_instruction,_multiple_data" target="_blank">explanation</a>)</i></h3>
-    <h3><a href="#MultiThreading">- Multithreading</a> <i>(<a href="https://en.wikipedia.org/wiki/Multithreading_(computer_architecture)" target="_blank">explanation</a>)</i></h3>
-    <h3><a href="#Compute">- Compute Shaders</a> <i>(<a href="https://www.khronos.org/opengl/wiki/Compute_Shader" target="_blank">explanation</a>)</i></h3>
-    
-    <p></p>
-    
-    <h4>All of these revolve around parallelizing the existing code <i>(it's annoying but doable)</i>.</h4>
-    <h3>Each of these should shorten render times by quite a bit and allow us to use more samples & bounces.</h3>
-    <h3>Here's the <a href="https://github.com/Loris-Moreau/RayTracing/blob/Compute-Shader/Performance.md" target="_blank">Performance Document</a> where the render times are logged.</h3>
-    
-    <h2 class="underline" style="text-decoration-color: dodgerblue">Optimization</h2>
-    
-    <h4><i>This code is the finished code of <a href="https://raytracing.github.io/books/RayTracingTheNextWeek.html" target="_blank">book 2</a></i></h4>
-    <h4><i>Should look a little something like this : </i></h4>
-    <img loading="lazy" src="../Images/RayTracing/Final%20Render%20high-Res%20(B2).png" alt="Final Render of Book 2" style="width: 30%; padding-bottom: 5px;" />
-    <h5><a href="https://github.com/Loris-Moreau/RayTracing/blob/main/Images/Final%20Render%20high-Res%20(B2).png" target="_blank">img. Source</a></h5>
-
     <p style="padding: 5px"></p>
     
     <!-- SIMD -->
     <h2 class="underline" style="text-decoration-color: royalblue; padding-bottom: 7px" id="SIMD">SIMD</h2>
-    <h4>"Single instruction, multiple data (SIMD) is a type of parallel processing in Flynn's taxonomy.</h4>
-    <h4>SIMD describes computers with multiple processing elements that perform the same operation on multiple data points simultaneously.</h4>
-    <h4>
-        SIMD can be internal (part of the hardware design) and it can be directly accessible through an instruction set architecture (ISA), 
-        but it should not be confused with an ISA."
-    </h4>
-    <h5><a href="https://en.wikipedia.org/wiki/Single_instruction,_multiple_data" target="_blank">Source.</a></h5>
-    
-    <h2 class="underline" style="text-decoration-color: cadetblue; padding-bottom: 10px">Things to Remember : </h2>
-    <h3>- If you're using the correct memory layouts when implementing <i>SIMD</i>, the rest of the problems will solve themselves.</h3>
-    <h3>- Parallel performance largely depends on the extent to which your program is parallelized.</h3>
-    <h3>- Compiling code with the <b class="quote">-march=native</b> flag generates optimized code for your CPU.</h3>
-
+    <div>
+        <h4>"Single instruction, multiple data <i>(SIMD)</i> is a type of parallel processing in 
+            <a href="https://en.wikipedia.org/wiki/Flynn%27s_taxonomy" target="_blank">Flynn's taxonomy</a>.</h4>
+        <h4>SIMD describes computers with multiple processing elements that perform the same operation on multiple data points simultaneously.</h4>
+        <h4>
+            SIMD can be internal <i>(part of the hardware design)</i> and it can be directly accessible through an 
+            <a href="https://en.wikipedia.org/wiki/Instruction_set_architecture" target="_blank">instruction set architecture</a> <i>(ISA)</i>, 
+            but it should not be confused with an ISA."
+        </h4>
+        <h4><a href="https://en.wikipedia.org/wiki/Single_instruction,_multiple_data" target="_blank">Source.</a></h4>
+        
+        <h4>SIMD is basically operations on arrays, like so :</h4>
+        <img loading="lazy" src="../Images/RayTracing/SIMD-operation.png" alt="SISD vs SIMD Operations" style="width: 65%; padding-bottom: 5px;" />
+        <h5><a href="https://blog.wasmer.io/webassembly-and-simd-13badb9bf1a8" target="_blank">img. Source</a></h5>
+        <h4><a href="https://medium.com/@bromanz/simd-sse-unity3d-net-2-0-70f6c911713f" target="_blank">SIMD use in Unity3D</a></h4>
+        
+        <p style="padding: 5px"></p>
+        
+        <h2 class="underline" style="text-decoration-color: cadetblue; padding-bottom: 10px">Things to Remember : </h2>
+        <h3>- If you're using the correct memory layouts when implementing SIMD, the rest of the problems will solve themselves.</h3>
+        <h3>- Parallel performance largely depends on the extent to which your program is parallelized.</h3>
+        <h3>- Compiling code with the <b class="quote">-march=native</b> flag generates optimized code for your CPU.</h3>
+    </div>
     <p style="padding: 4px"></p>
+    <div>
+        <h2 class="underline" style="text-decoration-color: cadetblue; padding-bottom: 10px">How do we achieve this ?</h2>
+        
+        <h3>
+            To make our sphere data "SIMD-friendly", we will use the 
+            <a href="https://www.intel.com/content/www/us/en/developer/articles/technical/memory-layout-transformations.html" target="_blank">Structure of Arrays (SoA)</a> 
+            where each field is stored in its own array.
+        </h3>
+        <h3>
+            SoA excels when you frequently access only a subset of a struct’s members, each cache line then holds just the data you need, 
+            leading to significant gains in performance.
+        </h3>
+        <h3>
+            However, since our ray-tracing functions always reference every Sphere field together, a pure SoA approach isn’t ideal.
+        </h3>
+        <h3>
+            Instead, we use an 
+            <a href="https://www.intel.com/content/www/us/en/developer/articles/technical/memory-layout-transformations.html" target="_blank">Array of Structures of Arrays (AoSoA)</a> 
+            layout. In AoSoA, each field is still an array, but its length matches the SIMD lane width <i>(<b class="quote">LANE_WIDTH</b>)</i>.
+        </h3>
+        <h3>
+            If we have more spheres than fit in one SIMD vector, we simply add another “lane” <i>(another fixed-size chunk)</i> to our AoSoA array.
+        </h3>
+        <h3>
+            This way, each chunk maps perfectly onto SIMD registers, maximizing both alignment and throughput.
+        </h3>
+        <h3>Here is a good <a href="https://www.youtube.com/watch?v=0_Byw9UMn9g" target="_blank">video</a> about this problem.</h3>
 
-
+        <p style="padding: 4px"></p>
+        
+        <h2 class="underline" style="text-decoration-color: cadetblue; padding-bottom: 10px">Amdahl's Law</h2>
+        <h3>We are not gaining as much as we should from SIMD & SSE operations, but why ?</h3>
+        <h3>
+            <a href="https://en.wikipedia.org/wiki/Amdahl%27s_law" target="_blank">Amdahl's Law</a> 
+            states that the overall speedup from parallelization is limited by the portion of the program that must remain serial.
+        </h3>
+        <h3>In our case, 50% of execution time is spent in the Intersection function.</h3>
+        <h3>As the chart below illustrates, no matter how many cores or SIMD lanes we employ, the maximum achievable speedup caps at 2x.</h3>
+        <h3>This explains why using a 4-lane vector unit doesn't yield a 4x performance gain.</h3>
+        
+        <img loading="lazy" src="../Images/RayTracing/AmdahlsLaw.png" alt="Amdahl's Law" style="width: 65%; padding-bottom: 5px;" />
+        <h5><a href="https://en.wikipedia.org/wiki/Amdahl%27s_law" target="_blank">img. Source</a></h5>
+<h1 style="color: red">WAH</h1>
+        
+        <p style="padding: 4px"></p>
+        
+        <h3>With SIMD we managed to cut render time in 2.</h3>
+        
+        <!-- Final Recorded Time -->
+        <h2 style="padding-bottom: 5px">Final recorded Time :</h2>
+        <h3 style="padding-bottom: 0"><b class="quote">case 10: FinalSceneB2(600, 200, 100, 20, 250) :</b></h3>
+        <h3 style="padding-top: 0; padding-bottom: 0"><b class="quote">- Non-Optimized : 5 Hrs</b></h3>
+        <h3  style="padding-top: 0; padding-bottom: 0"><b class="quote">- SIMD Optimized : 2 Hrs 18 Min</b></h3>
+    </div>
     
-    <p style="padding: 4px"></p>
-    <h3>With SIMD we managed to cut render time in 2.</h3>
-    <!-- Final Recorded Time -->
-    <h3 style="padding-bottom: 0"><b class="quote">case 10: FinalSceneB2(600, 200, 100, 20, 250) :</b></h3>
-    <h3 style="padding-top: 0; padding-bottom: 0"><b class="quote">- Non-Optimized : 5 Hrs</b></h3>
-    <h3  style="padding-top: 0; padding-bottom: 0"><b class="quote">- SIMD Optimized : 2 Hrs 18 Min</b></h3>
-    
-    <p style="padding: 10px"></p>
+    <p style="padding: 42px"></p>
     
     <!-- MultiThreading -->
     <h2 class="underline" style="text-decoration-color: royalblue; padding-bottom: 7px" id="MultiThreading">MultiThreading</h2>
@@ -100,7 +155,9 @@
         <h4>"Multithreading is a form of parallelization or dividing up work for simultaneous processing.</h4>
         <h4>Instead of giving a large workload to a single core, threaded programs split the work into multiple software threads.</h4>
         <h4>These threads are processed in parallel by different CPU cores to save time."</h4>
-        <h5><a href="https://www.intel.com/content/www/us/en/gaming/resources/hyper-threading.html#articleparagraph_cop" target="_blank">Source.</a></h5>
+        <h4><a href="https://www.intel.com/content/www/us/en/gaming/resources/hyper-threading.html#articleparagraph_cop" target="_blank">Source.</a></h4>
+        
+        <p style="padding: 5px"></p>
         
         <h2 class="underline" style="text-decoration-color: cadetblue; padding-bottom: 10px">Things to Remember : </h2>
         <h3>
@@ -110,14 +167,13 @@
             After writing shared data, other threads must throw all the work, 
             retrieve the latest value of the variable since the cached version is no longer valid, 
             and then restart their tasks. 
-            This phenomenon is referred to as "<a href="https://en.wikipedia.org/wiki/False_sharing" target="_blank">false sharing.</a>"
+            This phenomenon is referred to as "<a href="https://en.wikipedia.org/wiki/False_sharing" target="_blank">false sharing</a>".
         </h3>
         <h3>Here is an interesting video talking about <a href="https://www.youtube.com/watch?v=WDIkqP4JbkE" target="_blank">Cpu Caches</a>.</h3>
     </div>
-    <div>    
-        <p style="padding: 5px"></p>
-        
-        <img loading="lazy" src="../Images/RayTracing/40-years-processor-trend.png" alt="40 Years Processor Trend" style="width: 30%; padding-bottom: 5px;" />
+    <p style="padding: 2px"></p>
+    <div>
+        <img loading="lazy" src="../Images/RayTracing/40-years-processor-trend.png" alt="40 Years Processor Trend" style="width: 75%; padding-bottom: 5px;" />
         <h5><a href="https://www.karlrupp.net/2015/06/40-years-of-microprocessor-trend-data" target="_blank">img. Source</a></h5>
         <h4>If you're in computer science you've probably seen this image or a variation of it.</h4>
         <h3>
@@ -129,11 +185,17 @@
             To harness their full power, you must divide your work across multiple cores.
         </h3>
         
+        <p style="padding: 10px"></p>
+        
         <h2 class="underline" style="text-decoration-color: cadetblue; padding-bottom: 10px">Breaking a Program into Parallel Tasks : </h2>
         <h3>
-            To exploit multiple CPU threads, you first need to decompose your program into independent pieces, <i>a notoriously tricky challenge in general</i>. Once you’ve done that, 
-            you then need to coordinate those pieces safely, <i>which often introduces <a href="https://stackoverflow.com/a/2860263" target="_blank">overhead</a></i>. 
-            Fortunately, ray-tracing is a textbook example of an “<a href="https://en.wikipedia.org/wiki/Embarrassingly_parallel" target="_blank">embarrassingly parallel</a>” problem :
+            To exploit multiple CPU threads, you first need to 
+            <a href="https://softwareengineering.stackexchange.com/questions/82582/best-way-to-break-down-overwhelming-code-into-manageable-chunks" target="_blank">decompose your program</a> 
+            into independent pieces, <i>a notoriously tricky challenge in general</i>. 
+            Once you’ve done that, you then need to coordinate those pieces safely, 
+            <i>which often introduces <a href="https://stackoverflow.com/a/2860263" target="_blank">overhead</a></i>. 
+            Fortunately, ray-tracing is a textbook example of an 
+            “<a href="https://en.wikipedia.org/wiki/Embarrassingly_parallel" target="_blank">embarrassingly parallel</a>” problem :
         </h3>
         <h3>- each pixel in the final image can be computed in isolation.</h3>
         
@@ -144,14 +206,13 @@
             The cores are going to render each pixel independently, and when all the pixels are done, we put it all together into the final image.
         </h3>
         
+        <p style="padding: 15px"></p>
         <h2 class="underline" style="text-decoration-color: cadetblue; padding-bottom: 10px">Lock-Free Synchronization with Atomics</h2>
         <h3>
             I’ve been looking into <a href="https://learn.microsoft.com/en-us/windows/win32/dxtecharts/lockless-programming" target="_blank">lockless</a> programming techniques,
             <i>
-                (
-                <a href="https://preshing.com/20120612/an-introduction-to-lock-free-programming/" target="_blank">intro to lock free programming</a> &
-                <a href="https://www.reddit.com/r/cpp/comments/vg4myt/is_lockfree_programming_is_always_better_than/" target="_blank">an interesting talk about Lock-free vs Mutex</a>
-                )
+                (<a href="https://preshing.com/20120612/an-introduction-to-lock-free-programming/" target="_blank">intro to lock free programming</a> &
+                <a href="https://www.reddit.com/r/cpp/comments/vg4myt/is_lockfree_programming_is_always_better_than/" target="_blank">an interesting talk about Lock-free vs Mutex</a>)
             </i>, 
             & how compilers and CPUs <a href="https://en.wikipedia.org/wiki/Memory_ordering" target="_blank">reorder memory operations</a>, 
             the differences between various architectures, 
@@ -159,21 +220,27 @@
         </h3>
         <h3>
             Much of what I’ve read uses the Windows API, but the underlying principles apply across platforms. 
+        </h3>
+        <h3>
             While traditional mutexes are often the easiest way to guard shared data, I plan to use atomic instructions instead, so threads never block one another, 
             since Lock-free programming is only for some rare use cases, typically with lots of threads meeting at the same variable.
-            In the context of this ray-tracer project where synchronization needs are minimal I believe an atomic-based approach will be straightforward and performant.
+            In the context of this ray-tracer project where synchronization needs are minimal I believe an atomic-based approach will be straightforward and more performant.
         </h3>
         
+        <p style="padding: 5px"></p>
+        
         <h2>So how do we divide work evenly to all threads ?</h2>
-        <h3>The answer is simple. Threads pull the next available task from a shared queue as soon as they finish their current one.
+        <h3>The answer is simple : We divide the image into multiple parts/tasks.</h3>
+        <h3>
+            Threads pull the next available task from a shared queue as soon as they finish their current one.
             This way, if one thread encounters a lengthy job, all the others remain busy with other tasks.</h3>
         <h3>A good explanation for this problem <a href="https://developer.apple.com/videos/play/wwdc2017/706/?time=345" target="_blank">here</a>.</h3>
         <h3>
-            Initially, I spawned one thread per image row and leveraged 
-            <a href="https://en.wikipedia.org/wiki/Grand_Central_Dispatch" target="_blank">Apple’s Grand Central Dispatch</a>.
-            You can easily multi-thread your loop using the <b class="quote">dispatch_apply</b> function, 
+            We could spawn one thread per image row and leveraged 
+            <a href="https://en.wikipedia.org/wiki/Grand_Central_Dispatch" target="_blank">Apple’s Grand Central Dispatch</a> <i>(GCD)</i>.
+            which lets you easily multi-thread your loop using the <b class="quote">dispatch_apply</b> function, 
             GCD automatically distributes iterations across all available threads and waits until they all complete, with no manual synchronization needed.
-            It was effortless and fit our code quite well.
+            This could work quite well & wouldn't be too hard to implement.
         </h3>
         <h3>
             Ultimately, though, we're going to use the simple work-queue approach from <a href="https://www.youtube.com/watch?v=ZAeU3Z0PmcU" target="_blank">Handmade Ray</a>. 
@@ -231,57 +298,75 @@ bool RaytraceWork(WorkQueue* workQueue)
             </div>
         </div>
         
-        <h3></h3>
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        <h1 style="color: red">wah</h1>
         <p style="padding: 5px"></p>
         
         <h3>
-            In the end we managed to boost render time by 2.5x for renders using Multithreading, but we don't gain as much as expected from 
-            <a href="https://www.intel.com/content/www/us/en/gaming/resources/hyper-threading.html#articleparagraph_cop_77384912" target="_blank">Hyper-Threading</a>, 
-            but honestly I'm not very experienced in hyper-threading outside of this project.
+            In the end we managed to boost render time by roughly 2.5x for renders using Multithreading. 
         </h3>
+        <h3>
+            But we did not speed up linearly after using the third and fourth thread, 
+            meaning we don't gain as much as expected from 
+            <a href="https://www.intel.com/content/www/us/en/gaming/resources/hyper-threading.html#articleparagraph_cop_77384912" target="_blank">Hyper-Threading</a>, 
+            but honestly I'm not very experienced in hyper-threading outside of this project, so perhaps I will do another post on this.
+        </h3>
+
+        <p style="padding: 4px"></p>
         
         <!-- Final Recorded Time -->
+        <h2 style="padding-bottom: 5px">Final recorded Time :</h2>
         <h3 style="padding-bottom: 0"><b class="quote">case 10: FinalSceneB2(600, 200, 100, 20, 250) :</b></h3>
         <h3 style="padding-top: 0; padding-bottom: 0"><b class="quote">- Non-Optimized : 5 Hrs</b></h3>
         <h3  style="padding-top: 0; padding-bottom: 0"><b class="quote">- Multithreading Optimized : 2 Hrs 9 Min</b></h3>
     </div>
     
-    <p style="padding: 10px"></p>
+    <p style="padding: 42px"></p>
     
     <!-- Compute Shader -->
     <h2 class="underline" style="text-decoration-color: royalblue; padding-bottom: 7px" id="Compute">Compute Shaders</h2>
-    
-    <h3>Base Raytracing code & Compute shader code aren't that far apart, so it's not too hard to transfer one to the other just annoying.</h3>
-    <h3>
-        One of the issues with GPU porting is that GLSL doesn't map memory into zeros. 
-        You should be aware that it doesn't have a constructor that we use in C++ for filling struct memory with zeros
-    </h3>
-    <h3>
-        <i>you should take alignment into count</i> since one of the main causes for a black screen was 
-        <a href="https://learn.microsoft.com/en-us/cpp/cpp/alignment-cpp-declarations?view=msvc-170" target="_blank">alignment</a>. 
-        When using UBO or SSBO.
-    </h3>
+    <div>
+        <h4>
+            "Like other programmable shaders <i>(vertex and geometry shaders for example)</i>, 
+            a compute shader is designed and implemented with 
+            <a href="https://learn.microsoft.com/en-us/windows/win32/direct3dhlsl/dx-graphics-hlsl" target="_blank">HLSL</a> but that is just about where the similarity ends.
+        </h4>
+        <h4>
+            A compute shader provides high-speed general purpose computing and takes advantage of the large numbers of parallel processors on the graphics processing unit (GPU).
+        </h4>
+        <h4>
+            The compute shader provides memory sharing and thread synchronization features to allow more effective parallel programming methods."
+        </h4>
+        <h4><a href="https://learn.microsoft.com/en-us/windows/win32/direct3d11/direct3d-11-advanced-stages-compute-shader" target="_blank">Source.</a></h4>
+        
+        <p style="padding: 5px"></p>
+        
+        <h2 class="underline" style="text-decoration-color: cadetblue; padding-bottom: 10px">Things to Remember : </h2>
+        <h3>Base Raytracing code & Compute shader code aren't that far apart, so it's not too hard to transfer one to the other just annoying.</h3>
+        <h3>
+            One of the issues with GPU porting is that GLSL doesn't map memory into zeros. 
+            You should be aware that it doesn't have a constructor that we use in C++ for filling struct memory with zeros
+        </h3>
+        <h3>
+            <i>you should take alignment into count</i> since one of the main causes for a black screen was
+            <a href="https://learn.microsoft.com/en-us/cpp/cpp/alignment-cpp-declarations?view=msvc-170" target="_blank">alignment</a>. 
+            When using UBO or SSBO.
+        </h3>
+    </div>
+    <p style="padding: 4px"></p>
+    <div>
+        <h3>hi</h3>
 
-
-
-    <p style="padding: 5px"></p>
-    <h3>With Compute Shaders it's almost 10x faster.</h3>
-    <!-- Final Recorded Time -->
-    <h3 style="padding-bottom: 0"><b class="quote">case 10: FinalSceneB2(600, 200, 100, 20, 250) :</b></h3>
-    <h3 style="padding-top: 0; padding-bottom: 0"><b class="quote">- Non-Optimized : 5 Hrs</b></h3>
-    <h3  style="padding-top: 0; padding-bottom: 0"><b class="quote">- Compute Shader Optimized : TODO record time</b></h3>
-
+        <h1 style="color: red">WAH</h1>
+        
+        <p style="padding: 4px"></p>
+        
+        <h3>With Compute Shaders it's almost 10x faster.</h3>
+        
+        <!-- Final Recorded Time -->
+        <h2 style="padding-bottom: 5px">Final recorded Time :</h2>
+        <h3 style="padding-bottom: 0"><b class="quote">case 10: FinalSceneB2(600, 200, 100, 20, 250) :</b></h3>
+        <h3 style="padding-top: 0; padding-bottom: 0"><b class="quote">- Non-Optimized : 5 Hrs</b></h3>
+        <h3  style="padding-top: 0; padding-bottom: 0"><b class="quote">- Compute Shader Optimized : TODO record time</b></h3>
+    </div>
 
 
 
@@ -294,7 +379,7 @@ bool RaytraceWork(WorkQueue* workQueue)
 
     <p style="padding: 15px"></p>
 
-    <h3>Next up is ...</h3>
+    <h3>Next up is VFXs</h3>
 
     <h3>Buh bye</h3>
     <p style="padding: 5px"></p>
