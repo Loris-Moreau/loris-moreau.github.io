@@ -27,7 +27,7 @@
 
 
 <!-- Blog Content -->
-<div id="BlogPost" class="page">
+<div id="BlogPost" class="post">
 
 <h2 class="underline">Raytracing in one weekend in c++</h2>
 <h4><a href="https://github.com/Loris-Moreau/RayTracing" target="_blank">
@@ -47,7 +47,7 @@
     <h3>A diffuse surface takes in a ray of light and makes it bounce in random directions.</h3>
     <h3>It also absorbs light depending on its color. The darker the material, the more light it absorbs.</h3>
 
-    <img loading="lazy" src="../Images/RayTracing/Diffuse_reflection.png" alt="Diffuse Reflection"  style="padding-bottom: 5px; width: 17%;" />
+    <img loading="lazy" src="../Images/RayTracing/Diffuse_reflection.png" alt="Diffuse Reflection"  style="padding-bottom: 5px; width: 32%;" />
     <h5 style="padding-bottom: 25px"><a href="https://en.m.wikipedia.org/wiki/File:Diffuse_reflection.svg" target="_blank">img. Source</a></h5>
 
     <p style="padding: 5px"></p>
@@ -140,7 +140,7 @@ inline Vector3 RandomOnHemisphere(const Vector3& normal)
     
     <h2>Test it out, it should be a bit grainy but your material should look like this </h2>
     
-    <img loading="lazy" src="../Images/RayTracing/DiffuseMatRender.png" alt="Diffuse Mat Render" style="padding-bottom: 5px;" />
+    <img loading="lazy" src="../Images/RayTracing/DiffuseMatRender.png" alt="Diffuse Mat Render" style="padding-bottom: 5px; width: 40%"/>
     <h5 style="padding-bottom: 25px"><a href="https://raytracing.github.io/books/RayTracingInOneWeekend.html#diffusematerials/limitingthenumberofchildrays" target="_blank">img. Source</a></h5>
     <h4>Very nice</h4>
     
@@ -292,7 +292,7 @@ int main(int argc, char* argv[])
 
     <h3>This way the direction of the bouncing ray is still random, but has more chances to bounce in the direction of the normal in a nice curve.</h3>
     
-    <img loading="lazy" src="../Images/RayTracing/LambertianReflection.png" alt="Diffuse Reflection"  style="padding-bottom: 5px; width: 35%;" />
+    <img loading="lazy" src="../Images/RayTracing/LambertianReflection.png" alt="Diffuse Reflection"  style="padding-bottom: 5px; width: 50%;" />
     <h5 style="padding-bottom: 25px"><a href="https://www.researchgate.net/figure/Radiation-pattern-of-Lambertian-Lambertian-directional-Batwing-and-Gaussian-sources_fig2_331855279" target="_blank">img. Source</a></h5>
     
     <h2 class="underline" style="text-decoration-color: cadetblue;">But How ?</h2>
@@ -301,7 +301,7 @@ int main(int argc, char* argv[])
     <h3>If we take <b style="color: dodgerblue">P</b> as the point of intersection and <b style="color: hotpink">n</b> as the normal of the surface, 
         we have a surface with 2 sides, that means only two unique unit sphere tangents</h3>
     
-    <img loading="lazy" src="../Images/RayTracing/point-of-intersection-of-the-dir.png" alt="Diffuse Reflection" style="padding-bottom: 5px;" />
+    <img loading="lazy" src="../Images/RayTracing/point-of-intersection-of-the-dir.png" alt="Diffuse Reflection" style="padding-bottom: 5px; width: 40%"/>
     <h5 style="padding-bottom: 25px"><a href="https://www.math-only-math.com/important-properties-of-direct-common-tangents.html" target="_blank">img. Source</a></h5>
 
     <h3>One sphere will be displaced in the direction of the surface normal, and one sphere will be displaced in the opposite direction<i>(-<b style="color: hotpink">n</b>)</i>.</h3>
@@ -379,7 +379,7 @@ int main(int argc, char* argv[])
     </div>
     <h3>Result :</h3>
     <h4>Play around with Reflectance</h4>
-    <img loading="lazy" src="../Images/RayTracing/GammaCorrection.png" alt="Gamma Correction" style="padding-bottom: 5px;" />
+    <img loading="lazy" src="../Images/RayTracing/GammaCorrection.png" alt="Gamma Correction" style="padding-bottom: 5px; width: 40%"/>
     <h5 style="padding-bottom: 25px"><a href="https://raytracing.github.io/books/RayTracingInOneWeekend.html#diffusematerials/usinggammacorrectionforaccuratecolorintensity" target="_blank">img. Source</a></h5>
 
     <!-- Code Snippet -->
@@ -413,7 +413,7 @@ inline void WriteColor(std::ostream &out, Color pixel, int sampleCount)
     </div>
     <h3>Result :</h3>
     <h4>Play around with Reflectance</h4>
-    <img loading="lazy" src="../Images/RayTracing/CorrectedGammaProgression.png" alt="Corrected Gamma Progression" style="padding-bottom: 5px;" />
+    <img loading="lazy" src="../Images/RayTracing/CorrectedGammaProgression.png" alt="Corrected Gamma Progression" style="padding-bottom: 5px; width: 40%"/>
     <h5 style="padding-bottom: 25px"><a href="https://raytracing.github.io/books/RayTracingInOneWeekend.html#diffusematerials/usinggammacorrectionforaccuratecolorintensity" target="_blank">img. Source</a></h5>
 
 

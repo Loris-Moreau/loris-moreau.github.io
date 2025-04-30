@@ -83,6 +83,20 @@ h5
     margin: 0;
 }
 
+@media (max-width: 1100px) {
+    .post {
+        max-width: 800px;
+    }
+}
+.post 
+{
+    width: 100%;
+    max-width: 1000px;
+    text-align: left;
+    padding: 15px;
+    margin: 15px auto;
+}
+
 /* Multiple image containers */
 .row {
     align-items: center;
