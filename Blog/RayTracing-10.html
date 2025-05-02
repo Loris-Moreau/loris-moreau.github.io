@@ -331,16 +331,11 @@ bool RaytraceWork(WorkQueue* workQueue)
     <h2 class="underline" style="text-decoration-color: royalblue; padding-bottom: 7px" id="Compute">Compute Shaders</h2>
     <div>
         <h4>
-            "Like other programmable shaders <i>(vertex and geometry shaders for example)</i>, 
-            a compute shader is designed and implemented with 
+            "Like other programmable shaders <i>(vertex and geometry shaders for example)</i>, a compute shader is designed and implemented with 
             <a href="https://learn.microsoft.com/en-us/windows/win32/direct3dhlsl/dx-graphics-hlsl" target="_blank">HLSL</a> but that is just about where the similarity ends.
         </h4>
-        <h4>
-            A compute shader provides high-speed general purpose computing and takes advantage of the large numbers of parallel processors on the graphics processing unit (GPU).
-        </h4>
-        <h4>
-            The compute shader provides memory sharing and thread synchronization features to allow more effective parallel programming methods."
-        </h4>
+        <h4>A compute shader provides high-speed general purpose computing and takes advantage of the large numbers of parallel processors on the graphics processing unit (GPU).</h4>
+        <h4>The compute shader provides memory sharing and thread synchronization features to allow more effective parallel programming methods."</h4>
         <h4><a href="https://learn.microsoft.com/en-us/windows/win32/direct3d11/direct3d-11-advanced-stages-compute-shader" target="_blank">Source.</a></h4>
         
         <p style="padding: 5px"></p>
@@ -352,9 +347,8 @@ bool RaytraceWork(WorkQueue* workQueue)
             You should be aware that it doesn't have a constructor that we use in C++ for filling struct memory with zeros
         </h3>
         <h3>
-            <i>you should take alignment into count</i> since one of the main causes for a black screen was
-            <a href="https://learn.microsoft.com/en-us/cpp/cpp/alignment-cpp-declarations?view=msvc-170" target="_blank">alignment</a>, 
-            When using UBO or SSBO.
+            <b>you should be aware of alignment</b> since one of the main causes for a black screen was
+            <a href="https://learn.microsoft.com/en-us/cpp/cpp/alignment-cpp-declarations?view=msvc-170" target="_blank">alignment</a>, When using UBO or SSBO.
         </h3>
     </div>
     <p style="padding: 4px"></p>
@@ -484,9 +478,9 @@ __declspec(align(16)) struct Material {
         <p style="padding: 5px"></p>
         
         <h2 class="underline" style="text-decoration-color: cadetblue; padding-bottom: 10px">Checking for Errors</h2>
-        <h3>When we write an OpeGl app we will often see thing we don't like <i>(e.g. black screen, white screen, crash, etc...)</i></h3>
-        <h3>so we need to find these errors by creating our OpenGl context with 
-            <a href="https://www.khronos.org/opengl/wiki/OpenGL_Error#Catching_errors_.28the_easy_way.29" target="_blank">debugging properties</a>.</h3>
+        <h3>When we write an OpeGL app we will often see thing we don't like <i>(e.g. black screen, white screen, crash, etc...)</i></h3>
+        <h3>so we need to find these errors by creating our OpenGL context with 
+            <a href="https://www.khronos.org/opengl/wiki/OpenGL_Error#Catching_errors_(the_easy_way)" target="_blank">debugging properties</a>.</h3>
         <h3>We can check for errors by calling 
             <a href="https://registry.khronos.org/OpenGL-Refpages/gl4/html/glGetError.xhtml" target="_blank">glGetError()</a> after each OpenGL function.</h3>
         <h3>
@@ -514,9 +508,44 @@ __declspec(align(16)) struct Material {
         </h3>
         
         <p style="padding: 10px"></p>
+
+        <h2 class="underline" style="text-decoration-color: cadetblue; padding-bottom: 10px">Progressive Rendering</h2>
+        <h3> 
+            <a href="https://blog.cloudflare.com/parallel-streaming-of-progressive-images/#what-is-progressive-image-rendering" target="_blank">Progressive Rendering</a>
+        </h3>
+        
+        <h3>Most production raytracers work by first rendering a very low quality sampled image and then progressively refining it as more samples are accumulated.</h3>
+        <h3>If you'd like to add that behavior : on each frame, you’ll blend in the newly rendered image with the running average to gradually improve quality.</h3>
+        <h3>Something like this : </h3>
+
+        <div class="snippet">
+            <div class="Swindow">
+                <div class="Swindow-title">
+                    <p>Progressive Rendering</p>
+                </div>
+                <div class="Sconsole">
+                    <pre><code>// First image.
+layout(rgba32f, location = 0) readonly uniform image2D srcImage;
+// Output image.
+layout(rgba32f, location = 1) writeonly uniform image2D destImage;
+...
+// Number of frames averaged
+layout(location = 4) uniform uint32_t frameIndex;
+
+...
+
+// Calculate the sum of all the previous samples
+Vector3 sumColor = prevColor * frameIndex;
+// Add new color to sum, then re-average it.
+Vector3 finalColor = (color + sumColor) / (frameIndex + 1);</code></pre>
+                </div>
+            </div>
+        </div>
+        
+        <p style="padding: 5px"></p>
         
         <h2 class="underline" style="text-decoration-color: cadetblue; padding-bottom: 10px">Performance</h2>
-        <h3>But OpenGl supports <a href="https://www.khronos.org/opengl/wiki/Atomic_Counter" target="_blank">Atomic Counters</a>, 
+        <h3>OpenGL supports <a href="https://www.khronos.org/opengl/wiki/Atomic_Counter" target="_blank">Atomic Counters</a>, 
             so you could count the rays bounces, or you could use SSBO again for the counter, then use 
             <a href="https://registry.khronos.org/OpenGL-Refpages/gl4/html/atomicAdd.xhtml" target="_blank">naive atomic add operation</a>,
             after the compute shader finished its job, you map the bounce count SSBO for reading the bounce count.</h3>
@@ -556,11 +585,11 @@ int main(int argc, char* argv[])
             </div>
         </div>
         
-        <h1 style="color: red">WAH</h1>
+        <h3>and now we just run our code and hope for the best.</h3>
         
         <p style="padding: 4px"></p>
         
-        <h3>With Compute Shaders it's almost 10x faster.</h3>
+        <h3>With Compute Shaders it's almost 10x faster, <i>(and this is simply porting the original raytracer code into compute shaders we haven't actually optimized anything)</i>.</h3>
         
         <!-- Final Recorded Time -->
         <h2 style="padding-bottom: 5px">Final recorded Time :</h2>
