@@ -55,6 +55,7 @@
         <h4>All of these revolve around parallelizing the existing code <i>(it's annoying but doable)</i>.</h4>
         <h3>Each of these should shorten render times by quite a bit and allow us to use more samples & bounces.</h3>
         <h3>Here's the <a href="https://github.com/Loris-Moreau/RayTracing/blob/Compute-Shader/Performance.md" target="_blank">Performance Document</a> where the render times are logged.</h3>
+        <h3>And here's the <a href="ResearchProjBibliography.html" target="_blank">Bibliography</a> for this Research Project.</h3>
         
         <h2 class="underline" style="text-decoration-color: dodgerblue">Optimization</h2>
         
@@ -303,7 +304,7 @@ bool RaytraceWork(WorkQueue* workQueue)
             </div>
         </div>
         
-        <p style="padding: 5px"></p>
+        <p style="padding: 2px"></p>
         
         <h3>
             In the end we managed to boost render time by roughly 2.5x for renders using Multithreading. 
@@ -344,7 +345,7 @@ bool RaytraceWork(WorkQueue* workQueue)
         
         <p style="padding: 5px"></p>
         
-        <h2 class="underline" style="text-decoration-color: cadetblue; padding-bottom: 10px">Things to Remember : </h2>
+        <h2 class="underline" style="text-decoration-color: cadetblue; padding-bottom: 10px" id="ttrcs">Things to Remember : </h2>
         <h3>Base Raytracing code & Compute shader code aren't that far apart, so it's not too hard to transfer one to the other just annoying.</h3>
         <h3>
             One of the issues with GPU porting is that GLSL doesn't map memory into zeros. 
@@ -407,10 +408,83 @@ bool RaytraceWork(WorkQueue* workQueue)
                 </div>
             </div>
         </div>
+       
 
         <h2 class="underline" style="text-decoration-color: cadetblue; padding-bottom: 10px">Alignment</h2>
         
-        <h3>So that went well, but there is another problem <i>(I mentioned this in the "things to remember")</i>. The alignment of SSBO structs is not the same as C++ ones.</h3>
+        <h3>So that went well, but there is another problem <i>(I mentioned this <a href="#ttrcs">above</a>)</i>. The alignment of SSBO structs is not the same as C++ ones.</h3>
+        <h3>According to the <a href="https://community.khronos.org/t/interpretation-of-std140-layout" target="_blank">OpenGL specification</a> : </h3>
+        <h3>"(9) If the member is a structure, the base alignment of the structure is &ltN>, where &ltN> is the largest base alignment value of any of its members, ..."</h3>
+        <h3>In our case, we have vec3 in our structs. Size of vec3 is 12 bytes but vec3 count as vec4. 
+            So our alignment for structs should be 16. This can be done in many ways. You can put padding data into the structs.
+        </h3>
+        <h3>Or we can define offsets and tweak layout properties using 
+            <a href="https://registry.khronos.org/OpenGL/extensions/ARB/ARB_enhanced_layouts.txt" target="_blank">enhanced layout extension</a>.</h3>
+        
+        <div class="snippet">
+            <div class="Swindow">
+                <div class="Swindow-title">
+                    <p>Material</p>
+                </div>
+                <div class="Sconsole">
+                    <pre><code>struct Material 
+{
+    // These two can be bundled as a vec4. First three component for color and the last one is for refractiveIndex;
+    Vector3 color;
+    float refractiveIndex;
+
+    // These two as well
+    Vector3 emitColor;
+    float reflection; 
+};</code></pre>
+                </div>
+            </div>
+        </div>
+        
+        <h3>This can be done in <a href="https://www.khronos.org/opengl/wiki/Layout_Qualifier_%28GLSL%29" target="_blank">GLSL</a> like so :</h3>
+        <div class="snippet">
+            <div class="Swindow">
+                <div class="Swindow-title">
+                    <p>GLSL Material</p>
+                </div>
+                <div class="Sconsole">
+                    <pre><code>struct Material 
+{
+    // In GLSL, all the vec3 type variables are aligned to 16 bytes (vec4). 
+    // We can use extra float padding with the enhanced layout extension.
+    // layout(component = 3) means w component of vec4 holds this value.
+    vec3 color;
+    layout(component = 3) float refractiveIndex;
+    vec3 emitColor;
+    layout(component = 3) float reflection; 
+};</code></pre>
+                </div>
+            </div>
+        </div>
+        
+        <h3>This work quite well with intel integrated GPUs, but the enhanced layout extension does not support compute shaders on Nvidia GPUs, so we can abandon the code above, 
+            and now we need to <a href="https://learn.microsoft.com/en-us/cpp/cpp/align-cpp" target="_blank">align them in cpp</a>.</h3>
+
+        <div class="snippet">
+            <div class="Swindow">
+                <div class="Swindow-title">
+                    <p>Align Material in CPP</p>
+                </div>
+                <div class="Sconsole">
+                    <pre><code>// Align these struct members to 16 byte.
+__declspec(align(16)) struct Material {
+    Vector3 color;
+    float refractiveIndex;
+    Vector3 emitColor;
+    float reflection; 
+};</code></pre>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+        
         
         
         
@@ -428,10 +502,14 @@ bool RaytraceWork(WorkQueue* workQueue)
     </div>
     
     
-    <p style="padding: 15px"></p>
-
+    <p style="padding: 42px"></p>
+    
+    <h3><a href="ResearchProjBibliography.html" target="_blank">Bibliography</a></h3>
+    
+    <p style="padding: 2px"></p>
+    
     <h3>Next up is VFXs</h3>
-
+    
     <h3>Buh bye</h3>
     <p style="padding: 5px"></p>
 </div>
@@ -460,7 +538,7 @@ bool RaytraceWork(WorkQueue* workQueue)
 </div>
 
 <!-- Date -->
-<h5>17-02-2025</h5>
+<h5>07-05-2025</h5>
 <p style="padding: 7px"></p>
 
 <!-- Socials -->
