@@ -30,7 +30,9 @@
 <div id="BlogPost" class="post">
     
     <h2 class="underline">Raytracing in one weekend in c++</h2>
-    <h4><a href="https://github.com/Loris-Moreau/RayTracing/tree/Compute-Shader" target="_blank">GitHub Repository</a></h4>
+    <h3><a href="https://github.com/Loris-Moreau/RayTracing/tree/Compute-Shader" target="_blank">GitHub Repository</a></h3>
+    <h3>Here's the <a href="https://github.com/Loris-Moreau/RayTracing/blob/Compute-Shader/Performance.md" target="_blank">Performance Document</a> where the render times are logged.</h3>
+    <h3>And here's the <a href="ResearchProjBibliography.html" target="_blank">Bibliography</a> for this Research Project.</h3>
     
     <p style="padding: 5px"></p>
     
@@ -50,12 +52,12 @@
         <h3><a href="#MultiThreading">- Multithreading</a> <i>(<a href="https://en.wikipedia.org/wiki/Multithreading_(computer_architecture)" target="_blank">explanation</a>)</i></h3>
         <h3><a href="#Compute">- Compute Shaders</a> <i>(<a href="https://www.khronos.org/opengl/wiki/Compute_Shader" target="_blank">explanation</a>)</i></h3>
         
-        <p style="padding: 1px"></p>
+        <p></p>
         
         <h4>All of these revolve around parallelizing the existing code <i>(it's annoying but doable)</i>.</h4>
         <h3>Each of these should shorten render times by quite a bit and allow us to use more samples & bounces.</h3>
-        <h3>Here's the <a href="https://github.com/Loris-Moreau/RayTracing/blob/Compute-Shader/Performance.md" target="_blank">Performance Document</a> where the render times are logged.</h3>
-        <h3>And here's the <a href="ResearchProjBibliography.html" target="_blank">Bibliography</a> for this Research Project.</h3>
+        
+        <p style="padding: 2px"></p>
         
         <h2 class="underline" style="text-decoration-color: dodgerblue">Optimization</h2>
         
@@ -544,41 +546,27 @@ Vector3 finalColor = (color + sumColor) / (frameIndex + 1);</code></pre>
         
         <h2 class="underline" style="text-decoration-color: cadetblue; padding-bottom: 10px">Performance</h2>
         <h3>OpenGL supports <a href="https://www.khronos.org/opengl/wiki/Atomic_Counter" target="_blank">Atomic Counters</a>, 
-            so you could count the rays bounces, or you could use SSBO again for the counter, then use 
+            so we're could count the rays bounces, or we could use SSBO again for the counter, then use 
             <a href="https://registry.khronos.org/OpenGL-Refpages/gl4/html/atomicAdd.xhtml" target="_blank">naive atomic add operation</a>,
             after the compute shader finished its job, you map the bounce count SSBO for reading the bounce count.</h3>
-        <h3>Both of these have roughly the same performance, so you can use either, </h3>
-        <h3>but I simply make a timer like so : </h3>
+        <h3>Both of these have roughly the same performance, so you can use either, We will use the second method, like so :</h3>
         <div class="snippet">
             <div class="Swindow">
                 <div class="Swindow-title">
-                    <p>Timer in main.cpp</p>
+                    <p>Atomic Operations</p>
                 </div>
                 <div class="Sconsole">
-                    <pre><code>#include &ltchrono>
-using namespace std::chrono;
+                    <pre><code>layout(binding = 3) buffer Counter { 
+    uint32_t gBounceCount; 
+};
+...
+atomicAdd(gBounceCount, totalBounces);
 
-int main(int argc, char* argv[])
-{
-    // Timer
-    time_point&ltsteady_clock> globalTimeClockStart = high_resolution_clock::now();
-
-    // Main Computation
-    {
-        ...
-    }
-    
-    std::clog &lt&lt "Finished Raytracing " &lt&lt '\n';
-    
-    // Timer Finish
-    time_point&ltsteady_clock> globalTimeClockEnd = high_resolution_clock::now();
-    std::clog &lt&lt '\n' &lt&lt "Total Time taken : " &lt&lt duration_cast&ltmilliseconds>(globalTimeClockEnd - globalTimeClockStart).count() &lt&lt " milliseconds" << '\n';
-    std::clog &lt&lt '\n' &lt&lt "Total Time taken : " &lt&lt duration_cast&ltseconds>(globalTimeClockEnd - globalTimeClockStart).count() &lt&lt " seconds" << '\n';
-    std::clog &lt&lt '\n' &lt&lt "Total Time taken : " &lt&lt duration_cast&ltminutes>(globalTimeClockEnd - globalTimeClockStart).count() &lt&lt " minutes" << '\n';
-    
-    return 0;
-}
-</code></pre>
+// C++ code
+glBindBuffer(GL_SHADER_STORAGE_BUFFER, bounceCountSSBO);
+uint32_t* counter = (uint32_t*) glMapBuffer(GL_SHADER_STORAGE_BUFFER, GL_READ_ONLY);
+bounceCount = counter[0];
+glUnmapBuffer(GL_SHADER_STORAGE_BUFFER);</code></pre>
                 </div>
             </div>
         </div>
@@ -593,17 +581,19 @@ int main(int argc, char* argv[])
         <h2 style="padding-bottom: 5px">Final recorded Time :</h2>
         <h3 style="padding-bottom: 0"><b class="quote">case 10: FinalSceneB2(600, 200, 100, 20, 250) :</b></h3>
         <h3 style="padding-top: 0; padding-bottom: 0"><b class="quote">- Non-Optimized : 5 Hrs</b></h3>
-        <h3  style="padding-top: 0; padding-bottom: 0"><b class="quote">- Compute Shader Optimized : TODO record time</b></h3>
+        <h3  style="padding-top: 0; padding-bottom: 0"><b class="quote">- Compute Shader Optimized : 30 sec</b></h3>
+        <p style="padding: 1px"></p>
+        <h5>Damn I knew it was going to be way faster but this is WAY faster</h5>
     </div>
     
     
-    <p style="padding: 42px"></p>
+    <p style="padding: 25px"></p>
     
     <h3><a href="ResearchProjBibliography.html" target="_blank">Bibliography</a></h3>
     
-    <p style="padding: 2px"></p>
+    <p style="padding: 42px"></p>
     
-    <h3>Next up is VFXs</h3>
+    <h3>Next up we will take about VFXs</h3>
     
     <h3>Buh bye</h3>
     <p style="padding: 5px"></p>
