@@ -1,16 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
     <title>Optimizing a Raytracer</title>
-    <link rel="icon" type="image/x-icon" href="../Images/RayTracing/Cornell's%20Box%20(B2,%20P8).png">
+    <link rel="icon" type="image/x-icon" href="../Images/RayTracing/computeShaderRenderCornellSmol.png">
     <link rel="stylesheet" href="../styles.css">
     
     <!-- Meta Tags for SEO -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="Loris Moreau">
     <meta name="description" content="Raytracing Blog">
-    <meta name="keywords" content="Showcase, Loris, Moreau, Loris Moreau, Programmer, coding adventure, Blog, Post, Raytracing, C++, CPP, Raytracing in one weekend, Optimization, optimized, optimizing, Compute, Compute Shader, multi threading, Hyper threading, SIMD, optimizing a raytracer, raytracer optimization, efficient raytracing, efficient raytracer, optimized raytracing, improving raytracer performance, performance">
+    <meta name="keywords" content="Showcase, Loris, Moreau, Loris Moreau, Programmer, coding adventure, Blog, Post, Raytracing, C++, CPP, Raytracing in one weekend, Optimization, optimized, optimizing, Compute, shaders, Compute Shader, multi threading, Hyper threading, SIMD, optimizing a raytracer, raytracer optimization, efficient raytracing, efficient raytracer, optimized raytracing, improving raytracer performance, performance">
 </head>
 
 <body>
@@ -29,21 +29,21 @@
 <!-- Blog Content -->
 <div id="BlogPost" class="post">
     
-    <h2 class="underline">Raytracing in one weekend in c++</h2>
+    <h2 class="underline">Optimizing Raytracing in one weekend in C++</h2>
     <h3><a href="https://github.com/Loris-Moreau/RayTracing/tree/Compute-Shader" target="_blank">GitHub Repository</a></h3>
-    <h3>Here's the <a href="https://github.com/Loris-Moreau/RayTracing/blob/Compute-Shader/Performance.md" target="_blank">Performance Document</a> where the render times are logged.</h3>
+    <h3>Here is the <a href="https://github.com/Loris-Moreau/RayTracing/blob/Compute-Shader/Performance.md" target="_blank">Performance Document</a> where the render times are logged.</h3>
     <h3>And here's the <a href="ResearchProjBibliography.html" target="_blank">Bibliography</a> for this Research Project.</h3>
     
     <p style="padding: 5px"></p>
     
     <!-- Content Header -->
     <div>
-        <h2 class="underline" style="text-decoration-color: dodgerblue">Part 10</h2>
+        <h2 class="underline" style="text-decoration-color: dodgerblue">Optimization, Multithreading, SIMD & Compute Shaders</h2>
         <!-- <h4><i>This part is going to be hard, for all of us</i>.</h4> -->
-        <h3>Currently doing a research project & the theme I've chosen for myself is "<i class="underline" style="text-decoration-color: green">Optimization</i>".</h3>
+        <h3>I'm Currently doing a research project & the theme I've chosen for myself is "<i class="underline" style="text-decoration-color: green">Optimization</i>".</h3>
         <h3>
             After finishing the <a href="https://raytracing.github.io/books/RayTracingInOneWeekend.html" target="_blank">1st book</a> I was kinda annoyed at the render time, 
-            and as I went through the <a href="https://raytracing.github.io/books/RayTracingTheNextWeek.html" target="_blank">2nd book</a>  it only got worse 
+            and as I went through the <a href="https://raytracing.github.io/books/RayTracingTheNextWeek.html" target="_blank">2nd book</a> it only got worse 
             and the final render I did took 5 Hrs and was still quite noisy <i>(not good)</i>, 
             so today we will be looking into optimization techniques :
         </h3>
@@ -54,17 +54,65 @@
         
         <p></p>
         
-        <h4>All of these revolve around parallelizing the existing code <i>(it's annoying but doable)</i>.</h4>
+        <h3>The goal is to Parallelize the existing raytracing code to dramatically cut render times <i>(it's annoying but doable)</i>.</h3>
         <h3>Each of these should shorten render times by quite a bit and allow us to use more samples & bounces.</h3>
         
         <p style="padding: 2px"></p>
         
-        <h2 class="underline" style="text-decoration-color: dodgerblue">Optimization</h2>
+        <h2 class="underline" style="text-decoration-color: dodgerblue; padding-bottom: 2px">Where do we start ?</h2>
+        <h2 class="underline" style="text-decoration-color: cadetblue">State of the art</h2>
         
-        <h4><i>This code is the finished code of <a href="https://raytracing.github.io/books/RayTracingTheNextWeek.html" target="_blank">book 2</a></i></h4>
+        <h3>We’ll build on the C++ code from Peter Shirley’s <a href="https://raytracing.github.io" target="_blank">Ray Tracing in One Weekend</a> series.</h3>
+        
+        <h3>Several community ports already implement & extend the raytracer : </h3>
+        <h3>- <a href="https://github.com/utilForever/ray-tracing-in-one-weekend-cpp" target="_blank">utilForever’s C++17 repo</a></h3>
+        <h3>- <a href="https://github.com/r1walz/cuda-ray-tracing-in-one-weekend" target="_blank">CUDA adaptation</a> parallelizing the raytracer.</h3>
+        
+        <p></p>
+        
+        <h3>
+            On the algorithmic side, <a href="https://blog.jyotiprakash.org/data-level-parallelism" target="_blank">data-level parallelism</a> 
+            research highlights <a href="https://en.wikipedia.org/wiki/Single_instruction,_multiple_data" target="_blank">SIMD</a> 
+            <i>(Single Instruction, Multiple Data)</i> to leverage hardware vector units and process many data elements in a single instruction.
+        </h3>
+        
+        <h3>
+            More reading about data-level parallelism :
+            <a href="https://www.cs.umd.edu/~meesh/411/CA-online/chapter/exploiting-data-level-parallelism/index.html" target="_blank">"exploiting Data Level Parallelism"</a>
+            and <a href="https://passlab.github.io/CSE564/notes/lecture20_DLP_Vector.pdf" target="_blank">"Data Level Parallelism Lecture"</a>.
+        </h3>
+
+        <p></p>
+        
+        <h3>
+            At a higher level, <a href="https://en.wikipedia.org/wiki/Multithreading_(computer_architecture)" target="_blank">multithreading</a> frameworks go  
+            from simple work-queue models to <a href="https://en.wikipedia.org/wiki/Grand_Central_Dispatch" target="_blank">Apple’s Grand Central Dispatch</a> 
+            further accelerating renders by distributing pixel-level tasks across multiple CPU cores.
+        </h3>
+
+        <p></p>
+        
+        <h3>
+            <a href="https://en.wikipedia.org/wiki/Amdahl_law" target="_blank">Amdahl’s Law</a> state that :
+            <i>"the overall performance improvement gained by optimizing a single part of a system is limited by the fraction of time that the improved part is actually used"</i>.
+        </h3>
+        
+        <p></p>
+        
+        <h3>
+            Finally, modern GPUs expose <a href="https://www.khronos.org/opengl/wiki/Compute_Shader" target="_blank">Compute Shaders</a> <i>(With OpenGL 4.3+ HLSL/DX11+ kernels)</i> 
+            that enable massive parallelism outside the traditional rasterization pipeline, 
+            allowing us to offload raytracing workloads directly onto graphics hardware with thousands of concurrent threads.
+        </h3>
+
+        <p style="padding: 5px"></p>
+        
+        <h4><i>We will start of with the finished code of <a href="https://raytracing.github.io/books/RayTracingTheNextWeek.html" target="_blank">book 2</a></i></h4>
         <h4><i>Should look a little something like this : </i></h4>
         <img loading="lazy" src="../Images/RayTracing/Final%20Render%20high-Res%20(B2).png" alt="Final Render of Book 2" style="width: 55%; padding-bottom: 5px;" />
         <h5><a href="https://github.com/Loris-Moreau/RayTracing/blob/main/Images/Final%20Render%20high-Res%20(B2).png" target="_blank">img. Source</a></h5>
+        
+      
     </div>
     
     <p style="padding: 5px"></p>
@@ -121,6 +169,32 @@
         <h3>
             This way, each chunk maps perfectly onto SIMD registers, maximizing both alignment and throughput.
         </h3>
+        <h3>Like so : </h3>
+
+        <div class="snippet">
+            <div class="Swindow">
+                <div class="Swindow-title">
+                    <p>SIMD.h</p>
+                </div>
+                <div class="Sconsole">
+      <pre><code>// Wide vector3 struct
+struct LaneVector3
+{
+    LaneF32 x;
+    LaneF32 y;
+    LaneF32 z;
+
+    LaneVector3();
+    LaneVector3(LaneF32 x, LaneF32 y, LaneF32 z);
+    LaneVector3(float arr[3][LANE_WIDTH]);
+    LaneVector3(Vector3 vector);
+
+    LaneF32& operator[](int index);
+};</code></pre>
+                </div>
+            </div>
+        </div>
+        
         <h3>Here is a good <a href="https://www.youtube.com/watch?v=0_Byw9UMn9g" target="_blank">video</a> about this problem.</h3>
 
         <p style="padding: 4px"></p>
@@ -136,7 +210,7 @@
         <h3>This explains why using a 4-lane vector unit doesn't yield a 4x performance gain.</h3>
         
         <img loading="lazy" src="../Images/RayTracing/AmdahlsLaw.png" alt="Amdahl's Law" style="width: 65%; padding-bottom: 5px;" />
-        <h5><a href="https://en.wikipedia.org/wiki/Amdahl%27s_law" target="_blank">img. Source</a></h5>
+        <h5><a href="https://en.wikipedia.org/wiki/Amdahl_law" target="_blank">img. Source</a></h5>
         
         <h3>And remember : "<i>Don't do anything you don't need to</i>".</h3>
         
@@ -224,9 +298,7 @@
             & how compilers and CPUs <a href="https://en.wikipedia.org/wiki/Memory_ordering" target="_blank">reorder memory operations</a>, 
             the differences between various architectures, and so on.
         </h3>
-        <h3>
-            Much of what I’ve read uses the Windows API, but the underlying principles apply across platforms. 
-        </h3>
+        <h3><i>Much of what I’ve read uses the Windows API, but the underlying principles apply across platforms.</i></h3>
         <h3>
             While traditional mutexes are often the easiest way to guard shared data, I plan to use atomic instructions instead, so threads never block one another, 
             since Lock-free programming is only for some rare use cases, typically with lots of threads meeting at the same variable.
@@ -243,16 +315,21 @@
             Threads pull the next available task from a shared queue as soon as they finish their current one.
             This way, if one thread encounters a lengthy job, all the others remain busy with other tasks.</h3>
         <h3>A good explanation for this problem <a href="https://developer.apple.com/videos/play/wwdc2017/706/?time=345" target="_blank">here</a>.</h3>
+        
+        <p></p>
+        
         <h3>
-            We could spawn one thread per image row and leveraged 
+            We could spawn one thread per image row and leverage
             <a href="https://en.wikipedia.org/wiki/Grand_Central_Dispatch" target="_blank">Apple’s Grand Central Dispatch</a> <i>(GCD)</i>.
             which lets you easily multi-thread your loop using the <b class="quote">dispatch_apply</b> function, 
-            GCD automatically distributes iterations across all available threads and waits until they all complete, with no manual synchronization needed.
-            This could work quite well & wouldn't be too hard to implement.
+            GCD automatically distributes iterations across all available threads and waits until they're all complete, with no manual synchronization needed.
         </h3>
-        <h3>
-            Ultimately, though, we're going to use the simple work-queue approach from <a href="https://www.youtube.com/watch?v=ZAeU3Z0PmcU" target="_blank">Handmade Ray</a>. 
-            We package units of work into <i>“orders”</i> and push them onto a queue. Each thread continuously fetches and executes orders, 
+        <h3>This could work quite well & wouldn't be too hard to implement.</h3>
+        
+        <p></p>
+        
+        <h3>Ultimately, though, we're going to use the simple work-queue approach from <a href="https://www.youtube.com/watch?v=ZAeU3Z0PmcU" target="_blank">Handmade Ray</a>.</h3>
+        <h3>We package units of work into <i>“orders”</i> and push them onto a queue. Each thread continuously fetches and executes orders, 
             if the queue is empty, the thread idles until new work appears.
         </h3>
 
@@ -309,13 +386,13 @@ bool RaytraceWork(WorkQueue* workQueue)
         <p style="padding: 2px"></p>
         
         <h3>
-            In the end we managed to boost render time by roughly 2.5x for renders using Multithreading. 
+            In the end we managed to boost render time by roughly 2x for renders using Multithreading. 
         </h3>
         <h3>
             But we did not speed up linearly after using the third and fourth thread, 
             meaning we don't gain as much as expected from 
             <a href="https://www.intel.com/content/www/us/en/gaming/resources/hyper-threading.html#articleparagraph_cop_77384912" target="_blank">Hyper-Threading</a>, 
-            but honestly I'm not very experienced in hyper-threading outside of this project, so perhaps I will do another post on this.
+            but honestly I'm not very experienced in hyper-threading <i>(or multithreading)</i> outside of this project, so perhaps I will do another post on this.
         </h3>
 
         <p style="padding: 4px"></p>
@@ -332,11 +409,7 @@ bool RaytraceWork(WorkQueue* workQueue)
     <!-- Compute Shader -->
     <h2 class="underline" style="text-decoration-color: royalblue; padding-bottom: 7px" id="Compute">Compute Shaders</h2>
     <div>
-        <h4>
-            "Like other programmable shaders <i>(vertex and geometry shaders for example)</i>, a compute shader is designed and implemented with 
-            <a href="https://learn.microsoft.com/en-us/windows/win32/direct3dhlsl/dx-graphics-hlsl" target="_blank">HLSL</a> but that is just about where the similarity ends.
-        </h4>
-        <h4>A compute shader provides high-speed general purpose computing and takes advantage of the large numbers of parallel processors on the graphics processing unit (GPU).</h4>
+        <h4>"A compute shader provides high-speed general purpose computing and takes advantage of the large numbers of parallel processors on the graphics processing unit (GPU).</h4>
         <h4>The compute shader provides memory sharing and thread synchronization features to allow more effective parallel programming methods."</h4>
         <h4><a href="https://learn.microsoft.com/en-us/windows/win32/direct3d11/direct3d-11-advanced-stages-compute-shader" target="_blank">Source.</a></h4>
         
@@ -349,24 +422,71 @@ bool RaytraceWork(WorkQueue* workQueue)
             You should be aware that it doesn't have a constructor that we use in C++ for filling struct memory with zeros
         </h3>
         <h3>
-            <b>you should be aware of alignment</b> since one of the main causes for a black screen was
-            <a href="https://learn.microsoft.com/en-us/cpp/cpp/alignment-cpp-declarations?view=msvc-170" target="_blank">alignment</a>, When using UBO or SSBO.
+            <b>you should also beware of <a href="https://learn.microsoft.com/en-us/cpp/cpp/alignment-cpp-declarations?view=msvc-170" target="_blank">alignment</a></b> 
+            since it was one of the main causes for a black screen, When using UBO or SSBO.
         </h3>
     </div>
     <p style="padding: 4px"></p>
     <div>
         <h2 class="underline" style="text-decoration-color: cadetblue; padding-bottom: 10px">But How ?</h2>
-        <h3>The point of this is to transfer the raytracer to the GPU, and since our code is already parallelized it shouldn't be much of a hassle to transfer it into GPU.</h3>
+        <h3>The point of this is to transfer the raytracer to the GPU, and since our code is already broken into parts it shouldn't be much of a hassle to transfer it into GPU.</h3>
         <h3>
             The compute shader is going to do the same work that the CPU is doing. 
             Then it is going to produce the image as a texture object and send that texture into the fragment shader. 
         </h3>
         <h3>That fragment shader is then going to <a href="https://en.wikipedia.org/wiki/Gamma_correction" target="_blank">gamma correct</a> the image and render it to the screen.</h3>
+
+
+        <div class="snippet">
+            <div class="Swindow">
+                <div class="Swindow-title">
+                    <p>fragment.glsl</p>
+                </div>
+                <div class="Sconsole">
+      <pre><code>#version 450 core
+
+in vec2 texCoord;
+
+uniform sampler2D image;
+
+out vec4 finalColor;
+
+#define Clamp(A, c, B) clamp(c, A, B)
+
+float LinearTosRGB(in float value) {
+    value = Clamp(0.0f, value, 1.0f);
+
+    float result = value * 12.92f;
+    if (value >= 0.0031308f) {
+        result = (1.055f * pow(value, 1.0f / 2.4f)) - 0.055f;
+    }
+
+    return result;
+}
+
+vec3 LinearVectorTosRGBVector(in vec3 value) {
+    vec3 result;
+
+    result.x = LinearTosRGB(value.x);
+    result.y = LinearTosRGB(value.y);
+    result.z = LinearTosRGB(value.z);
+
+    return result;
+}
+
+void main () {
+    vec3 rawColor = texture(image, texCoord).xyz;
+    finalColor = vec4(LinearVectorTosRGBVector(rawColor), 1.0);
+}</code></pre>
+                </div>
+            </div>
+        </div>
         
         <p style="padding: 2px"></p>
         
-        <h3>For this we're going to use <a href="https://www.khronos.org/opengl/wiki/Compute_Shader" target="_blank">OpenGL</a>, 
-            since it is easier than something like <a href="https://vkguide.dev/docs/gpudriven/compute_shaders/" target="_blank">vulkan</a> and I had some experience with it before.
+        <h3>For this we're going to use <a href="https://www.khronos.org/opengl/" target="_blank">OpenGL</a>, 
+            since it is easier than something like <a href="https://vkguide.dev/docs/gpudriven/compute_shaders/" target="_blank">vulkan</a>, 
+            and it's the one I have most experience in.
         </h3>
         <h3>OpenGL has compute shader support since version 4.3, so any newer version will work.</h3>
         <h3>I won't explain here how to do all the setup for OpenGL, but you can find what you need 
@@ -375,9 +495,7 @@ bool RaytraceWork(WorkQueue* workQueue)
         <p style="padding: 10px"></p>
         
         <h2 class="underline" style="text-decoration-color: cadetblue; padding-bottom: 10px">Buffers</h2>
-        <h3>When it comes to writing shaders, we’re in luck, 
-            shader languages closely resemble C++, so you can often paste your ray-tracer code directly into a shader file. 
-        </h3>
+        <h3>When it comes to writing shaders, shader languages closely resemble C++, so you can often paste your ray-tracer code directly into a shader file.</h3>
         <h3>The only differences are in data type names and some built-in function names, so beware of that, or you could make a macro to map them to the CPU versions.</h3>
         <h3>
             One challenge is how to supply scene data to the compute shader, 
@@ -409,11 +527,11 @@ bool RaytraceWork(WorkQueue* workQueue)
         
         <h3>So that went well, but there is another problem <i>(I mentioned this <a href="#ttrcs">above</a>)</i>. The alignment of SSBO structs is not the same as C++ ones.</h3>
         <h3>According to the <a href="https://community.khronos.org/t/interpretation-of-std140-layout" target="_blank">OpenGL specification</a> : </h3>
-        <h3>"(9) If the member is a structure, the base alignment of the structure is &ltN>, where &ltN> is the largest base alignment value of any of its members, ..."</h3>
+        <h3><i>"(9) If the member is a structure, the base alignment of the structure is &ltN>, where &ltN> is the largest base alignment value of any of its members, ..."</i></h3>
         <h3>In our case, we have vec3 in our structs. Size of vec3 is 12 bytes but vec3 count as vec4. 
-            So our alignment for structs should be 16. This can be done in many ways. You can put padding data into the structs.
+            So our alignment for structs should be 16. This can be done in many ways. You can put padding data into the structs, 
         </h3>
-        <h3>Or we can define offsets and tweak layout properties using 
+        <h3>Or we can define offsets and tweak layout properties using the 
             <a href="https://registry.khronos.org/OpenGL/extensions/ARB/ARB_enhanced_layouts.txt" target="_blank">enhanced layout extension</a>.</h3>
         
         <div class="snippet">
@@ -436,7 +554,7 @@ bool RaytraceWork(WorkQueue* workQueue)
             </div>
         </div>
         
-        <h3>This can be done in <a href="https://www.khronos.org/opengl/wiki/Layout_Qualifier_%28GLSL%29" target="_blank">GLSL</a> like so :</h3>
+        <h3>This can be done in <a href="https://www.khronos.org/opengl/wiki/Layout_Qualifier_(GLSL)" target="_blank">GLSL</a> like so :</h3>
         <div class="snippet">
             <div class="Swindow">
                 <div class="Swindow-title">
@@ -463,11 +581,12 @@ bool RaytraceWork(WorkQueue* workQueue)
         <div class="snippet">
             <div class="Swindow">
                 <div class="Swindow-title">
-                    <p>Align Material in CPP</p>
+                    <p>Align Material struct in CPP</p>
                 </div>
                 <div class="Sconsole">
                     <pre><code>// Align these struct members to 16 byte.
-__declspec(align(16)) struct Material {
+__declspec(align(16)) struct Material 
+{
     Vector3 color;
     float refractiveIndex;
     Vector3 emitColor;
@@ -491,6 +610,61 @@ __declspec(align(16)) struct Material {
             This lets OpenGL automatically report errors <i>(and other messages)</i> to your callback, eliminating the need for manual 
             <a href="https://registry.khronos.org/OpenGL-Refpages/gl4/html/glGetError.xhtml" target="_blank">glGetError()</a> checks everywhere.
         </h3>
+        <h3>like so <i>(the following code is by 
+            <a href="https://blog.nobel-joergensen.com/2013/02/17/debugging-opengl-part-2-using-gldebugmessagecallback/" target="_blank"> Morten Nobel-Jørgensen</a>)</i> : </h3>
+        <div class="snippet">
+            <div class="Swindow">
+                <div class="Swindow-title">
+                    <p>OpenGL Callback Function</p>
+                </div>
+                <div class="Sconsole">
+                    <pre><code>void APIENTRY openglCallbackFunction(GLenum source, GLenum type, GLuint id, GLenum severity, GLsizei length,
+                                            const GLchar* message, const void* userParam)
+{
+    std::cout << "---------------------opengl-callback-start------------" << '\n';
+    std::cout << "message: "<< message << '\n';
+    std::cout << "type: ";
+    switch (type) {
+    case GL_DEBUG_TYPE_ERROR:
+        std::cout << "ERROR";
+        break;
+    case GL_DEBUG_TYPE_DEPRECATED_BEHAVIOR:
+        std::cout << "DEPRECATED_BEHAVIOR";
+        break;
+    case GL_DEBUG_TYPE_UNDEFINED_BEHAVIOR:
+        std::cout << "UNDEFINED_BEHAVIOR";
+        break;
+    case GL_DEBUG_TYPE_PORTABILITY:
+        std::cout << "PORTABILITY";
+        break;
+    case GL_DEBUG_TYPE_PERFORMANCE:
+        std::cout << "PERFORMANCE";
+        break;
+    case GL_DEBUG_TYPE_OTHER:
+        std::cout << "OTHER";
+        break;
+    }
+    std::cout << '\n';
+
+    std::cout << "id: " << id << '\n';
+    std::cout << "severity: ";
+    switch (severity){
+    case GL_DEBUG_SEVERITY_LOW:
+        std::cout << "LOW";
+        break;
+    case GL_DEBUG_SEVERITY_MEDIUM:
+        std::cout << "MEDIUM";
+        break;
+    case GL_DEBUG_SEVERITY_HIGH:
+        std::cout << "HIGH";
+        break;
+    }
+    std::cout << '\n';
+    std::cout << "---------------------opengl-callback-end--------------" << '\n';
+}</code></pre>
+                </div>
+            </div>
+        </div>
         
         <p style="padding: 2px"></p>
         
@@ -503,19 +677,20 @@ __declspec(align(16)) struct Material {
         </h3>
         <h3>
             Basically what TDR does is : 
-            <a href="https://docs.nvidia.com/gameworks/index.html#developertools/desktop/timeout_detection_recovery.htm" target="_blank"> "If the operating system does not receive 
-                a response from a graphics card within a certain amount of time <i>(default is 2 sec)</i>, the operating system resets the graphics card."
-            </a>
-            , so we just reduce the sample size, and it works again !!
+            <a href="https://docs.nvidia.com/gameworks/index.html#developertools/desktop/timeout_detection_recovery.htm" target="_blank">"If the operating system does not receive 
+                a response from a graphics card within a certain amount of time <i>(default is 2 sec)</i>, the operating system resets the graphics card."</a>, 
+            so we just reduce the sample size, and it works again !!
         </h3>
         
         <p style="padding: 10px"></p>
 
         <h2 class="underline" style="text-decoration-color: cadetblue; padding-bottom: 10px">Progressive Rendering</h2>
-        <h3><a href="https://blog.cloudflare.com/parallel-streaming-of-progressive-images/#what-is-progressive-image-rendering" target="_blank">Progressive Rendering</a></h3>
+        <h3>what is <a href="https://blog.cloudflare.com/parallel-streaming-of-progressive-images/#what-is-progressive-image-rendering" target="_blank">Progressive Rendering</a> ?</h3>
+        <h3></h3>
         
-        <h3>Most production raytracers work by first rendering a very low quality sampled image and then progressively refining it as more samples are accumulated.</h3>
-        <h3>If you'd like to add that behavior : on each frame, you’ll blend in the newly rendered image with the running average to gradually improve quality.</h3>
+        <h3>First we render a very low quality sampled image and then progressively refining it as more samples are accumulated.</h3>
+        <p></p>
+        <h3>Let's add that behavior : on each frame, we’ll blend in the newly rendered image with the running average to gradually improve quality.</h3>
         <h3>Something like this : </h3>
 
         <div class="snippet">
@@ -537,7 +712,9 @@ layout(location = 4) uniform uint32_t frameIndex;
 // Calculate the sum of all the previous samples
 Vector3 sumColor = prevColor * frameIndex;
 // Add new color to sum, then re-average it.
-Vector3 finalColor = (color + sumColor) / (frameIndex + 1);</code></pre>
+Vector3 finalColor = (color + sumColor) / (frameIndex + 1);
+
+imageStore(destImage, pix, vec4(finalColor, 1.0));</code></pre>
                 </div>
             </div>
         </div>
@@ -546,9 +723,9 @@ Vector3 finalColor = (color + sumColor) / (frameIndex + 1);</code></pre>
         
         <h2 class="underline" style="text-decoration-color: cadetblue; padding-bottom: 10px">Performance</h2>
         <h3>OpenGL supports <a href="https://www.khronos.org/opengl/wiki/Atomic_Counter" target="_blank">Atomic Counters</a>, 
-            so we're could count the rays bounces, or we could use SSBO again for the counter, then use 
+            so we could count the ray bounces, or we could use SSBO again for the counter, then use 
             <a href="https://registry.khronos.org/OpenGL-Refpages/gl4/html/atomicAdd.xhtml" target="_blank">naive atomic add operation</a>,
-            after the compute shader finished its job, you map the bounce count SSBO for reading the bounce count.</h3>
+            after the compute shader finished its job, you map the bounce count to SSBO so you can read the bounce count.</h3>
         <h3>Both of these have roughly the same performance, so you can use either, We will use the second method, like so :</h3>
         <div class="snippet">
             <div class="Swindow">
@@ -573,9 +750,19 @@ glUnmapBuffer(GL_SHADER_STORAGE_BUFFER);</code></pre>
         
         <h3>and now we just run our code and hope for the best.</h3>
         
-        <p style="padding: 4px"></p>
+        <p style="padding: 2px"></p>
+        <h3>Here are two of the renders : </h3>
+        <img loading="lazy" src="../Images/RayTracing/computeShaderRenderCornell.png" alt="SISD vs SIMD Operations" style="width: 75%; padding-bottom: 5px;" />
+        <h5><b class="underline" style="text-decoration-color: limegreen; text-decoration-thickness: 2px">Render time :</b> regular = 30mins; compute shaders = 1min</h5>
+        <h5><a href="https://github.com/Loris-Moreau/RayTracing/blob/Compute-Shader/Images/computeShaderRenderCornell.png" target="_blank">img. Source</a></h5>
+        <img loading="lazy" src="../Images/RayTracing/computeShaderRenderB2.png" alt="SISD vs SIMD Operations" style="width: 75%; padding-bottom: 5px;" />
+        <h5><b class="underline" style="text-decoration-color: limegreen; text-decoration-thickness: 2px">Render time :</b> regular = 5hrs; compute shaders = 30sec</h5>
+        <h5><a href="https://github.com/Loris-Moreau/RayTracing/blob/Compute-Shader/Images/computeShaderRenderB2.png" target="_blank">img. Source</a></h5>
         
-        <h3>With Compute Shaders it's almost 10x faster, <i>(and this is simply porting the original raytracer code into compute shaders we haven't actually optimized anything)</i>.</h3>
+        <p style="padding: 2px"></p>
+        
+        <h3>With Compute Shaders it's 10x faster for quads and even more for spheres, <i>(and this is simply porting the original raytracer code into compute shaders, 
+            we haven't actually optimized anything)</i>.</h3>
         
         <!-- Final Recorded Time -->
         <h2 style="padding-bottom: 5px">Final recorded Time :</h2>
@@ -591,12 +778,10 @@ glUnmapBuffer(GL_SHADER_STORAGE_BUFFER);</code></pre>
     
     <h3><a href="ResearchProjBibliography.html" target="_blank">Bibliography</a></h3>
     
-    <p style="padding: 42px"></p>
-    
-    <h3>Next up we will take about VFXs</h3>
+    <p style="padding: 25px"></p>
     
     <h3>Buh bye</h3>
-    <p style="padding: 5px"></p>
+    <p style="padding: 2px"></p>
 </div>
 
 <!-- Buttons -->
