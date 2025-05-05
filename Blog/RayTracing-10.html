@@ -761,8 +761,10 @@ glUnmapBuffer(GL_SHADER_STORAGE_BUFFER);</code></pre>
         
         <p style="padding: 2px"></p>
         
-        <h3>With Compute Shaders it's 10x faster for quads and even more for spheres, <i>(and this is simply porting the original raytracer code into compute shaders, 
-            we haven't actually optimized anything)</i>.</h3>
+        <h3>
+            With Compute Shaders it's 10x faster for quads and even more for spheres, 
+            <i>(and this is simply porting the original raytracer code into compute shaders, we haven't actually optimized anything)</i>.
+        </h3>
         
         <!-- Final Recorded Time -->
         <h2 style="padding-bottom: 5px">Final recorded Time :</h2>
@@ -770,9 +772,20 @@ glUnmapBuffer(GL_SHADER_STORAGE_BUFFER);</code></pre>
         <h3 style="padding-top: 0; padding-bottom: 0"><b class="quote">- Non-Optimized : 5 Hrs</b></h3>
         <h3  style="padding-top: 0; padding-bottom: 0"><b class="quote">- Compute Shader Optimized : 30 sec</b></h3>
         <p style="padding: 1px"></p>
-        <h5>Damn I knew it was going to be way faster but this is WAY faster</h5>
+        <h5>Damn I knew it was going to be way faster but this is <b>WAY faster</b>.</h5>
     </div>
     
+    <p style="padding: 42px"></p>
+
+    <h2 class="underline" style="text-decoration-color: royalblue; padding-bottom: 10px">Conclusion</h2>
+    <h3>
+        In the end SIMD & Multithreading are good optimization techniques but cap at 2x due to Amdahl's Law,
+        while compute shader will go as fast as the computer can <i>(logical cores)</i>.
+    </h3>
+    <h3>So I think it's best to put what you can in compute shaders, and the rest in SIMD using Lanes and wide vectors.</h3>
+    <h3>Just don't forget that each of these techniques can and can't do certain things 
+        <i>(e.g. compute shaders can't do everything we still need actions to execute outside)</i></h3>
+    <h3>This is the final approach I have for my  <a href="https://github.com/Loris-Moreau/RayTracing/tree/Compute-Shader" target="_blank">implementation</a>.</h3>
     
     <p style="padding: 25px"></p>
     
