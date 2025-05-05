@@ -155,17 +155,20 @@
             SoA excels when you frequently access only a subset of a struct’s members, each cache line then holds just the data you need, 
             leading to significant gains in performance.
         </h3>
+        <br>
         <h3>
             However, since our ray-tracing functions always reference every Sphere field together, a pure SoA approach isn’t ideal.
         </h3>
+        <br>
         <h3>
             Instead, we use an 
             <a href="https://www.intel.com/content/www/us/en/developer/articles/technical/memory-layout-transformations.html" target="_blank">Array of Structures of Arrays (AoSoA)</a> 
             layout. In AoSoA, each field is still an array, but its length matches the SIMD lane width <i>(<b class="quote">LANE_WIDTH</b>)</i>.
         </h3>
         <h3>
-            If we have more spheres than fit in one SIMD vector, we simply add another “lane” <i>(another fixed-size chunk)</i> to our AoSoA array.
+            If we have more spheres than fit in one SIMD vector, we simply add another “lane” <i>(another fixed-size chunk)</i> to our AoSoA.
         </h3>
+        <br>
         <h3>
             This way, each chunk maps perfectly onto SIMD registers, maximizing both alignment and throughput.
         </h3>
@@ -599,7 +602,7 @@ __declspec(align(16)) struct Material
         <p style="padding: 5px"></p>
         
         <h2 class="underline" style="text-decoration-color: cadetblue; padding-bottom: 10px">Checking for Errors</h2>
-        <h3>When we write an OpeGL app we will often see thing we don't like <i>(e.g. black screen, white screen, crash, etc...)</i></h3>
+        <h3>When we write an OpenGL app we will often see thing we don't like <i>(e.g. black screen, white screen, crash, etc...)</i></h3>
         <h3>so we need to find these errors by creating our OpenGL context with 
             <a href="https://www.khronos.org/opengl/wiki/OpenGL_Error#Catching_errors_(the_easy_way)" target="_blank">debugging properties</a>.</h3>
         <h3>We can check for errors by calling 
@@ -624,7 +627,8 @@ __declspec(align(16)) struct Material
     std::cout << "---------------------opengl-callback-start------------" << '\n';
     std::cout << "message: "<< message << '\n';
     std::cout << "type: ";
-    switch (type) {
+    switch (type) 
+    {
     case GL_DEBUG_TYPE_ERROR:
         std::cout << "ERROR";
         break;
@@ -648,7 +652,8 @@ __declspec(align(16)) struct Material
 
     std::cout << "id: " << id << '\n';
     std::cout << "severity: ";
-    switch (severity){
+    switch (severity)
+    {
     case GL_DEBUG_SEVERITY_LOW:
         std::cout << "LOW";
         break;
@@ -763,7 +768,7 @@ glUnmapBuffer(GL_SHADER_STORAGE_BUFFER);</code></pre>
         
         <h3>
             With Compute Shaders it's 10x faster for quads and even more for spheres, 
-            <i>(and this is simply porting the original raytracer code into compute shaders, we haven't actually optimized anything)</i>.
+            <i>(and this is simply porting the original raytracer code into compute shaders, we haven't actually optimized anything, (apart from a few SIMD Lanes))</i>.
         </h3>
         
         <!-- Final Recorded Time -->
