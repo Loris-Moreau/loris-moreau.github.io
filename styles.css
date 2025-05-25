@@ -353,6 +353,8 @@ ul
 /* Popup */
 .popup 
 {
+    z-index: 1000;
+    
     --burger-line-width: 1.125em;
     --burger-line-height: 0.125em;
     --burger-offset: 0.625em;
@@ -923,4 +925,56 @@ blockquote
 /* Show Menu When Checkbox is Checked */
 .dropdown-checkbox:checked ~ .dropdown-menu {
     display: block;
+}
+
+/* Sidebar */
+.sidebar {
+    position: fixed;
+    z-index: 900;
+    top: 40px;
+    left: 0;
+    width: 200px;
+    height: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+}
+.sidebar h2 {
+    margin-top: 0;
+    font-size: 18px;
+    color: rgb(255, 255, 255);
+    padding-bottom: 15px;
+    text-decoration:underline 2px orangered;
+}
+.sidebar a {
+    display: block;
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    margin: 4px 0;
+    padding: 2px;
+    border-radius: 4px;
+    font-size: 16px;
+}
+.sidebar a:hover {
+    background-color: rgb(162, 177, 189);
+}
+.sidebar a:target,
+.sidebar a:focus,
+.sidebar a.active {
+    background-color: rgb(108, 118, 126);
+    font-weight: bold;
+}
+.sidebar .content {
+    background-color: rgb(210, 227, 252);
+    font-weight: bold;
+    color: rgb(25, 74, 167);
+}
+.sidebar .content h2 {
+    padding-top: 50px;
+    margin-top: -10px;
+    border-bottom: 1px solid rgb(204, 204, 204);
+}
+.sidebar .sub-link {
+    margin-left: 17px;
+    font-size: 14px;
+    color: rgb(200, 200, 200);
 }

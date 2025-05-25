@@ -5,6 +5,7 @@
     <title>Resources</title>
     <link rel="icon" type="image/x-icon" href="Images/icon.png">
     <link rel="stylesheet" href="styles.css">
+    <script src="sidebarFocusScript.js" defer></script>
 
     <!-- Meta Tags for SEO -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -18,6 +19,41 @@
 <!-- BG, Dropdown & Socials are outside the pages to be the same on every page -->
 <!-- Background -->
 <div class="background"></div>
+
+<!-- Sidebar -->
+<div class="sidebar">
+    <h2>Contents :</h2>
+    <a href="#General">General Knowledge</a>
+
+    <a href="#Programming">Programming</a>
+    <a href="#readingProg" class="sub-link">Reading Recommendation</a>
+    
+    <a href="#Design">Game Design</a>
+
+    <a href="#VFX">VFX</a>
+
+    <a href="#Maths">Maths & Algorithms</a>
+
+    <a href="#Engine">Engine</a>
+    <a href="#Rendering">Rendering</a>
+    
+    <a href="#DOOG">DOOM</a>
+    
+    <a href="#TechArt">Tech Art</a>
+    
+    <a href="#Unity">Unity</a>
+    <a href="#Godot">Godot</a>
+    <a href="#UE">Unreal Engine</a>
+    
+    <a href="#MOOCs">MOOCs</a>
+    
+    <a href="#HtmlCss">HTML & CSS</a>
+    
+    <a href="#Cybersecurity">Cybersecurity</a>
+    
+    <a href="#Miscellaneous">Miscellaneous</a>
+    <a href="#Setup">Setup</a>
+</div>
 
 <!-- Page 3 external resources -->
 <div id="ExternalResources" class="page">
@@ -77,7 +113,7 @@
         </h3>
         <p style="padding: 1px"></p>
         <!-- dropdown -->
-        <div class="outer-container">
+        <div id="readingProg" class="outer-container">
             <div class="dropdown-container">
                 <label for="dropdown-toggle" class="dropdown-label">My Reading Recommendations</label>
                 <input type="checkbox" id="dropdown-toggle" class="dropdown-checkbox">

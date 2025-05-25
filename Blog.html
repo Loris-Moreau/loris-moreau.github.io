@@ -5,7 +5,8 @@
     <title>Blog</title>
     <link rel="icon" type="image/x-icon" href="Images/icon.png">
     <link rel="stylesheet" href="styles.css">
-
+    <script src="sidebarFocusScript.js" defer></script>
+    
     <!-- Meta Tags for SEO -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="Loris Moreau">
@@ -17,6 +18,22 @@
 <!-- BG, Dropdown & Socials are outside the pages to be the same on every page -->
 <!-- Background -->
 <div class="background"></div>
+
+<!-- Sidebar -->
+<div class="sidebar">
+    <h2>Contents :</h2>
+    <a href="#General">General</a>
+    
+    <a href="#Raytracing">Raytracing</a>
+    <a href="#RB-1" class="sub-link">Book 1</a>
+    <a href="#R-Opti" class="sub-link">Optimization</a>
+    
+    <a href="#VFX">VFX</a>
+    
+    <a href="#Maths">Maths & Algorithms</a>
+    
+    <a href="#Hacking">Hardware</a>
+</div>
 
 <!-- Page 2 Blog entries -->
 <div id="BlogPage" class="page">
@@ -91,7 +108,7 @@
     
     <p style="padding: 1px"></p>
     
-    <div class="blog-entries" align="center">
+    <div id="R-Opti" class="blog-entries" align="center">
         <a class="card" href="Blog/RayTracing-10.html" style="background: rgba(145, 145, 145, 0.75)">
             <h3>R-10 : Optimization, Multithreading, SIMD & Compute Shaders</h3>
         </a>
