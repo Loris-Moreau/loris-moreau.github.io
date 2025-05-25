@@ -171,16 +171,15 @@
                 </div>
             </label>
             <div class="content">
-                <p>My Adventure following the "<a href="https://raytracing.github.io/" target="_blank">Raytracing in one weekend series</a>"</p>
+                <p id="Base-Raytracer">My Adventure following the "<a href="https://raytracing.github.io/" target="_blank">Raytracing in one weekend series</a>"</p>
                 <p>Documentation for the Raytracer <a href="https://loris-moreau.github.io/Blog.html#Raytracing" target="_blank">here</a>, and the base code <a href="https://github.com/Loris-Moreau/RayTracing" target="_blank">here</a>.</p>
                 
-                <div class="column">
-                    <p>Final Render of book 1 :</p>
-                    <img loading="lazy" src="Images/RayTracing/Final%20Render%20(B1).png" alt="Final Render of B1" style="width: 70%"/>
-                </div>
-                
-                <!-- Container for 2 images side by side -->
-                <div class="row" style="flex: 50%;">
+                <!-- Container for 3 images side by side -->
+                <div class="row" style="flex: 33%;">
+                    <div class="column">
+                        <p>Final Render of book 1 :</p>
+                        <img loading="lazy" src="Images/RayTracing/Final%20Render%20(B1).png" alt="Final Render of B1" style="width: 100%"/>
+                    </div>
                     <div class="column">
                         <p>Cornell Box :</p>
                         <img loading="lazy" src="Images/RayTracing/Cornell's%20Box%20(B2,%20P8).png" alt="Final Render of B1" style="width: 100%"/>
@@ -190,7 +189,28 @@
                         <img loading="lazy" src="Images/RayTracing/Final%20Render%20high-Res%20(B2).png" alt="Final Render of B2" style="width: 100%"/>
                     </div>
                 </div>
-                <p>I plan to switch over this raytracer into compute shader later on for performance <i>(Renders should be roughly 10 times faster)</i>.</p>
+                
+                <p style="padding: 7px"></p>
+                
+                <!-- Compute Shaders -->
+                <p id="Compute-Raytracer">I have ported it into <a href="https://github.com/Loris-Moreau/RayTracing/tree/Compute-Shader" target="_blank">Compute Shaders</a>. 
+                    Here is the <a href="https://loris-moreau.github.io/Blog/RayTracing-10.html" target="_blank">documentation</a> & the 
+                    <a href="https://github.com/Loris-Moreau/RayTracing/tree/Compute-Shader" target="_blank">base code</a></p>
+                <p>This make the renders times exponentially faster.</p>
+                
+                <!-- Container for 2 images side by side -->
+                <div class="row" style="flex: 50%;">
+                    <div class="column">
+                        <p style="padding-bottom: 0px">Cornell Box :</p>
+                        <p style="padding-top: 0px"><i>Render Time : 1 min</i></p>
+                        <img loading="lazy" src="Images/RayTracing/computeShaderRenderCornellSmol.png" alt="Final Render of B1" style="width: 90%"/>
+                    </div>
+                    <div class="column">
+                        <p style="padding-bottom: 0px">Final Render of book 2 :</p>
+                        <p style="padding-top: 0px"><i>Render Time : 30 sec</i></p>
+                        <img loading="lazy" src="Images/RayTracing/computeShaderRenderB2.png" alt="Final Render of B2" style="width: 100%"/>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
