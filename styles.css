@@ -400,7 +400,7 @@ ul li {
     /* title */
     --nav-title-size: 0.625em;
     --nav-title-color: rgb(119, 119, 119);
-    --nav-title-padding-x: 1rem;
+    --nav-title-padding-x: 3.25rem;
     --nav-title-padding-y: 0.25em;
     
     /* nav button */
@@ -514,12 +514,14 @@ ul li {
     margin: 0;
     padding: 0;
     list-style-type: none;
+    
+    font-size: 0.7em;
 }
 
 .popup-window ul button
 {
     outline: none;
-    width: 100%;
+    width: fit-content;
     border: none;
     background: none;
     display: flex;
