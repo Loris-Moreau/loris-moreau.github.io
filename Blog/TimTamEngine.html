@@ -30,8 +30,8 @@
 <div class="sidebar">
     <h2>Contents :</h2>
     
-    <a href="#">link</a> 
-    <a href="#" class="sub-link">sublink</a>
+    <a href="#Theory">Theory</a> 
+    <a href="#Requirement" class="sub-link">What's needed</a>
     <a href="#" class="sub-link">sublink</a>
 </div>
 
@@ -47,6 +47,7 @@
     <!-- Content -->
     <h2 class="underline" style="text-decoration-color: dodgerblue">TimTam Engine</h2>
     <div>
+        <h1><a href="https://adamsturge.github.io/Engine-Blog/" target="_blank">Interesting Reference on the subject</a></h1>
         <h3>This is going to be in the style of a research paper instead of your traditional blog, since I need to write down quite a lot of information, 
             so buckle up and enjoy the ride.</h3>
         <h3>Ok, so the format will be as follows: Rather than showing you the full implementation, 
@@ -66,25 +67,68 @@
         
         <p></p>
         
+        <!--
         <h3 class="underline" style="text-decoration-color: cadetblue">We want a piece of software that has : </h3>
         <h3>1. a level editor <i>(that can save/load levels)</i></h3>
         <h3>2. a object importer/loader <i>(be able to load .fbx, .obj, etc...)</i></h3>
+        <h3>2.2 animations</h3>
         <h3>3. be able to play sounds</h3>
         <h3>4. optimised physics system</h3>
         <h3>5. multithreading/SIMD</h3>
         <h3>6. movable player/camera</h3>
-        <h3>7. Enemies</h3>
+        <h3>7. NPCs that can be either allies, neutrals or enemies</h3>
         <h3>8. Lights <i>(different modes: realtime, god rays, precooked)</i></h3>
         <h3>9. different rendering modes <i>(wire mesh, particles, no light, etc...)</i></h3>
         <h3>10. Compute shaders</h3>
         <h3>11. VFXs</h3>
-        <h3>12. debug menu <i>(real time debug & logger)</i></h3>
+        <h3>12. UI <i>(imgui)</i></h3>
+        <h3>13. debug menu <i>(real time debug & logger)</i></h3>
         
         <p></p>
 
-        <h3 class="underline" style="text-decoration-color: cadetblue">And som extra stuff tht would be nice to have : </h3>
-        <h3>1. console commands <i>(chat box that allows console command with a prefix)</i></h3>
-        <h3>2. </h3>
+        <h3 class="underline" style="text-decoration-color: cadetblue">And some extra stuff that would be nice to have : </h3>
+        <h3>1. chat box that allows console command with a prefix)</h3>
+        <h3>2. multiplayer system <i>(local/couch co-op)</i></h3>
+        <h3>3. curve editor</h3>-->
+        
+        <h3 id="Requirement" class="underline" style="text-decoration-color: cadetblue">"core" requirements for a basic 2D engine : </h3>
+        <ul>
+            <li>Common elements <i>(vector/point, matrix, color, etc...)</i></li>
+            <li>Collision system</li>
+            <li>Input handling</li>
+            <li>Window management framework</li>
+            <li>Graphics system <i>(see below)</i></li>
+            <li>File system</li>
+            <li>Audio system</li>
+        </ul>
+
+        <p></p>
+        
+        <h3 class="underline" style="text-decoration-color: cadetblue">For the graphics part :</h3>
+        <ul>
+            <li>Textured/untextured quads <i>(with/without lighting)</i></li>
+            <li><a href="https://en.wikipedia.org/wiki/Polygonal_chain#Applications" target="_blank">Polylines</a>/beams</li>
+            <li>Debug lines/boxes/circles/grids</li>
+            <li>Text rendering</li>
+            <li>Particle systems</li>
+            <li>Streaks</li>
+        </ul>
+        
+        <p></p>
+        
+        <h3 class="underline" style="text-decoration-color: cadetblue">That would be the absolute minimum a game would need. 
+            but we also need : </h3>
+        <ul>
+            <li>World/scene management <i>(level editor)</i></li>
+            <li>UI <i>(imgui)</i></li>
+            <li>Models/Entities/Agents</li>
+            <li>Pathfinding</li>
+            <li>Animation</li>
+            <li>Event systems</li>
+        </ul>
+        
+        <p></p>
+        
     </div>
 
     <!-- The End -->

@@ -245,18 +245,26 @@ img{
     border: 0;
 }
 
-
-/* Social media icons */
-ul
-{
-    list-style: none;
+ul {
+    list-style-type: disc;
+    list-style-position: outside;
+    padding-left: 25%;
+    text-align: left;         /* keep list text left-aligned */
 }
 
+ul li {
+    font-size: 1.5em;          /* match h3 font size */
+    color: rgb(200, 200, 200); /* match heading color */
+}
 .example-2
 {
     display: flex;
     justify-content: center;
     align-items: center;
+
+    /* Social media icons */
+    list-style: none;
+    padding-left: 2.5%;
 }
 .example-2 .icon-content
 {
