@@ -1,3 +1,29 @@
+/* Global Variables */
+:root{
+    /* bg */
+    --bgColor1: rgb(50, 55, 60);
+    --bgColor2: rgb(65, 71, 77); 
+    /* rgb(57.5, 63, 68.5)*/
+    --bgColorMid: rgb(var(--bgColor1) + rgb(var(--bgColor2) - var(--bgColor1)) / 2);
+    
+    /* Fonts */
+    --h1Color: rgb(250, 250, 250);
+    --h1FontSize: 2em;
+    --h2Color: rgb(240, 240, 240);
+    --h2FontSize: 1.75em;
+    --h3Color: rgb(200, 200, 200);
+    --h3FontSize: 1.5em;
+    --h4Color: rgb(190, 190, 190);
+    --h4FontSize: 1.25em;
+    --h5Color: rgb(175, 175, 175);
+    --h5FontSize: 0.95em;
+    
+    /* Button */
+    --buttonBgColorA: rgba(170, 170, 170, 0.7);
+    --buttonBgColor: rgb(170, 170, 170);
+}
+
+
 /* Background pattern */
 .background 
 {
@@ -7,7 +33,8 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(120deg, rgb(50, 55, 60), rgb(65, 71, 77));
+    
+    background: linear-gradient(120deg, var(--bgColor1), var(--bgColor2));
     background-size: cover;
     z-index: -1; /* Ensures that the background is behind all content */
 }
@@ -32,8 +59,8 @@ header
 
 header h1
 {
-    color: rgb(255, 255, 255);
-    font-size: 2em;
+    color: var(--h1Color);
+    font-size: var(--h1FontSize);
     margin: 0;
 }
 
@@ -43,8 +70,8 @@ h2
     width: 100%;
     text-align: center;
     padding: 25px 0;
-    color: rgba(240, 240, 240, 1);
-    font-size: 1.75em;
+    color: var(--h2Color);
+    font-size: var(--h2FontSize);
     margin: 0;
 }
 
@@ -54,8 +81,9 @@ h3
     width: 95%;
     text-align: center;
     padding: 7px 0 7px 2.5%;
-    color: rgb(200, 200, 200);
-    font-size: 1.5em;
+    
+    color: var(--h3Color);
+    font-size: var(--h3FontSize);
     margin: 0;
     word-wrap: normal;
     overflow-wrap: anywhere;
@@ -67,8 +95,9 @@ h4
     width: 100%;
     text-align: center;
     padding: 5px 0;
-    color: rgb(190, 190, 190);
-    font-size: 1.25em;
+    
+    color: var(--h4Color);
+    font-size: var(--h4FontSize);
     margin: 0;
 }
 
@@ -78,8 +107,9 @@ h5
     width: 100%;
     text-align: center;
     padding: 2px 0;
-    color: rgb(175, 175, 175);
-    font-size: 0.95em;
+    
+    color: var(--h5Color);
+    font-size: var(--h5FontSize);
     margin: 0;
 }
 
@@ -111,7 +141,7 @@ h5
     padding-bottom: 25px;
     padding-left: 2px;
     padding-right: 2px;
-
+    
     justify-content: center;
     align-items: center;
 }
@@ -127,7 +157,7 @@ h5
 /* Button */
 button{
     padding: 10px 20px;
-    background-color: rgba(170,170,170,0.7);
+    background-color: var(--buttonBgColorA);
     color: white;
     border: none;
     cursor: pointer;
@@ -205,7 +235,7 @@ img{
     
     border-radius: 4px;
     padding-top: 15px;
-    padding-bottom: 30px;
+    padding-bottom: 25px;
 }
 
 /* Video Player */
@@ -230,7 +260,7 @@ img{
     
     padding: 16% 9%;
     
-    background: rgb(55, 59, 62);
+    background: var(--bgColorMid);
     overflow: hidden;
 }
 
@@ -245,17 +275,21 @@ img{
     border: 0;
 }
 
+/* Unordered list */
 ul {
     list-style-type: disc;
     list-style-position: outside;
     padding-left: 25%;
-    text-align: left;         /* keep list text left-aligned */
+    text-align: left;   /* keep list text left-aligned */
+}
+ul li {
+    /* match h3 font size */
+    font-size: var(--h3FontSize);
+    /* match heading color */
+    color: var(--h3Color);
 }
 
-ul li {
-    font-size: 1.5em;          /* match h3 font size */
-    color: rgb(200, 200, 200); /* match heading color */
-}
+/* Social media */
 .example-2
 {
     display: flex;
@@ -277,7 +311,7 @@ ul li {
     bottom: 115%;
     left: 20%;
     transform: translateX(-50%);
-    color: #fff;
+    color: white;
     padding: 6px 10px;
     border-radius: 5px;
     opacity: 0;
@@ -303,8 +337,8 @@ ul li {
     width: 50px;
     height: 50px;
     border-radius: 50%;
-    color: #4d4d4d;
-    background-color: #fff;
+    color: rgb(77, 77, 77);
+    background-color: white;
     transition: all 0.3s ease-in-out;
 
 }
@@ -331,7 +365,7 @@ ul li {
     left: 0;
     width: 100%;
     height: 0;
-    background-color: #000;
+    background-color: black;
     transition: all 0.3s ease-in-out;
 }
 
@@ -366,7 +400,7 @@ ul li {
     --burger-line-width: 1.125em;
     --burger-line-height: 0.125em;
     --burger-offset: 0.625em;
-    --burger-bg: rgba(175, 175, 175, 1);
+    --burger-bg: var(--buttonBgColorA);
     --burger-color: rgb(34, 34, 34);
     --burger-line-border-radius: 0.1875em;
     --burger-diameter: 2.125em;
@@ -383,7 +417,7 @@ ul li {
     --nav-padding-x: 0.25em;
     --nav-padding-y: 0.625em;
     --nav-border-radius: 0.375em;
-    --nav-border-color: rgb(200, 200, 200);
+    --nav-border-color: var(--h3Color);
     --nav-border-width: 0.0625em;
     --nav-shadow-color: rgba(0, 0, 0, .2);
     --nav-shadow-width: 0 1px 5px;
@@ -394,8 +428,7 @@ ul li {
     --nav-active-scale: 1;
     --nav-position-left: 0;
     --nav-position-right: unset;
-    /* if you want to change sides just switch one property */
-    /* from properties to "unset" and the other to 0 */
+    /* if you want to change sides just switch one property from properties to "unset" and the other to 0 */
     
     /* title */
     --nav-title-size: 0.625em;
@@ -768,7 +801,7 @@ blockquote
     position: relative;
     height: auto;
     width: auto;
-    background-color: rgb(62, 66, 72);
+    background-color: var(--bgColorMid);
     border: 2px solid rgb(50, 50, 50);
     border-radius: 15px;
     overflow: hidden;
@@ -825,7 +858,7 @@ blockquote
 }
 
 .accordion-item .content {
-    font-size: 1.5em;
+    font-size: var(--h3FontSize);
 }
 
 .accordion input[type="radio"] {
@@ -863,7 +896,7 @@ blockquote
     text-align: left;
 }
 .accordion-header .accordion-title {
-    font-size: 1.75em;
+    font-size: var(--h2FontSize);
 }
 
 
@@ -891,7 +924,7 @@ blockquote
     background-color: rgb(142, 152, 161);
     color: rgb(255, 255, 255);
     padding: 10px 20px;
-    font-size: 1.25em;
+    font-size: var(--h4FontSize);
     text-align: center;
     border-radius: 5px;
     cursor: pointer;
