@@ -1177,8 +1177,8 @@ blockquote
 /* container for all badges */
 .links-container {
     position: absolute;
-    bottom: 12px;
-    right: 12px;
+    bottom: 25px;
+    right: 15px;
     display: flex;
     gap: 8px;
 }
@@ -1193,7 +1193,7 @@ blockquote
 .link-badge img {
     width: 100%;
     height: 100%;
-    filter: grayscale(100%);
+    /*filter: grayscale(100%);*/
     opacity: 0.75;
     transition: opacity 0.2s;
 }

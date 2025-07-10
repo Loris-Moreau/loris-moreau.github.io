@@ -9,7 +9,10 @@ const projects = [
         goals: "neque porro quisquam est, qui dolorem ipsum, quia dolor sit, amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt, ut labore et dolore magnam aliquam quaerat voluptatem. ",
         features: "Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit, qui in ea voluptate velit esse, quam nihil molestiae consequatur, vel illum, qui dolorem eum fugiat, quo voluptas nulla pariatur?",
         images: ["Images/UnderConstruction.png", "Images/FoxInSnow.jpg", "Images/Minto.png", "Images/JupiPipebomb.png"],
-        github: "link"
+        links: [
+            { icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg",
+                url: "https://github.com/Loris-Moreau/TimTam_3D-Engine" }
+            ]
     }, 
     */
     // TimTam

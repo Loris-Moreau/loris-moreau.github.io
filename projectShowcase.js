@@ -16,6 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const imgElements = proj.images.map((src, i) => {
             const img = document.createElement("img");
             img.src = src;
+            img.loading = "lazy";
             if (i === 0) img.classList.add("active");
             carousel.appendChild(img);
             return img;
@@ -64,6 +65,11 @@ document.addEventListener("DOMContentLoaded", () => {
                 el.href = link.url;
                 el.target = "_blank";
                 el.rel = "noopener noreferrer";
+
+                // Prevent click from bubbling to the card
+                el.addEventListener("click", (e) => {
+                    e.stopPropagation();
+                });
             } else {
                 el = document.createElement("div");
             }
@@ -79,6 +85,7 @@ document.addEventListener("DOMContentLoaded", () => {
         
         // append after content but _inside_ card
         card.appendChild(linksContainer);
+        
         
         container.appendChild(card);
     });
