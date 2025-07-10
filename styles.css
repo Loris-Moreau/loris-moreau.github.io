@@ -6,15 +6,21 @@
     /* rgb(57.5, 63, 68.5)*/
     --bgColorMid: rgb(var(--bgColor1) + rgb(var(--bgColor2) - var(--bgColor1)) / 2);
     
+    --cardColor: rgba(145, 145, 145, 0.75);
+    
     /* Fonts */
     --h1Color: rgb(250, 250, 250);
     --h1FontSize: 2em;
+    
     --h2Color: rgb(240, 240, 240);
     --h2FontSize: 1.75em;
+    
     --h3Color: rgb(200, 200, 200);
     --h3FontSize: 1.5em;
+    
     --h4Color: rgb(190, 190, 190);
     --h4FontSize: 1.25em;
+    
     --h5Color: rgb(175, 175, 175);
     --h5FontSize: 0.95em;
     
@@ -676,7 +682,7 @@ a:active
     /*width: 500px;*/
     width: 30%;
     height: 100px;
-    background: rgba(145, 145, 145, 0.75);
+    background: var(--cardColor);
     border: 2px solid black;
     border-radius: 17px;
     text-align: center;
@@ -694,7 +700,7 @@ a:active
 .card:hover 
 {
     border: 2px solid lightgray;
-    transform: scale(1.075);
+    transform: scale(1.025);
     margin: 15px;
     
     box-shadow: 12px 17px 51px rgba(0, 0, 0, 0.22);
@@ -1020,4 +1026,178 @@ blockquote
     margin-left: 17px;
     font-size: 14px;
     color: rgb(200, 200, 200);
+}
+
+
+
+
+/* Project Showcase */
+.projects {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 25px;
+    max-width: 1000px;
+    width: 100%;
+    
+    padding: 25px;        /* optional: adds spacing around */
+    margin: 0 auto;       /* centers the container */
+    justify-content: center; /* ensures even spacing if there's fewer cards */
+}
+/*
+.project-content {
+    flex: 1;
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+*/
+/*
+.project-card {
+    box-sizing: border-box;
+    
+    background: var(--cardColor);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: transform 0.42s ease, box-shadow 0.42s ease;
+    cursor: pointer;
+}
+*/
+.project-card {
+    position: relative;
+    
+    max-width: 400px; 
+    width: 100%; 
+    height: 470px; 
+    background: var(--cardColor); 
+    border-radius: 1rem;
+    overflow: hidden;
+    transition: transform 0.42s ease, box-shadow 0.42s ease;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+}
+
+.project-card:hover {
+    transform: scale(1.025);
+    box-shadow: -4px 4px 10px rgba(0,0,0,0.15);
+}
+
+.project-top {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    margin-bottom: 20px;
+    flex-wrap: wrap; /* for mobile fallback */
+}
+
+#carousel-container {
+    flex: 1;
+    max-width: 100%;
+    position: relative;
+    height: 225px;
+}
+
+#carousel img {
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+    background: var(--bgColorMid);
+    
+    border-radius: 1rem;
+    display: none;
+}
+
+#carousel img.active {
+    display: block;
+}
+
+.proj-desc-container {
+    flex: 1;
+    
+    min-width: 225px;
+    max-width: 450px;
+}
+
+
+.carousel {
+    position: relative;
+    overflow: hidden;
+    
+    --carHeight: 225px;
+    height: var(--carHeight);
+}
+
+.carousel img {
+    display: none;
+    width: 95%;
+    height: var(--carHeight);
+    object-fit: contain;   /* or "cover" if you want to crop edges */
+    background: var(--bgColorMid);
+    
+    border-radius: 1rem;
+}
+
+.carousel img.active {
+    display: block;
+}
+
+.carousel button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0,0,0,0.65);
+    color: var(--h1Color);
+    border: none;
+    padding: 6px 12px;
+    cursor: pointer;
+}
+
+.carousel .prev {
+    left: 10px;
+}
+.carousel .next {
+    right: 10px;
+}
+
+.project-content {
+    padding: 15px;
+}
+.project-title {
+    font-size: var(--h3FontSize);
+    color: var(--h1Color);
+    margin: 0;
+}
+.project-desc {
+    font-size: var(--h4FontSize);
+    color: var(--h2Color);
+}
+
+/* Showcase Link */
+/* container for all badges */
+.links-container {
+    position: absolute;
+    bottom: 12px;
+    right: 12px;
+    display: flex;
+    gap: 8px;
+}
+
+/* individual badge (link or static) */
+.link-badge {
+    width: 28px;
+    height: 28px;
+    display: block;
+}
+
+.link-badge img {
+    width: 100%;
+    height: 100%;
+    filter: grayscale(100%);
+    opacity: 0.75;
+    transition: opacity 0.2s;
+}
+
+.link-badge:hover img {
+    opacity: 1;
 }

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Project Details</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="projectsData.js" defer></script>
+    <script src="videoScript.js" defer></script>
+    
+    <script>
+        window.onload = function () {
+            const params = new URLSearchParams(window.location.search);
+            const projectId = params.get("id");
+            const project = projects.find(p => p.id === projectId);
+            if (!project) return document.body.innerHTML = "<p>Project not found.</p>";
+
+            document.getElementById("proj-title").textContent = project.title;
+            document.getElementById("proj-desc").textContent = project.longDesc;
+            document.getElementById("proj-goals").textContent = project.goals;
+            document.getElementById("proj-features").textContent = project.features;
+
+            const carousel = document.getElementById("carousel");
+            project.images.forEach((src, i) => {
+                const img = document.createElement("img");
+                img.src = src;
+                if (i === 0) img.classList.add("active");
+                carousel.appendChild(img);
+            });
+
+            let current = 0;
+            const imgs = carousel.querySelectorAll("img");
+
+            document.getElementById("prev").onclick = () => {
+                imgs[current].classList.remove("active");
+                current = (current - 1 + imgs.length) % imgs.length;
+                imgs[current].classList.add("active");
+            };
+
+            document.getElementById("next").onclick = () => {
+                imgs[current].classList.remove("active");
+                current = (current + 1) % imgs.length;
+                imgs[current].classList.add("active");
+            };
+        };
+    </script>
+
+    <!-- Meta Tags for SEO -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Loris Moreau">
+    <meta name="description" content="Details of the project">
+</head>
+
+<body>
+
+<!-- BG, Dropdown & Socials are outside the pages to be the same on every page -->
+<!-- Background -->
+<div class="background"></div>
+
+<div class="post">
+    
+    <!-- Back Button -->
+    <div style="text-align: left; margin-top: 12px; margin-left: 5px;">
+        <a href="index.html#Showcase">
+            <button>
+                Back
+            </button>
+        </a>
+    </div>
+
+    <h2 class="underline" style="text-decoration-color: dodgerblue" id="proj-title"></h2>
+    <div class="project-top">
+        <div class="carousel" id="carousel-container">
+            <div id="carousel" class="carousel"></div>
+            <button id="prev" class="prev">❮</button>
+            <button id="next" class="next">❯</button>
+        </div>
+        <div class="proj-desc-container">
+            <p style="padding: 0.15rem"></p> <!--Spacing so the text is offset (the one next to the images) -->
+            <h3 id="proj-desc"></h3>
+        </div>
+    </div>
+    <div class="project-content">
+        <h2 class="underline" style="text-decoration-color: cadetblue">Objectives & Goals</h2>
+        <h3 id="proj-goals"></h3>
+        
+        <p style="padding: 4px"></p>
+        
+        <h2 class="underline" style="text-decoration-color: cadetblue">Features & Highlights</h2>
+        <h3 id="proj-features"></h3>
+    </div>
+    <a class="github-link" href="https://github.com/yourusername/your-repo" target="_blank">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub" />
+    </a>
+</div>
+
+</body>
+</html>
