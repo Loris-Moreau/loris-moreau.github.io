@@ -63,6 +63,21 @@ const projects = [
                 url: "https://github.com/Loris-Moreau/RayTracing/tree/Compute-Shader" }
             ]
     },
+    // Conway
+    {
+        id: "GameLife",
+        title: "Game of Life",
+        shortDesc: "A C++ implementation of Conway's Game of Life using a sparse data structure for an infinite grid & built with GLFW, Glad, ImGui, and OpenGL 3.",
+        longDesc: "A C++ implementation of Conway's Game of Life using a sparse data structure for an infinite grid & built with GLFW, Glad, ImGui, and OpenGL 3.",
+        goals: "The goal was to learn ImGui and dabble in OpenGl as well as 0 player Games, I've always found conway's Game of Life interesting; being able to make a Turing complete Program with so few rules.",
+        features: "Infinite sparse grid representation, only live cells are stored, optimising memory; Adjustable simulation speed and camera panning; Cell toggling with mouse click; controls via ImGui; Visual grid overlay and smooth rendering using OpenGL points.",
+        images: ["Images/Showcase/GliderGun.gif", "Images/Showcase/GliderGun.png"],
+        
+        links: [
+            { icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg",
+                url: "https://github.com/Loris-Moreau/Game-of-Life" }
+            ]
+    },
     // BBA
     {
         id: "BBA",
