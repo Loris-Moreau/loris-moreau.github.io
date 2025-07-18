@@ -1,10 +1,10 @@
 /* ---------- Global Variables ---------- */
 :root { 
     /* Background Colors */
-    --bg-color-1: 50, 55, 60;                                                                   /* Dark base color */
-    --bg-color-2: 65, 71, 77;                                                                  /* Lighter secondary color */
-    --bg-mid: calc((var(--bg-color-1) + var(--bg-color-2)) / 2);                              /* Midpoint value for single-color backgrounds */
-    --bg-gradient: linear-gradient(120deg, rgb(var(--bg-color-1)), rgb(var(--bg-color-2)));  /* Angular gradient */
+    --bg-color-1: 50, 55, 60;                                                                   /* Dark base color */ 
+    --bg-color-2: 65, 71, 77;                                                                  /* Lighter secondary color */ 
+    --bg-mid: color-mix(in srgb, var(--bg-color-1) 50%, var(--bg-color-2) 50%);               /* Midpoint value for single-color backgrounds */
+    --bg-gradient: linear-gradient(120deg, rgb(var(--bg-color-1)), rgb(var(--bg-color-2)));  /* Angular gradient */ 
     
     /* Card Styling: background, border, and corner radius */
     --card-bg: rgba(145, 145, 145, 0.75);  /* Semi-transparent gray */
@@ -369,10 +369,6 @@ ul li {
     width: 30px;
     height: 30px;
 }
-.example-2 .icon-content a:hover {
-    box-shadow: 3px 2px 45px 0px rgba(0, 0, 0, 0.12);
-    color: white;
-}
 .example-2 .icon-content a .filled {
     position: absolute;
     top: auto;
@@ -592,9 +588,6 @@ a:active {
     border-radius: 5px;
     font-size: 0.97rem;
 }
-.dark-theme .quote { 
-    background: black; 
-}
 
 /* Preformatted */
 pre {
@@ -616,11 +609,6 @@ pre {
         margin: 0;
         padding: 0;
         font-size: inherit;
-
-        .dark-theme & 
-        {
-            color: inherit;
-        }
     }
 }
 
