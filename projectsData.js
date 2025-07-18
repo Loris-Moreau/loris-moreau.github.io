@@ -23,7 +23,7 @@ const projects = [
         longDesc: "A 3D game engine which would allows anyone to easily create shooters, mouvement or management games and even highly narrative driven games.",
         goals: "Create a 3D Game Engine where I can easily develop games like; Doom, Descent, Outer Wilds, Barony, Factorio, Mirrors Edge, etc...",
         features: "Physics, File management, Audio, Object loader, Debug Tools, chat box that accepts commands, couch co-op, Particle System, Shaders, Polylines (curves), Level Editor, imgui, Pathfinding, Animation, Event System",
-        images: ["Images/UnderConstruction.png", "Images/Showcase/3D-Engine.gif"],
+        images: ["Images/UnderConstruction.png"],
         
         links: [
             { icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg",
@@ -100,7 +100,7 @@ const projects = [
         longDesc: "Unreal Engine 5 AI System",
         goals: "Make an AI that would feel like an actual person without making the game they would be in too difficult.",
         features: "Multiple types of enemies using Behaviour Trees, Custom Tasks, Environment Queries, Pawn Sensing & Nav Mesh",
-        images: ["Images/Showcase/UEAIShowcase.gif"],
+        images: ["Images/Showcase/UE-AI-5.png", "Images/Showcase/UE-AI-4.png", "Images/Showcase/UE-AI-3.png", "Images/Showcase/UE-AI-2.png", "Images/Showcase/UE-AI-1.png", "Images/Showcase/UE-AI-6.png"],
         
         links: [
             { icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg",
@@ -113,9 +113,9 @@ const projects = [
         title: "UE VFX",
         shortDesc: "VFXs in Unreal Engine.",
         longDesc: "A lot of shader & VFXs in UE 5.",
-        goals: "Make shaders that I could use in my Games.",
+        goals: "Make and experiment with shaders that I could use in my projects.",
         features: "Shaders of all shapes & sizes.",
-        images: ["Images/Showcase/UEVFXShowcase.gif"],
+        images: ["Images/Showcase/UE-VFX-1.png", "Images/Showcase/UE-VFX-3.png", "Images/Showcase/UE-VFX-5.png", "Images/Showcase/UE-VFX-2.png", "Images/Showcase/UE-VFX-4.png"],
         
         links: [
             { icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" }
@@ -137,21 +137,6 @@ const projects = [
                 url: "https://github.com/Loris-Moreau/Advanced-Shaders" }
             ]
     },
-    // BBA
-    {
-        id: "BBA",
-        title: "Battle Boules Arena",
-        shortDesc: "Global Game Jam 2024 entry",
-        longDesc: "It's a multiplayer where you play with your friends and bump your balls together until there's only one left.",
-        goals: "The theme of this Jam was \"Make Me Laugh\" and we decided to make an 4 player arcade type game like a Mario Party minigame.",
-        features: "Roll around and bump the other players off the platform, power ups/gadgets will drop from the sky.",
-        images: ["Images/Showcase/BBAShowcase.png", "Images/Showcase/BBALogo.png"],
-
-        links: [
-            { icon: "Images/Logos/GGJ_Logo_Light.svg",
-                url: "https://globalgamejam.org/games/2024/battle-boule-arena-4-0" }
-        ]
-    },
     // Windows Adventure
     {
         id: "WA",
@@ -160,11 +145,26 @@ const projects = [
         longDesc: "It's a platformer in which windows will appear along your path some to help and other just to block your view.",
         goals: "Lear Godot and experiment with the window management system.",
         features: "Simple platformer with a modular window spawner that overlays custom shaders over images or videos.",
-        images: ["Images/Showcase/WA1.png", "Images/Showcase/WA2.png", "Images/Showcase/WA3.png"],
+        images: ["Images/Showcase/WA2.png", "Images/Showcase/WA1.png", "Images/Showcase/WA3.png"],
 
         links: [
             { icon: "Images/Logos/Itchio.svg",
                 url: "https://loris-moreau.itch.io/windows-adventure" }
+        ]
+    },
+    // BBA
+    {
+        id: "BBA",
+        title: "Battle Boules Arena",
+        shortDesc: "Global Game Jam 2024 entry",
+        longDesc: "It's a multiplayer where you play with your friends and bump your balls together until there's only one left.",
+        goals: "The theme of this Jam was \"Make Me Laugh\" and we decided to make an 4 player arcade type game like a Mario Party minigame.",
+        features: "Roll around and bump the other players off the platform, power ups/gadgets will drop from the sky.",
+        images: ["Images/Showcase/BBALogo.png", "Images/Showcase/BBA-1.png"],
+
+        links: [
+            { icon: "Images/Logos/GGJ_Logo_Light.svg",
+                url: "https://globalgamejam.org/games/2024/battle-boule-arena-4-0" }
         ]
     },
 ];
