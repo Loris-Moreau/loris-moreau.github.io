@@ -21,7 +21,7 @@ const projects = [
         title: "TimTam Engine",
         shortDesc: "A 3D Game Engine able to make shooters, mouvements & factory type games",
         longDesc: "A 3D game engine which would allows anyone to easily create shooters, mouvement or management games and even highly narrative driven games.",
-        goals: "Create a 3D Game Engine where I can easily develop games like; Doom, Descent, Outer Wilds, Factorio, Mirrors Edge, etc...",
+        goals: "Create a 3D Game Engine where I can easily develop games like; Doom, Descent, Outer Wilds, Barony, Factorio, Mirrors Edge, etc...",
         features: "Physics, File management, Audio, Object loader, Debug Tools, chat box that accepts commands, couch co-op, Particle System, Shaders, Polylines (curves), Level Editor, imgui, Pathfinding, Animation, Event System",
         images: ["Images/UnderConstruction.png", "Images/Showcase/3D-Engine.gif"],
         
@@ -67,8 +67,8 @@ const projects = [
     {
         id: "GameLife",
         title: "Game of Life",
-        shortDesc: "A C++ implementation of Conway's Game of Life using a sparse data structure for an infinite grid & built with GLFW, Glad, ImGui, and OpenGL 3.",
-        longDesc: "A C++ implementation of Conway's Game of Life using a sparse data structure for an infinite grid & built with GLFW, Glad, ImGui, and OpenGL 3.",
+        shortDesc: "A C++ implementation of Conway's Game of Life using a sparse data structure for an infinite grid & built with GLFW, Glad, ImGui, and OpenGL.",
+        longDesc: "A C++ implementation of Conway's Game of Life using a sparse data structure for an infinite grid & built with GLFW, Glad, ImGui, and OpenGL.",
         goals: "The goal was to learn ImGui and dabble in OpenGl as well as 0 player Games, I've always found conway's Game of Life interesting; being able to make a Turing complete Program with so few rules.",
         features: "Infinite sparse grid representation, only live cells are stored, optimising memory; Adjustable simulation speed and camera panning; Cell toggling with mouse click; controls via ImGui; Visual grid overlay and smooth rendering using OpenGL points.",
         images: ["Images/Showcase/GliderGun.gif", "Images/Showcase/GliderGun.png"],
@@ -76,36 +76,6 @@ const projects = [
         links: [
             { icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg",
                 url: "https://github.com/Loris-Moreau/Game-of-Life" }
-            ]
-    },
-    // BBA
-    {
-        id: "BBA",
-        title: "Battle Boules Arena",
-        shortDesc: "Global Game Jam 2024 entry",
-        longDesc: "It's a multiplayer where you play with your friends and bump your balls together until there's only one left.",
-        goals: "The theme of this Jam was \"Make Me Laugh\" and we decided to make an 4 player arcade type game like a Mario Party minigame.",
-        features: "Roll around and bump the other players off the platform, power ups/gadgets will drop from the sky.",
-        images: ["Images/Showcase/BBAShowcase.png", "Images/Showcase/BBALogo.png"],
-        
-        links: [
-            { icon: "Images/Logos/GGJ_Logo_Light.svg",
-                url: "https://globalgamejam.org/games/2024/battle-boule-arena-4-0" }
-            ]
-    },
-    // Windows Adventure
-    {
-        id: "WA",
-        title: "Windows Adventure",
-        shortDesc: "This is a prototype I made to learn Godot and it's window spawning mechanic.",
-        longDesc: "It's a platformer in which windows will appear along your path some to help and other just to block your view.",
-        goals: "Lear Godot and experiment with the window management system.",
-        features: "Simple platformer with a modular window spawner that overlays custom shaders over images or videos.",
-        images: ["Images/Showcase/WA1.png", "Images/Showcase/WA2.png", "Images/Showcase/WA3.png"],
-        
-        links: [
-            { icon: "Images/Logos/Itchio.svg",
-                url: "https://loris-moreau.itch.io/windows-adventure" }
             ]
     },
     // Houdini
@@ -166,5 +136,35 @@ const projects = [
             { icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg",
                 url: "https://github.com/Loris-Moreau/Advanced-Shaders" }
             ]
+    },
+    // BBA
+    {
+        id: "BBA",
+        title: "Battle Boules Arena",
+        shortDesc: "Global Game Jam 2024 entry",
+        longDesc: "It's a multiplayer where you play with your friends and bump your balls together until there's only one left.",
+        goals: "The theme of this Jam was \"Make Me Laugh\" and we decided to make an 4 player arcade type game like a Mario Party minigame.",
+        features: "Roll around and bump the other players off the platform, power ups/gadgets will drop from the sky.",
+        images: ["Images/Showcase/BBAShowcase.png", "Images/Showcase/BBALogo.png"],
+
+        links: [
+            { icon: "Images/Logos/GGJ_Logo_Light.svg",
+                url: "https://globalgamejam.org/games/2024/battle-boule-arena-4-0" }
+        ]
+    },
+    // Windows Adventure
+    {
+        id: "WA",
+        title: "Windows Adventure",
+        shortDesc: "This is a prototype I made to learn Godot and it's window spawning mechanic.",
+        longDesc: "It's a platformer in which windows will appear along your path some to help and other just to block your view.",
+        goals: "Lear Godot and experiment with the window management system.",
+        features: "Simple platformer with a modular window spawner that overlays custom shaders over images or videos.",
+        images: ["Images/Showcase/WA1.png", "Images/Showcase/WA2.png", "Images/Showcase/WA3.png"],
+
+        links: [
+            { icon: "Images/Logos/Itchio.svg",
+                url: "https://loris-moreau.itch.io/windows-adventure" }
+        ]
     },
 ];
