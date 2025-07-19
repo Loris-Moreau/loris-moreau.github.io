@@ -1,22 +1,22 @@
 /* ---------- Global Variables ---------- */
 :root { 
     /* Background Colors */
-    --bg-color-1: 50, 55, 60;                                                                   /* Dark base color */ 
-    --bg-color-2: 65, 71, 77;                                                                  /* Lighter secondary color */ 
-    --bg-mid: color-mix(in srgb, var(--bg-color-1) 50%, var(--bg-color-2) 50%);               /* Midpoint value for single-color backgrounds */
-    --bg-gradient: linear-gradient(120deg, rgb(var(--bg-color-1)), rgb(var(--bg-color-2)));  /* Angular gradient */ 
+    --bg-color-1: rgb(25, 25, 30);   /* Dark base color */ 
+    --bg-color-2: rgb(37, 37, 42);  /* Lighter secondary color */ 
+    --bg-mid: color-mix(in srgb, var(--bg-color-1) 50%, var(--bg-color-2) 50%);      /* Midpoint value for single-color backgrounds */ 
+    --bg-gradient: linear-gradient(-120deg, var(--bg-color-1), var(--bg-color-2));  /* Angular gradient */ 
     
     /* Card Styling: background, border, and corner radius */
-    --card-bg: rgba(145, 145, 145, 0.75);  /* Semi-transparent gray */
+    --card-bg: rgba(117, 117, 117, 0.75);  /* Semi-transparent gray */
     --card-border: 2px solid black;       /* Solid black border */
     --card-radius: 17px;                 /* Rounded corners */
     
     /* Text Colors for headings */
-    --h1-color: rgb(250, 250, 250);  
-    --h2-color: rgb(240, 240, 240);
-    --h3-color: rgb(200, 200, 200);
-    --h4-color: rgb(190, 190, 190);
-    --h5-color: rgb(175, 175, 175);
+    --h1-color: rgb(255, 255, 255);  
+    --h2-color: rgb(245, 245, 245);
+    --h3-color: rgb(230, 230, 230);
+    --h4-color: rgb(215, 215, 215);
+    --h5-color: rgb(195, 195, 195);
     /* Text Colors for links */
     --link-color: dodgerblue; 
     --link-hover-color: orchid;
@@ -67,14 +67,18 @@
     --nav-border-radius: 0.375em;
     --nav-button-hover-bg: rgb(100, 149, 237);
     --nav-button-hover-text-color: rgb(255, 255, 255);
+    
+    /* Code Snippet */
+    --code-title-bg-color: rgb(52, 52, 55);
+    --code-bg-color: rgb(37, 40, 37);
+    --code-text-color: rgb(25, 255, 25);
 }
 
 
 /* ---------- Website Components ---------- */
 
 /* Background pattern */
-.background 
-{
+.background {
     overflow-y: auto;
     position: fixed;
     inset: 0;     /* shorthand for top/right/bottom/left = 0 */
@@ -89,6 +93,10 @@ section {
     margin: var(--section-margin-vertical) var(--section-margin-horizontal);
 }
 
+@font-face {
+    font-family:  Arial, Open-Dyslexic, Verdana, Helvetica, monospace;
+    font-display: swap;
+}
 /* Header and title */
 header {
     top: 0;
@@ -288,7 +296,7 @@ img {
     padding: 16% 9%;
     /*aspect-ratio: 16 / 9;*/
     
-    background: rgb(var(--bg-mid));
+    background: var(--bg-mid);
     overflow: hidden;
 }
 .video-container iframe {
@@ -552,7 +560,7 @@ a:active {
     box-sizing: border-box;  /* Include padding/border in width/height */
     width: 30%;
     height: 100px;
-    background: var(--card-bg);
+    background-color: var(--card-bg) !important; /* Important specifier or else bg is transparent, don't know why */
     border: var(--card-border);
     border-radius: var(--card-radius);
     text-align: center;
@@ -561,7 +569,7 @@ a:active {
     justify-content: center;
     cursor: pointer;
     transition: all 0.42s;
-  user-select: none;         /* Prevent text selection */
+    user-select: none;         /* Prevent text selection */
     font-weight: bolder;
     color: black;
     margin: 7px;
@@ -569,7 +577,7 @@ a:active {
 
 .card:hover {
     border: 2px solid lightgray;
-    transform: scale(1.025); /* Growth */
+    transform: scale(1.05); /* Growth */
     margin: 15px;
     
     box-shadow: 12px 17px 51px rgba(0, 0, 0, 0.22);
@@ -577,7 +585,7 @@ a:active {
 }
 
 .card:active {
-    transform: scale(0.93); /* Shrink */
+    transform: scale(0.95); /* Shrink */
     margin: 5px;            /* Adjust margin to compensate */
 }
 
@@ -656,18 +664,17 @@ blockquote {
     justify-content: center;
     display: block;
     margin: 0 auto;
-    
     position: relative;
     height: auto;
     width: auto;
-    background: rgb(var(--bg-mid));
-    border: 2px solid rgb(50, 50, 50);
+    background: var(--code-title-bg-color);
+    border: 5px solid var(--code-title-bg-color);
     border-radius: 15px;
     overflow: hidden;
 }
 
 .Swindow-title {
-    background: rgb(52, 52, 55);
+    background: var(--code-title-bg-color); 
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -676,7 +683,7 @@ blockquote {
     box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
 }
 .Swindow-title p {
-    color: rgb(210, 200, 210);
+    color: var(--h2-color); 
     padding: 0;
     text-align: left;
     font-weight: bold;
@@ -686,18 +693,18 @@ blockquote {
 .Sconsole {
     width: 100%;
     height: auto;
-    background-color: rgb(52, 52, 55);
-    color: rgb(255, 255, 255);
+    background-color: var(--code-title-bg-color);
+    color: #fff;
     overflow: auto;
 }
 .Sconsole pre {
     margin: 0;
     padding: 17px;
-    font-size: 15px;
+    background: var(--code-bg-color);
 }
 .Sconsole pre code {
-    color: rgb(25, 245, 25);
     outline: none;
+    color: var(--code-text-color);
     font-size: 14px;
 }
 
@@ -956,7 +963,7 @@ blockquote {
     width: 95%;
     height: var(--carHeight);
     object-fit: contain;   /* or "cover" if you want to crop edges */
-    background: rgb(var(--bg-mid));
+    background: var(--bg-mid);
     
     border-radius: 1rem;
 }

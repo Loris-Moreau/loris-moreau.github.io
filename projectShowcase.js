@@ -17,6 +17,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const img = document.createElement("img");
             img.src = src;
             img.loading = "eager";
+            img.alt = src;
             if (i === 0) img.classList.add("active");
             carousel.appendChild(img);
             return img;
