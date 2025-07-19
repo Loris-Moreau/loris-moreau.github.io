@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const imgElements = proj.images.map((src, i) => {
             const img = document.createElement("img");
             img.src = src;
-            img.loading = "lazy";
+            img.loading = "eager";
             if (i === 0) img.classList.add("active");
             carousel.appendChild(img);
             return img;
