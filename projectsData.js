@@ -82,10 +82,10 @@ const projects = [
     {
         id: "Houdini",
         title: "Houdini",
-        shortDesc: "Houdini Tools",
-        longDesc: "Houdini tools made to learn the software and once again experiment.",
-        goals: "Lear, experiment and make cool stuff along the way.",
-        features: "Modular & Exportable Houdini Tools",
+        shortDesc: "Collection of Houdini Tools",
+        longDesc: "Houdini tools made to learn the software and once again experiment with the software.",
+        goals: "Learn, experiment and make cool stuff along the way that I could bring into Game Engines.",
+        features: "Modular Houdini Tools",
         images: ["Images/Showcase/Houdini-Showcase.gif"],
         
         links: [
