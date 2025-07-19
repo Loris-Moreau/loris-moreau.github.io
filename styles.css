@@ -212,6 +212,7 @@ button:active{
 }
 
 .backButton {
+    z-index: 900; /* for phone readability */
     text-align: left; 
     margin-top: 2px; 
     margin-left: 4px; 
