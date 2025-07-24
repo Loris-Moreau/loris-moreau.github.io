@@ -155,11 +155,11 @@
             SoA excels when you frequently access only a subset of a struct’s members, each cache line then holds just the data you need, 
             leading to significant gains in performance.
         </h3>
-        <br>
+        <p></p> 
         <h3>
             However, since our ray-tracing functions always reference every Sphere field together, a pure SoA approach isn’t ideal.
         </h3>
-        <br>
+        <p></p> 
         <h3>
             Instead, we use an 
             <a href="https://www.intel.com/content/www/us/en/developer/articles/technical/memory-layout-transformations.html" target="_blank">Array of Structures of Arrays (AoSoA)</a> 
@@ -168,7 +168,7 @@
         <h3>
             If we have more spheres than fit in one SIMD vector, we simply add another “lane” <i>(another fixed-size chunk)</i> to our AoSoA.
         </h3>
-        <br>
+        <p></p> 
         <h3>
             This way, each chunk maps perfectly onto SIMD registers, maximizing both alignment and throughput.
         </h3>
