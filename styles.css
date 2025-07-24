@@ -9,7 +9,7 @@
     /* Card Styling: background, border, and corner radius */
     --card-bg: rgba(117, 117, 117, 0.75);  /* Semi-transparent gray */
     --card-border: 2px solid black;       /* Solid black border */
-    --card-radius: 17px;                 /* Rounded corners */
+    --card-radius: 1.14rem;                 /* Rounded corners */
     
     /* Text Colors for headings */
     --h1-color: rgb(255, 255, 255);  
@@ -889,18 +889,18 @@ blockquote {
 .projects {
     display: flex;
     flex-wrap: wrap;
-    gap: 25px;
+    gap: 27px;
     max-width: 1000px;
     width: 100%;
     
-    padding: 25px;        /* optional: adds spacing around */
+    padding: 45px;        /* adds spacing around */
     margin: 0 auto;       /* centers the container */
     justify-content: center; /* ensures even spacing if there's fewer cards */
 }
 .project-card {
     position: relative;
     background: var(--card-bg); 
-    border-radius: 1rem;
+    border-radius: var(--card-radius);
     overflow: hidden;
     transition: transform 0.42s ease, box-shadow 0.42s ease;
     cursor: pointer;
@@ -908,7 +908,7 @@ blockquote {
     flex-direction: column;
     max-width: 400px;
     width: 100%;
-    height: 470px;
+    height: 475px;
 }
 .project-card:hover {
     transform: scale(1.025);
@@ -918,7 +918,7 @@ blockquote {
     display: flex;
     gap: 20px;
     align-items: flex-start;
-    margin-bottom: 20px;
+    margin: 20px;
     flex-wrap: wrap; /* for mobile fallback */
 }
 
@@ -926,7 +926,7 @@ blockquote {
     flex: 1;
     max-width: 100%;
     position: relative;
-    height: 450px;
+    height: 475px;
 }
 
 #carousel img {
@@ -935,7 +935,7 @@ blockquote {
     object-fit: contain;
     background: var(--bg-mid);
     
-    border-radius: 1rem;
+    border-radius: var(--card-radius);
     display: none;
 }
 
@@ -955,17 +955,17 @@ blockquote {
     position: relative;
     overflow: hidden;
     height: 100%;
-    --carHeight: 225px;
+    --carouselHeight: 275px;
 }
 
 .carousel img {
     display: none;
     width: 95%;
-    height: var(--carHeight);
-    object-fit: contain;   /* or "cover" if you want to crop edges */
-    background: var(--bg-mid);
+    height: var(--carouselHeight);
+    object-fit: contain;
+    background: var(--card-bg) solid;
     
-    border-radius: 1rem;
+    border-radius: var(--card-radius);
 }
 
 .carousel img.active {
@@ -1023,7 +1023,6 @@ blockquote {
 .link-badge img {
     width: 100%;
     height: 100%;
-    /*filter: grayscale(100%);*/
     opacity: 0.75;
     transition: opacity 0.2s;
 }
