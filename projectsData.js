@@ -167,4 +167,6 @@ const projects = [
                 url: "https://globalgamejam.org/games/2024/battle-boule-arena-4-0" }
         ]
     },
+    
+    // Should I add Hardware Showcases ??
 ];

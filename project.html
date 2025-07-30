@@ -42,7 +42,6 @@
                 imgs[current].classList.add("active");
             };
             
-            /**/
             // Add project link button if available
             const projectDetail = document.getElementById("project-detail");
             const repo = project.links?.find(link => link?.url);
@@ -55,14 +54,21 @@
                 linkBtn.style.display = "inline-block";
                 linkBtn.style.marginTop = "25px";
                 linkBtn.style.padding = "20px";
-                linkBtn.style.backgroundColor = "#007bff";
+                linkBtn.style.backgroundColor = "#585858";
                 linkBtn.style.color = "#fff";
                 linkBtn.style.borderRadius = "8px";
                 linkBtn.style.textDecoration = "none";
                 linkBtn.style.fontWeight = "bold";
                 
-                linkBtn.onmouseover = () => linkBtn.style.backgroundColor = "#0056b3";
-                linkBtn.onmouseout = () => linkBtn.style.backgroundColor = "#007bff";
+                linkBtn.onmouseover = () => linkBtn.style.backgroundColor = "#323232";
+                linkBtn.onmouseover = () => linkBtn.style.scale = "1.05";
+                
+                linkBtn.onmouseout = () => linkBtn.style.backgroundColor = "#585858";
+                linkBtn.onmouseout = () => linkBtn.style.scale = "1.0";
+                
+                linkBtn.onmousedown = () => linkBtn.style.backgroundColor = "#5a5a5a";
+                linkBtn.onmousedown = () => linkBtn.style.scale = "0.95";
+                
                 const wrapper = document.createElement("div");
                 wrapper.style.textAlign = "center";
                 
@@ -102,12 +108,12 @@
             <button id="prev" class="prev">❮</button>
             <button id="next" class="next">❯</button>
         </div>
-        <div class="proj-desc-container">
-            <p style="padding: 2.5rem"></p> <!--Spacing so the text is offset (the one next to the images) -->
+        <div class="proj-desc-container" style="padding-bottom: 0">
+            <p style="padding: 2.75em"></p> <!--Spacing so the text is offset (the one next to the images) -->
             <h3 id="proj-desc"></h3>
         </div>
     </div>
-    <div class="project-content">
+    <div class="project-content" style="padding-top: 0">
         <h2 class="underline" style="text-decoration-color: cadetblue">Objectives & Goals</h2>
         <h3 id="proj-goals"></h3>
         
@@ -117,7 +123,7 @@
         <h3 id="proj-features"></h3>
     </div>
     
-    
+    <!-- View Project Button -->
     <div id="project-detail"></div>
     
 </div>

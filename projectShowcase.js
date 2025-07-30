@@ -50,7 +50,8 @@ document.addEventListener("DOMContentLoaded", () => {
         const content = document.createElement("div");
         content.className = "project-content";
         content.innerHTML = `<h3 class="project-title">${proj.title}</h3>
-                         <p class="project-desc">${proj.shortDesc}</p>`;
+                           <p class="project-desc">${proj.shortDesc}</p>
+                           <br>`;
         card.appendChild(content);
         
         
@@ -78,7 +79,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             const img = document.createElement("img");
             img.src = link.icon;
-            img.alt = "";  // could set alt to service name
+            img.alt = img.title;
             el.appendChild(img);
 
             linksContainer.appendChild(el);

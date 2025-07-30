@@ -855,12 +855,11 @@ pre {
     position: relative;
     overflow: hidden;
     height: 100%;
-    --carouselHeight: 275px;
 }
 .carousel img {
     display: none;
     width: 95%;
-    height: var(--carouselHeight);
+    height: 275px;
     object-fit: contain;
     background: var(--card-bg) solid;
     
