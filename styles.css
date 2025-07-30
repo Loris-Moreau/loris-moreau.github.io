@@ -1,3 +1,15 @@
+/* 
+EM: Relative to the parent element
+
+REM: Relative to the root element (HTML tag)
+
+%: Relative to the parent element
+
+VW: Relative to the viewport’s width
+
+VH: Relative to the viewport’s height
+*/
+
 /* ---------- Global Variables ---------- */
 :root { 
     /* Background Colors */
@@ -9,7 +21,7 @@
     /* Card Styling: background, border, and corner radius */
     --card-bg: rgba(117, 117, 117, 0.75);  /* Semi-transparent gray */
     --card-border: 2px solid black;       /* Solid black border */
-    --card-radius: 1.14rem;                 /* Rounded corners */
+    --card-radius: 1.15rem;              /* Rounded corners */
     
     /* Dropdown Styling */
     /*--dropdown-bg: rgb(142, 152, 161);*/
@@ -37,8 +49,12 @@
     --font-h2: 1.75em;
     --font-h3: 1.5em;
     --font-h4: 1.25em;
-    --font-h5: 0.95em;
-    --font-button: 16px;
+    --font-h5: 1.0em;
+    
+    --font-button: 1.0em;
+    /* lists */
+    --font-li: 1.5em;
+    
     
     /* Spacing */
     --section-padding: 20px;
@@ -310,7 +326,7 @@ ul {
 }
 ul li {
     /* match font size */
-    font-size: var(--font-h3);
+    font-size: var(--font-li);
     /* match font color */
     color: var(--h3-color);
 }
@@ -682,7 +698,7 @@ pre {
     background-color: var(--dropdown-bg);
     color: var(--h1-color);
     padding: 10px 20px;
-    font-size: var(--font-h4);
+    font-size: var(--font-li);
     text-align: center;
     border-radius: 5px;
     cursor: pointer;
