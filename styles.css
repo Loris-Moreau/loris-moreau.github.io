@@ -11,74 +11,70 @@ VH: Relative to the viewport’s height
 */
 
 /* ---------- Global Variables ---------- */
-:root { 
+:root {
     /* Background Colors */
-    --bg-color-1: rgb(30, 30, 35);   /* Dark base color */ 
-    --bg-color-2: rgb(42, 42, 47);  /* Lighter secondary color */ 
-    --bg-mid: color-mix(in srgb, var(--bg-color-1) 50%, var(--bg-color-2) 50%);      /* Midpoint value for single-color backgrounds */ 
-    --bg-gradient: linear-gradient(-120deg, var(--bg-color-1), var(--bg-color-2));  /* Angular gradient */ 
-    
+    --bg-color-1: rgb(30, 30, 35);   /* Dark base color */
+    --bg-color-2: rgb(42, 42, 47);  /* Lighter secondary color */
+    --bg-mid: color-mix(in srgb, var(--bg-color-1) 50%, var(--bg-color-2) 50%);      /* Midpoint value for single-color backgrounds */
+    --bg-gradient: linear-gradient(-120deg, var(--bg-color-1), var(--bg-color-2));  /* Angular gradient */
+
     /* Card Styling: background, border, and corner radius */
     --card-bg: rgba(117, 117, 117, 0.75);  /* Semi-transparent gray */
     --card-border: 2px solid black;       /* Solid black border */
     --card-radius: 1.15rem;              /* Rounded corners */
-    
+
     /* Dropdown Styling */
-    /*--dropdown-bg: rgb(142, 152, 161);*/
     --dropdown-bg: rgb(127, 137, 147);
     --dropdown-hover-bg: rgb(95, 105, 115);
     --dropdown-text-color: rgb(20, 20, 20);
-    
+
     /* Sidebar Styling */
     --sidebar-bg: rgb(77, 87, 115);
-    
-    /* Text Colors for headings */
-    --h1-color: rgb(255, 255, 255);  
+
+    /* Text Colors */
+    --h1-color: rgb(255, 255, 255);
     --h2-color: rgb(245, 245, 245);
     --h3-color: rgb(230, 230, 230);
     --h4-color: rgb(215, 215, 215);
     --h5-color: rgb(195, 195, 195);
-    /* Text Colors for links */
     --link-color: dodgerblue;
     --link-visited-color: steelblue;
     --link-hover-color: orchid;
     --link-active-color: darkorchid;
-    
+
     /* Font Sizes */
     --font-h1: 2em;
     --font-h2: 1.75em;
     --font-h3: 1.5em;
     --font-h4: 1.25em;
     --font-h5: 1.0em;
-    
     --font-button: 1.0em;
-    /* lists */
     --font-li: 1.5em;
-    
-    
+
+
     /* Spacing */
     --section-padding: 20px;
     --section-margin-vertical: 10px;
-    --section-margin-horizontal: 0px; 
+    --section-margin-horizontal: 0px;
     --post-padding: 15px;
     --post-margin: 15px;
     --inline-padding: 10px 20px;      /* Buttons and inline elements */
-    
+
     /* Buttons */
     --button-bg: rgba(170, 170, 170, 0.74);
     --button-bg-hover: rgba(155, 155, 155, 0.65);
     --button-bg-active: rgba(195, 195, 195, 0.75);
     --button-radius: 5px;
-    --button-scale-hover: 1.05;                    /* Enlarge on hover */
-    --button-scale-active: 0.95;                  /* Shrink on click */
-    
+    --button-scale-hover: 1.05;   /* Enlarge on hover */
+    --button-scale-active: 0.95; /* Shrink on click */
+
     /* Underline */
     --underline-color: orangered;
     --underline-thickness: 3px;
-    
+
     /* Image corners */
     --img-radius: 4px;
-    
+
     /* Burger menu variables */
     --burger-bg: var(--button-bg);
     --burger-color: rgb(25, 25, 25);
@@ -87,14 +83,14 @@ VH: Relative to the viewport’s height
     --burger-line-width: 1.125em;
     --burger-line-height: 0.125em;
     --burger-offset: 0.625em;         /* Distance of lines from top/bottom edges */
-    
-    /* Navigation panel styling */
+
+    /* Navigation Panel */
     --nav-bg: rgb(230, 230, 230);
     --nav-text-color: rgba(25, 25, 25, 1);
     --nav-border-radius: 0.375em;
     --nav-button-hover-bg: rgb(100, 149, 237);
     --nav-button-hover-text-color: rgb(255, 255, 255);
-    
+
     /* Code Snippet */
     --code-title-bg-color: rgb(52, 52, 55);
     --code-bg-color: rgb(37, 40, 37);
@@ -124,14 +120,27 @@ section {
     margin: var(--section-margin-vertical) var(--section-margin-horizontal);
 }
 
-/* Header and title */
+/* Header and Footer */
+header, footer{
+    width: 100%;
+    position: relative;
+    
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    
+    text-align: center;
+    
+    z-index: 10;
+}
 header {
     top: 0;
-    position: relative;
-    width: 100%;
-    text-align: center;
     padding-top: 25px;
     padding-bottom: 45px;
+}
+footer{
+    bottom: 0;
 }
 
 h1, h2, h3, h4, h5 {
@@ -170,9 +179,9 @@ h5 {
 
 /* Responsive post container */
 @media (max-width: 1100px) {
-    .post { max-width: 800px;}
+    .post { max-width: 800px; }
 }
-.post 
+.post
 {
     width: 100%;
     max-width: 1000px;
@@ -183,10 +192,10 @@ h5 {
 /* Flex-based grid for images or cards */
 .row {
     display: flex;
-    
+
     align-items: center;
     justify-content: center;
-}  
+}
 /* (use 33.33% for three, 25% for four, 50% for two, etc...) */
 .column {
     flex: 50%;
@@ -226,9 +235,9 @@ button:active{
 }
 .backButton {
     z-index: 900; /* on top of others */
-    text-align: left; 
-    margin-top: 2px; 
-    margin-left: 4px; 
+    text-align: left;
+    margin-top: 2px;
+    margin-left: 4px;
     position: fixed;
 }
 /* Shine effect*/
@@ -253,15 +262,9 @@ button:active{
     font-family: Arial, Open-Dyslexic, Verdana, Helvetica, monospace;
 }
 @keyframes shine {
-    0% {
-        background-position: 0;
-    }
-    60% {
-        background-position: 180px;
-    }
-    100% {
-        background-position: 200px;
-    }
+    0% { background-position: 0; }
+    60% { background-position: 180px; }
+    100% { background-position: 200px; }
 }
 
 /* Images */
@@ -271,10 +274,10 @@ img {
     height: auto;
     display: block;
     margin: 0 auto;
-    
+
     align-items: center;
     justify-content: center;
-    
+
     border-radius: var(--img-radius);
     padding-top: 15px;
     padding-bottom: 25px;
@@ -291,13 +294,13 @@ img {
     border: 0;
     width: 100%;
     height: 100%;
-    
+
     max-width: 640px;
     max-height: 360px;
-    
+
     padding: 16% 9%;
     /*aspect-ratio: 16 / 9;*/
-    
+
     background: var(--bg-mid);
     overflow: hidden;
 }
@@ -443,32 +446,32 @@ ul li {
     border-radius: 0.1875em;
     transition: transform 0.3s;
 }
-.burger span:nth-child(1) { 
-    top: var(--burger-offset); 
+.burger span:nth-child(1) {
+    top: var(--burger-offset);
 }
-.burger span:nth-child(2) { 
-    bottom: var(--burger-offset); 
+.burger span:nth-child(2) {
+    bottom: var(--burger-offset);
 }
-.burger span:nth-child(3) { 
-    top: 50%; 
-    transform: translateY(-50%); 
+.burger span:nth-child(3) {
+    top: 50%;
+    transform: translateY(-50%);
 }
-.burger:hover { 
-    transform: scale(1.1); 
+.burger:hover {
+    transform: scale(1.1);
 }
-.burger:active { 
-    transform: scale(0.95); 
+.burger:active {
+    transform: scale(0.95);
 }
-.popup input:checked + .burger span:nth-child(1) { 
-    top: 50%; 
-    transform: translateY(-50%) rotate(45deg); 
+.popup input:checked + .burger span:nth-child(1) {
+    top: 50%;
+    transform: translateY(-50%) rotate(45deg);
 }
-.popup input:checked + .burger span:nth-child(2) { 
-    bottom: 50%; 
-    transform: translateY(50%) rotate(-45deg); 
+.popup input:checked + .burger span:nth-child(2) {
+    bottom: 50%;
+    transform: translateY(50%) rotate(-45deg);
 }
-.popup input:checked + .burger span:nth-child(3) { 
-    transform: translateX(calc(-1 * var(--burger-diameter) - var(--burger-line-width))); 
+.popup input:checked + .burger span:nth-child(3) {
+    transform: translateX(calc(-1 * var(--burger-diameter) - var(--burger-line-width)));
 }
 .popup-window {
     position: absolute;
@@ -485,10 +488,10 @@ ul li {
     transform: scale(0.8);
     transition: all 0.1s ease-in-out;
 }
-.popup input:checked ~ .popup-window { 
-    visibility: visible; 
-    opacity: 1; 
-    transform: scale(1); 
+.popup input:checked ~ .popup-window {
+    visibility: visible;
+    opacity: 1;
+    transform: scale(1);
 }
 .popup-window legend {
     font-size: 0.625em;
@@ -496,11 +499,11 @@ ul li {
     text-transform: uppercase;
     padding: 0.25em 3.25rem;
 }
-.popup-window ul { 
-    list-style: none; 
-    margin: 0; 
-    padding: 0; 
-    font-size: 0.7em; 
+.popup-window ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    font-size: 0.7em;
 }
 .popup-window ul button {
     background: none;
@@ -528,9 +531,9 @@ ul li {
 a {
     text-decoration: none;
     font-weight: bold;
-    color: var(--link-color); 
+    color: var(--link-color);
 }
-a:link { 
+a:link {
     color: var(--link-color);
     background-color: transparent;
     text-decoration: none;
@@ -540,8 +543,8 @@ a:visited {
     background-color: transparent;
     text-decoration: none;
 }
-a:hover { 
-color: var(--link-hover-color);
+a:hover {
+    color: var(--link-hover-color);
     background-color: transparent;
     text-decoration: underline;
 }
@@ -574,7 +577,7 @@ a:active {
     border: 2px solid lightgray;
     transform: scale(1.05); /* Growth */
     margin: 15px;          /* Adjust margin to compensate */
-    
+
     box-shadow: 12px 17px 51px rgba(0, 0, 0, 0.22);
     backdrop-filter: blur(6px);
 }
@@ -599,7 +602,7 @@ pre {
     border-radius: 8px;
     font-size: 0.95rem;
     overflow: auto;
-    @media #{$media-size-phone} 
+    @media #{$media-size-phone}
     {
         white-space: pre-wrap;
         word-wrap: break-word;
@@ -635,7 +638,7 @@ pre {
     overflow: hidden;
 }
 .Swindow-title {
-    background: var(--code-title-bg-color); 
+    background: var(--code-title-bg-color);
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -644,7 +647,7 @@ pre {
     box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
 }
 .Swindow-title p {
-    color: var(--h2-color); 
+    color: var(--h2-color);
     padding: 0;
     text-align: left;
     font-weight: bold;
@@ -675,8 +678,8 @@ pre {
     display: flex;
     justify-content: center; /* Center horizontally */
     align-items: center; /* Center vertically */
-    width: 100%; 
-    height: 100%; 
+    width: 100%;
+    height: 100%;
     position: relative;
 }
 /* Dropdown Container */
@@ -789,14 +792,14 @@ pre {
     gap: 27px;
     max-width: 1000px;
     width: 100%;
-    
+
     padding: 45px;             /* adds spacing around */
     margin: 0 auto;           /* centers the container */
     justify-content: center; /* ensures even spacing if there's fewer cards */
 }
 .project-card {
     position: relative;
-    background: var(--card-bg); 
+    background: var(--card-bg);
     border-radius: var(--card-radius);
     overflow: hidden;
     transition: transform 0.42s ease, box-shadow 0.42s ease;
@@ -830,7 +833,7 @@ pre {
     width: 100%;
     object-fit: contain;
     background: var(--bg-mid);
-    
+
     border-radius: var(--card-radius);
     display: none;
 }
@@ -839,7 +842,7 @@ pre {
 }
 .proj-desc-container {
     flex: 1;
-    
+
     min-width: 225px;
     max-width: 450px;
 }
@@ -854,7 +857,7 @@ pre {
     height: 275px;
     object-fit: contain;
     background: var(--card-bg) solid;
-    
+
     border-radius: var(--card-radius);
 }
 .carousel img.active {
@@ -865,7 +868,7 @@ pre {
     top: 50%;
     transform: translateY(-50%);
     background: rgba(0,0,0,0.65);
-    color: var(--h1-color); 
+    color: var(--h1-color);
     border: none;
     padding: 6px 12px;
     cursor: pointer;
@@ -877,16 +880,16 @@ pre {
     right: 10px;
 }
 .project-content {
-    padding: var(--post-padding); 
+    padding: var(--post-padding);
 }
 .project-title {
-    font-size: var(--font-h3); 
-    color: var(--h1-color); 
+    font-size: var(--font-h3);
+    color: var(--h1-color);
     margin: 0;
 }
 .project-desc {
-    font-size: var(--font-h4); 
-    color: var(--h2-color); 
+    font-size: var(--font-h4);
+    color: var(--h2-color);
 }
 /* Showcase Link */
 /* container for all badges */
