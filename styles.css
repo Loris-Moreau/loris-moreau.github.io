@@ -101,6 +101,10 @@ VH: Relative to the viewport’s height
     --code-text-color: rgb(25, 255, 25);
 }
 
+@font-face {
+    font-family:  Arial, Open-Dyslexic, Verdana, Helvetica, monospace;
+    font-display: swap;
+}
 /* ---------- Website Components ---------- */
 
 /* Background pattern */
@@ -119,10 +123,6 @@ section {
     margin: var(--section-margin-vertical) var(--section-margin-horizontal);
 }
 
-@font-face {
-    font-family:  Arial, Open-Dyslexic, Verdana, Helvetica, monospace;
-    font-display: swap;
-}
 /* Header and title */
 header {
     top: 0;
