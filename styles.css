@@ -101,6 +101,11 @@ VH: Relative to the viewport’s height
     --code-text-color: rgb(25, 255, 25);
 }
 
+@font-face {
+    font-family:  Arial, Open-Dyslexic, Verdana, Helvetica, monospace;
+    font-display: swap;
+}
+
 /* ---------- Website Components ---------- */
 
 /* Background pattern */
@@ -119,10 +124,6 @@ section {
     margin: var(--section-margin-vertical) var(--section-margin-horizontal);
 }
 
-@font-face {
-    font-family:  Arial, Open-Dyslexic, Verdana, Helvetica, monospace;
-    font-display: swap;
-}
 /* Header and title */
 header {
     top: 0;
@@ -132,48 +133,39 @@ header {
     padding-top: 25px;
     padding-bottom: 45px;
 }
-h1 {
-    color: var(--h1-color);
-    font-size: var(--font-h1);
-    margin: 0;
-}
-h2 {
+
+h1, h2, h3, h4, h5 {
     position: relative;
     width: 100%;
     text-align: center;
+    margin: 0;
+}
+h1 {
+    color: var(--h1-color);
+    font-size: var(--font-h1);
+}
+h2 {
     padding: var(--section-padding) 0;
     color: var(--h2-color);
     font-size: var(--font-h2);
-    margin: 0;
 }
 h3 {
-    position: relative;
     width: 95%;
-    text-align: center;
     padding: 7px 0 7px 2.5%;
     color: var(--h3-color);
     font-size: var(--font-h3);
-    margin: 0;
     word-wrap: normal;
     overflow-wrap: anywhere;
 }
 h4 {
-    position: relative;
-    width: 100%;
-    text-align: center;
     padding: 5px 0;
     color: var(--h4-color);
     font-size: var(--font-h4);
-    margin: 0;
 }
 h5 {
-    position: relative;
-    width: 100%;
-    text-align: center;
     padding: 2px 0;
     color: var(--h5-color);
     font-size: var(--font-h5);
-    margin: 0;
 }
 
 /* Responsive post container */
