@@ -1,0 +1,139 @@
+/* styles.css */
+/* 1. Global Variables */
+:root {
+    /* Colors */
+    --color-bg: #c38484;
+    --color-header: #333;
+    --color-footer: #222;
+    --color-text: #111;
+    --color-accent: #007acc;
+
+    /* Typography */
+    --font-size-base: 16px;
+    --line-height-base: 1.5;
+
+    /* Spacing */
+    --spacing-xSmall: 0.5rem;
+    --spacing-small: 1rem;
+    --spacing-medium: 2rem;
+    --spacing-large: 3rem;
+    --spacing-xLarge: 4rem;
+
+    /* Layout */
+    --sidebar-width: 250px;
+    --max-content-width: 1200px;
+    --grid-gap: var(--spacing-medium);
+    /* Distance from viewport top: burger top + optional gap */
+    --sidebar-top: calc(var(--spacing-xLarge) * 2);
+    --sidebar-left: var(--spacing-medium);
+    
+    /* Breakpoints */
+    --bp-small: 480px;
+    --bp-medium: 768px;
+    --bp-large: 1024px;
+    
+}
+
+/* 2. Reset & Base */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+    font-size: var(--font-size-base);
+    line-height: var(--line-height-base);
+    color: var(--color-text);
+    background: var(--color-bg);
+}
+
+/* 3. Header & Footer full viewport width excluding wrapper padding */
+.site-header,
+.site-footer {
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    padding: var(--spacing-small) var(--spacing-medium); /* Top & Bottom, Left & Right */
+    background: var(--color-header);
+    color: #fff;
+    text-align: center;
+    z-index: 10;
+}
+.site-footer {
+    background: var(--color-footer);
+}
+
+/* 4. Burger Menu (fixed top-left) */
+.burger {
+    position: fixed;
+    top: var(--spacing-small);
+    left: var(--spacing-small);
+    background: transparent;
+    border: none;
+    font-size: 1.5rem;
+    color: #fff;
+    cursor: pointer;
+    z-index: 1001;
+}
+
+/* 5. Site Grid Container (between header & footer) */
+.site-wrapper {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-template-areas: "sidebar content";
+    gap: var(--grid-gap);
+    max-width: var(--max-content-width);
+    margin: 0 auto;
+    padding: var(--spacing-medium);
+    padding-top: calc(var(--spacing-large) + var(--spacing-medium)); /* push below header */
+    padding-bottom: var(--spacing-large); /* create space above footer */
+}
+
+/* 6. Sidebar (sticky, under burger) */
+.sidebar {
+    grid-area: sidebar;
+    width: var(--sidebar-width);
+    position: fixed;
+    top: var(--sidebar-top);
+    left: var(--sidebar-left);
+    align-self: start;
+}
+
+/* 7. Content Area */
+.content {
+    grid-area: content;
+    /* Center content within its column */
+    max-width: var(--max-content-width);
+    margin: 0 auto;
+}
+
+/* 8. Social Icons in Footer */
+.social-icons {
+    display: flex;
+    justify-content: center;
+    gap: var(--spacing-small);
+    font-size: 1.5rem;
+}
+
+/* 9. Responsive Tweaks */
+@media (max-width: var(--bp-medium)) {
+    .site-wrapper {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+            "content"
+            "sidebar";
+        padding-top: calc(var(--spacing-large) + var(--spacing-medium));
+    }
+    .sidebar {
+        position: relative;
+        width: 100%;
+        top: auto;
+        margin-top: var(--spacing-medium);
+    }
+}
+
+@media (max-width: var(--bp-small)) {
+    .site-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
