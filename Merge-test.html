@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Style Demo</title>
+    <link rel="icon" type="image/x-icon" href="Images/icon.png">
+    <link rel="stylesheet" href="merge-test.css">
+
+    <!-- Meta Tags -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Loris Moreau">
+    <meta name="description" content="CSS style demonstration">
+</head>
+<body>
+<div class="background"></div>
+
+<div class="sidebar">
+    <h2>Contents :</h2>
+    <a href="#video">Video Embed</a>
+    <a href="#quote">Quote Box</a>
+    <a href="#code">Code Snippet</a>
+    <a href="#links">Showcase Links</a>
+    <a href="#dropdown">Dropdown Menu</a>
+</div>
+
+<div class="page" id="MainPage">
+    <header>
+        <h1>CSS Feature Demonstration</h1>
+    </header>
+
+    <!-- Video Embed -->
+    <section id="video">
+        <h2 class="underline">Video Embed</h2>
+        <div class="video-wrapper" style="scale: 85%;">
+            <div class="video-container">
+                <iframe
+                        src="https://www.youtube.com/embed/g4oDCv22zHA"
+                        allowfullscreen
+                        title="Demo Video"
+                        loading="lazy"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                ></iframe>
+            </div>
+        </div>
+    </section>
+
+    <p></p>
+
+    <!-- Quote Box -->
+    <section id="quote">
+        <h2 class="underline">Quote</h2>
+        <div class="quote">
+            “The best way to predict the future is to invent it.”<br>
+            <span style="display:block; text-align:right;">– Alan Kay</span>
+        </div>
+    </section>
+
+    <p></p>
+
+    <!-- Code Snippet -->
+    <section id="code">
+        <h2 class="underline">Code Snippet</h2>
+        <div class="snippet">
+            <div class="Swindow">
+                <div class="Swindow-title">
+                    <p>Hello World in C++</p>
+                </div>
+                <div class="Sconsole">
+<pre><code>#include &lt;iostream&gt;
+
+int main() {
+    std::cout &lt;&lt; "Hello, world!" &lt;&lt; std::endl;
+    return 0;
+}
+</code></pre>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <p></p>
+
+    <!-- Showcase Link Badges -->
+    <section id="links">
+        <h2 class="underline">Link Badges</h2>
+        <div class="links-container">
+            <a class="link-badge" href="https://loris-moreau.itch.io/" target="_blank">Itch.io</a>
+            <a class="link-badge" href="https://github.com/Loris-Moreau" target="_blank">GitHub</a>
+            <a class="link-badge" href="https://linkedin.com/in/loris-moreau" target="_blank">LinkedIn</a>
+        </div>
+    </section>
+
+    <p></p>
+
+    <!-- Dropdown -->
+    <section id="dropdown">
+        <h2 class="underline">Dropdown</h2>
+        <div class="outer-container">
+            <div class="dropdown-container">
+                <label for="dropdown-test" class="dropdown-label">Click to see recommended book</label>
+                <input type="checkbox" id="dropdown-test" class="dropdown-checkbox">
+                <div class="dropdown-menu">
+                    <h3>
+                        <a href="https://github.com/Loris-Moreau/Library" target="_blank">
+                            Loris' Programming Library
+                        </a>
+                    </h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <p style="padding: 20px"></p>
+
+    <!-- End -->
+    <h4>That's all! 🎉</h4>
+</div>
+</body>
+</html>
