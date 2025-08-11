@@ -5,13 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="df844061-607d-4516-8926-0cdf558aec54" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Styles/BorgirStyle.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Styles/CardStyle.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Styles/DropdownContainerStyle.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Styles/MainStyle.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Styles/ShowcaseStyle.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Styles/SidebarStyle.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Styles/VideoStyle.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Scripts/BorgirLayout.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Scripts/CommonLayout.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test proc.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Blog.html" beforeDir="false" afterPath="$PROJECT_DIR$/Blog.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Blog/3DGameEngine.html" beforeDir="false" afterPath="$PROJECT_DIR$/Blog/3DGameEngine.html" afterDir="false" />
@@ -36,18 +32,11 @@
       <change beforePath="$PROJECT_DIR$/Blog/VFX-2.html" beforeDir="false" afterPath="$PROJECT_DIR$/Blog/VFX-2.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Blog/Workflow.html" beforeDir="false" afterPath="$PROJECT_DIR$/Blog/Workflow.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ExternalResources.html" beforeDir="false" afterPath="$PROJECT_DIR$/ExternalResources.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Templates/RayTracingTemplate.html" beforeDir="false" afterPath="$PROJECT_DIR$/Templates/TemplateRayTracing.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Templates/TemplatePage.html" beforeDir="false" afterPath="$PROJECT_DIR$/Templates/TemplatePage.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Templates/TemplatePost.html" beforeDir="false" afterPath="$PROJECT_DIR$/Templates/TemplatePost.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Testing/grid.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Testing/grid.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Templates/TemplateRayTracing.html" beforeDir="false" afterPath="$PROJECT_DIR$/Templates/TemplateRayTracing.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/project.html" beforeDir="false" afterPath="$PROJECT_DIR$/project.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projectShowcase.js" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/projectShowcase.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projectsData.js" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/projectsData.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sidebarFocusScript.js" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/sidebarFocusScript.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/styles.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/videoScript.js" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/videoScript.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,9 +46,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="JavaScript File" />
-        <option value="HTML File" />
         <option value="CSS File" />
+        <option value="HTML File" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -216,6 +205,7 @@
       <workItem from="1753966751264" duration="76000" />
       <workItem from="1754902528874" duration="871000" />
       <workItem from="1754906016367" duration="3177000" />
+      <workItem from="1754909234583" duration="3870000" />
     </task>
     <servers />
   </component>
