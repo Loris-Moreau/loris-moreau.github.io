@@ -37,6 +37,7 @@ VH: Relative to the viewport’s height
     --h3-color: rgb(230, 230, 230);
     --h4-color: rgb(215, 215, 215);
     --h5-color: rgb(195, 195, 195);
+    /* Link Colors */
     --link-color: dodgerblue;
     --link-visited-color: steelblue;
     --link-hover-color: orchid;
@@ -59,7 +60,7 @@ VH: Relative to the viewport’s height
     --post-padding: 15px;
     --post-margin: 15px;
     --inline-padding: 10px 20px;      /* Buttons and inline elements */
-
+    
     /* Buttons */
     --button-bg: rgba(170, 170, 170, 0.74);
     --button-bg-hover: rgba(155, 155, 155, 0.65);
