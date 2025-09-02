@@ -143,7 +143,7 @@ const projects = [
         title: "Windows Adventure",
         shortDesc: "This is a prototype I made to learn Godot and it's window spawning mechanic.",
         longDesc: "It's a platformer in which windows will appear along your path some to help and other just to block your view.",
-        goals: "Lear Godot and experiment with the window management system.",
+        goals: "Learn Godot and experiment with the window management system.",
         features: "Simple platformer with a modular window spawner that overlays custom shaders over images or videos.",
         images: ["Images/Showcase/WA2.png", "Images/Showcase/WA1.png", "Images/Showcase/WA3.png"],
 
