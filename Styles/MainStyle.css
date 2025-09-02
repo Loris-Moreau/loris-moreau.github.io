@@ -13,8 +13,8 @@ VH: Relative to the viewport’s height
 /* ---------- Global Variables ---------- */
 :root {
     /* Background Colors */
-    --bg-color-1: rgb(30, 30, 35);   /* Dark base color */
-    --bg-color-2: rgb(42, 42, 47);  /* Lighter secondary color */
+    --bg-color-1: rgb(42, 42, 47);   /* Dark base color */
+    --bg-color-2: rgb(52, 52, 57);  /* Lighter secondary color */
     --bg-mid: color-mix(in srgb, var(--bg-color-1) 50%, var(--bg-color-2) 50%);      /* Midpoint value for single-color backgrounds */
     --bg-gradient: linear-gradient(-120deg, var(--bg-color-1), var(--bg-color-2));  /* Angular gradient */
     
