@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tilted Rotating Icon Ring with Depth Effect</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: radial-gradient(circle at center, #111 40%, #000 100%);
+            perspective: 1000px; /* mild depth */
+            overflow: hidden;
+        }
+
+        .ring {
+            position: relative;
+            width: 300px;
+            height: 300px;
+            transform-style: preserve-3d;
+            transform: rotateX(20deg); /* tilt forward */
+            animation: spin 15s linear infinite;
+        }
+
+        .ring img {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            width: 70px;
+            height: 70px;
+            transform-style: preserve-3d;
+            filter: drop-shadow(0 0 8px rgba(255,255,255,0.5));
+            transform: translate(-50%, -50%);
+            transition: transform 0.5s, opacity 0.5s;
+        }
+
+        /* distribute icons evenly in a circle, with depth illusion */
+        .ring img:nth-child(1) { transform: rotateY(0deg) translateZ(250px) scale(1);     opacity: 1; }
+        .ring img:nth-child(2) { transform: rotateY(60deg) translateZ(200px) scale(0.9);  opacity: 0.85; }
+        .ring img:nth-child(3) { transform: rotateY(120deg) translateZ(150px) scale(0.8); opacity: 0.7; }
+        .ring img:nth-child(4) { transform: rotateY(180deg) translateZ(100px) scale(0.7); opacity: 0.5; }
+        .ring img:nth-child(5) { transform: rotateY(240deg) translateZ(150px) scale(0.8); opacity: 0.7; }
+        .ring img:nth-child(6) { transform: rotateY(300deg) translateZ(200px) scale(0.9); opacity: 0.85; }
+
+        @keyframes spin {
+            from { transform: rotateX(20deg) rotateY(0deg); }
+            to   { transform: rotateX(20deg) rotateY(360deg); }
+        }
+    </style>
+</head>
+<body>
+<div class="ring">
+    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/html5.svg" alt="HTML5">
+    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/css3.svg" alt="CSS3">
+    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/javascript.svg" alt="JavaScript">
+    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/react.svg" alt="React">
+    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/node-dot-js.svg" alt="Node.js">
+    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/github.svg" alt="GitHub">
+</div>
+</body>
+</html>
