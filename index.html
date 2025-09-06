@@ -1,21 +1,25 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="">
 <head>
     <meta charset="UTF-8">
-    <title>Loris Moreau</title>
-    <link rel="icon" type="image/x-icon" href="Images/icon.webp">
-    <!-- Styles 
-    <link rel="stylesheet" href="Styles/MainStyle.css"> -->
-    <!-- Scripts
-    <script src="Scripts/CommonLayout.js" defer></script> -->
-
-    <!-- Meta Tags for SEO -->
+    <link rel="icon" href="/favicon.ico">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="author" content="Loris Moreau">
-    <meta name="description" content="Main Page of my showcase website">
-    <meta name="keywords" content="Showcase, Loris, Moreau, Loris Moreau, Programmer, Gameplay Programmer, Rendering, Demoreel, coding adventure, 3D Engine, Raytracing">
+    <title>Test Vite App</title>
+    <link href="/src/style.css" rel="stylesheet">
 </head>
 <body>
+<div id="app"></div>
+<script type="module" src="/src/main.ts"></script>
+<h1 class="text-3xl font-bold underline">
+    Hello world!
+</h1>
 
+<div class="mx-auto flex max-w-sm items-center gap-x-4 rounded-xl bg-white p-6 shadow-lg outline outline-black/5 dark:bg-slate-800 dark:shadow-none dark:-outline-offset-1 dark:outline-white/10">
+    <img class="size-12 shrink-0" src="/img/logo.svg" alt="ChitChat Logo" />
+    <div>
+        <div class="text-xl font-medium text-black dark:text-white">ChitChat</div>
+        <p class="text-gray-500 dark:text-gray-400">You have a new message!</p>
+    </div>
+</div>
 </body>
 </html>
