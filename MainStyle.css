@@ -1,0 +1,149 @@
+:root{
+    /* Background Colors */
+    --bg-color-1: rgb(42, 42, 47);   /* Dark base color */
+    --bg-color-2: rgb(52, 52, 57);  /* Lighter secondary color */
+    --bg-mid: color-mix(in srgb, var(--bg-color-1) 50%, var(--bg-color-2) 50%);      /* Midpoint value for single-color backgrounds */
+    --bg-gradient: linear-gradient(-120deg, var(--bg-color-1), var(--bg-color-2));  /* Angular gradient */
+
+    /* Text Colors */
+    --h1-color: rgb(255, 255, 255);
+    --h2-color: rgb(245, 245, 245);
+    --h3-color: rgb(230, 230, 230);
+    --h4-color: rgb(215, 215, 215);
+    --h5-color: rgb(195, 195, 195);
+    
+    /* Link Colors */
+    --link-color: dodgerblue;
+    --link-visited-color: steelblue;
+    --link-hover-color: orchid;
+    --link-active-color: darkorchid;
+
+    /* Font Sizes */
+    --font-h1: 2em;
+    --font-h2: 1.75em;
+    --font-h3: 1.5em;
+    --font-h4: 1.25em;
+    --font-h5: 1.0em;
+    --font-button: 1.0em;
+    --font-li: 1.5em;
+
+    /* Underline */
+    --underline-color: orangered;
+    --underline-thickness: 3px;
+}
+*{
+    margin: 0;
+    padding: 0;
+}
+@font-face {
+    font-family:  Arial, Open-Dyslexic, Verdana, Helvetica, monospace;
+    font-display: swap;
+}
+
+body{
+    min-height: 100vh;
+    
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    grid-template-rows: auto 1fr auto;
+    grid-template-areas:
+            "navbar navbar"
+            "sidebar main"
+            "footer footer";
+    
+    background-color: var(--bg-color-1);
+}
+
+nav{
+    top: 0;
+    position: sticky;
+    
+    grid-area: navbar;
+    
+    margin-bottom: 1em;
+    padding: 1em;
+    
+    background-color: var(--bg-color-2);
+    
+    color: var(--h1-color);
+    
+    z-index: 10;
+}
+
+aside{
+    top: 60px;
+    position: sticky;
+    align-self: start;
+
+    grid-area: sidebar;
+    
+    color: var(--h1-color);
+    
+    margin-left: 2em;
+    
+    align-items: start;
+    text-align: center;
+}
+
+main{
+    grid-area: main;
+    
+    text-align: center;
+    
+    margin-right: 15em;
+}
+
+footer{
+    grid-area: footer;
+    
+    padding: 2rem;
+
+    background-color: var(--bg-color-2);
+
+    color: var(--h1-color);
+
+    z-index: 10;
+}
+
+h1, h2, h3, h4, h5 {
+    position: relative;
+    width: 100%;
+    text-align: center;
+    margin: 0;
+}
+
+h1 {
+    color: var(--h1-color);
+    font-size: var(--font-h1);
+}
+h2 {
+    color: var(--h2-color);
+    font-size: var(--font-h2);
+}
+h3 {
+    color: var(--h3-color);
+    font-size: var(--font-h3);
+}
+h4 {
+    color: var(--h4-color);
+    font-size: var(--font-h4);
+}
+h5 {
+    color: var(--h5-color);
+    font-size: var(--font-h5);
+}
+p{
+    color: var(--h4-color);
+    font-size: var(--font-h4);
+}
+
+.right{
+    align-items: end;
+    align-content: end;
+    text-align: right;
+}
+.left{
+    align-items: start;
+    align-content: start;
+    text-align: left;
+}
