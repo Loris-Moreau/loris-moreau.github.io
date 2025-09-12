@@ -5,9 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="84587c8d-c8e8-4e81-98f0-3e4b2270de1b" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Sidebar.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MainStyle.css" beforeDir="false" afterPath="$PROJECT_DIR$/MainStyle.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Sidebar.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -26,10 +26,10 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "customColor": "",
-  "associatedIndex": 5
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 5
+}</component>
   <component name="ProjectId" id="32bN81OZ5gJoq7YZUECqFVNyFYx" />
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
@@ -50,7 +50,7 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "settings.editor.selected.configurable": "configurable.tailwindcss",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -62,6 +62,7 @@
       <option name="presentableId" value="Default" />
       <updated>1757685150091</updated>
       <workItem from="1757685152028" duration="5972000" />
+      <workItem from="1757697107465" duration="3979000" />
     </task>
     <servers />
   </component>
@@ -89,5 +90,9 @@
         </breakpoint>
       </breakpoints>
     </breakpoint-manager>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>

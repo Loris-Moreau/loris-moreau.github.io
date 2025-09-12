@@ -6,23 +6,23 @@
     --bg-gradient: linear-gradient(-120deg, var(--bg-color-1), var(--bg-color-2));  /* Angular gradient */
 
     /* Text Colors */
-    --h1-color: rgb(255, 255, 255);
+    --text-color: rgb(255, 255, 255);
     --h2-color: rgb(245, 245, 245);
     --h3-color: rgb(230, 230, 230);
-    --h4-color: rgb(215, 215, 215);
+    --p-color: rgb(215, 215, 215);
     --h5-color: rgb(195, 195, 195);
     
     /* Link Colors */
     --link-color: dodgerblue;
-    --link-visited-color: steelblue;
     --link-hover-color: orchid;
+    --link-visited-color: steelblue;
     --link-active-color: darkorchid;
 
     /* Font Sizes */
     --font-h1: 2em;
     --font-h2: 1.75em;
     --font-h3: 1.5em;
-    --font-h4: 1.25em;
+    --font-p: 1.25em;
     --font-h5: 1.0em;
     --font-button: 0.75em;
     --font-li: 1.5em;
@@ -72,19 +72,19 @@ nav{
     grid-area: navbar;
     background-color: var(--bg-color-2);
     color: white;
+    font-size: var(--font-p);
 }
 nav a{
-    font-size: var(--font-h4);
-    padding: 0.5em;
+    padding: 0.67em;
 }
 
 aside{
-    height: calc(100vh - 60px);
-    top: 60px;
+    height: calc(100vh - var(--navbar-height));
+    top: var(--navbar-height);
     position: sticky;
     align-self: start;
     grid-area: sidebar;
-    color: var(--h1-color);
+    color: var(--text-color);
     margin-left: 2em;
     align-items: start;
     text-align: center;
@@ -96,22 +96,21 @@ aside p{
 
 main{
     grid-area: main;
-    
     text-align: center;
-    
-    margin-right: 15em;
+    margin-right: 16.5em;
+    padding: 2rem;
 }
 
 footer{
+    height: var(--navbar-height);
     grid-area: footer;
-    
-    padding: 2rem;
-
     background-color: var(--bg-color-2);
-
-    color: var(--h1-color);
-
-    z-index: 10;
+    color: white;
+    text-align: center;
+    font-size: var(--font-p);
+}
+footer a{
+    padding: 0.67em;
 }
 
 h1, h2, h3, h4, h5 {
@@ -119,31 +118,13 @@ h1, h2, h3, h4, h5 {
     width: 100%;
     text-align: center;
     margin: 0;
-}
-
-h1 {
-    color: var(--h1-color);
-    font-size: var(--font-h1);
-}
-h2 {
-    color: var(--h2-color);
-    font-size: var(--font-h2);
-}
-h3 {
-    color: var(--h3-color);
-    font-size: var(--font-h3);
-}
-h4 {
-    color: var(--h4-color);
-    font-size: var(--font-h4);
-}
-h5 {
-    color: var(--h5-color);
-    font-size: var(--font-h5);
+    padding: 1em;
+    color: var(--text-color);
+    z-index: 0;
 }
 p{
-    color: var(--h4-color);
-    font-size: var(--font-h4);
+    color: var(--p-color);
+    font-size: var(--font-p);
 }
 
 .right{
@@ -176,6 +157,24 @@ p{
     }
 }
 
+
+a{
+    color: var(--link-color);
+    text-decoration-color: var(--link-color);
+}
+a:hover{
+    color: var(--link-hover-color);
+    text-decoration-color: var(--link-hover-color);
+}
+a:visited{
+    color: var(--link-visited-color);
+    text-decoration-color: var(--link-visited-color);
+}
+a:active{
+    color: var(--link-active-color);
+    text-decoration-color: var(--link-active-color);
+}
+
 button {
     padding: 1em;
     background-color: var(--button-bg);
@@ -185,7 +184,6 @@ button {
     border-radius: var(--button-radius);
     transition: transform 0.2s ease;
 }
-
 button:hover{
     background-color: var(--button-bg-hover);
     /*
@@ -197,4 +195,20 @@ button:hover{
 button:active{
     background-color: var(--button-bg-active);
     transform: scale(var(--button-scale-active));
+}
+
+/* Images */
+img {
+    max-width: 100%;
+    width: 40%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 4px;
+    padding-top: 2em;
+    padding-bottom: 2em;
 }
