@@ -24,7 +24,7 @@
     --font-h3: 1.5em;
     --font-h4: 1.25em;
     --font-h5: 1.0em;
-    --font-button: 1.0em;
+    --font-button: 0.75em;
     --font-li: 1.5em;
 
     /* Underline */
@@ -32,6 +32,15 @@
     --underline-thickness: 3px;
     
     --navbar-height: 3rem;
+    
+    /* Buttons */
+    --button-bg: rgba(170, 170, 170, 0.74);
+    --button-bg-hover: rgba(155, 155, 155, 0.65);
+    --button-bg-active: rgba(195, 195, 195, 0.75);
+    --button-radius: 4px;
+    --button-scale-hover: 1.05;   /* Enlarge on hover */
+    --button-scale-active: 0.95; /* Shrink on click */
+
 }
 *{
     margin: 0;
@@ -152,6 +161,11 @@ p{
     body{
         grid-template-columns: 1fr;
     }
+    main{
+
+        margin-right: 5em;
+        margin-left: 5em;
+    }
     aside{
         position: fixed;
         width: 300px;
@@ -160,4 +174,27 @@ p{
     .show{
         display: block;
     }
+}
+
+button {
+    padding: 1em;
+    background-color: var(--button-bg);
+    border: none;
+    cursor: pointer;
+    font-size: var(--font-button);
+    border-radius: var(--button-radius);
+    transition: transform 0.2s ease;
+}
+
+button:hover{
+    background-color: var(--button-bg-hover);
+    /*
+    transform: scale(var(--button-scale-hover));
+    box-shadow: 12px 17px 51px rgba(0, 0, 0, 0.22);
+    backdrop-filter: blur(6px);
+    */
+}
+button:active{
+    background-color: var(--button-bg-active);
+    transform: scale(var(--button-scale-active));
 }
