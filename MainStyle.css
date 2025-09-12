@@ -30,6 +30,8 @@
     /* Underline */
     --underline-color: orangered;
     --underline-thickness: 3px;
+    
+    --navbar-height: 3rem;
 }
 *{
     margin: 0;
@@ -55,34 +57,32 @@ body{
 }
 
 nav{
+    height: var(--navbar-height);
     top: 0;
     position: sticky;
-    
     grid-area: navbar;
-    
-    margin-bottom: 1em;
-    padding: 1em;
-    
     background-color: var(--bg-color-2);
-    
-    color: var(--h1-color);
-    
-    z-index: 10;
+    color: white;
+}
+nav a{
+    font-size: var(--font-h4);
+    padding: 0.5em;
 }
 
 aside{
+    height: calc(100vh - 60px);
     top: 60px;
     position: sticky;
     align-self: start;
-
     grid-area: sidebar;
-    
     color: var(--h1-color);
-    
     margin-left: 2em;
-    
     align-items: start;
     text-align: center;
+}
+aside p{
+    font-size: var(--font-h5);
+    padding: 0.1em;
 }
 
 main{
@@ -146,4 +146,18 @@ p{
     align-items: start;
     align-content: start;
     text-align: left;
+}
+
+@media(max-width: 800px){
+    body{
+        grid-template-columns: 1fr;
+    }
+    aside{
+        position: fixed;
+        width: 300px;
+        display: none;
+    }
+    .show{
+        display: block;
+    }
 }

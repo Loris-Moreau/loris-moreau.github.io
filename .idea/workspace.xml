@@ -5,58 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="84587c8d-c8e8-4e81-98f0-3e4b2270de1b" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/MainStyle.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.loris-moreau.github.io.dir/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.loris-moreau.github.io.dir/.idea/encodings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.loris-moreau.github.io.dir/.idea/indexLayout.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.loris-moreau.github.io.dir/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.loris-moreau.github.io.dir/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/Sidebar.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Blog.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Blog/3DGameEngine.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Blog/GameDevNintendo.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Blog/Ideas.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Blog/PSVitaJailbreak.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Blog/RayTracing-1.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Blog/RayTracing-10.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Blog/RayTracing-2.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Blog/RayTracing-3.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Blog/RayTracing-4.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Blog/RayTracing-5.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Blog/RayTracing-6.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Blog/RayTracing-7.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Blog/RayTracing-8.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Blog/RayTracing-9.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Blog/ResearchProjBibliography.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Blog/TSP.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Blog/Thoughts.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Blog/TimTamEngine.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Blog/VFX-1.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Blog/VFX-2.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Blog/Workflow.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ExternalResources.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scripts/BorgirLayout.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scripts/CommonLayout.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scripts/projectShowcase.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scripts/projectsData.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scripts/sidebarFocusScript.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scripts/videoScript.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Styles/BorgirStyle.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Styles/CardStyle.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Styles/DropdownContainerStyle.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Styles/MainStyle.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Styles/ShowcaseStyle.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Styles/SidebarStyle.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Styles/VideoStyle.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Styles/moving band.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Templates/TemplatePage.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Templates/TemplatePost.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Templates/TemplateRayTracing.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MainStyle.css" beforeDir="false" afterPath="$PROJECT_DIR$/MainStyle.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test band.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test proc.html" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,6 +19,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="CSS File" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -108,7 +61,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1757685150091</updated>
-      <workItem from="1757685152028" duration="3947000" />
+      <workItem from="1757685152028" duration="5972000" />
     </task>
     <servers />
   </component>
