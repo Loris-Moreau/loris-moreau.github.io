@@ -1,49 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Loris M</title>
-    <link rel="icon" type="image/x-icon" href="Images/icon.png">
-    <!-- Styles -->
-    <link rel="stylesheet" href="MainStyle.css">
-    <!-- Scripts -->
-    <!--<script src="Sidebar.js" defer></script>-->
-    
-    <!-- Meta Tags for SEO -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="author" content="Loris Moreau">
-    <meta name="description" content="Main Page of my showcase website">
-    <meta name="keywords" content="Showcase, Loris, Moreau, Loris Moreau, Programmer, Demoreel, coding adventure, 3D Engine">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Loris Moreau</title>
+  <link rel="icon" type="image/x-icon" href="Images/icon.png">
+  <link rel="stylesheet" href="style.css">
+  
+  <!-- Meta Tags for SEO -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Loris Moreau">
+  <meta name="description" content="Main Page of my showcase website">
+  <meta name="keywords" content="Showcase, Loris, Moreau, Loris Moreau, Programmer, Demoreel, coding adventure, 3D Engine">
 </head>
-<!-- There are no errors in Ba Sing Se -->
 <body>
-<aside id="sidebar" class="left">
-    <h4 style="text-align: left">Contents :</h4>
-    <p>Sidebar</p>
-    <p>Sidebar</p>
-    <p>Sidebar</p>
-    <p>Sidebar</p>
-    <p>Sidebar</p>
-</aside>
+  <header>    
+    <nav>
+      <ul>
+        <li><a href="index.html" target="_blank">Loris Moreau</a></li>
+        <li><a href="#showcase">My Work</a></li>
+        <li><a href="https://github.com/Loris-Moreau" target="_blank">Github</a></li>
+        <li><a href="https://loris-moreau.itch.io/" target="_blank">Itch.io</a></li>
+        <li><a href="https://linkedin.com/in/loris-moreau" target="_blank">LinkedIn</a></li>
+      </ul>
+    </nav>
 
-<main>
-    <h1>Hey, I'mLoris Moreau</h1>
-    <p>I'm a Gameplay programmer, my main interests are Game Development, Tech & Electronics.</p>
-    <p>This website is a <a href="#Showcase">Showcase</a> of my works and a small <a href="Blog.html">Blog</a> about my coding adventures.</p>
-    <img src="Images/icon.png">
-</main>
+    <div class="flex-container">
+      <img height="400px" width="300px" src="Images/icon.png" alt="Loris Moreau Portrait">
+      <div class="text-container">
+        <h1>Hoi,</h1>
+        <p>I'm Loris Moreau. I'm a <strong>Gameplay</strong> and <strong>Graphics Programmer</strong> with an interest in electronics.</p>
+        <a href="https://loris-moreau.itch.io/" class="cta-button">Check out my work</a>
+        <a href="#showcase" class="cta-button secondary">Showcase</a>
+      </div>
+    </div>
+  </header>
+
+  <section>
+    <h2 >Latest Demoreel</h2>
+    <img style="width: 95%; padding-top: 1em;" src="Images/Showcase/Houdini-Showcase.gif" alt="">
+  </section>
+  
+  <section id="showcase">
+    <h2>Some of my projects</h2>
+    <div class="grid-container">
+      <img style="grid-area: img-1" src="Images/JupiPipebomb.png" alt="">
+      <img style="grid-area: img-2" src="Images/Suprise.png" alt="">
+      <img style="grid-area: img-3" src="Images/Tenma.png" alt="">
+      <img style="grid-area: img-4" src="Images/FoxInSnow.jpg" alt="">
+      <img style="grid-area: img-5" src="Images/Minto.png" alt="">
+    </div>
+    <a href="https://loris-moreau.itch.io/" class="cta-button">More on my Itch.io</a>
+  </section>
+
+  <section style="color: var(--text-color-bright);">
+    <h2 style="color: var(--text-color)">Common Questions</h2>
+    <details>
+      <summary>What are you doing now ?</summary>
+      <p style="padding-bottom: 0;">I'm currently working on a 5th year project to get my master’s degree in programming.</p>
+      <p>And looking for an internship.</p>
+    </details>
+    <details>
+      <summary>What languages do you know ?</summary>
+      <p style="padding-bottom: 0;">For programming, I know: C++, C#, GLSL/HLSL, Python, Vex, Unreal C++, OpenGl/Vulkan</p>
+      <p>For talking: English, French & a little bit of japanese & chinese</p>
+    </details>
+    <details >
+      <summary>What are your favourite games ?</summary>
+      <p style="padding-bottom: 0;">My favourite games are: </p>
+      <p>Outer Wilds - Mirrors edge <i>(1 & 2)</i> - Assetto Corsa Competizione - Assasin's Creed <i>(3, unity, black flag)</i> - Dark Souls 3 - 
+        Bloodborne - Disco Elysium - Far Cry Primal - Star Wars Force Unleashed - Warframe - Darktide - and holocure.</p>
+    </details>
+    <details>
+      <summary>Do you have pets ?</summary>
+      <p>YES, I have two lovely dogs, and I am thinking about getting a snake or a skink <i>(lizard)</i></p>
+    </details>
+    <details>
+      <summary>How can I contact you ?</summary>
+      <p>You can contact me through my
+        <a href="https://linkedin.com/in/loris-moreau">LinkedIn</a>.</p>
+    </details>
+  </section>
+
+  <footer>
+    <a href="https://linkedin.com/in/loris-moreau">LinkedIn</a>
+    <a href="https://github.com/Loris-Moreau">GitHub</a>
+    <a href="https://loris-moreau.itch.io">Itch.io</a>
+    <a href="https://www.youtube.com/@LorisMoreau">Youtube</a>
+  </footer>
+
 </body>
-
-<nav class="right">
-    <a href="https://loris-moreau.github.io"><button>Main</button></a>
-    <a href="#"><button>Blog</button></a>
-    <a href="#"><button>Ressources</button></a>
-</nav>
-
-<footer>
-    <a href="#"><button>feet</button></a>
-    <a href="#"><button>feet</button></a>
-    <a href="#"><button>feet</button></a>
-</footer>
-
 </html>
