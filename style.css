@@ -1,15 +1,17 @@
 :root {
-  --bg-color: rgb(50, 54, 57);
+  --bg-color: rgb(52, 52, 57);
+  --bg-color-2: rgb(72, 72, 77);
   
-  --text-color: rgb(84, 84, 84);
+  --text-color: rgb(55, 55, 55);
+  --title-color: rgb(45, 45, 45);
   --text-color-bright: rgb(215, 215, 215);
   
   --primary-color: orangered;
   --secondary-color: darkorchid;
   
-  --color-section-1: rgb(195, 195, 195);
-  --color-section-2: rgb(195, 195, 195);
-  --color-section-3: rgb(195, 195, 195);
+  --color-section-1: rgb(125, 125, 125);
+  --color-section-2: rgb(115, 115, 115);
+  --color-section-3: rgb(105, 105, 105);
   
 }
 
@@ -33,7 +35,7 @@ body {
 }
 
 h1, h2, h3 {
-  
+  color: var(--title-color);
 }
 
 nav {
@@ -172,7 +174,7 @@ section:nth-child(3){
 
 details {
   margin-top: 1em;
-  background-color: var(--bg-color);
+  background-color: var(--bg-color-2);
   border-radius: 1em;
 }
 
