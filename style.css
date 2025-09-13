@@ -13,6 +13,9 @@
   --color-section-2: rgb(120, 120, 120);
   --color-section-3: rgb(105, 105, 105);
   
+  --underline-color: orangered;
+  --underline-thickness: 3px;
+
 }
 
 * {
@@ -25,7 +28,7 @@
   font-display: swap;
 }
 html {
-  font-family:  Arial, Open-Dyslexic, Verdana, Helvetica, monospace;
+  font-family: Arial, Open-Dyslexic, Verdana, Helvetica, monospace;
   color: var(--text-color);
 }
 
@@ -40,7 +43,7 @@ h1, h2, h3 {
 
 nav {
   margin: 1em auto 3em auto;
-  width: min(1000px, 100%);
+  width: min(90em, 100%);
 }
 
 nav ul {
@@ -176,6 +179,7 @@ details {
   margin-top: 1em;
   background-color: var(--bg-color-2);
   border-radius: 1em;
+  cursor: default;
 }
 
 details summary {
@@ -213,6 +217,7 @@ footer a:hover {
 }
 
 @media(max-width: 640px) {
+  /*
   nav li {
     display: none;
   }
@@ -221,7 +226,11 @@ footer a:hover {
   nav li:last-child {
     display: block;
   }
-
+  */
+  nav li:nth-child(2){
+    display: none;
+  }
+  
   header {
     margin-top: 0;
   }
@@ -253,4 +262,10 @@ a{
 a:hover {
   text-decoration: underline;
   text-decoration-color: var(--primary-color);
+}
+
+.underline {
+  text-decoration: underline;
+  text-decoration-color: var(--underline-color);
+  text-decoration-thickness: var(--underline-thickness);
 }
