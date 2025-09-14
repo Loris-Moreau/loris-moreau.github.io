@@ -6,7 +6,9 @@
     <title>Loris Moreau</title>
     <link rel="icon" type="image/x-icon" href="Images/icon.webp">
     <link rel="stylesheet" href="style.css">
-
+    
+    <script src="Scripts/Carousel.js" defer></script>
+    
     <!-- Meta Tags for SEO -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="Loris Moreau">
@@ -14,40 +16,151 @@
     <meta name="keywords" content="Showcase, Loris, Moreau, Loris Moreau, Programmer, Demoreel, coding adventure, 3D Engine">
 </head>
 <body>
-<header>
-    <div class="flex-container">
-        <img height="400px" width="300px" src="Images/icon.webp" alt="Loris Moreau Portrait">
-        <div class="text-container">
-            <h1>Hoi,</h1>
-            <p>I'm Loris Moreau. I'm a <strong>Gameplay</strong> and <strong>Graphics Programmer</strong> with an interest in electronics.</p>
-            <a target="_blank" href="https://loris-moreau.itch.io" class="cta-button">Check out my work</a>
-            <a href="#showcase" class="cta-button secondary">Showcase</a>
+    <h1 style="align-self: center; justify-self: center; color: var(--text-color-bright); padding: 1em">Blog Entries</h1>
+    
+    <div>
+        <!-- Blog entries -->
+        <!-- Add post here -->
+        <!--
+        <h2 class="underline" style="text-decoration-color: dodgerblue; align-self: center; justify-self: center; color: var(--text-color-bright)">Category Title</h2>
+        <div class="blog-entries" align="center">
+            <a class="card" href="Blog/post.html">
+                <p>Blog Entry 1</p>
+            </a>
+            <a class="card" href="Blog/post.html">
+                <p>Blog Entry 2</p>
+            </a>
+        </div>
+        -->
+
+        <!-- ========== Miscellaneous ========== -->
+        <div class="blog-entries" align="center">
+            <h2 id="Miscellaneous" class="underline" style="text-decoration-color: dodgerblue; align-self: center; justify-self: center; color: var(--text-color-bright)">Miscellaneous</h2>
+
+            <a class="card" href="Blog/Ideas.html">
+                <p>Random Ideas</p>
+            </a>
+            <a class="card" href="Blog/Thoughts.html">
+                <p> Random Thoughts </p>
+            </a>
+            
+            <a class="card" href="Blog/Workflow.html">
+                <p> Workflow </p>
+            </a>
+        </div>
+
+        <!-- ========== Engine ========== -->
+        <div class="blog-entries" align="center">
+            <h2 id="Engine" class="underline" style="text-decoration-color: dodgerblue; align-self: center; justify-self: center; color: var(--text-color-bright)">Engine</h2>
+
+            <a class="card" href="Blog/TimTamEngine.html">
+                <p> TimTam 3D Engine </p>
+            </a>
+            <a class="card" href="Blog/3DGameEngine.html">
+                <p> 3D Render Engine </p>
+            </a>
+        </div>
+
+        <!-- ========== Raytracer ========== -->
+        <div class="blog-entries" align="center">
+            <h2 id="Raytracing" class="underline" style="text-decoration-color: dodgerblue; align-self: center; justify-self: center; color: var(--text-color-bright)">Raytracing</h2>
+            <h3 id="RB-1" class="underline" style="text-decoration-color: royalblue; align-self: center; justify-self: center; color: var(--text-color-bright)">Raytracer</h3>
+
+            <a class="card" href="Blog/RayTracing-1.html">
+                <p>R-1 : Understanding Raytracing</p>
+            </a>
+
+            <a class="card" href="Blog/RayTracing-2.html">
+                <p>R-2 : Setup Raytracer output</p>
+            </a>
+
+            <a class="card" href="Blog/RayTracing-3.html">
+                <p>R-3 : Basic Shapes <i>(Lots of maths)</i></p>
+            </a>
+
+            <a class="card" href="Blog/RayTracing-4.html">
+                <p>R-4 : Surface Normal Shading <i>(more maths)</i></p>
+            </a>
+
+            <a class="card" href="Blog/RayTracing-5.html">
+                <p>R-5 : Camera Management & Anti-Aliasing</p>
+            </a>
+
+            <a class="card" href="Blog/RayTracing-6.html">
+                <p>R-6 : Diffuse Material</p>
+            </a>
+
+            <a class="card" href="Blog/RayTracing-7.html">
+                <p>R-7 : Metal Reflection <i>(Lots of bounces)</i></p>
+            </a>
+
+            <a class="card" href="Blog/RayTracing-8.html">
+                <p>R-8 : Dielectrics <i>(Glass)</i></p>
+            </a>
+
+            <a class="card" href="Blog/RayTracing-9.html">
+                <p>R-9 : Positionable Camera <i>(End of book 1)</i></p>
+            </a>
+        </div>
+
+        <!-- ========== Ray Optimization ========== -->
+        <div class="blog-entries" align="center">
+            <h3 id="R-Opti" class="underline" style="text-decoration-color: royalblue; align-self: center; justify-self: center; color: var(--text-color-bright)">Raytracer Optimization</h3>
+
+            <a class="card" href="Blog/RayTracing-10.html">
+                <p>R-10 : Optimization, Multithreading, SIMD & Compute Shaders</p>
+            </a>
+        </div>
+        
+        <!-- ========== VFX ========== -->
+        <div class="blog-entries" align="center">
+            <h2 id="VFX" class="underline" style="text-decoration-color: dodgerblue; align-self: center; justify-self: center; color: var(--text-color-bright)">Visual FXs</h2>
+
+            <a class="card" href="Blog/VFX-1.html">
+                <p> VFX <i>(Unity)</i> </p>
+            </a>
+
+            <a class="card" href="Blog/VFX-2.html">
+                <p> VFX <i>(Unreal)</i> </p>
+            </a>
+        </div>
+
+        <!-- ========== Maths ========== -->
+        <div class="blog-entries" align="center">
+            <h2 id="Maths" class="underline" style="text-decoration-color: dodgerblue; align-self: center; justify-self: center; color: var(--text-color-bright)">Maths & Algorithms</h2>
+
+            <a class="card" href="Blog/TSP.html">
+                <p> Traveling Salesman Problem </p>
+            </a>
+        </div>
+
+        <!-- ========== Hardware ========== -->
+        <div class="blog-entries" align="center">
+            <h2 id="Hardware" class="underline" style="text-decoration-color: dodgerblue; align-self: center; justify-self: center; color: var(--text-color-bright)">Hardware</h2>
+            
+            <a class="card" href="Blog/PSVitaJailbreak.html">
+                <p> PSVita JailBreak </p>
+            </a>
+            <!--
+            <a class="card" href="Blog/3DPrinters.html">
+                <p> 3D Printers </p>
+            </a>
+            <a class="card" href="Blog/SplitKeyboard.html">
+                <p> Split Keyboard </p>
+            </a>
+            <a class="card" href="Blog/GreenHouse.html">
+                <p> Automated Greenhouse </p>
+            </a>
+            <a class="card" href="Blog/ServoSkull.html">
+                <p> Servo Skull </p>
+            </a>
+            <a class="card" href="Blog/HomeLab.html">
+                <p> Home Lab </p>
+            </a>
+            -->
         </div>
     </div>
-</header>
-
-<section id="showcase">
-    <h2>Some of my projects</h2>
-    <div class="grid-container">
-        <img style="grid-area: img-1" src="Images/JupiPipebomb.webp" alt="">
-        <img style="grid-area: img-2" src="Images/Suprise.webp" alt="">
-        <img style="grid-area: img-3" src="Images/Tenma.webp" alt="">
-        <img style="grid-area: img-4" src="Images/FoxInSnow.webp" alt="">
-        <img style="grid-area: img-5" src="Images/Minto.webp" alt="">
-    </div>
-    <a target="_blank" href="https://loris-moreau.itch.io" class="cta-button">More on my Itch.io</a>
-</section>
-
-<section>
-    <h2>title</h2>
-    <p>content</p>
-</section>
-
-<section style="color: var(--text-color-bright);">
-    <h2>title</h2>
-    <p>content</p>
-</section>
-
+    
 <footer>
     <a target="_blank" href="https://linkedin.com/in/loris-moreau">LinkedIn</a>
     <a target="_blank" href="https://github.com/Loris-Moreau">GitHub</a>

@@ -38,6 +38,8 @@ html {
 body {
   padding: 1em;                 /* outer spacing around the whole page */
   background-color: var(--bg-color); /* main page background */
+  justify-content: center;
+  align-items: center;
 }
 
 h1, h2, h3 {
@@ -136,6 +138,41 @@ h1 {
   transform: scale(0.95);
 }
   
+.card{
+  box-sizing: border-box;  /* Include padding/border in width/height */
+  width: 35%;
+  height: 7em;
+  background-color: var(--color-section-1) ;
+  border: 0.15em solid black;
+  border-radius: 1.25em;
+  display: flex;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  /*user-select: none;*/ /* Prevents text selection */
+  font-weight: bolder;
+  color: black;
+  margin: 1em;
+  
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  align-self: center; 
+  justify-self: center;
+  
+  text-decoration: none;
+}
+a .card{
+  text-decoration: none;
+}
+.card:hover {
+  border: 0.15em solid lightgray;
+  transform: scale(1.05);
+  text-decoration: none;
+}
+.card:active {
+  transform: scale(0.95); 
+  text-decoration: none;
+}
 
 section {
   padding: 3em min(2em, 15%);
