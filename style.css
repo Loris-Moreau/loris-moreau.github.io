@@ -16,8 +16,9 @@
   --color-section-3: rgb(105, 105, 105);
   
   --underline-color: orangered;
-  --underline-thickness: 3px;
-
+  --underline-thickness: 0.1em;
+  
+  --navbar-height: 3rem;
 }
 
 /* Global Reset */
@@ -47,6 +48,7 @@ h1, h2, h3 {
 }
 
 nav {
+  /*height: var(--navbar-height);*/
   margin: 1em auto 3em auto;
   width: min(90em, 100%);
 }
@@ -71,6 +73,24 @@ nav a {
 nav a:hover {
   text-decoration: underline;
 }
+
+/*
+aside{
+  height: calc(100vh - var(--navbar-height));
+  top: var(--navbar-height);
+  position: sticky;
+  align-self: start;
+  grid-area: sidebar;
+  color: var(--text-color);
+  margin-left: 2em;
+  align-items: start;
+  text-align: center;
+}
+aside p{
+  font-size: 1em;
+  padding: 0.1em;
+}
+*/
 
 /* Shared width and padding. Using min() keeps the paddings reasonable on both very wide and narrower screens. */
 header, section {
@@ -103,6 +123,10 @@ header img {
 
 h1 {
   font-size: 2.5rem;
+}
+
+h2 {
+  font-size: 2rem;
 }
 
 .text-container p {
@@ -178,10 +202,6 @@ section {
   padding: 3em min(2em, 15%);
   background-color: var(--color-section-2);
   text-align: center;
-}
-
-h2 {
-  font-size: 2rem;
 }
 
 section p {
@@ -271,7 +291,7 @@ footer a:hover {
 
   /* Make CTA block-level so it is easier to tap on mobile */
   .cta-button {
-    margin-top: .5em;
+    margin-top: 0.5em;
     width: 100%;
   }
 
@@ -288,6 +308,11 @@ footer a:hover {
   h2 {
     font-size: 1.5rem;
   }
+  /*
+  aside{
+    display: none;
+  }
+  */
 }
 
 a{
@@ -402,7 +427,6 @@ a:hover {
     max-height: none; /* allow images to behave more naturally on very narrow devices */
   }
 }
-
 /* keep arrows a bit more subtle on tiny screens */
 @media(max-width: 420px){
   .carousel-button { width: 36px; height: 36px; font-size: 14px; }
