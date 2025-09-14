@@ -281,9 +281,9 @@ footer a:hover {
 
 @media(max-width: 640px) {
   /* Hide the second nav item on very small screens */
-  nav li:nth-child(2){
+  /*nav li:nth-child(2){
     display: none;
-  }
+  }*/
   
   header {
     margin-top: 0; /* tighten spacing on tiny screens */
