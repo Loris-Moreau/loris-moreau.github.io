@@ -1,0 +1,102 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Title</title>
+    <link rel="icon" type="image/x-icon" href="../Images/icon.webp">
+    <link rel="stylesheet" href="../style.css">
+
+    <script src="../Scripts/Carousel.js" defer></script>
+
+    <!-- Meta Tags for SEO -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Loris Moreau">
+    <meta name="description" content="Main Page of my showcase website">
+    <meta name="keywords" content="Showcase, Loris, Moreau, Loris Moreau, Programmer, Demoreel, coding adventure, 3D Engine">
+</head>
+
+<body>
+<header>
+    <!-- ========== Me ========== -->
+    <div class="flex-container">
+        <img height="400px" src="../Images/icon.webp" alt="Loris Moreau Portrait">
+        <div class="text-container">
+            <h1>Get blogged idiot,</h1>
+            <p>Blog <strong>Blog</strong> <i>Blog</i></p>
+            <a target="_blank" href="https://loris-moreau.itch.io" class="cta-button">Check out my work</a>
+            <a href="#showcase" class="cta-button secondary">Showcase</a>
+        </div>
+    </div>
+</header>
+
+<!-- ========== Demoreel ========== -->
+<section>
+    <h2>Title</h2>
+    <p>Content</p>
+</section>
+
+<!-- ========== Debut Showcase ========== -->
+<section id="showcase">
+    <h2>Some of my projects:</h2>
+    <!-- 3 Raytracing -->
+    <div class="flex-container">
+
+        <!-- Start of carousel -->
+        <div class="showcase-carousel" role="region" aria-label="Showcase carousel">
+            <button class="carousel-button prev" aria-label="Previous slide">&larr;</button>
+            <div class="carousel-viewport">
+                <div class="carousel-track">
+                    <div class="carousel-slide"><img src="../Images/RayTracing/Final%20Render%20(B1).webp" alt="Raytracer Showcase"></div>
+                    <div class="carousel-slide"><img src="../Images/RayTracing/Cornell's%20Box%20(B2,%20P8).webp" alt="Raytracer Showcase"></div>
+                    <div class="carousel-slide"><img src="../Images/RayTracing/Final%20Render%20high-Res%20(B2).webp" alt="Raytracer Showcase"></div>
+                    <div class="carousel-slide"><img src="../Images/RayTracing/computeShaderRenderCornell.webp" alt="Raytracer Showcase"></div>
+                    <div class="carousel-slide"><img src="../Images/RayTracing/computeShaderRenderB2.webp" alt="Raytracer Showcase"></div>
+                    <div class="carousel-slide"><img src="../Images/RayTracing/computeShaderRenderScen01.webp" alt="Raytracer Showcase"></div>
+                    <!-- Add or remove .carousel-slide blocks as needed -->
+                </div>
+            </div>
+            <button class="carousel-button next" aria-label="Next slide">&rarr;</button>
+            <div class="carousel-dots" aria-hidden="false"></div>
+        </div>
+        <!-- End of carousel -->
+
+        <div class="text-container">
+            <!-- Title -->
+            <h1>Raytracing</h1>
+            <!-- Description -->
+            <p style="color: var(--text-color-bright);">
+                My Adventure following the "Raytracing in one weekend series" and then optimizing it using compute shaders, SIMD & Multithreading.
+            </p>
+            <p style="color: var(--text-color-bright);">
+                <strong class="underline">Goals:</strong> The goal was to make a raytracer, but I then realised how slow and calculation intensive it was,
+                so I optimized as much as necessary <i>(from 5hrs to just a few seconds)</i>.
+            </p>
+            <a target="_blank" href="https://github.com/Loris-Moreau/RayTracing" class="cta-button">Check out the project</a>
+        </div>
+    </div>
+    
+    <a target="_blank" href="https://loris-moreau.itch.io" class="cta-button secondary">More on my Itch.io</a>
+</section>
+
+<!-- ========== FAQ ========== -->
+<section style="color: var(--text-color-bright);">
+    <h2>Dropdown</h2>
+    <details>
+        <summary>Drop it</summary>
+        <p style="padding-bottom: 0;">It's been dropped</p>
+        <p>oh, hey there</p>
+    </details>
+</section>
+
+<!-- ========== Footer ========== -->
+<footer>
+    <a target="_blank" href="https://linkedin.com/in/loris-moreau">LinkedIn</a>
+    <a target="_blank" href="https://github.com/Loris-Moreau">GitHub</a>
+    <a target="_blank" href="https://loris-moreau.itch.io">Itch.io</a>
+    <a target="_blank" href="https://www.youtube.com/@LorisMoreau">Youtube</a>
+</footer>
+
+</body>
+
+</html>
