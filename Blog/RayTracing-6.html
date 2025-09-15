@@ -1,67 +1,103 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" />
     <title>RayTracing 6</title>
     <link rel="icon" type="image/x-icon" href="../Images/Suprise.webp">
-    <link rel="stylesheet" href="../Styles/style.css">
-    
-    <script src="../Scripts/CommonLayout.js" defer></script>
-    
-    <!-- Meta Tags for SEO -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="Loris Moreau">
     <meta name="description" content="Raytracing Blog">
     <meta name="keywords" content="Showcase, Loris, Moreau, Loris Moreau, Programmer, coding adventure, Blog, Post, Raytracing, C++, CPP, Raytracing in one weekend, Diffuse, Materials, Shaders">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="../Styles/style.css">
+    <link rel="stylesheet" href="../Styles/Code-Quote.css">
+
+    <script src="../Scripts/Carousel.js" defer></script>
+
+    <style>
+        /* Small local style for quote */
+        .quote {
+            background: var(--code-title-bg-color);
+            padding: 0.1em 0.6em;
+            margin: 0 0.2em;
+            border-radius: 0.4em;
+            font-size: 0.95rem;
+            color: var(--text-color-bright);
+        }
+    </style>
 </head>
 
 <body>
+<!-- Main of the post -->
+<main id="BlogPost" class="post">
+    <!-- Top showcase: carousel + short intro in a flex row -->
+    <header>
+        <!-- ========== Section 1 Navbar ========== -->
+        <nav style="margin: 0 auto 2em auto;">
+            <ul>
+                <li><a href="../Blog.html">Back</a></li>
+                <li><a href="../index.html" target="_blank">Main</a></li>
+                <li><a href="../Blog.html" target="_blank">Blog</a></li>
+                <li><a href="../Resources.html" target="_blank">Resources</a></li>
+            </ul>
+        </nav>
 
-<!-- Back Button -->
-<div class="backButton">
-    <a href="../Blog.html">
-        <button>
-            Back
-        </button>
-    </a>
-</div>
-
-
-<!-- Blog Content -->
-<div id="BlogPost" class="post">
-
-<h2 class="underline">Raytracing in one weekend in C++</h2>
-<h4><a href="https://github.com/Loris-Moreau/RayTracing" target="_blank">
-    GitHub Repository
-</a></h4>
-    <h3>Welcome to my adventure following the <a href="https://raytracing.github.io/" target="_blank">raytracing in one weekend</a> series in C++.</h3>
-
-    <p style="padding: 5px"></p>
-
-    <h2 class="underline" style="text-decoration-color: dodgerblue"> Part 6 </h2>
-    <h2 class="underline" style="text-decoration-color: dodgerblue; padding-bottom: 5px">Diffuse Material</h2>
-    <h4>Colors !!!!</h4>
-    
-    <p style="padding: 5px"></p>
-    
-    <h2 class="underline" style="text-decoration-color: cadetblue">First what is a "Diffuse Material"</h2>
-    <h3>A diffuse surface takes in a ray of light and makes it bounce in random directions.</h3>
-    <h3>It also absorbs light depending on its color. The darker the material, the more light it absorbs.</h3>
-
-    <img loading="lazy" src="../Images/RayTracing/Diffuse_reflection.webp" alt="Diffuse Reflection"  style="padding-bottom: 5px; width: 32%;" />
-    <h5 style="padding-bottom: 25px"><a href="https://en.m.wikipedia.org/wiki/File:Diffuse_reflection.svg" target="_blank">img. Source</a></h5>
-
-    <p style="padding: 5px"></p>
-    
-    <h3>We need some vector3 Utilities</h3>
-    <!-- Code Snippet -->
-    <div class="snippet">
-        <div class="Swindow">
-            <div class="Swindow-title">
-                <p>Vector3.h</p>
+        <div class="flex-container">
+            <div class="showcase-carousel" role="region" aria-label="Showcase carousel">
+                <button class="carousel-button prev" aria-label="Previous slide">&larr;</button>
+                <div class="carousel-viewport">
+                    <div class="carousel-track">
+                        <div class="carousel-slide">
+                            <img loading="lazy" src="../Images/RayTracing/DiffuseMatRender.webp" alt="Diffuse Material Render">
+                        </div>
+                        <div class="carousel-slide">
+                            <img loading="lazy" src="../Images/RayTracing/LambertianReflection.webp" alt="Lambertian Illustration">
+                        </div>
+                        <div class="carousel-slide">
+                            <img loading="lazy" src="../Images/Suprise.webp" alt="Suprise">
+                        </div>
+                    </div>
+                </div>
+                <button class="carousel-button next" aria-label="Next slide">&rarr;</button>
+                <div class="carousel-dots" aria-hidden="false"></div>
             </div>
-            <div class="Sconsole">
-      <pre><code>   double SquaredLength() const
+
+            <!-- Intro / author column -->
+            <div class="text-container">
+                <h1>Raytracing in one weekend in C++ — Part 6</h1>
+                <p>Diffuse materials, sampling, Lambertian reflection and gamma correction.</p>
+                <p><a target="_blank" href="https://github.com/Loris-Moreau/RayTracing" class="cta-button">GitHub Repository</a></p>
+            </div>
+        </div>
+    </header>
+
+    <!-- Section: Intro -->
+    <section>
+        <div>
+            <h2 class="underline" style="text-decoration-color: dodgerblue">Diffuse Material</h2>
+            <h4>Colors !!!!</h4>
+
+            <p>A diffuse surface scatters incoming rays in random directions and attenuates light according to its color.</p>
+
+            <figure>
+                <img loading="lazy" src="../Images/RayTracing/Diffuse_reflection.webp" alt="Diffuse Reflection" style="width:32%; padding-bottom:5px" />
+                <figcaption><a href="https://en.m.wikipedia.org/wiki/File:Diffuse_reflection.svg" target="_blank">img. Source</a></figcaption>
+            </figure>
+        </div>
+    </section>
+
+    <!-- Section: Vector utilities -->
+    <section>
+        <h2 class="underline" style="text-decoration-color: royalblue">Vector utilities & random sampling</h2>
+
+        <p>Utilities to pick random directions inside a unit sphere / on a hemisphere.</p>
+
+        <div class="snippet">
+            <div class="Swindow">
+                <div class="Swindow-title"><p>Vector3.h</p></div>
+                <div class="Sconsole">
+<pre><code>   double SquaredLength() const
    {
        return x * x + y * y + z * z;
    }
@@ -102,27 +138,28 @@ inline Vector3 RandomOnHemisphere(const Vector3& normal)
 {
    Vector3 onUnitSphere = RandomUnitVector();
    // If in the same hemisphere as the normal
-   if(Dot(onUnitSphere, normal) > 0.0)
+   if(Dot(onUnitSphere, normal) &gt 0.0)
    {
        return onUnitSphere;
    }
    return -onUnitSphere;
-}
-</code></pre>
+}</code></pre>
+                </div>
             </div>
         </div>
-    </div>
-    
-    <h2>Using the <i>"RandomOnHemisphere"</i></h2>
-    <h3>We now use the <i>"RandomOnHemisphere"</i> function to find a bouncing direction for our diffuse material.</h3>
-    <!-- Code Snippet -->
-    <div class="snippet">
-        <div class="Swindow">
-            <div class="Swindow-title">
-                <p>Camera.cpp</p>
-            </div>
-            <div class="Sconsole">
-      <pre><code>Color Camera::RayColor(const Ray& rRay, const Hittable& rWorld) const
+    </section>
+
+    <!-- Section: Using RandomOnHemisphere -->
+    <section>
+        <h2 class="underline" style="text-decoration-color: royalblue">Using the RandomOnHemisphere</h2>
+
+        <p>Pick a random bounce direction on the hemisphere aligned with the surface normal and recurse for indirect illumination.</p>
+
+        <div class="snippet">
+            <div class="Swindow">
+                <div class="Swindow-title"><p>Camera.cpp</p></div>
+                <div class="Sconsole">
+<pre><code>Color Camera::RayColor(const Ray& rRay, const Hittable& rWorld) const
 {
    HitInfo hitInfo;
    if (rWorld.Hit(rRay, Interval(0, infinity), hitInfo)) {
@@ -133,33 +170,30 @@ inline Vector3 RandomOnHemisphere(const Vector3& normal)
    Vector3 unitDirection = Unit(rRay.GetDirection());
    double blue = 0.5 * (unitDirection.y + 1.0);
    return (1.0 - blue) * Color(1.0, 1.0, 1.0) + blue * Color (0.5, 0.7, 1.0);
-}
-</code></pre>
+}</code></pre>
+                </div>
             </div>
         </div>
-    </div>
-    
-    <h2>Test it out, it should be a bit grainy but your material should look like this </h2>
-    
-    <img loading="lazy" src="../Images/RayTracing/DiffuseMatRender.webp" alt="Diffuse Mat Render" style="padding-bottom: 5px; width: 40%"/>
-    <h5 style="padding-bottom: 25px"><a href="https://raytracing.github.io/books/RayTracingInOneWeekend.html#diffusematerials/limitingthenumberofchildrays" target="_blank">img. Source</a></h5>
-    <h4>Very nice</h4>
-    
-    
-    <h2>limit child</h2>
-    <h3>To limit the recursion of the <i>"RayColor"</i> function calling itself an unpredictable number of times,</h3>
-    <h3>we add a limit to the number of times a ray coming from the Camera can bounce.</h3>
-    <h3>This is done by using a counter that decreases itself each time a bounce happens and that stops the loop when it reaches 0.</h3>
-    
-    <h2>Adding maximum bounces</h2>
-    <!-- Code Snippet -->
-    <div class="snippet">
-        <div class="Swindow">
-            <div class="Swindow-title">
-                <p>Camera.h</p>
-            </div>
-            <div class="Sconsole">
-      <pre><code>class Camera
+
+        <p>Result: grainy but convincing diffuse shading.</p>
+
+        <figure>
+            <img loading="lazy" src="../Images/RayTracing/DiffuseMatRender.webp" alt="Diffuse Material Render" style="width:40%; padding-bottom:5px" />
+            <figcaption><a href="https://raytracing.github.io/books/RayTracingInOneWeekend.html#diffusematerials/limitingthenumberofchildrays" target="_blank">img. Source</a></figcaption>
+        </figure>
+    </section>
+
+    <!-- Section: Limit recursion -->
+    <section>
+        <h2 class="underline" style="text-decoration-color: cadetblue">Limiting recursion (max bounces)</h2>
+
+        <p>Stop infinite recursion by passing a bouncesLeft counter that decrements at every bounce.</p>
+
+        <div class="snippet">
+            <div class="Swindow">
+                <div class="Swindow-title"><p>Camera.h</p></div>
+                <div class="Sconsole">
+<pre><code>class Camera
 {
 public:
    Camera() = default;
@@ -179,19 +213,16 @@ private:
    Color RayColor(const Ray& rRay, int bouncesLeft, const Hittable& rWorld) const;  // and here
    Ray GetRay(int x, int y) const;
    Vector3 PixelSampleSquared() const;
-};
-</code></pre>
+};</code></pre>
+                </div>
             </div>
         </div>
-    </div>
-    <!-- Code Snippet -->
-    <div class="snippet">
-        <div class="Swindow">
-            <div class="Swindow-title">
-                <p>Camera.cpp</p>
-            </div>
-            <div class="Sconsole">
-      <pre><code>void Camera::Render(const Hittable& rWorld)
+
+        <div class="snippet">
+            <div class="Swindow">
+                <div class="Swindow-title"><p>Camera.cpp</p></div>
+                <div class="Sconsole">
+<pre><code>void Camera::Render(const Hittable& rWorld)
 {
    ...
            for(int sample = 0; sample &lt sampleCount; sample ++)
@@ -214,21 +245,21 @@ Color Camera::RayColor(const Ray& rRay, int bouncesLeft, const Hittable& rWorld)
        return 0.5 * RayColor(Ray(hitInfo.coordinates, direction), bouncesLeft-1, rWorld);
    }
    ...
-}
-</code></pre>
+}</code></pre>
+                </div>
             </div>
         </div>
-    </div>
-    
-    <h3>Adding sampling count</h3>
-    <!-- Code Snippet -->
-    <div class="snippet">
-        <div class="Swindow">
-            <div class="Swindow-title">
-                <p>Raytracing.cpp</p>
-            </div>
-            <div class="Sconsole">
-      <pre><code>#include "Camera.h"
+    </section>
+
+    <!-- Section: Example main -->
+    <section>
+        <h2 class="underline" style="text-decoration-color: royalblue">Example: main with sampling & bounces</h2>
+
+        <div class="snippet">
+            <div class="Swindow">
+                <div class="Swindow-title"><p>Raytracing.cpp</p></div>
+                <div class="Sconsole">
+<pre><code>#include "Camera.h"
 #include "HittableCollection.h"
 #include "Sphere.h"
 
@@ -245,27 +276,23 @@ int main(int argc, char* argv[])
    camera.Render(world);
 
    return 0;
-}
-</code></pre>
+}</code></pre>
+                </div>
             </div>
         </div>
-    </div>
-   
-    <p style="padding: 5px"></p>
-    
-    <h2 class="underline" style="text-decoration-color: royalblue;">Fix for shadows</h2>
-    <h3>Because of floating point approximations, 
-        it is possible that the origin of the bouncing ray happens right below the surface which may cause it to bounce back on the same surface it was emitted from.
-    </h3>
-    <h3>A simple fix is to set the valid interval ever so slightly above 0 <i>(like 0.001).</i></h3>
-    <!-- Code Snippet -->
-    <div class="snippet">
-        <div class="Swindow">
-            <div class="Swindow-title">
-                <p>Camera.cpp</p>
-            </div>
-            <div class="Sconsole">
-      <pre><code>Color Camera::RayColor(const Ray& rRay, int bouncesLeft, const Hittable& rWorld) const
+    </section>
+
+    <!-- Section: Fix for shadows -->
+    <section>
+        <h2 class="underline" style="text-decoration-color: royalblue">Fix for self-shadowing (epsilon)</h2>
+
+        <p>Use a small epsilon (e.g. 0.001) as the minimum ray time to avoid hitting the same surface due to numeric precision.</p>
+
+        <div class="snippet">
+            <div class="Swindow">
+                <div class="Swindow-title"><p>Camera.cpp</p></div>
+                <div class="Sconsole">
+<pre><code>Color Camera::RayColor(const Ray& rRay, int bouncesLeft, const Hittable& rWorld) const
 {
    HitInfo hitInfo;
   
@@ -277,55 +304,25 @@ int main(int argc, char* argv[])
    Vector3 unitDirection = Unit(rRay.GetDirection());
    double blue = 0.5 * (unitDirection.y + 1.0);
    return (1.0 - blue) * Color(1.0, 1.0, 1.0) + blue * Color (0.5, 0.7, 1.0);
-}
-</code></pre>
+}</code></pre>
+                </div>
             </div>
         </div>
-    </div>
-    <h3>The image should be brighter <i>(color)</i></h3>
 
-    
-    <h2 class="underline" style="text-decoration-color: royalblue;">true Lambertian reflection</h2>
-    <h3>A better way to represent a more accurate diffuse, 
-        that is not evenly distributed across the hemisphere, we can use <i>"Lambertian Reflection"</i>.
-    </h3>
-    <h3>This distribution is proportional to the cosine of &#966 <i>(phi)</i> where &#966 is the angle between the reflected ray and the surface normal.</h3>
+        <p>Brighter, more correct per-pixel lighting.</p>
+    </section>
 
-    <h3>This way the direction of the bouncing ray is still random, but has more chances to bounce in the direction of the normal in a nice curve.</h3>
-    
-    <img loading="lazy" src="../Images/RayTracing/LambertianReflection.webp" alt="Diffuse Reflection"  style="padding-bottom: 5px; width: 50%;" />
-    <h5 style="padding-bottom: 25px"><a href="https://www.researchgate.net/figure/Radiation-pattern-of-Lambertian-Lambertian-directional-Batwing-and-Gaussian-sources_fig2_331855279" target="_blank">img. Source</a></h5>
-    
-    <h2 class="underline" style="text-decoration-color: cadetblue;">But How ?</h2>
-    
-    <h3>We can create this distribution by adding a random unit vector to the normal vector.</h3>
-    <h3>If we take <b style="color: dodgerblue">P</b> as the point of intersection and <b style="color: hotpink">n</b> as the normal of the surface, 
-        we have a surface with 2 sides, that means only two unique unit sphere tangents</h3>
-    
-    <img loading="lazy" src="../Images/RayTracing/point-of-intersection-of-the-dir.webp" alt="Diffuse Reflection" style="padding-bottom: 5px; width: 40%"/>
-    <h5 style="padding-bottom: 25px"><a href="https://www.math-only-math.com/important-properties-of-direct-common-tangents.html" target="_blank">img. Source</a></h5>
+    <!-- Section: Lambertian -->
+    <section>
+        <h2 class="underline" style="text-decoration-color: cadetblue">True Lambertian reflection</h2>
 
-    <h3>One sphere will be displaced in the direction of the surface normal, and one sphere will be displaced in the opposite direction<i>(-<b style="color: hotpink">n</b>)</i>.</h3>
-    <h3>This leaves us two spheres that will only just be touching at the intersection point <b style="color: dodgerblue">P</b>.</h3>
-    <h3>One of the sphere has a center of (<b style="color: hotpink">n</b> + <b style="color: dodgerblue">P</b>) and the other has one of (<b style="color: dodgerblue">P</b> - <b style="color: hotpink">n</b>).</h3>
-    <h3>The first is considered outside surface and the second inside surface.</h3>
-    <p></p>
-    <h3>We want to select the tangent unit sphere that is on the same side as the surface of the ray origin.</h3>
-    <h3>Pick a random point <b style="color: limegreen">S</b> on this unit radius sphere and send a ray from the hit point <b style="color: dodgerblue">P</b> 
-        to the random point S.</h3>
-    <h3>This is the vector <b style="color: limegreen">S</b> - <b style="color: dodgerblue">P</b>.</h3>
+        <p>Bias random scattering towards the normal by adding a random unit vector to the surface normal.</p>
 
-    <p style="padding: 5px"></p>
-    
-    <h2 class="underline" style="text-decoration-color: cadetblue;">Let's add the Lambertian Reflection</h2>
-    <!-- Code Snippet -->
-    <div class="snippet">
-        <div class="Swindow">
-            <div class="Swindow-title">
-                <p>Camera.cpp</p>
-            </div>
-            <div class="Sconsole">
-      <pre><code>Color Camera::RayColor(const Ray& rRay, int bouncesLeft, const Hittable& rWorld) const
+        <div class="snippet">
+            <div class="Swindow">
+                <div class="Swindow-title"><p>Camera.cpp</p></div>
+                <div class="Sconsole">
+<pre><code>Color Camera::RayColor(const Ray& rRay, int bouncesLeft, const Hittable& rWorld) const
 {
    HitInfo hitInfo;
   
@@ -338,118 +335,29 @@ int main(int argc, char* argv[])
    Vector3 unitDirection = Unit(rRay.GetDirection());
    double blue = 0.5 * (unitDirection.y + 1.0);
    return (1.0 - blue) * Color(1.0, 1.0, 1.0) + blue * Color (0.5, 0.7, 1.0);
-}
-</code></pre>
+}</code></pre>
+                </div>
             </div>
         </div>
-    </div>
 
-    <h3>You should notice more pronounced shadows and a slight blue tint from the sky reflection on the spheres.</h3>
-    <h3>
-        This is due to less uniform scattering. 
-        For the shadows, more light bounces straight up so the area below the sphere is darker and less light bounces towards the camera.
-    </h3>
-    
-    <p style="padding: 5px"></p>
-    
-    <h2 class="underline" style="text-decoration-color: cadetblue;">Gamma Correction</h2>
+        <figure>
+            <img loading="lazy" src="../Images/RayTracing/point-of-intersection-of-the-dir.webp" alt="Point of intersection illustration" style="width:40%; padding-bottom:5px" />
+            <figcaption><a href="https://www.math-only-math.com/important-properties-of-direct-common-tangents.html" target="_blank">img. Source</a></figcaption>
+        </figure>
 
-    <!-- Code Snippet -->
-    <div class="snippet">
-        <div class="Swindow">
-            <div class="Swindow-title">
-                <p>Camera.cpp</p>
-            </div>
-            <div class="Sconsole">
-      <pre><code>Color Camera::RayColor(const Ray& rRay, int bouncesLeft, const Hittable& rWorld) const
-{
-   HitInfo hitInfo;
-  
-   if(bouncesLeft &lt= 0) return Color(0, 0, 0);
-   if (rWorld.Hit(rRay, Interval(0.001, infinity), hitInfo)) {
-       Vector3 direction = hitInfo.normal + RandomUnitVector();
-       return 0.9 * RayColor(Ray(hitInfo.coordinates, direction), bouncesLeft-1, rWorld);  // The "0.9" is the Reflectance Factor
-   }
-   Vector3 unitDirection = Unit(rRay.GetDirection());
-   double blue = 0.5 * (unitDirection.y + 1.0);
-   return (1.0 - blue) * Color(1.0, 1.0, 1.0) + blue * Color (0.5, 0.7, 1.0);
-}
-</code></pre>
-            </div>
-        </div>
-    </div>
-    <h3>Result :</h3>
-    <h4>Play around with Reflectance</h4>
-    <img loading="lazy" src="../Images/RayTracing/GammaCorrection.webp" alt="Gamma Correction" style="padding-bottom: 5px; width: 40%"/>
-    <h5 style="padding-bottom: 25px"><a href="https://raytracing.github.io/books/RayTracingInOneWeekend.html#diffusematerials/usinggammacorrectionforaccuratecolorintensity" target="_blank">img. Source</a></h5>
+        <p>Produces stronger shadows and slightly bluer sky reflection.</p>
+    </section>
 
-    <!-- Code Snippet -->
-    <div class="snippet">
-        <div class="Swindow">
-            <div class="Swindow-title">
-                <p>Color.h</p>
-            </div>
-            <div class="Sconsole">
-      <pre><code>inline double LinearToGamma(double linearComponent)
+    <!-- Section: Gamma correction -->
+    <section>
+        <h2 class="underline" style="text-decoration-color: cadetblue">Gamma Correction</h2>
+
+        <p>Apply gamma correction (sqrt) before writing colors so output looks correct on displays.</p>
+
+        <div class="snippet">
+            <div class="Swindow">
+                <div class="Swindow-title"><p>Color.h</p></div>
+                <div class="Sconsole">
+<pre><code>inline double LinearToGamma(double linearComponent)
 {
    return sqrt(linearComponent);
-}
-
-inline void WriteColor(std::ostream &out, Color pixel, int sampleCount)
-{
-   double scale = 1.0 / sampleCount;
-   double r = LinearToGamma(pixel.x * scale);
-   double g = LinearToGamma(pixel.y * scale);
-   double b = LinearToGamma(pixel.z * scale);
-  
-   // Write the translated [0,255] value of each color component.
-   static const Interval intensity(0.000, 0.999);
-   out &lt&lt static_cast&ltint>(255.999 * intensity.Clamp(r)) &lt&lt ' '
-       &lt&lt static_cast&ltint>(255.999 * intensity.Clamp(g)) &lt&lt ' '
-       &lt&lt static_cast&ltint>(255.999 * intensity.Clamp(b)) &lt&lt '\n';
-}
-</code></pre>
-            </div>
-        </div>
-    </div>
-    <h3>Result :</h3>
-    <h4>Play around with Reflectance</h4>
-    <img loading="lazy" src="../Images/RayTracing/CorrectedGammaProgression.webp" alt="Corrected Gamma Progression" style="padding-bottom: 5px; width: 40%"/>
-    <h5 style="padding-bottom: 25px"><a href="https://raytracing.github.io/books/RayTracingInOneWeekend.html#diffusematerials/usinggammacorrectionforaccuratecolorintensity" target="_blank">img. Source</a></h5>
-
-
-    <p style="padding: 15px"></p>
-    
-    <h3>Next up more bounces</h3>
-    <h3>buh bye</h3>
-    <p style="padding: 5px"></p>
-</div>
-
-<!-- Buttons -->
-<div style="text-align: center; margin-top: 10px;">
-    <!-- Previous Button, if none: href="../Blog.html" -->
-    <a href="RayTracing-5.html">
-        <button>
-            Previous
-        </button>
-    </a>
-    <!-- Back to blog -->
-    <a href="../Blog.html">
-        <button>
-            Entries
-        </button>
-    </a>
-    <!-- Next button, if none: go back to first post currently: href="Workflow.html"" -->
-    <a href="RayTracing-7.html">
-        <button>
-            Next
-        </button>
-    </a>
-    <p style="padding: 7px"></p>
-</div>
-
-<!-- Date -->
-<h5>21-01-2024</h5>
-
-</body>
-</html>

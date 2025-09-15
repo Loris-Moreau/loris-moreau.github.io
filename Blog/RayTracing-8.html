@@ -1,302 +1,99 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" />
     <title>RayTracing 8</title>
     <link rel="icon" type="image/x-icon" href="../Images/Suprise.webp">
-    <link rel="stylesheet" href="../Styles/style.css">
-    
-    <script src="../Scripts/CommonLayout.js" defer></script>
-    
-    <!-- Meta Tags for SEO -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="Loris Moreau">
     <meta name="description" content="Raytracing Blog">
     <meta name="keywords" content="Showcase, Loris, Moreau, Loris Moreau, Programmer, coding adventure, Blog, Post, Raytracing, C++, CPP, Raytracing in one weekend, Dielectrics, Refraction">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="../Styles/style.css">
+    <link rel="stylesheet" href="../Styles/Code-Quote.css">
+
+    <script src="../Scripts/Carousel.js" defer></script>
 </head>
 
 <body>
+<!-- Main of the post -->
+<main id="BlogPost" class="post">
+    <!-- Top showcase: carousel + short intro in a flex row -->
+    <header>
+        <!-- ========== Section 1 Navbar ========== -->
+        <nav style="margin: 0 auto 2em auto;">
+            <ul>
+                <li><a href="../Blog.html">Back</a></li>
+                <li><a href="../index.html" target="_blank">Main</a></li>
+                <li><a href="../Blog.html" target="_blank">Blog</a></li>
+                <li><a href="../Resources.html" target="_blank">Resources</a></li>
+            </ul>
+        </nav>
 
-<!-- Back Button -->
-<div class="backButton">
-    <a href="../Blog.html">
-        <button>
-            Back
-        </button>
-    </a>
-</div>
-
-
-<!-- Blog Content -->
-<div id="BlogPost" class="post">
-
-    <h2 class="underline">Raytracing in one weekend in C++</h2>
-    <h4><a href="https://github.com/Loris-Moreau/RayTracing" target="_blank">
-        GitHub Repository
-    </a></h4>
-    <h3>Welcome to my adventure following the <a href="https://raytracing.github.io/" target="_blank">raytracing in one weekend</a> series in C++.</h3>
-
-    <p style="padding: 5px"></p>
-
-    <h2 class="underline" style="text-decoration-color: dodgerblue"> Part 8</h2>
-    <h2 class="underline" style="text-decoration-color: dodgerblue; padding-bottom: 5px">Dielectrics</h2>
-    <h4>Fancy word for a type of glass/mirror</h4>
-
-    <h3>read <a href="https://en.wikipedia.org/wiki/Dielectric_Shader" target="_blank">this</a></h3>
-    <p style="padding: 2px"></p>
-
-    <h2 class="underline" style="text-decoration-color: cadetblue">Here's a better explanation</h2>
-    <h3>Dielectric <i>(non-conductive)</i> materials are often used to simulate substances like plastics, glass, water, and other non-metallic surfaces.</h3>
-    <h3>These materials interact differently with light compared to conductive materials <i>(metals)</i>.</h3>
-    <h3>Light can penetrate the surface to some extent, and they have properties like transparency, reflection, and refraction.</h3>
-    
-    <h2 class="underline" style="text-decoration-color: royalblue">Refraction</h2>
-    
-    <h3>The refraction is defined by <a href="https://en.wikipedia.org/wiki/Snell%27s_law" target="_blank">Snell's Law</a> :</h3>
-    
-    <h3> <!-- snell's law -->
-        <math display="block">
-            <mrow>
-                <mi style="color: hotpink">&#951</mi>
-                <mo>&#183</mo>
-                <mo>sin</mo>
-                <mi style="color: orange">&#952</mi>
-                
-                <mo>=</mo>
-                
-                <mi style="color: hotpink">&#951</mi>
-                <mi style="color: hotpink">′</mi>
-                <mo>&#183</mo>
-                <mo>sin</mo>
-                <mi style="color: orange">&#952</mi>
-                <mi style="color: orange">′</mi>
-            </mrow>
-        </math>
-    </h3>
-    
-    
-    <h3>where:</h3>
-    <h3>
-        <i style="color: orange">&#952</i> and <i style="color: orange">&#952′</i> are the angles from the normal 
-        <i style="color: hotpink">&#951</i> and <i style="color: hotpink">&#951′</i> are the refractive indices
-    </h3>
-
-    <h3 class="underline" style="text-decoration-color: darkorange"><i>useful values :</i></h3>
-    <h4>air = 1.0, glass [1.3; 1.7], diamond = 2.40</h4>
-    
-    <p></p>
-    
-    <h3>We determine the direction of the refracted ray by solving for sin <i style="color: orange">&#952′</i>.</h3>
-    
-    <h3> <!-- Direction Eq -->
-        <math display="block">
-            <mrow>
-                <mo>sin</mo>
-                <mi style="color: orange">&#952</mi>
-                <mo>=</mo>
-                <mfrac>
-                    <mrow>
-                        <mrow>
-                            <mi style="color: hotpink">&#951</mi>
-                        </mrow>
-                    </mrow>
-                    <mrow>
-                        <mi style="color: hotpink">&#951</mi>
-                        <mi style="color: hotpink">′</mi>
-                    </mrow>
-                </mfrac>
-                <mo>&#183</mo>
-                <mo>sin</mo>
-                <mi style="color: orange">&#952</mi>
-                <mi style="color: orange">′</mi>
-            </mrow>
-        </math>
-    </h3>
-    
-    <h3>
-        On the refracted side of the surface, there is a refracted ray <i style="color: limegreen">R′</i> and a normal <i style="color: hotpink">&#951′</i> and there exists an angle, 
-        <i style="color: orange">&#952′</i>, between them.
-    </h3>
-    <h3>
-        We can split <i style="color: hotpink">&#951′</i> into parts that are perpendicular  and parallel to <i style="color: hotpink">&#951′</i>
-    </h3>
-
-    <h3> <!-- R Eq -->
-        <math display="block">
-            <mrow>
-                <mi>R′</mi>
-                <mo>=</mo>
-                <msub>
-                    <mi>R′</mi>
-                    <mo>&#8869</mo>
-                </msub>
-                <mo>+</mo>
-                <msub>
-                    <mi>R′</mi>
-                    <mi>||</mi>
-                </msub>
-            </mrow>
-        </math>
-    </h3>
-    <h3>Let's solve R</h3>
-    
-    <h3> <!-- R T Eq -->
-        <math display="block">
-            <mrow>
-                <msub>
-                    <mi>R′</mi>
-                    <mo>&#8869</mo>
-                </msub>
-                <mo>=</mo>
-                <mfrac>
-                    <mrow>
-                        <mrow>
-                            <mi style="color: hotpink">&#951</mi>
-                        </mrow>
-                    </mrow>
-                    <mrow>
-                        <mi style="color: hotpink">&#951</mi>
-                        <mi style="color: hotpink">′</mi>
-                    </mrow>
-                </mfrac>
-                <mo>⁢</mo>
-                <mi>(</mi>
-                <mi>R</mi>
-                <mo>+</mo>
-                <mo>cos</mo>
-                <mi style="color: orange">&#952</mi>
-                <mo>⁢</mo>
-                <mi>n</mi>
-                <mi>)</mi>
-            </mrow>
-        </math>
-    </h3>
-    <h3> <!-- R || Eq -->
-        <math display="block">
-            <mrow>
-                <msub>
-                    <mi>R′</mi>
-                    <mi>||</mi>
-                </msub>
-                <mo>=</mo>
-                <mo>-</mo>
-                <msqrt>
-                    <mn>1</mn>
-                    <mo>-</mo>
-                    <msup>
-                        <mrow>
-                            <mo>|</mo>
-                            <msub>
-                                <mi>R′</mi>
-                                <mo>&#8869</mo>
-                            </msub>
-                            <mo>|</mo>
-                        </mrow>
-                        <mn>2</mn>
-                    </msup>
-                </msqrt>
-                <mo>⁢</mo>
-                <mi>n</mi>
-            </mrow>
-        </math>
-    </h3>
-
-    
-    <h3>We know that the dot product of 2 vectors is</h3>
-    
-    <h3> <!-- dot product of 2 vectors -->
-        <math display="block">
-            <mrow>
-                <mi>a</mi>
-                <mo>&#183</mo>
-                <mi>b</mi>
-                
-                <mo>=</mo>
-                
-                <mi>|</mi>
-                <mo>a</mo>
-                <mi>|</mi>
-                <mo>⁢</mo>
-                <mi>|</mi>
-                <mo>b</mo>
-                <mi>|</mi>
-                <mo>⁢</mo>
-                <mo>cos</mo>
-                <mi style="color: orange">&#952</mi>
-            </mrow>
-        </math>
-    </h3>
-    
-    <h3>If we take a and b as unit vectors (of length 1) we get</h3>
-    
-    <h3> <!-- dot product of 2 vectors with b as unit -->
-        <math display="block">
-            <mrow>
-                <mi>a</mi>
-                <mo>&#183</mo>
-                <mi>b</mi>
-
-                <mo>=</mo>
-                
-                <mo>cos</mo>
-                <mi style="color: orange">&#952</mi>
-            </mrow>
-        </math>
-    </h3>
-    
-    <h3>We can now rewrite R’ perpendicular as</h3>
-
-    <h3> <!-- R T Eq rewrite -->
-        <math display="block">
-            <mrow>
-                <msub>
-                    <mi>R′</mi>
-                    <mo>&#8869</mo>
-                </msub>
-                
-                <mo>=</mo>
-                
-                <mfrac>
-                    <mrow>
-                        <mrow>
-                            <mi style="color: hotpink">&#951</mi>
-                        </mrow>
-                    </mrow>
-                    <mrow>
-                        <mi style="color: hotpink">&#951</mi>
-                        <mi style="color: hotpink">′</mi>
-                    </mrow>
-                </mfrac>
-                <mo>⁢</mo>
-                <mi>(</mi>
-                <mi>R</mi>
-                
-                <mo>+</mo>
-                
-                <mi>(</mi>
-                <mo>-</mo>
-                <mi>R</mi>
-                <mo>&#183</mo>
-                <mi>n</mi>
-                <mi>)</mi>
-                <mi>n</mi>
-                <mi>)</mi>
-            </mrow>
-        </math>
-    </h3>
-    
-    <p style="padding: 5px"></p>
-    
-    <h3>in code</h3>
-
-    <!-- Code Snippet -->
-    <div class="snippet">
-        <div class="Swindow">
-            <div class="Swindow-title">
-                <p>Vector3.h</p>
+        <!-- Carousel -->
+        <div class="flex-container">
+            <div class="showcase-carousel" role="region" aria-label="Showcase carousel">
+                <button class="carousel-button prev" aria-label="Previous slide">&larr;</button>
+                <div class="carousel-viewport">
+                    <div class="carousel-track">
+                        <div class="carousel-slide">
+                            <img loading="lazy" src="../Images/Refraction-Reflection.webp" alt="Refraction & Reflection">
+                        </div>
+                        <div class="carousel-slide">
+                            <img loading="lazy" src="../Images/Suprise.webp" alt="Surprise image">
+                        </div>
+                        <div class="carousel-slide">
+                            <img loading="lazy" src="../Images/JupiPipebomb.webp" alt="Showcase render">
+                        </div>
+                    </div>
+                </div>
+                <button class="carousel-button next" aria-label="Next slide">&rarr;</button>
+                <div class="carousel-dots" aria-hidden="false"></div>
             </div>
-            <div class="Sconsole">
-      <pre><code>inline Vector3 Reflect(const Vector3& direction, const Vector3& normal)
+
+            <!-- Intro / author column -->
+            <div class="text-container">
+                <h1>Dielectrics — RayTracing in one weekend (Part 8)</h1>
+                <p>Dielectrics (glass, water, plastics) — implementing refraction, Schlick's approximation and hollow spheres.</p>
+                <p><a target="_blank" href="https://github.com/Loris-Moreau/RayTracing" class="cta-button">GitHub Repository</a></p>
+            </div>
+        </div>
+    </header>
+
+    <!-- Intro / Overview -->
+    <section>
+        <h2 class="underline" style="text-decoration-color: dodgerblue">Part 8 — Dielectrics</h2>
+        <h4>Fancy word for a type of glass / transparent material</h4>
+        <p>Dielectric materials interact with light by reflecting and refracting — let's implement that in our ray tracer.</p>
+        <figure>
+            <img width="65%" loading="lazy" src="../Images/Refraction-Reflection.webp" alt="Refraction vs Reflection" />
+            <figcaption><a href="https://en.wikipedia.org/wiki/Refraction" target="_blank">img. Source</a></figcaption>
+        </figure>
+    </section>
+
+    <!-- Theory: Snell, vectors, dot product -->
+    <section>
+        <h2 class="underline" style="text-decoration-color: royalblue">Refraction (Snell's Law)</h2>
+        <p>Refraction is governed by Snell's law — refractive indices and angle between ray and surface normal determine the transmitted direction.</p>
+
+        <p>
+            <i>Useful values:</i> air = 1.0, glass ≈ 1.3–1.7, diamond = 2.40.
+        </p>
+
+        <h3 class="underline" style="text-decoration-color: cadetblue">Vector decomposition & dot product</h3>
+        <p>To compute the refracted direction we split the outgoing ray into perpendicular and parallel components to the surface normal and use the relation derived from Snell's law.</p>
+    </section>
+
+    <!-- Code: reflect & refract helpers -->
+    <section>
+        <h2 class="underline" style="text-decoration-color: royalblue">Implementing reflect & refract</h2>
+
+        <div class="snippet">
+            <div class="Swindow">
+                <div class="Swindow-title"><p>Vector3.h</p></div>
+                <div class="Sconsole">
+<pre><code>inline Vector3 Reflect(const Vector3& direction, const Vector3& normal)
 {
    return direction - 2 * Dot(direction, normal) * normal;
 }
@@ -307,25 +104,22 @@ inline Vector3 Refract(const Vector3& unitVector, const Vector3& normal, double 
    Vector3 rayOutPerpendicular = refractionRatio * (unitVector + cosTheta * normal);
    Vector3 rayOutParallel = -sqrt(fabs(1.0 - rayOutPerpendicular.SquaredLength())) * normal;
    return rayOutPerpendicular + rayOutParallel;
-}
-</code></pre>
+}</code></pre>
+                </div>
             </div>
         </div>
-    </div>
+    </section>
 
+    <!-- Dielectric material -->
+    <section>
+        <h2 class="underline" style="text-decoration-color: royalblue">Dielectric material</h2>
+        <p>The dielectric will refract when possible, otherwise it will reflect. We'll also later add Schlick's approximation to mix reflection probabilistically.</p>
 
-    <p style="padding: 5px"></p>
-    
-    <h2 class="underline" style="text-decoration-color: royalblue">Dielectrics Material</h2>
-
-    <!-- Code Snippet -->
-    <div class="snippet">
-        <div class="Swindow">
-            <div class="Swindow-title">
-                <p>Dielectric.h</p>
-            </div>
-            <div class="Sconsole">
-      <pre><code>#pragma once
+        <div class="snippet">
+            <div class="Swindow">
+                <div class="Swindow-title"><p>Dielectric.h</p></div>
+                <div class="Sconsole">
+<pre><code>#pragma once
 
 #include "Material.h"
 
@@ -337,20 +131,16 @@ private:
 public:
    DielectricMaterial(double refIndex): refractionIndex(refIndex){}
    bool Scatter(const Ray& rRayIn, const HitInfo& hitInfo, Color& attenuation, Ray& scattered) const override;
-};
-</code></pre>
+};</code></pre>
+                </div>
             </div>
         </div>
-    </div>
-    <h4>the dielectric material will refract when possible</h4>
-    <div class="snippet">
-        <div class="Swindow">
-            <div class="Swindow-title">
-                <p>Dielectric.cpp</p>
-            </div>
-            <div class="Sconsole">
-      <pre><code>#include "DielectricMaterial.h"
 
+        <div class="snippet">
+            <div class="Swindow">
+                <div class="Swindow-title"><p>Dielectric.cpp</p></div>
+                <div class="Sconsole">
+<pre><code>#include "DielectricMaterial.h"
 #include "Hittable.h"
 
 bool DielectricMaterial::Scatter(const Ray& rRayIn, const HitInfo& hitInfo, Color& attenuation, Ray& scattered) const
@@ -371,22 +161,21 @@ bool DielectricMaterial::Scatter(const Ray& rRayIn, const HitInfo& hitInfo, Colo
    scattered = Ray(hitInfo.coordinates, direction);
    
    return true;
-}
-
-</code></pre>
+}</code></pre>
+                </div>
             </div>
         </div>
-    </div>
-    
-    <h2>Let's add it to the main</h2>
-    <!-- Code Snippet -->
-    <div class="snippet">
-        <div class="Swindow">
-            <div class="Swindow-title">
-                <p>Raytracing.cpp</p>
-            </div>
-            <div class="Sconsole">
-      <pre><code>#include "Camera.h"
+    </section>
+
+    <!-- Scene integration -->
+    <section>
+        <h2 class="underline" style="text-decoration-color: royalblue">Add dielectric to the scene</h2>
+
+        <div class="snippet">
+            <div class="Swindow">
+                <div class="Swindow-title"><p>Raytracing.cpp</p></div>
+                <div class="Sconsole">
+<pre><code>#include "Camera.h"
 #include "DielectricMaterial.h"
 #include "HittableCollection.h"
 #include "LambertianMaterial.h"
@@ -414,33 +203,22 @@ int main(int argc, char* argv[])
    camera.Render(world);
    
    return 0;
-}
-</code></pre>
+}</code></pre>
+                </div>
             </div>
         </div>
-    </div>
-    
-    <h3>cool right. but we're not done yet</h3>
+    </section>
 
-    <p style="padding: 5px"></p>
+    <!-- Schlick's approximation -->
+    <section>
+        <h2 class="underline" style="text-decoration-color: royalblue">Schlick's Approximation</h2>
+        <p>Reflectivity changes with angle — Schlick's approximation lets us probabilistically choose reflection vs refraction to simulate Fresnel effects.</p>
 
-    <h2 class="underline" style="text-decoration-color: royalblue"><a href="https://en.wikipedia.org/wiki/Schlick%27s_approximation" target="_blank">Schlick's Approximation</a></h2>
-    <h3>We know that the reflexivity of glass is impacted by the angle, the steeper the angle, the more reflective.</h3>
-    <h3>For example, if you look at the widow or a framed photo from the side, it will look like a mirror but if you are in front of it you will see through</h3>
-    <p></p>
-    <h3>Let's talk about Christophe <a href="https://en.wikipedia.org/wiki/Schlick%27s_approximation" target="_blank">Schlick's Approximation</a>, it's a formula for approximating the contribution of the Fresnel factor in the specular reflection of light 
-        from a non-conducting interface <i>(surface)</i> between two media.</h3>
-    <h3>This makes it easier to simulate the way glass reflects light without having to use the complexity of real light.</h3>
-    
-    <h3>Let's add this to code</h3>
-    <!-- Code Snippet -->
-    <div class="snippet">
-        <div class="Swindow">
-            <div class="Swindow-title">
-                <p>Dielectric.h</p>
-            </div>
-            <div class="Sconsole">
-      <pre><code>#pragma once
+        <div class="snippet">
+            <div class="Swindow">
+                <div class="Swindow-title"><p>Dielectric.h</p></div>
+                <div class="Sconsole">
+<pre><code>#pragma once
 
 #include "Material.h"
 
@@ -452,20 +230,16 @@ private:
 public:
    DielectricMaterial(double refIndex): refractionIndex(refIndex){}
    bool Scatter(const Ray& rRayIn, const HitInfo& hitInfo, Color& attenuation, Ray& scattered) const override;
-  
-};
-</code></pre>
+};</code></pre>
+                </div>
             </div>
         </div>
-    </div>
-    <div class="snippet">
-        <div class="Swindow">
-            <div class="Swindow-title">
-                <p>Dielectric.cpp</p>
-            </div>
-            <div class="Sconsole">
-      <pre><code>#include "DielectricMaterial.h"
 
+        <div class="snippet">
+            <div class="Swindow">
+                <div class="Swindow-title"><p>Dielectric.cpp</p></div>
+                <div class="Sconsole">
+<pre><code>#include "DielectricMaterial.h"
 #include "Hittable.h"
 
 double DielectricMaterial::Reflectance(double cosine, double pRefractionIndex)
@@ -488,69 +262,40 @@ bool DielectricMaterial::Scatter(const Ray& rRayIn, const HitInfo& hitInfo, Colo
    bool cannotRefract = refractionRatio * sinTheta > 1.0;
    Vector3 direction;
 
-   if(cannotRefract || Reflectance(cosTheta, refractionRatio) > RandomDouble()) direction = Reflect(unitDirection, hitInfo.normal);
+   if(cannotRefract || Reflectance(cosTheta, refractionRatio) &gt; RandomDouble()) direction = Reflect(unitDirection, hitInfo.normal);
    else direction = Refract(unitDirection, hitInfo.normal, refractionRatio);
 
    scattered = Ray(hitInfo.coordinates, direction);
    
    return true;
-}
-</code></pre>
+}</code></pre>
+                </div>
             </div>
         </div>
-    </div>
-   
-    <h3>we can now add a "hollow" sphere to main</h3>
 
-    <div class="snippet">
-        <div class="Swindow">
-            <div class="Swindow-title">
-                <p>Raytracing.cpp</p>
-            </div>
-            <div class="Sconsole">
-      <pre><code>world.Add(make_shared&ltSphere>(Position(0,-100.5,-1), 100, groundMat));
-world.Add(make_shared&ltSphere>(Position(0,0,-1), 0.5, centerMat));
-world.Add(make_shared&ltSphere>(Position(-1,0,-1), 0.5, leftMat));
-world.Add(make_shared&ltSphere>(Position(-1,0,-1), -0.4, leftMat));  // Hollow
-world.Add(make_shared&ltSphere>(Position(1, 0,-1), 0.5, rightMat));
-</code></pre>
+        <p style="padding:0.5rem">Tip: create a hollow glass by adding a second sphere with a negative radius (same center).</p>
+        <div class="snippet">
+            <div class="Swindow">
+                <div class="Swindow-title"><p>Raytracing.cpp (hollow)</p></div>
+                <div class="Sconsole">
+<pre><code>world.Add(make_shared&ltSphere>(Position(-1,0,-1), 0.5, leftMat));
+world.Add(make_shared&ltSphere>(Position(-1,0,-1), -0.4, leftMat));  // Hollow</code></pre>
+                </div>
             </div>
         </div>
-    </div>
-    
-    <p style="padding: 15px"></p>
-    
-    <h3>Next up is a better camera</h3>
+    </section>
 
-    <h3>See ya</h3>
-    <p style="padding: 5px"></p>
+    <footer>
+        <p style="color: var(--text-color-bright);">22-01-2024</p>
+    </footer>
+</main>
+
+<!-- Navigation buttons -->
+<div style="text-align:center; margin-top:1rem">
+    <a href="RayTracing-7.html" class="cta-button">Previous</a>
+    <a href="../Blog.html" class="cta-button secondary" style="margin:0 0.75rem">Entries</a>
+    <a href="RayTracing-9.html" class="cta-button">Next</a>
 </div>
-
-<!-- Buttons -->
-<div style="text-align: center; margin-top: 10px;">
-    <!-- Previous Button, if none: href="../Blog.html" -->
-    <a href="RayTracing-7.html">
-        <button>
-            Previous
-        </button>
-    </a>
-    <!-- Back to blog -->
-    <a href="../Blog.html">
-        <button>
-            Entries
-        </button>
-    </a>
-    <!-- Next button, if none: go back to first post currently: href="Workflow.html" -->
-    <a href="RayTracing-9.html">
-        <button>
-            Next
-        </button>
-    </a>
-    <p style="padding: 7px"></p>
-</div>
-
-<!-- Date -->
-<h5>22-01-2024</h5>
 
 </body>
 </html>
