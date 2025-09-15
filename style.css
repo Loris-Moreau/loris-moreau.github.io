@@ -8,14 +8,14 @@
   --title-color: rgb(40, 40, 40);
   --text-color-bright: rgb(238, 230, 228);
   
-  --primary-color: rgb(225, 69, 0);
-  --secondary-color: darkorchid;
+  --primary-color: rgb(255, 69, 0);
+  --secondary-color: rgb(155, 52, 206);
   
   --color-section-1: rgb(135, 135, 135);
   --color-section-2: rgb(120, 120, 120);
   --color-section-3: rgb(105, 105, 105);
   
-  --underline-color: orangered;
+  --underline-color: var(--primary-color);
   --underline-thickness: 0.1em;
   
   --navbar-height: 3rem;
@@ -37,7 +37,7 @@ html {
 }
 
 body {
-  padding: 1em;                 /* outer spacing around the whole page */
+  padding: 1em; /* outer spacing around the whole page */
   background-color: var(--bg-color); /* main page background */
   justify-content: center;
   align-items: center;
@@ -56,7 +56,7 @@ nav {
 nav ul {
   display: flex;
   align-items: center;
-  list-style-type: none;       /* remove bullets */
+  list-style-type: none; /* remove bullets */
   gap: 2em; /* space between items */
 }
 
@@ -163,7 +163,7 @@ h2 {
 }
   
 .card{
-  box-sizing: border-box;  /* Include padding/border in width/height */
+  box-sizing: border-box; /* Include padding/border in width/height */
   width: 35%;
   height: 7em;
   background-color: var(--color-section-1) ;
@@ -342,7 +342,7 @@ a:hover {
 /* The viewport masks overflow so only one slide is visible at a time */
 .showcase-carousel .carousel-viewport {
   overflow: hidden;
-  border-radius: 1em;      /* keep rounded corners consistent */
+  border-radius: 1em; /* keep rounded corners consistent */
   box-shadow: none;
 }
 /* Track holds slides horizontally; transform changes move the slides */
