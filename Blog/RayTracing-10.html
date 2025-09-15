@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Optimizing a Raytracer</title>
-    <link rel="icon" type="image/x-icon" href="../Images/RayTracing/computeShaderRenderCornellSmol.png">
+    <link rel="icon" type="image/x-icon" href="../Images/RayTracing/computeShaderRenderCornellSmol.webp">
     <link rel="stylesheet" href="../Styles/MainStyle.css">
     
     <script src="../Scripts/CommonLayout.js" defer></script>
@@ -121,8 +121,8 @@
         
         <h4><i>We will start of with the finished code of <a href="https://raytracing.github.io/books/RayTracingTheNextWeek.html" target="_blank">book 2</a></i></h4>
         <h4><i>Should look a little something like this : </i></h4>
-        <img loading="lazy" src="../Images/RayTracing/Final%20Render%20high-Res%20(B2).png" alt="Final Render of Book 2" style="width: 55%; padding-bottom: 5px;" />
-        <h5><a href="https://github.com/Loris-Moreau/RayTracing/blob/main/Images/Final%20Render%20high-Res%20(B2).png" target="_blank">img. Source</a></h5>
+        <img loading="lazy" src="../Images/RayTracing/Final%20Render%20high-Res%20(B2).webp" alt="Final Render of Book 2" style="width: 55%; padding-bottom: 5px;" />
+        <h5><a href="https://github.com/Loris-Moreau/RayTracing/blob/main/Images/Final%20Render%20high-Res%20(B2).webp" target="_blank">img. Source</a></h5>
         
       
     </div>
@@ -143,7 +143,7 @@
         <h4><a href="https://en.wikipedia.org/wiki/Single_instruction,_multiple_data" target="_blank">Source.</a></h4>
         
         <h4>SIMD is basically operations on arrays, like so :</h4>
-        <img loading="lazy" src="../Images/RayTracing/SIMD-operation.png" alt="SISD vs SIMD Operations" style="width: 65%; padding-bottom: 5px;" />
+        <img loading="lazy" src="../Images/RayTracing/SIMD-operation.webp" alt="SISD vs SIMD Operations" style="width: 65%; padding-bottom: 5px;" />
         <h5><a href="https://blog.wasmer.io/webassembly-and-simd-13badb9bf1a8" target="_blank">img. Source</a></h5>
         <h4><a href="https://medium.com/@bromanz/simd-sse-unity3d-net-2-0-70f6c911713f" target="_blank">SIMD use in Unity3D</a></h4>
         
@@ -224,7 +224,7 @@ struct LaneVector3
         <h3>As the chart below illustrates, no matter how many cores or SIMD lanes we employ, the maximum achievable speedup caps at 2x.</h3>
         <h3>This explains why using a 4-lane vector unit doesn't yield a 4x performance gain.</h3>
         
-        <img loading="lazy" src="../Images/RayTracing/AmdahlsLaw.png" alt="Amdahl's Law" style="width: 65%; padding-bottom: 5px;" />
+        <img loading="lazy" src="../Images/RayTracing/AmdahlsLaw.webp" alt="Amdahl's Law" style="width: 65%; padding-bottom: 5px;" />
         <h5><a href="https://en.wikipedia.org/wiki/Amdahl_law" target="_blank">img. Source</a></h5>
         
         <h3>And remember : "<i>Don't do anything you don't need to</i>".</h3>
@@ -266,7 +266,7 @@ struct LaneVector3
     </div>
     <p style="padding: 2px"></p>
     <div>
-        <img loading="lazy" src="../Images/RayTracing/40-years-processor-trend.png" alt="40 Years Processor Trend" style="width: 75%; padding-bottom: 5px;" />
+        <img loading="lazy" src="../Images/RayTracing/40-years-processor-trend.webp" alt="40 Years Processor Trend" style="width: 75%; padding-bottom: 5px;" />
         <h5><a href="https://www.karlrupp.net/2015/06/40-years-of-microprocessor-trend-data" target="_blank">img. Source</a></h5>
         <h4>If you're in computer science you've probably seen this image or a variation of it.</h4>
         <h3>
@@ -769,12 +769,12 @@ glUnmapBuffer(GL_SHADER_STORAGE_BUFFER);</code></pre>
         
         <p style="padding: 2px"></p>
         <h3>Here are two of the renders : </h3>
-        <img loading="lazy" src="../Images/RayTracing/computeShaderRenderCornell.png" alt="SISD vs SIMD Operations" style="width: 75%; padding-bottom: 5px;" />
+        <img loading="lazy" src="../Images/RayTracing/computeShaderRenderCornell.webp" alt="SISD vs SIMD Operations" style="width: 75%; padding-bottom: 5px;" />
         <h5><b class="underline" style="text-decoration-color: limegreen; text-decoration-thickness: 2px">Render time :</b> regular = 30mins; compute shaders = 1min</h5>
-        <h5><a href="https://github.com/Loris-Moreau/RayTracing/blob/Compute-Shader/Images/computeShaderRenderCornell.png" target="_blank">img. Source</a></h5>
-        <img loading="lazy" src="../Images/RayTracing/computeShaderRenderB2.png" alt="SISD vs SIMD Operations" style="width: 75%; padding-bottom: 5px;" />
+        <h5><a href="https://github.com/Loris-Moreau/RayTracing/blob/Compute-Shader/Images/computeShaderRenderCornell.webp" target="_blank">img. Source</a></h5>
+        <img loading="lazy" src="../Images/RayTracing/computeShaderRenderB2.webp" alt="SISD vs SIMD Operations" style="width: 75%; padding-bottom: 5px;" />
         <h5><b class="underline" style="text-decoration-color: limegreen; text-decoration-thickness: 2px">Render time :</b> regular = 5hrs; compute shaders = 30sec</h5>
-        <h5><a href="https://github.com/Loris-Moreau/RayTracing/blob/Compute-Shader/Images/computeShaderRenderB2.png" target="_blank">img. Source</a></h5>
+        <h5><a href="https://github.com/Loris-Moreau/RayTracing/blob/Compute-Shader/Images/computeShaderRenderB2.webp" target="_blank">img. Source</a></h5>
         
         <p style="padding: 2px"></p>
         

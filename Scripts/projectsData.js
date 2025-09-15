@@ -8,7 +8,7 @@ const projects = [
         longDesc: "quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt, explicabo. Nemo enim ipsam voluptatem, quia voluptas sit, aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos, qui ratione voluptatem sequi nesciunt, ",
         goals: "neque porro quisquam est, qui dolorem ipsum, quia dolor sit, amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt, ut labore et dolore magnam aliquam quaerat voluptatem. ",
         features: "Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit, qui in ea voluptate velit esse, quam nihil molestiae consequatur, vel illum, qui dolorem eum fugiat, quo voluptas nulla pariatur?",
-        images: ["Images/UnderConstruction.png", "Images/FoxInSnow.jpg", "Images/Minto.png", "Images/JupiPipebomb.png"],
+        images: ["Images/UnderConstruction.webp", "Images/FoxInSnow.webp", "Images/Minto.webp", "Images/JupiPipebomb.webp"],
         links: [
             { icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg",
                 url: "https://github.com/Loris-Moreau/TimTam_3D-Engine" }
@@ -23,7 +23,7 @@ const projects = [
         longDesc: "A 3D game engine which would allows anyone to easily create shooters, mouvement or management games and even highly narrative driven games.",
         goals: "Create a 3D Game Engine where I can easily develop games like; Doom, Descent, Outer Wilds, Barony, Factorio, Mirrors Edge, etc...",
         features: "Physics, File management, Audio, Object loader, Debug Tools, chat box that accepts commands, couch co-op, Particle System, Shaders, Polylines (curves), Level Editor, imgui, Pathfinding, Animation, Event System",
-        images: ["Images/UnderConstruction.png"],
+        images: ["Images/UnderConstruction.webp"],
         
         links: [
             { icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg",
@@ -53,8 +53,8 @@ const projects = [
         longDesc: "My Adventure following the \"Raytracing in one weekend series\" and then optimizing it using compute shaders, SIMD & Multithreading.",
         goals: "The goal was to make a raytracer but I the realised how slow and calculation intensive it was so I optimized as much as necessary (from 5hrs to just a few seconds.",
         features: "A simple Raytracer where you can load scenes or make your own. the repository has the main branch with the original raytracer and the compute shaders branch which is the optimized version.",
-        images: ["Images/RayTracing/Final Render (B1).png", "Images/RayTracing/Cornell's Box (B2, P8).png", "Images/RayTracing/Final Render high-Res (B2).png", 
-            "Images/RayTracing/computeShaderRenderCornell.png", "Images/RayTracing/computeShaderRenderB2.png", "Images/RayTracing/computeShaderRenderScen01.png"],
+        images: ["Images/RayTracing/Final Render (B1).webp", "Images/RayTracing/Cornell's Box (B2, P8).webp", "Images/RayTracing/Final Render high-Res (B2).webp", 
+            "Images/RayTracing/computeShaderRenderCornell.webp", "Images/RayTracing/computeShaderRenderB2.webp", "Images/RayTracing/computeShaderRenderScen01.webp"],
         
         links: [
             { icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg",
@@ -71,7 +71,7 @@ const projects = [
         longDesc: "A C++ implementation of Conway's Game of Life using a sparse data structure for an infinite grid & built with GLFW, Glad, ImGui, and OpenGL.",
         goals: "The goal was to learn ImGui and dabble in OpenGl as well as 0 player Games, I've always found conway's Game of Life interesting; being able to make a Turing complete Program with so few rules.",
         features: "Infinite sparse grid representation, only live cells are stored, optimising memory; Adjustable simulation speed and camera panning; Cell toggling with mouse click; controls via ImGui; Visual grid overlay and smooth rendering using OpenGL points.",
-        images: ["Images/Showcase/GliderGun.gif", "Images/Showcase/GliderGun.png"],
+        images: ["Images/Showcase/GliderGun.gif", "Images/Showcase/GliderGun.webp"],
         
         links: [
             { icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg",
@@ -100,7 +100,7 @@ const projects = [
         longDesc: "Unreal Engine 5 AI System",
         goals: "Make an AI that would feel like an actual person without making the game they would be in too difficult.",
         features: "Multiple types of enemies using Behaviour Trees, Custom Tasks, Environment Queries, Pawn Sensing & Nav Mesh",
-        images: ["Images/Showcase/UE-AI-5.png", "Images/Showcase/UE-AI-4.png", "Images/Showcase/UE-AI-3.png", "Images/Showcase/UE-AI-2.png", "Images/Showcase/UE-AI-1.png", "Images/Showcase/UE-AI-6.png"],
+        images: ["Images/Showcase/UE-AI-5.webp", "Images/Showcase/UE-AI-4.webp", "Images/Showcase/UE-AI-3.webp", "Images/Showcase/UE-AI-2.webp", "Images/Showcase/UE-AI-1.webp", "Images/Showcase/UE-AI-6.webp"],
         
         links: [
             { icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg",
@@ -115,7 +115,7 @@ const projects = [
         longDesc: "A lot of shader & VFXs in UE 5.",
         goals: "Make and experiment with shaders that I could use in my projects.",
         features: "Shaders of all shapes & sizes.",
-        images: ["Images/Showcase/UE-VFX-1.png", "Images/Showcase/UE-VFX-3.png", "Images/Showcase/UE-VFX-5.png", "Images/Showcase/UE-VFX-2.png", "Images/Showcase/UE-VFX-4.png"],
+        images: ["Images/Showcase/UE-VFX-1.webp", "Images/Showcase/UE-VFX-3.webp", "Images/Showcase/UE-VFX-5.webp", "Images/Showcase/UE-VFX-2.webp", "Images/Showcase/UE-VFX-4.webp"],
         
         links: [
             { icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" }
@@ -145,7 +145,7 @@ const projects = [
         longDesc: "It's a platformer in which windows will appear along your path some to help and other just to block your view.",
         goals: "Learn Godot and experiment with the window management system.",
         features: "Simple platformer with a modular window spawner that overlays custom shaders over images or videos.",
-        images: ["Images/Showcase/WA2.png", "Images/Showcase/WA1.png", "Images/Showcase/WA3.png"],
+        images: ["Images/Showcase/WA2.webp", "Images/Showcase/WA1.webp", "Images/Showcase/WA3.webp"],
 
         links: [
             { icon: "Images/Logos/Itchio.svg",
@@ -160,7 +160,7 @@ const projects = [
         longDesc: "It's a multiplayer where you play with your friends and bump your balls together until there's only one left.",
         goals: "The theme of this Jam was \"Make Me Laugh\" and we decided to make an 4 player arcade type game like a Mario Party minigame.",
         features: "Roll around and bump the other players off the platform, power ups/gadgets will drop from the sky.",
-        images: ["Images/Showcase/BBALogo.png", "Images/Showcase/BBA-1.png"],
+        images: ["Images/Showcase/BBALogo.webp", "Images/Showcase/BBA-1.webp"],
 
         links: [
             { icon: "Images/Logos/GGJ_Logo_Light.svg",

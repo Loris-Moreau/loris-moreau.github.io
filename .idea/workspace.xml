@@ -5,7 +5,115 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="df844061-607d-4516-8926-0cdf558aec54" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/Blog.html" beforeDir="false" afterPath="$PROJECT_DIR$/Blog.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Blog/3DGameEngine.html" beforeDir="false" afterPath="$PROJECT_DIR$/Blog/3DGameEngine.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Blog/GameDevNintendo.html" beforeDir="false" afterPath="$PROJECT_DIR$/Blog/GameDevNintendo.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Blog/Ideas.html" beforeDir="false" afterPath="$PROJECT_DIR$/Blog/Ideas.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Blog/PSVitaJailbreak.html" beforeDir="false" afterPath="$PROJECT_DIR$/Blog/PSVitaJailbreak.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Blog/RayTracing-1.html" beforeDir="false" afterPath="$PROJECT_DIR$/Blog/RayTracing-1.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Blog/RayTracing-10.html" beforeDir="false" afterPath="$PROJECT_DIR$/Blog/RayTracing-10.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Blog/RayTracing-2.html" beforeDir="false" afterPath="$PROJECT_DIR$/Blog/RayTracing-2.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Blog/RayTracing-3.html" beforeDir="false" afterPath="$PROJECT_DIR$/Blog/RayTracing-3.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Blog/RayTracing-4.html" beforeDir="false" afterPath="$PROJECT_DIR$/Blog/RayTracing-4.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Blog/RayTracing-5.html" beforeDir="false" afterPath="$PROJECT_DIR$/Blog/RayTracing-5.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Blog/RayTracing-6.html" beforeDir="false" afterPath="$PROJECT_DIR$/Blog/RayTracing-6.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Blog/RayTracing-7.html" beforeDir="false" afterPath="$PROJECT_DIR$/Blog/RayTracing-7.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Blog/RayTracing-8.html" beforeDir="false" afterPath="$PROJECT_DIR$/Blog/RayTracing-8.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Blog/RayTracing-9.html" beforeDir="false" afterPath="$PROJECT_DIR$/Blog/RayTracing-9.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Blog/ResearchProjBibliography.html" beforeDir="false" afterPath="$PROJECT_DIR$/Blog/ResearchProjBibliography.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Blog/TSP.html" beforeDir="false" afterPath="$PROJECT_DIR$/Blog/TSP.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Blog/Thoughts.html" beforeDir="false" afterPath="$PROJECT_DIR$/Blog/Thoughts.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Blog/TimTamEngine.html" beforeDir="false" afterPath="$PROJECT_DIR$/Blog/TimTamEngine.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Blog/VFX-1.html" beforeDir="false" afterPath="$PROJECT_DIR$/Blog/VFX-1.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Blog/VFX-2.html" beforeDir="false" afterPath="$PROJECT_DIR$/Blog/VFX-2.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Blog/Workflow.html" beforeDir="false" afterPath="$PROJECT_DIR$/Blog/Workflow.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ExternalResources.html" beforeDir="false" afterPath="$PROJECT_DIR$/ExternalResources.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Images/DiffuseReflection.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Images/Focal.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Images/FoxInSnow.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Images/JupiPipebomb.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Images/Logos/houdini_badge_flat.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Images/LotsOfRays.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Images/Minto.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Images/PS Img/InstallOS.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Images/PS Img/app needed.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Images/PS Img/appdownloader1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Images/PS Img/appdownloader2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Images/PS Img/autoupdate.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Images/PS Img/format storage.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Images/PS Img/henlobootstrap.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Images/PS Img/psHenkakuSettings.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Images/PS Img/psSysInfo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Images/PS Img/pspemugametxt.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Images/PS Img/psvita logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Images/PS Img/spoof version.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Images/PS Img/storage device.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Images/PS Img/vitasavemode.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Images/RayTracing/40-years-processor-trend.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Images/RayTracing/AABB-collision.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Images/RayTracing/AmdahlsLaw.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Images/RayTracing/BasicMaterials.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Images/RayTracing/CameraXYZ.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Images/RayTracing/CircleIntersection.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Images/RayTracing/Cornell's Box (B2, P8).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Images/RayTracing/CorrectedGammaProgression.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Images/RayTracing/DiffuseMatRender.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Images/RayTracing/Diffuse_reflection.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Images/RayTracing/Final Render (B1).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Images/RayTracing/Final Render high-Res (B2).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Images/RayTracing/FuzzedMetal.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Images/RayTracing/GammaCorrection.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Images/RayTracing/LambertianReflection.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Images/RayTracing/Light Render 1 (B2, P7.3).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Images/RayTracing/Perlin Render 1 (B2, P5.1).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Images/RayTracing/Quads (B2, P6).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Images/RayTracing/Raycast_in_FPS.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Images/RayTracing/SIMD-operation.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Images/RayTracing/SimpleRaytracing.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Images/RayTracing/SphereNormals.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Images/RayTracing/ThinLens.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Images/RayTracing/antialiasing.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Images/RayTracing/bounding_volume_hierarchies.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Images/RayTracing/computeShaderRenderB2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Images/RayTracing/computeShaderRenderCornell.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Images/RayTracing/computeShaderRenderCornellSmol.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Images/RayTracing/computeShaderRenderScen01.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Images/RayTracing/point-of-intersection-of-the-dir.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Images/Refraction-Reflection.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Images/Setup/Keyboard.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Images/Showcase/BBA-1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Images/Showcase/BBALogo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Images/Showcase/GliderGun.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Images/Showcase/LK1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Images/Showcase/LK2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Images/Showcase/LK3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Images/Showcase/Quartz Test 2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Images/Showcase/UE-AI-1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Images/Showcase/UE-AI-2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Images/Showcase/UE-AI-3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Images/Showcase/UE-AI-4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Images/Showcase/UE-AI-5.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Images/Showcase/UE-AI-6.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Images/Showcase/UE-VFX-1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Images/Showcase/UE-VFX-2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Images/Showcase/UE-VFX-3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Images/Showcase/UE-VFX-4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Images/Showcase/UE-VFX-5.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Images/Showcase/UE-VFX-6.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Images/Showcase/WA1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Images/Showcase/WA2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Images/Showcase/WA3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Images/Suprise.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Images/Tenma.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Images/ThinLens.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Images/UnderConstruction.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Images/icon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/projectsData.js" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/projectsData.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Templates/TemplatePage.html" beforeDir="false" afterPath="$PROJECT_DIR$/Templates/TemplatePage.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Templates/TemplatePost.html" beforeDir="false" afterPath="$PROJECT_DIR$/Templates/TemplatePost.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Templates/TemplateRayTracing.html" beforeDir="false" afterPath="$PROJECT_DIR$/Templates/TemplateRayTracing.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test proc.html" beforeDir="false" afterPath="$PROJECT_DIR$/test proc.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -179,6 +287,7 @@
       <workItem from="1756812381095" duration="992000" />
       <workItem from="1756897437753" duration="2304000" />
       <workItem from="1756993932274" duration="211000" />
+      <workItem from="1757926481822" duration="168000" />
     </task>
     <servers />
   </component>
