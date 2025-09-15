@@ -11,7 +11,7 @@
     
     <!-- Styles -->
     <link rel="stylesheet" href="../Styles/style.css">
-    <link rel="stylesheet" href="../Code-Quote.css">
+    <link rel="stylesheet" href="../Styles/Code-Quote.css">
     
     <script src="../Scripts/Carousel.js" defer></script>
     
@@ -29,17 +29,23 @@
 </head>
 <body>
 
-<!-- Back button -->
-<div style="margin: 1rem;">
-    <a href="R-10.html" class="cta-button secondary" aria-label="Back to blog" style="background-color: var(--color-section-1)">Back</a>
-</div>
-
 <!-- Main blog post -->
 <main id="BlogPost" class="post">
     
     <!-- Top showcase: carousel + short intro in a flex row -->
-    <header class="flex-container" aria-hidden="false">
+    <header >
+
+        <!-- ========== Section 1 Navbar ========== -->
+        <nav style="margin: 0 auto 2em auto;">
+            <ul>
+                <li><a href="../Blog.html">Back</a></li>
+                <li><a href="../index.html" target="_blank">Main</a></li>
+                <li><a href="../Blog.html" target="_blank">Blog</a></li>
+                <li><a href="../Resources.html" target="_blank">Resources</a></li>
+            </ul>
+        </nav>
         
+        <div class="flex-container">
         <div class="showcase-carousel" role="region" aria-label="Showcase carousel">
             <button class="carousel-button prev" aria-label="Previous slide">&larr;</button>
             <div class="carousel-viewport">
@@ -67,6 +73,7 @@
                 <a target="_blank" href="https://github.com/Loris-Moreau/RayTracing/tree/Compute-Shader" class="cta-button">GitHub Repository</a>
                 <a target="_blank" href="R-10_Bibliography.html" class="cta-button secondary" style="margin-left:0.5rem">Project Bibliography</a>
             </p>
+        </div>
         </div>
     </header>
 
