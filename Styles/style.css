@@ -1,19 +1,18 @@
 :root { 
   /* Global Variables (these are readable in every css) */
+  --bg-color: rgb(37, 37, 37);
+  --bg-color-2: rgb(50, 50, 50);
   
-  --bg-color: rgb(52, 52, 57);
-  --bg-color-2: rgb(72, 72, 77);
+  --text-color: rgb(55, 55, 55);
+  --title-color: rgb(45, 45, 45);
+  --text-color-bright: rgb(225, 225, 225);
   
-  --text-color: rgb(50, 50, 50);
-  --title-color: rgb(40, 40, 40);
-  --text-color-bright: rgb(238, 230, 228);
+  --primary-color: rgb(255, 95, 0);
+  --secondary-color: rgb(220, 15, 255);
   
-  --primary-color: rgb(255, 69, 0);
-  --secondary-color: rgb(155, 52, 206);
-  
-  --color-section-1: rgb(135, 135, 135);
+  --color-section-1: rgb(125, 125, 125);
   --color-section-2: rgb(120, 120, 120);
-  --color-section-3: rgb(105, 105, 105);
+  --color-section-3: rgb(110, 110, 110);
   
   --underline-color: var(--primary-color);
   --underline-thickness: 0.1em;
@@ -31,6 +30,7 @@
 @font-face {
   font-display: swap;
 }
+
 html {
   font-family: Arial, Open-Dyslexic, Verdana, Helvetica, monospace;
   color: var(--text-color); /* base text color for the doc */
