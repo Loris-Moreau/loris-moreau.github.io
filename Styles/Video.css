@@ -1,0 +1,29 @@
+/* Responsive video wrapper (simple) */
+.video-wrapper.simple {
+    width: min(100%, 75%);
+    max-width: 840px; /* sensible max width */
+    margin: 1rem auto;
+    border-radius: 1em;
+    overflow: hidden; /* keeps rounded corners for iframe */
+    background: var(--color-section-2);
+    border: 0.15em solid black;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+    transition: transform 220ms ease, box-shadow 220ms ease;
+}
+
+/* Aspect ratio: prefer modern property, fallback to padding-top trick */
+.video-wrapper.simple .video-iframe {
+    width: 100%;
+    height: 100%;
+    aspect-ratio: 16 / 9; /* modern browsers */
+    display: block;
+    border: 0;
+}
+
+/* Mobile: let it fill column like your responsive rules */
+@media (max-width: 988px) {
+    .video-wrapper.simple { 
+        width: 100%; 
+        max-width: 100%; 
+    }
+}
