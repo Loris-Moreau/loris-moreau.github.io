@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>Random Thoughts</title>
     <link rel="icon" type="image/x-icon" href="../Images/Minto.webp">
-    <link rel="stylesheet" href="../Styles/MainStyle.css">
+    <link rel="stylesheet" href="../Styles/style.css">
     
     <script src="../Scripts/CommonLayout.js" defer></script>
     
@@ -17,18 +17,15 @@
 
 <body>
 
-<!-- Back Button -->
-<div class="backButton">
-    <a href="../Blog.html">
-        <button>
-            Back
-        </button>
-    </a>
+<!-- Back button -->
+<div style="margin: 1rem;">
+    <a href="R-10.html" class="cta-button secondary" aria-label="Back to blog" style="background-color: var(--color-section-1)">Back</a>
 </div>
 
 
+
 <!-- Blog Content -->
-<div id="BlogPost" class="post">
+<section id="BlogPost" class="post">
     <!-- Title/Header of the post -->
     <h2 class="underline">Random thoughts</h2>
     <!-- <h3>Welcome to my adventure.</h3> -->
@@ -165,30 +162,15 @@
     <p style="padding: 15px"></p>
     <h3>Until we meet again, hehehe</h3>
     <p style="padding: 5px"></p>
+</section>
+
+<!-- Navigation buttons -->
+<div style="text-align:center; margin-top:1rem">
+    <a href="Ideas.html" class="cta-button">Previous</a>
+    <a href="../Blog.html" class="cta-button secondary" style="margin:0 0.75rem">Entries</a>
+    <a href="Workflow.html" class="cta-button">Next</a>
 </div>
 
-<!-- Buttons -->
-<div style="text-align: center;">
-    <!-- Previous Button, if none: href="../Blog.html" -->
-    <a href="Ideas.html">
-        <button>
-            Previous
-        </button>
-    </a>
-    <!-- Back to blog -->
-    <a href="../Blog.html">
-        <button>
-            Entries
-        </button>
-    </a>
-    <!-- Next button, if none: go back to Blog Entries -->
-    <a href="Workflow.html">
-        <button>
-            Next
-        </button>
-    </a>
-    <p style="padding: 7px"></p>
-</div>
 
 <!-- Date : DD-MM-YYYY -->
 <h5>XX-XX-XXXX</h5>

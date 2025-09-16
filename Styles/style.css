@@ -1,0 +1,434 @@
+:root { 
+  /* Global Variables (these are readable in every css) */
+  --bg-color: rgb(37, 37, 37);
+  --bg-color-2: rgb(50, 50, 50);
+  
+  --text-color: rgb(55, 55, 55);
+  --title-color: rgb(45, 45, 45);
+  --text-color-bright: rgb(225, 225, 225);
+  
+  --primary-color: rgb(255, 95, 0);
+  --secondary-color: rgb(220, 15, 255);
+  
+  --color-section-1: rgb(125, 125, 125);
+  --color-section-2: rgb(120, 120, 120);
+  --color-section-3: rgb(110, 110, 110);
+  
+  --underline-color: var(--primary-color);
+  --underline-thickness: 0.1em;
+  
+  --navbar-height: 3rem;
+}
+
+/* Global Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; /* ensures padding/border included in element size */
+}
+
+@font-face {
+  font-display: swap;
+}
+
+html {
+  font-family: Arial, Open-Dyslexic, Verdana, Helvetica, monospace;
+  color: var(--text-color); /* base text color for the doc */
+}
+
+body {
+  padding: 1em; /* outer spacing around the whole page */
+  background-color: var(--bg-color); /* main page background */
+  justify-content: center;
+  align-items: center;
+}
+
+h1, h2, h3 {
+  color: var(--title-color);
+}
+
+nav {
+  /*height: var(--navbar-height);*/
+  margin: 1em auto 3em auto;
+  width: min(90em, 100%);
+}
+
+nav ul {
+  display: flex;
+  align-items: center;
+  list-style-type: none; /* remove bullets */
+  gap: 2em; /* space between items */
+}
+
+nav li:first-child {
+  font-weight: bold;
+  margin-right: auto; /* pushes remaining nav items to the right */
+}
+
+nav a {
+  text-decoration: none;
+  color: var(--text-color);
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
+
+/*
+aside{
+  height: calc(100vh - var(--navbar-height));
+  top: var(--navbar-height);
+  position: sticky;
+  align-self: start;
+  grid-area: sidebar;
+  color: var(--text-color);
+  margin-left: 2em;
+  align-items: start;
+  text-align: center;
+}
+aside p{
+  font-size: 1em;
+  padding: 0.1em;
+}
+*/
+
+/* Shared width and padding. Using min() keeps the paddings reasonable on both very wide and narrower screens. */
+header, section {
+  margin: 2em auto;
+  width: min(75em, 100%); /* central column with max width */
+  background-color: var(--color-section-1);
+  padding: min(2em, 15%);
+  border-radius: 1em;
+}
+
+.flex-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 3em;
+  padding: 2em 0; /*top/bot, left/right */
+}
+
+header img {
+  max-width: 100%;
+  border-radius: 1em;
+  object-fit: cover; /* crop to fill */
+  object-position: bottom; /* where the image should be focused */
+}
+
+.text-container{
+  flex: 0 1 34em; /* don't grow, can shrink, preferred width 34em */
+}
+
+h1 {
+  font-size: 2.5rem;
+}
+
+h2 {
+  font-size: 2rem;
+}
+
+.text-container p {
+  margin: 0.75em 0 1em 0;
+  font-size: 1.25rem;
+}
+
+.cta-button {
+  display: inline-block;
+  text-decoration: none;
+  color: mintcream; /* text color on buttons */
+  background-color: var(--primary-color);
+  padding: 0.75em 1.25em;
+  border-radius: 0.5em;
+  font-weight: 600;
+}
+.cta-button:hover {
+  transform: scale(1.025);
+}
+.cta-button:active {
+  transform: scale(0.95);
+}
+
+/* Secondary button variant */
+.secondary {
+  background-color: var(--secondary-color);
+}
+.secondary:hover {
+  text-decoration: none;
+  transform: scale(1.025);
+}
+.secondary:active {
+  transform: scale(0.95);
+}
+  
+.card{
+  box-sizing: border-box; /* Include padding/border in width/height */
+  width: 35%;
+  height: 7em;
+  background-color: var(--color-section-1) ;
+  border: 0.15em solid black;
+  border-radius: 1.25em;
+  display: flex;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  /*user-select: none;*/ /* Prevents text selection */
+  font-weight: bolder;
+  color: black;
+  margin: 1em;
+  
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  align-self: center; 
+  justify-self: center;
+  
+  text-decoration: none;
+}
+a .card{
+  text-decoration: none;
+}
+.card:hover {
+  border: 0.15em solid lightgray;
+  transform: scale(1.05);
+  text-decoration: none;
+}
+.card:active {
+  transform: scale(0.95); 
+  text-decoration: none;
+}
+
+section {
+  padding: 3em min(2em, 15%);
+  background-color: var(--color-section-2);
+  text-align: center;
+}
+
+section p {
+  margin-top: 1em;
+  font-size: 1.25rem;
+}
+
+section:nth-child(3){
+  background-color: var(--color-section-3);
+}
+
+.grid-container {
+  margin-top: 3em;
+  margin-bottom: 3em;
+  display: grid;
+  width: 100%;
+  grid-template-columns: repeat(4, 1fr); /* four equal columns */
+  grid-template-rows: 1fr 1fr;           /* two rows */
+  grid-template-areas: 
+  "img-1 img-1 img-2 img-3"
+  "img-1 img-1 img-4 img-5"; 
+  gap: 1em; /* spacing between grid items */
+}
+
+.grid-container img {
+  height: 100%;
+  width: 100%;
+  border-radius: 0.5em;
+  transition: 100ms ease; /* small hover transition for interactions */
+}
+
+.grid-container img:hover {
+  scale: 1.05; /* slight zoom on hover */
+}
+
+details {
+  margin-top: 1em;
+  background-color: var(--bg-color-2);
+  border-radius: 1em;
+  cursor: default; /* disables pointer look; summary still interactive */
+}
+
+details summary {
+  padding: 1em;
+  font-size: 1.7rem;
+}
+
+details p {
+  padding: 0 2em 2em 2em;
+}
+
+footer {
+  padding-bottom: 1.5em;
+  text-align: center;
+}
+
+footer a {
+  margin: 0 1em;
+  text-decoration: none;
+  color: var(--text-color-bright);
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+@media(max-width: 988px){
+  /* Center text inside header when screen narrows */
+  header {
+    text-align: center;
+  }
+  
+  header .text-container {
+    padding-top: 0;
+  }
+}
+
+@media(max-width: 640px) {
+  /* Hide the second nav item on very small screens */
+  /*nav li:nth-child(2){
+    display: none;
+  }*/
+  
+  header {
+    margin-top: 0; /* tighten spacing on tiny screens */
+  }
+
+  /* Make CTA block-level so it is easier to tap on mobile */
+  .cta-button {
+    margin-top: 0.5em;
+    width: 100%;
+  }
+
+  /* Convert the grid gallery to a single column for small screens */
+  .grid-container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .text-container p {
+    font-size: 1rem; /* slightly reduce paragraph size for mobile */
+  }
+
+  h2 {
+    font-size: 1.5rem;
+  }
+  /*
+  aside{
+    display: none;
+  }
+  */
+}
+
+a{
+  margin: 0 ;
+  text-decoration: underline;
+  color: var(--text-color-bright);
+}
+a:hover {
+  text-decoration: underline;
+  text-decoration-color: var(--primary-color); /* highlight underline on hover */
+}
+
+.underline {
+  text-decoration: underline;
+  text-decoration-color: var(--underline-color);
+  text-decoration-thickness: var(--underline-thickness);
+}
+
+/* ---------- Carousel styles ---------- */
+.showcase-carousel {
+  position: relative; /* for absolutely-positioned controls (arrows) */
+  flex: 0 1 40%; /* fits into your flex layout like the original <img> */
+  max-width: 40%;
+  overflow: visible; /* allow controls outside visually; viewport handles clipping */
+  border-radius: 1em; /* visual match with header img */
+}
+/* The viewport masks overflow so only one slide is visible at a time */
+.showcase-carousel .carousel-viewport {
+  overflow: hidden;
+  border-radius: 1em; /* keep rounded corners consistent */
+  box-shadow: none;
+}
+/* Track holds slides horizontally; transform changes move the slides */
+.carousel-track {
+  display: flex; /* align slides in a row */
+  transition: transform 520ms cubic-bezier(.2,.9,.2,1); /* smooth easing */
+  will-change: transform; /* performance hint for smoother animations */
+}
+/* Each slide takes full viewport width so sliding equals 100% steps */
+.carousel-slide {
+  min-width: 100%;
+  flex: 0 0 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+/* Images reuse header image behavior and limit height so very tall images don't explode layout */
+.carousel-slide img {
+  width: 100%;
+  height: 100%;
+  max-height: 420px; /* keeps tall images reasonable */
+  object-fit: cover;
+  object-position: center bottom;
+  border-radius: 1em;
+  display: block;
+}
+/* arrow buttons */
+.carousel-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%); /* vertically center the circular buttons */
+  border: none;
+  background: rgba(0, 0, 0, 0.7);
+  color: var(--text-color-bright);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-weight: 700;
+  display: grid;
+  place-items: center; /* center arrow character */
+  gap: 0;
+  z-index: 10; /* above images */
+  transition: transform 120ms ease, background 120ms;
+}
+/* small interaction states for arrows */
+.carousel-button:hover { transform: translateY(-50%) scale(1.05); }
+.carousel-button:active { transform: translateY(-50%) scale(.95); }
+/* position the two arrow buttons */
+.carousel-button.prev { left: 0.5em; }
+.carousel-button.next { right: 0.5em; }
+
+/* dots */
+.carousel-dots {
+  display: flex;
+  gap: 0.5em;
+  justify-content: center;
+  margin-top: 0.75em;
+}
+.carousel-dots button {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255,255,255,0.35);
+  cursor: pointer;
+  padding: 0;
+  transition: transform 120ms;
+}
+/* active dot — uses primary color and slightly larger for visibility */
+.carousel-dots button[aria-pressed="true"] {
+  transform: scale(1.3);
+  background: var(--primary-color);
+}
+/* Make the carousel fill its column on smaller screens and soften arrow sizes on tiny screens. */
+@media(max-width: 988px){
+  .showcase-carousel {
+    flex-basis: 100%;
+    max-width: 100%;
+  }
+  .carousel-slide img {
+    max-height: none; /* allow images to behave more naturally on very narrow devices */
+  }
+}
+/* keep arrows a bit more subtle on tiny screens */
+@media(max-width: 420px){
+  .carousel-button { width: 36px; height: 36px; font-size: 14px; }
+  .carousel-dots { gap: 0.375em; }
+}

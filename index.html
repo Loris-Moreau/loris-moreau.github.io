@@ -1,181 +1,442 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Loris M</title>
-    <link rel="icon" type="image/x-icon" href="Images/icon.webp">
-    <!-- Styles -->
-    <link rel="stylesheet" href="Styles/MainStyle.css">
-    <link rel="stylesheet" href="Styles/VideoStyle.css">
-    <link rel="stylesheet" href="Styles/BorgirStyle.css">
-    <link rel="stylesheet" href="Styles/CardStyle.css">
-    <link rel="stylesheet" href="Styles/ShowcaseStyle.css">
-    <!-- Scripts -->
-    <script src="Scripts/CommonLayout.js" defer></script>
-    <script src="Scripts/videoScript.js" defer></script>
-    <script src="Scripts/projectsData.js" defer></script>
-    <script src="Scripts/projectShowcase.js" defer></script>
-    
-    <!-- Meta Tags for SEO -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="author" content="Loris Moreau">
-    <meta name="description" content="Main Page of my showcase website">
-    <meta name="keywords" content="Showcase, Loris, Moreau, Loris Moreau, Programmer, Demoreel, coding adventure, 3D Engine">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Loris Moreau</title>
+  <link rel="icon" type="image/x-icon" href="Images/icon.webp">
+  <link rel="stylesheet" href="Styles/style.css">
+  
+  <script src="Scripts/Carousel.js" defer></script>
+  
+  <!-- Meta Tags for SEO -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Loris Moreau">
+  <meta name="description" content="Main Page of my showcase website">
+  <meta name="keywords" content="Showcase, Loris, Moreau, Loris Moreau, Programmer, Demoreel, coding adventure, 3D Engine">
 </head>
-<!-- There are no errors in Ba Sing Se -->
+
 <body>
-    <!-- BG, Dropdown & Socials are outside the pages to be the same on every page -->
+  <header>
+    <!-- ========== Section 1 Navbar ========== -->
+    <nav>
+      <ul>
+        <li><a href="#showcase">My Work</a></li>
+        <li><a href="index.html">Main</a></li>
+        <li><a href="Blog.html">Blog</a></li>
+        <li><a href="Resources.html">Resources</a></li>
+      </ul>
+    </nav>
     
-<!-- Page 1 (Main Menu) -->
-<div id="MainPage" class="page">
-    
-    <p style="padding: 10px"></p>
-    
-    <header>
-        <h1>Loris Moreau</h1>
-    </header>
-    
-    <h3>I'm a Gameplay programmer, my main interests are C++/C#, Tech art, Game Development & other things.</h3>
-    <h3>This website is a Showcase of my works and a small blog about my coding adventures.</h3>
-    
-    <p style="padding: 1px"></p>
-    
-    <!-- <h4>Just trying to survive, and have a little fun along the way.</h4> -->
-    
-    <h3><b class="underline" style="text-decoration-color: dodgerblue">Current Occupation :</b> 5th Year Programming student at ArtFx</h3>
-    
-    <p style="padding: 1px"></p>
-    
-    <h3>Check out some of my work on <a href="https://loris-moreau.itch.io/" target="_blank">Itch.io</a></h3>
-    <h4>or here</h4>
-
-    <p></p>
-    
-    <!-- To Showcases Button  -->
-    <div style="text-align: center;">
-        <a href="#Showcase">
-            <button>
-                Project Showcase
-            </button>
-        </a>
+    <!-- ========== Me ========== -->
+    <div class="flex-container">
+      <img height="400px" src="Images/icon.webp" alt="Loris Moreau Portrait">
+      <div class="text-container">
+        <h1>Hoi,</h1>
+        <p>I'm Loris Moreau. I'm a <strong>Gameplay</strong> and <strong>Graphics Programmer</strong> with an interest in electronics.</p>
+        <a target="_blank" href="https://loris-moreau.itch.io" class="cta-button">Check out my work</a>
+        <a href="#showcase" class="cta-button secondary">Showcase</a>
+      </div>
     </div>
-
-    <p></p>
+  </header>
+  
+  <!-- ========== Demoreel ========== -->
+  <section>
+    <h2 >Latest Demoreel</h2>
+    <img style="width: 95%; padding-top: 1em;" src="Images/Showcase/Houdini-Showcase.gif" alt="Demoreel">
+  </section>
+  
+  <!-- ========== Debut Showcase ========== -->
+  <section id="showcase">
+    <h2>Some of my projects:</h2>
     
-    <!-- hehe -->
-
-    <!-- <p style="padding: 10px"></p> -->
-
-    <p></p>
-    
-    <!-- pages are : 
-    - main page : explanation of the website & showcase
-        - Showcase Section
-    - blog page (collection of all the blog entries)
-    - external resources page (all "public" resources I use)
-    -->
-    <!-- 
-    <h2 class="underline" style="text-decoration-color: dodgerblue">This website contains :</h2>
-    <h3>- The <a href="https://loris-moreau.github.io/">Showcase</a> Page <i>(here)</i>.</h3>
-    <h3>- The <a href="Blog.html">blog</a> page where my adventures are recorded by a Servo-skull.</h3>
-    <h3>- The <a href="ExternalResources.html">External Resources</a> page which is a collection of links towards stuff that helped me.</h3>
-    -->
-
-    <p></p>
-    
-     <!--<h3>Enjoy.</h3> -->
-    
-    <!-- TODO : maybe add some sort of moving band with software/languages icons -->
-    
-    <!-- <p style="padding: 7px"></p> -->
-    
-    <div id="Demoreel">
-        <h2 class="underline" style="padding-bottom: 0">
-                Latest Demo-reel :
-        </h2>
-        <div class="video-wrapper" style="scale: 85%">
-            <div class="video-container">
-                <iframe 
-                        src="https://www.youtube.com/embed/g4oDCv22zHA" 
-                        loading="lazy" 
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen
-                        title="Loris Moreau Demoreel"
-                ></iframe>
-            </div>
+    <!-- 1 TimTam Engine -->
+    <div class="flex-container">
+      
+      <!-- Start of carousel -->
+      <div class="showcase-carousel" role="region" aria-label="Showcase carousel">
+        <button class="carousel-button prev" aria-label="Previous slide">&larr;</button>
+        <div class="carousel-viewport">
+          <div class="carousel-track">
+            <div class="carousel-slide"><img src="Images/UnderConstruction.webp" alt="TimTam Showcase"></div>
+            <div class="carousel-slide"><img src="Images/UnderConstruction.webp" alt="TimTam Showcase"></div>
+            <div class="carousel-slide"><img src="Images/UnderConstruction.webp" alt="TimTam Showcase"></div>
+            <!-- Add or remove .carousel-slide blocks as needed -->
+          </div>
         </div>
+        <button class="carousel-button next" aria-label="Next slide">&rarr;</button>
+        <div class="carousel-dots" aria-hidden="false"></div>
+      </div>
+      <!-- End of carousel -->
+      
+      <div class="text-container">
+        <!-- Title -->
+        <h1>TimTam Engine</h1>
+        <!-- Description -->
+        <p style="color: var(--text-color-bright);">
+          A 3D game engine which would allows anyone to easily create shooters, mouvement or management games and even narrative driven games.
+        </p>
+        <p style="color: var(--text-color-bright);">
+          <strong class="underline">Goals:</strong> I want to create a 3D Game Engine where I can easily develop games like; Doom, Descent, Outer Wilds, Barony, Factorio, Mirrors Edge, etc...
+        </p>
+        <a target="_blank" href="https://github.com/Loris-Moreau/TimTam_3D-Engine" class="cta-button">Check out the project</a>
+      </div>
+    </div>
+    
+    <!-- 2 3D Render Engine -->
+    <div class="flex-container">
+      
+      <!-- Start of carousel -->
+      <div class="showcase-carousel" role="region" aria-label="Showcase carousel">
+        <button class="carousel-button prev" aria-label="Previous slide">&larr;</button>
+        <div class="carousel-viewport">
+          <div class="carousel-track">
+            <div class="carousel-slide"><img src="Images/Showcase/3D-Engine.gif" alt="3D Engine Showcase"></div>
+            <div class="carousel-slide"><img src="Images/Showcase/Descent-Game.gif" alt="Descent Game Showcase"></div>
+            <!-- Add or remove .carousel-slide blocks as needed -->
+          </div>
+        </div>
+        <button class="carousel-button next" aria-label="Next slide">&rarr;</button>
+        <div class="carousel-dots" aria-hidden="false"></div>
+      </div>
+      <!-- End of carousel -->
+      
+      <div class="text-container">
+        <!-- Title -->
+        <h1>3D Engine</h1>
+        <!-- Description -->
+        <p style="color: var(--text-color-bright);">
+          This is a 3D Game Engine made in roughly 2 months, & later I worked on it for another 2 weeks to implement a descent like game.
+        </p>
+        <p style="color: var(--text-color-bright);">
+          <strong class="underline">Goals:</strong> Create a rendering engine to learn the inner working of 3D engines & experiment with rendering techniques and the game engine pipeline.
+        </p>
+        <a target="_blank" href="https://github.com/Loris-Moreau/3D-Engine-CPP" class="cta-button">Check out the project</a>
+      </div>
+    </div>    
+    
+    <!-- 3 Raytracing -->
+    <div class="flex-container">
+
+      <!-- Start of carousel -->
+      <div class="showcase-carousel" role="region" aria-label="Showcase carousel">
+        <button class="carousel-button prev" aria-label="Previous slide">&larr;</button>
+        <div class="carousel-viewport">
+          <div class="carousel-track">
+            <div class="carousel-slide"><img src="Images/RayTracing/Final%20Render%20(B1).webp" alt="Raytracer Showcase"></div>
+            <div class="carousel-slide"><img src="Images/RayTracing/Cornell's%20Box%20(B2,%20P8).webp" alt="Raytracer Showcase"></div>
+            <div class="carousel-slide"><img src="Images/RayTracing/Final%20Render%20high-Res%20(B2).webp" alt="Raytracer Showcase"></div>
+            <div class="carousel-slide"><img src="Images/RayTracing/computeShaderRenderCornell.webp" alt="Raytracer Showcase"></div>
+            <div class="carousel-slide"><img src="Images/RayTracing/computeShaderRenderB2.webp" alt="Raytracer Showcase"></div>
+            <div class="carousel-slide"><img src="Images/RayTracing/computeShaderRenderScen01.webp" alt="Raytracer Showcase"></div>
+            <!-- Add or remove .carousel-slide blocks as needed -->
+          </div>
+        </div>
+        <button class="carousel-button next" aria-label="Next slide">&rarr;</button>
+        <div class="carousel-dots" aria-hidden="false"></div>
+      </div>
+      <!-- End of carousel -->
+      
+      <div class="text-container">
+        <!-- Title -->
+        <h1>Raytracing</h1>
+        <!-- Description -->
+        <p style="color: var(--text-color-bright);">
+          My Adventure following the "Raytracing in one weekend series" and then optimizing it using compute shaders, SIMD & Multithreading.
+        </p>
+        <p style="color: var(--text-color-bright);">
+          <strong class="underline">Goals:</strong> The goal was to make a raytracer, but I then realised how slow and calculation intensive it was, 
+          so I optimized as much as necessary <i>(from 5hrs to just a few seconds)</i>.
+        </p>
+        <a target="_blank" href="https://github.com/Loris-Moreau/RayTracing" class="cta-button">Check out the project</a>
+      </div>
+    </div>    
+    
+    <!-- 4 Conway -->
+    <div class="flex-container">
+
+      <!-- Start of carousel -->
+      <div class="showcase-carousel" role="region" aria-label="Showcase carousel">
+        <button class="carousel-button prev" aria-label="Previous slide">&larr;</button>
+        <div class="carousel-viewport">
+          <div class="carousel-track">
+            <div class="carousel-slide"><img src="Images/Showcase/GliderGun.webp" alt="Game of life Glider gun Showcase"></div>
+            <div class="carousel-slide"><img src="Images/Showcase/GliderGun.gif" alt="Game of life Glider gun Showcase"></div>
+            <!-- Add or remove .carousel-slide blocks as needed -->
+          </div>
+        </div>
+        <button class="carousel-button next" aria-label="Next slide">&rarr;</button>
+        <div class="carousel-dots" aria-hidden="false"></div>
+      </div>
+      <!-- End of carousel -->
+      
+      <div class="text-container">
+        <!-- Title -->
+        <h1>Conways Game of Life</h1>
+        <!-- Description -->
+        <p style="color: var(--text-color-bright);">
+          A C++ implementation of Conway's Game of Life using a sparse data structure for an infinite grid & built with GLFW, Glad, ImGui, and OpenGL.
+        </p>
+        <p style="color: var(--text-color-bright);">
+          <strong class="underline">Goals:</strong> The goal was to learn ImGui and dabble in OpenGl as well as 0 player Games, I've always found conway's Game of Life interesting; 
+          being able to make a Turing complete Program with so few rules.
+        </p>
+        <a target="_blank" href="https://github.com/Loris-Moreau/Game-of-Life" class="cta-button">Check out the project</a>
+      </div>
+    </div>    
+    
+    <!-- 5 Houdini -->
+    <div class="flex-container">
+
+      <!-- Start of carousel -->
+      <div class="showcase-carousel" role="region" aria-label="Showcase carousel">
+        <button class="carousel-button prev" aria-label="Previous slide">&larr;</button>
+        <div class="carousel-viewport">
+          <div class="carousel-track">
+            <div class="carousel-slide"><img src="Images/Showcase/Houdini-Showcase.gif" alt="Houdini Showcase"></div>
+            <!-- Add or remove .carousel-slide blocks as needed -->
+          </div>
+        </div>
+        <button class="carousel-button next" aria-label="Next slide">&rarr;</button>
+        <div class="carousel-dots" aria-hidden="false"></div>
+      </div>
+      <!-- End of carousel -->
+      
+      <div class="text-container">
+        <!-- Title -->
+        <h1>Houdini Tools</h1>
+        <!-- Description -->
+        <p style="color: var(--text-color-bright);">
+          Houdini tools made to learn the software and once again experiment with it.
+        </p>
+        <p style="color: var(--text-color-bright);">
+          <strong class="underline">Goals:</strong> Learn, experiment and make cool stuff along the way that I could bring into Game my games.
+        </p>
+        <a target="_blank" href="https://github.com/Loris-Moreau" class="cta-button">Check out the project</a>
+      </div>
+    </div>
+    
+    <!-- 6 UE AI -->
+    <div class="flex-container">
+
+      <!-- Start of carousel -->
+      <div class="showcase-carousel" role="region" aria-label="Showcase carousel">
+        <button class="carousel-button prev" aria-label="Previous slide">&larr;</button>
+        <div class="carousel-viewport">
+          <div class="carousel-track">
+            <div class="carousel-slide"><img src="Images/Showcase/UE-AI-4.webp" alt="UE AI System Showcase"></div>
+            <div class="carousel-slide"><img src="Images/Showcase/UE-AI-5.webp" alt="UE AI System Showcase"></div>
+            <div class="carousel-slide"><img src="Images/Showcase/UE-AI-6.webp" alt="UE AI System Showcase"></div>
+            <div class="carousel-slide"><img src="Images/Showcase/UE-AI-1.webp" alt="UE AI System Showcase"></div>
+            <div class="carousel-slide"><img src="Images/Showcase/UE-AI-3.webp" alt="UE AI System Showcase"></div>
+            <div class="carousel-slide"><img src="Images/Showcase/UE-AI-2.webp" alt="UE AI System Showcase"></div>
+            <!-- Add or remove .carousel-slide blocks as needed -->
+          </div>
+        </div>
+        <button class="carousel-button next" aria-label="Next slide">&rarr;</button>
+        <div class="carousel-dots" aria-hidden="false"></div>
+      </div>
+      <!-- End of carousel -->
+      
+      <div class="text-container">
+        <!-- Title -->
+        <h1>UE AI System</h1>
+        <!-- Description -->
+        <p style="color: var(--text-color-bright);">
+          Unreal Engine 5 AI System
+        </p>
+        <p style="color: var(--text-color-bright);">
+          <strong class="underline">Goals:</strong> Make an AI that would feel like an actual person without making the game too difficult.
+        </p>
+        <a target="_blank" href="https://github.com/Loris-Moreau/Enemy_AI" class="cta-button">Check out the project</a>
+      </div>
+    </div>    
+    
+    <!-- 7 UE VFXs -->
+    <div class="flex-container">
+
+      <!-- Start of carousel -->
+      <div class="showcase-carousel" role="region" aria-label="Showcase carousel">
+        <button class="carousel-button prev" aria-label="Previous slide">&larr;</button>
+        <div class="carousel-viewport">
+          <div class="carousel-track">
+            <div class="carousel-slide"><img src="Images/Showcase/UE-VFX-1.webp" alt="UE VFXs Showcase"></div>
+            <div class="carousel-slide"><img src="Images/Showcase/UE-VFX-2.webp" alt="UE VFXs Showcase"></div>
+            <div class="carousel-slide"><img src="Images/Showcase/UE-VFX-3.webp" alt="UE VFXs Showcase"></div>
+            <div class="carousel-slide"><img src="Images/Showcase/UE-VFX-4.webp" alt="UE VFXs Showcase"></div>
+            <div class="carousel-slide"><img src="Images/Showcase/UE-VFX-5.webp" alt="UE VFXs Showcase"></div>
+            <div class="carousel-slide"><img src="Images/Showcase/UE-VFX-6.webp" alt="UE VFXs Showcase"></div>
+            <!-- Add or remove .carousel-slide blocks as needed -->
+          </div>
+        </div>
+        <button class="carousel-button next" aria-label="Next slide">&rarr;</button>
+        <div class="carousel-dots" aria-hidden="false"></div>
+      </div>
+      <!-- End of carousel -->
+      
+      <div class="text-container">
+        <!-- Title -->
+        <h1>UE VFXs</h1>
+        <!-- Description -->
+        <p style="color: var(--text-color-bright);">
+          A lot of shaders & VFXs in Unreal Engine 5.
+        </p>
+        <p style="color: var(--text-color-bright);">
+          <strong class="underline">Goals:</strong> Make and experiment with shaders that I could use in my projects.
+        </p>
+        <a target="_blank" href="https://github.com/Loris-Moreau" class="cta-button">Check out the project</a>
+      </div>
+    </div>    
+    
+    <!-- 8 Unity VFXs -->
+    <div class="flex-container">
+
+      <!-- Start of carousel -->
+      <div class="showcase-carousel" role="region" aria-label="Showcase carousel">
+        <button class="carousel-button prev" aria-label="Previous slide">&larr;</button>
+        <div class="carousel-viewport">
+          <div class="carousel-track">
+            <div class="carousel-slide"><img src="Images/Showcase/Unity-Adv-Shaders.gif" alt="Unity VFXs Showcase"></div>
+            <div class="carousel-slide"><img src="Images/Showcase/Unity-Shader.gif" alt="Unity VFXs Showcase"></div>
+            <!-- Add or remove .carousel-slide blocks as needed -->
+          </div>
+        </div>
+        <button class="carousel-button next" aria-label="Next slide">&rarr;</button>
+        <div class="carousel-dots" aria-hidden="false"></div>
+      </div>
+      <!-- End of carousel -->
+      
+      <div class="text-container">
+        <!-- Title -->
+        <h1>Unity VFXs</h1>
+        <!-- Description -->
+        <p style="color: var(--text-color-bright);">
+          A bunch of shaders in Unity to test out its capabilities.
+        </p>
+        <p style="color: var(--text-color-bright);">
+          <strong class="underline">Goals:</strong> Make shaders that I could use in my Games & test out the shaders system of unity.
+        </p>
+        <a target="_blank" href="https://github.com/Loris-Moreau/Advanced-Shaders" class="cta-button">Check out the project</a>
+      </div>
+    </div>    
+    
+    <!-- 9 Windows Adventure -->
+    <div class="flex-container">
+
+      <!-- Start of carousel -->
+      <div class="showcase-carousel" role="region" aria-label="Showcase carousel">
+        <button class="carousel-button prev" aria-label="Previous slide">&larr;</button>
+        <div class="carousel-viewport">
+          <div class="carousel-track">
+            <div class="carousel-slide"><img src="Images/Showcase/WA1.webp" alt="Windows Adventure Showcase"></div>
+            <div class="carousel-slide"><img src="Images/Showcase/WA2.webp" alt="Windows Adventure Showcase"></div>
+            <div class="carousel-slide"><img src="Images/Showcase/WA3.webp" alt="Windows Adventure Showcase"></div>
+            <!-- Add or remove .carousel-slide blocks as needed -->
+          </div>
+        </div>
+        <button class="carousel-button next" aria-label="Next slide">&rarr;</button>
+        <div class="carousel-dots" aria-hidden="false"></div>
+      </div>
+      <!-- End of carousel -->
+      
+      <div class="text-container">
+        <!-- Title -->
+        <h1>Windows Adventure <i>(Godot)</i></h1>
+        <!-- Description -->
+        <p style="color: var(--text-color-bright);">
+          It's a platformer in which windows will appear along your path some to help and other just to block your view.
+        </p>
+        <p style="color: var(--text-color-bright);">
+          <strong class="underline">Goals:</strong> Learn Godot and experiment with the window management system.
+        </p>
+        <a target="_blank" href="https://loris-moreau.itch.io/windows-adventure" class="cta-button">Check out the project</a>
+      </div>
+    </div>    
+    
+    <!-- 10 Battle Boules Arena -->
+    <div class="flex-container">
+
+      <!-- Start of carousel -->
+      <div class="showcase-carousel" role="region" aria-label="Showcase carousel">
+        <button class="carousel-button prev" aria-label="Previous slide">&larr;</button>
+        <div class="carousel-viewport">
+          <div class="carousel-track">
+            <div class="carousel-slide"><img src="Images/Showcase/BBA-1.webp" alt="Battle Boules Arena Showcase"></div>
+            <div class="carousel-slide"><img src="Images/Showcase/BBALogo.webp" alt="Battle Boules Arena Showcase"></div>
+            <!-- Add or remove .carousel-slide blocks as needed -->
+          </div>
+        </div>
+        <button class="carousel-button next" aria-label="Next slide">&rarr;</button>
+        <div class="carousel-dots" aria-hidden="false"></div>
+      </div>
+      <!-- End of carousel -->
+      
+      <div class="text-container">
+        <!-- Title -->
+        <h1>Battle Boules Arena</h1>
+        <!-- Description -->
+        <p style="color: var(--text-color-bright);">
+          It's a multiplayer where you play with your friends and bump your balls together until there's only one left.
+        </p>
+        <p style="color: var(--text-color-bright);">
+          <strong class="underline">Goals:</strong> The theme of this Jam was <strong>"Make Me Laugh"</strong> and we decided to make an 2 to 4 player arcade type game like a Mario Party minigame.
+        </p>
+        <a target="_blank" href="https://globalgamejam.org/games/2024/battle-boule-arena-4-0" class="cta-button">Check out the project</a>
+      </div>
     </div>
     
     <p></p>
     
-    <div id="Showcase">
-        <h2 class="underline" style="text-decoration-color: dodgerblue; padding-bottom: 15px">Projects Showcase</h2>
-        <h3>Some Projects I was a part of or did.</h3>
-        <h5>not all project are listed for confidentiality reasons.</h5>
-        <h4>Check out my works on <a href="https://loris-moreau.itch.io/" target="_blank">Itch.io</a></h4>
-        
-        <p></p>
-        
-        <div class="projects" id="project-container"></div>
-        
-        <p style="padding: 17px"></p>
-        
-    </div>
-    
-    <!-- WakaTime Stats -->
-    <img style="width: 27%" align="center" src="https://github-readme-stats.vercel.app/api/wakatime?username=Loris_Moreau&theme=dracula&layout=compact&langs_count=8" alt="WakaTime Stats"/>
-    
-    <!-- Back to top Button -->
-    <div style="text-align: center; margin-top: 25px;">
-        <a href="#">
-            <button>
-                Top
-            </button>
-        </a>
-    </div>
-    
-</div>
-
-<!-- Dropdown Menu -->
-<label class="popup">
-        <input type="checkbox">
-        <div class="burger" tabindex="0">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
-        <nav class="popup-window">
-            <legend></legend>
-            <ul>
-                <li>
-                    <!-- Main Page -->
-                    <svg stroke-linejoin="round" stroke-linecap="round" stroke-width="2"  fill="none" viewBox="0 0 24 24" height="14" width="14" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M3 9.5L12 3l9 6.5v11a1 1 0 0 1-1 1h-5a1 1 0 0 1-1-1v-5H9v5a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1z"></path>
-                    </svg>
-
-                    <a href="index.html">Main</a>
-                </li>
-                <li>
-                    <!-- Blog Page -->
-                    <svg stroke-linejoin="round" stroke-linecap="round" stroke-width="2" fill="none" viewBox="0 0 24 24" height="14" width="14" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M4 4h16v16H4z"></path>
-                        <path d="M8 8h8"></path>
-                        <path d="M8 12h6"></path>
-                        <path d="M8 16h4"></path>
-                    </svg>
-
-                    <a href="Blog.html">Blog</a>
-                </li>
-                <li>
-                    <!-- External Resources -->
-                    <svg stroke-linejoin="round" stroke-linecap="round" stroke-width="2" fill="none" viewBox="0 0 24 24" height="14" width="14" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M3 7h5l2 3h11v9a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1z"></path>
-                    </svg>
-
-                    <a href="ExternalResources.html">Resources</a>
-                </li>
-            </ul>
-        </nav>
-    </label>
+    <a target="_blank" href="https://loris-moreau.itch.io" class="cta-button secondary">More on my Itch.io</a>
+  </section>
+  
+  <!-- ========== FAQ ========== -->
+  <section style="color: var(--text-color-bright);">
+    <h2>Common Questions</h2>
+    <details>
+      <summary>Current occupation ?</summary>
+      <p style="padding-bottom: 0;">I'm currently working on a 5th year project to get my master’s degree in programming.</p>
+      <p>And looking for an internship.</p>
+    </details>
+    <details>
+      <summary>What languages do you know ?</summary>
+      <p style="padding-bottom: 0;">For programming, I know : C++, C#, GLSL/HLSL, Python, Vex, Unreal C++, OpenGl/Vulkan</p>
+      <p>For talking : English, French & a little bit of japanese & chinese</p>
+    </details>
+    <details >
+      <summary>Favourite games ?</summary>
+      <p style="padding-bottom: 0;">My favourite games are: </p>
+      <p>Outer Wilds - Mirrors edge <i>(1 & 2)</i> - Assetto Corsa Competizione - Assasin's Creed <i>(3, unity, black flag)</i> - Dark Souls 3 - 
+        Bloodborne - Disco Elysium - Far Cry Primal - Star Wars Force Unleashed - Warframe - Darktide - and holocure.</p>
+    </details>
+    <details>
+      <summary>Do you have pets ?</summary>
+      <p>YES, I have two lovely dogs, and I am thinking about getting a snake or a skink <i>(lizard)</i></p>
+    </details>
+    <details>
+      <summary>What's  a game that you want to make ?</summary>
+      <!-- <p>The numbing that slowly scratches through my skull</p> -->
+      <p>I would like to make a game like <strong>mirrors edge</strong> but where  the <strong>faces of enemies are blurred out</strong> 
+        <i>(glitch effect as if you can't seem to understand a face)</i> <strong>and their voices are distorted</strong> 
+        <i>(some sort of alien language, distorted and demon sounding)</i>, 
+        and you character is schizo and has hallucination of people being there when there is no one <i>(just in the corner of their eye)</i>.
+      </p>
+    </details>
+    <details>
+      <summary>How can I contact you ?</summary>
+      <p>You can contact me through my
+        <a target="_blank" href="https://linkedin.com/in/loris-moreau">LinkedIn</a>.</p>
+    </details>
+  </section>
+  
+  <!-- ========== Footer ========== -->
+  <footer>
+    <a target="_blank" href="https://linkedin.com/in/loris-moreau">LinkedIn</a>
+    <a target="_blank" href="https://github.com/Loris-Moreau">GitHub</a>
+    <a target="_blank" href="https://loris-moreau.itch.io">Itch.io</a>
+    <a target="_blank" href="https://www.youtube.com/@LorisMoreau">Youtube</a>
+  </footer>
 
 </body>
+
 </html>
