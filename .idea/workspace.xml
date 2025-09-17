@@ -5,9 +5,29 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="84587c8d-c8e8-4e81-98f0-3e4b2270de1b" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Styles/Video.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Blog/Raytracing-10.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Blog/3DGameEngine.html" beforeDir="false" afterPath="$PROJECT_DIR$/Unformated Blog/3DGameEngine.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Blog/Blog-Template.html" beforeDir="false" afterPath="$PROJECT_DIR$/Unformated Blog/Blog-Template.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Blog/GameDevNintendo.html" beforeDir="false" afterPath="$PROJECT_DIR$/Unformated Blog/GameDevNintendo.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Blog/Ideas.html" beforeDir="false" afterPath="$PROJECT_DIR$/Unformated Blog/Ideas.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Blog/PSVitaJailbreak.html" beforeDir="false" afterPath="$PROJECT_DIR$/Unformated Blog/PSVitaJailbreak.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Blog/RayTracing-1.html" beforeDir="false" afterPath="$PROJECT_DIR$/Unformated Blog/RayTracing-1.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Blog/RayTracing-10.html" beforeDir="false" afterPath="$PROJECT_DIR$/Unformated Blog/RayTracing-10.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Blog/RayTracing-2.html" beforeDir="false" afterPath="$PROJECT_DIR$/Unformated Blog/RayTracing-2.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Blog/RayTracing-3.html" beforeDir="false" afterPath="$PROJECT_DIR$/Unformated Blog/RayTracing-3.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Blog/RayTracing-4.html" beforeDir="false" afterPath="$PROJECT_DIR$/Unformated Blog/RayTracing-4.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Blog/RayTracing-5.html" beforeDir="false" afterPath="$PROJECT_DIR$/Unformated Blog/RayTracing-5.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Blog/RayTracing-6.html" beforeDir="false" afterPath="$PROJECT_DIR$/Unformated Blog/RayTracing-6.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Blog/RayTracing-7.html" beforeDir="false" afterPath="$PROJECT_DIR$/Unformated Blog/RayTracing-7.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Blog/RayTracing-8.html" beforeDir="false" afterPath="$PROJECT_DIR$/Unformated Blog/RayTracing-8.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Blog/RayTracing-9.html" beforeDir="false" afterPath="$PROJECT_DIR$/Unformated Blog/RayTracing-9.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Blog/TSP.html" beforeDir="false" afterPath="$PROJECT_DIR$/Unformated Blog/TSP.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Blog/Thoughts.html" beforeDir="false" afterPath="$PROJECT_DIR$/Unformated Blog/Thoughts.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Blog/TimTamEngine.html" beforeDir="false" afterPath="$PROJECT_DIR$/Unformated Blog/TimTamEngine.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Blog/VFX-1.html" beforeDir="false" afterPath="$PROJECT_DIR$/Unformated Blog/VFX-1.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Blog/VFX-2.html" beforeDir="false" afterPath="$PROJECT_DIR$/Unformated Blog/VFX-2.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Blog/Workflow.html" beforeDir="false" afterPath="$PROJECT_DIR$/Unformated Blog/Workflow.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -18,8 +38,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="JavaScript File" />
-        <option value="HTML File" />
         <option value="CSS File" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -45,23 +65,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "DefaultHtmlFileTemplate": "HTML File",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "main",
-    "list.type.of.created.stylesheet": "CSS",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="84587c8d-c8e8-4e81-98f0-3e4b2270de1b" name="Changes" comment="" />
@@ -87,6 +107,7 @@
       <workItem from="1758018326089" duration="1155000" />
       <workItem from="1758031355691" duration="1950000" />
       <workItem from="1758035457573" duration="736000" />
+      <workItem from="1758097154555" duration="648000" />
     </task>
     <servers />
   </component>
