@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>TSP</title>
+    <link rel="icon" type="image/x-icon" href="../Images/FoxInSnow.webp">
+
+    <link rel="stylesheet" href="../Styles/style.css">
+    <link rel="stylesheet" href="../Styles/Code-Quote.css">
+
+
+    <!-- Meta Tags for SEO -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Loris Moreau">
+    <meta name="description" content="Travelling Salesman Problem (TSP)">
+    <meta name="keywords" content="Showcase, Loris, Moreau, Loris Moreau, Programmer, coding adventure, Blog, Post, TSP, Travelling Salesman Problem, Travelling Merchant Problem, C++, CPP, Algorithm, theory of computational complexity, combinatorial optimization, NP-Hard, theoretical computer science">
+</head>
+
+<body>
+
+<main>
+    <!-- Header: nav + carousel + intro -->
+    <header>
+        <nav style="margin: 0 auto 2em auto;">
+            <ul>
+                <li><a href="../Blog.html">Back</a></li>
+                <li><a href="../index.html" target="_blank">Main</a></li>
+                <li><a href="../Blog.html" target="_blank">Blog</a></li>
+                <li><a href="../Resources.html" target="_blank">Resources</a></li>
+            </ul>
+        </nav>
+
+        <div class="flex-container">
+            <div class="text-container">
+                <h1 style="padding-top: 0">Traveling Salesman Problem (TSP)</h1>
+                <p>This is a brute-force implementation of the Traveling Salesman Problem <i>(TSP)</i>.</p>
+                <p><a target="_blank" href="https://github.com/Loris-Moreau/TSP" class="cta-button">GitHub Repository</a></p>
+            </div>
+        </div>
+    </header>
+    
+    <section>
+        <div id="BlogPost" class="post">
+            <!-- Title/Header of the blog -->
+            <h2 class="underline">Traveling Salesman Problem <i>(TSP)</i></h2>
+            <h4><a href="https://github.com/Loris-Moreau/TSP" target="_blank">GitHub Repository</a></h4>
+
+            <p style="padding: 5px"></p>
+
+            <!-- Content -->
+            <h2>Explanation of the code.</h2>
+
+            <p>
+                This code implements a brute-force solution to the Traveling Salesman Problem <i>(TSP)</i> for five cities.
+            </p>
+            <p>
+                The goal is to find the shortest round-trip route that visits each city exactly once and returns to the starting point.
+            </p>
+
+            <h3>
+                Key Parts of the Code :
+            </h3>
+            <h2 class="underline" style="text-decoration-color: royalblue">
+                1. Distance Matrix <i>(distMatrix)</i>:
+            </h2>
+            <p>
+                A vector(vector(int)) matrix represents distances between each pair of cities. For example, distMatrix[0][1] is the distance from city A to city B.
+            </p>
+            <p>
+                INT_MAX is used to represent an unreachable path between two cities, making the route invalid if it includes that segment.
+            </p>
+
+            <div class="snippet">
+                <div class="Swindow">
+                    <div class="Swindow-title">
+                        <p>Distance Matrix</p>
+                    </div>
+                    <div class="Sconsole">
+      <pre><code>// INT_MAX = unreachable paths
+    const vector&lt;vector&lt;int>> dist_matrix =
+        {
+        {0, 2, 2, INT_MAX, INT_MAX}, // A
+        {2, 0, 3, 3, 1},            // B
+        {2, 3, 0, 1, 3},           // C
+        {INT_MAX, 3, 1, 0, 3},    // D
+        {INT_MAX, 1, 3, 3, 0}    // E
+        };</code></pre>
+                    </div>
+                </div>
+            </div>
+
+            <h2 class="underline" style="text-decoration-color: royalblue">
+                2. Route Representation:
+            </h2>
+            <p>
+                Cities are indexed (e.g., 0 for A, 1 for B, etc.), and the route is stored as a vector(int).
+            </p>
+            <p>
+                The cityNames vector maps city indices to names for more readable output when printing the final route.
+            </p>
+            <h2 class="underline" style="text-decoration-color: royalblue">
+                3. calculateDistance Function:
+            </h2>
+            <p>
+                This function calculates the total distance of a route, ensuring that every leg of the route is reachable.
+            </p>
+
+            <div class="snippet">
+                <div class="Swindow">
+                    <div class="Swindow-title">
+                        <p>Distance Calculation</p>
+                    </div>
+                    <div class="Sconsole">
+      <pre><code>int calculateDistance(const vector&lt;vector&lt;int>>& dist_matrix, const vector&lt;int>& route)
+{
+    int totalDistance = 0;
+    for (int i = 0; i < (int)route.size() - 1; i++)
+    {
+        if (dist_matrix[route[i]][route[i + 1]] == INT_MAX) // Check for unreachable path
+        {
+            return INT_MAX; // Unreachable (stupidly high num)
+        }
+        totalDistance += dist_matrix[route[i]][route[i + 1]];
+    }
+    // Check return path
+    if (dist_matrix[route[route.size() - 1]][route[0]] == INT_MAX) 
+    {
+        return INT_MAX;
+    }
+    totalDistance += dist_matrix[route[route.size() - 1]][route[0]];
+    return totalDistance;
+}</code></pre>
+                    </div>
+                </div>
+            </div>
+
+            <h2 class="underline" style="text-decoration-color: cadetblue">
+                Inputs:
+            </h2>
+            <p>
+                <strong>distMatrix</strong>: The distance matrix for city pairs.
+            </p>
+            <p>
+                <strong>route</strong>: The tested route, represented as a sequence of city indices.
+            </p>
+            <h2 class="underline" style="text-decoration-color: cadetblue">
+                How It Works:
+            </h2>
+            <h2 class="underline" style="text-decoration-color: darkblue">
+                Loop through the Route:
+            </h2>
+            <p>
+                The distance between each pair of consecutive cities in the route is added to the total distance.
+            </p>
+            <h2 class="underline" style="text-decoration-color: darkblue">
+                Unreachable Path Check:
+            </h2>
+            <p>
+                If any distance is INT_MAX, the function immediately returns INT_MAX, marking the route as unreachable.
+            </p>
+            <h2 class="underline" style="text-decoration-color: darkblue">
+                Return to Start Check:
+            </h2>
+            <p>
+                After looping through all pairs in the route, the distance from the last city back to the starting city is added. If this distance is INT_MAX, the route is unreachable.
+            </p>
+
+            <div class="snippet">
+                <div class="Swindow">
+                    <div class="Swindow-title">
+                        <p>Distance Matrix</p>
+                    </div>
+                    <div class="Sconsole">
+      <pre><code>// Try every possible route by generating permutations
+    do
+    {
+        const int current_distance = calculateDistance(dist_matrix, cities);
+        if (current_distance < minDistance)
+        {
+            minDistance = current_distance;
+            bestRoute = cities;
+        }
+    }
+    while (next_permutation(cities.begin() + 1, cities.end())); // Fix the first city to reduce duplicate routes</code></pre>
+                    </div>
+                </div>
+            </div>
+            <h2 class="underline" style="text-decoration-color: darkblue">
+                Output:
+            </h2>
+            <p>
+                The function returns the total distance for the route if it is valid, or INT_MAX if any segment is unreachable.
+            </p>
+
+            <div class="snippet">
+                <div class="Swindow">
+                    <div class="Swindow-title">
+                        <p>Distance Matrix</p>
+                    </div>
+                    <div class="Sconsole">
+      <pre><code>// Output the results
+    cout << "Minimum distance : " << minDistance << '\n';
+    cout << "Best route : ";
+    for (const int city : bestRoute)
+    {
+        cout << cityNames[city] << " ";
+    }
+    cout << cityNames[bestRoute[0]] << '\n'; // Return to starting city
+
+    return 0;</code></pre>
+                    </div>
+                </div>
+            </div>
+            <h2 class="underline" style="text-decoration-color: royalblue">
+                4. Main Algorithm <i>(Main Function)</i>:
+            </h2>
+            <h2 class="underline" style="text-decoration-color: darkblue">
+                Initialization:
+            </h2>
+            <p>
+                <strong>distMatrix</strong> defines distances between cities.
+            </p>
+            <p>
+                <strong>cities</strong> holds indices representing each city.
+            </p>
+            <p>
+                <strong>cityNames</strong> is used to translate city indices to names for output.
+            </p>
+            <p>
+                <strong>minDistance</strong> is initialized to INT_MAX to track the minimum distance found.
+            </p>
+            <p>
+                <strong>bestRoute</strong> stores the optimal route.
+            </p>
+            <h2 class="underline" style="text-decoration-color: darkblue">
+                Generating Permutations:
+            </h2>
+            <p>
+                The program generates all possible routes by permutating cities <i>(except the first city, which is fixed for optimization)</i>.
+            </p>
+            <h2 class="underline" style="text-decoration-color: darkblue">
+                Route Evaluation:
+            </h2>
+            <p>
+                For each permutation of cities, calculateDistance() computes the route's total distance.
+            </p>
+            <p>
+                If the distance is smaller than minDistance, the route and its distance become the new bestRoute and minDistance.
+            </p>
+            <h2 class="underline" style="text-decoration-color: darkblue">
+                Output:
+            </h2>
+            <p>
+                After evaluating all permutations, the program prints the minimum distance and the optimal route <i>(in terms of city names)</i>.
+            </p>
+            <h2 class="underline" style="text-decoration-color: royalblue">
+                5. Additional Notes
+            </h2>
+            <h2 class="underline" style="text-decoration-color: darkblue">
+                next_permutation:
+            </h2>
+            <p>
+                This function generates the next lexicographical permutation of the cities vector, enabling a brute-force approach to try all possible city sequences.
+            </p>
+            <p>
+                Fixing the first city (using cities.begin() + 1) avoids duplicate routes that differ only in starting points.
+            </p>
+            <h2 class="underline" style="text-decoration-color: darkblue">
+                Efficiency:
+            </h2>
+            <p>
+                This brute-force approach has factorial time complexity (O(n! * n)), so it only works efficiently with a small number of cities.
+            </p>
+            <p>
+                For more than 5-10 cities, more advanced algorithms like Dynamic Programming (Held-Karp algorithm) or Heuristic Methods (e.g., Nearest Neighbor, Simulated Annealing) are needed to solve the problem in a reasonable time frame.
+            </p>
+            
+            <!-- The End -->
+            <p style="padding: 0.75em"></p>
+            <p>bye, bye.</p>
+        </div>
+    </section>
+
+    <footer>
+        <p style="color: var(--text-color-bright);">9-11-2024</p>
+    </footer>
+</main>
+
+<!-- Navigation buttons -->
+<div style="text-align:center; margin-top:1rem">
+    <a href="VFX-2.html" class="cta-button">Previous</a>
+    <a href="../Blog.html" class="cta-button secondary" style="margin:0 0.75rem">Entries</a>
+    <a href="Thoughts.html" class="cta-button">Next</a>
+</div>
+
+</body>
+</html>
