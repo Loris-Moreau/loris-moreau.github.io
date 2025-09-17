@@ -44,12 +44,12 @@
     
     <h3>The normal vector allows us to know the direction that a surface is facing.</h3>
     <h3>We can make the normal unit length by dividing it by the sphere radius.</h3>
-    <h3>For a sphere, the direction of the <b class="underline" style="text-decoration-color: cadetblue">outward</b> 
+    <h3>For a sphere, the direction of the <strong class="underline" style="text-decoration-color: cadetblue">outward</strong> 
         normal is the direction of the hit point minus the center</h3>
     <img loading="lazy" src="../Images/RayTracing/SphereNormals.webp" alt="Sphere Normals" style="padding-bottom: 5px; width: 30%;" />
     <h5 style="padding-bottom: 25px"><a href="https://www.blenderplay.com/particle-system-emitter/tab-velocity/normal/" target="_blank">img. Source</a></h5>
     
-    <h3><i>Normal Map :</i> We use the normal vector <b class="underline" style="text-decoration-color: cadetblue">n</b> 
+    <h3><i>Normal Map :</i> We use the normal vector <strong class="underline" style="text-decoration-color: cadetblue">n</strong> 
         normalized ([ -1 ; 1]) and we translate it to a rgb value ([0;255],[0;255],[0;255])</h3>
     
     <h3>In code it looks a little something like :</h3>
@@ -246,7 +246,7 @@ Color RayColor(const Ray& rRay)
     <h3>To do that, we will create a new class Hittable to describe anything that can be hit by a ray.</h3>
     <h3>This class will be abstract because each kind of object has to define what being Hit means to them.</h3>
     <h3>We will also add a <i class="underline" style="text-decoration-color: cadetblue">timeframe</i> 
-        within which the ray is "valid" <i>(<b style="color: limegreen">t</b> has to be between a min and max value)</i>.</h3>
+        within which the ray is "valid" <i>(<strong style="color: limegreen">t</strong> has to be between a min and max value)</i>.</h3>
 
 
     <!-- Code Snippet -->

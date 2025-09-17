@@ -1,64 +1,99 @@
 :root{
-    /* Code Snippet */
-    /*--code-title-bg-color: rgb(52, 52, 55);*/
     --code-title-bg-color: rgb(75, 75, 75);
     --code-bg-color: rgb(35, 40, 35);
     --code-text-color: rgb(25, 255, 25);
+}
+
+/* predictable sizing */
+*, *::before, *::after { 
+    box-sizing: border-box;
 }
 
 /* Code Snippet Window */
 .snippet {
     display: flex;
     justify-content: center;
-    align-items: center;
-    padding-top: 15px;
-    padding-bottom: 25px;
+    align-items: stretch;
+    padding: 15px 1rem 25px;
     text-align: start;
+    width: 100%;
+    word-wrap: break-word;
 }
+
+/* Outer window: responsive width, no overflow */
 .Swindow {
-    align-items: center;
-    justify-content: center;
     display: block;
     margin: 0 auto;
     position: relative;
     height: auto;
-    width: auto;
+    width: min(1100px, calc(100% - 2rem)); /* keep desktop cap, avoid horizontal overflow on mobile */
     background: var(--code-title-bg-color);
     border: 5px solid var(--code-title-bg-color);
     border-radius: 15px;
-    overflow: hidden;
+    overflow: visible; /* allow content to expand (no internal scroll) */
+    box-shadow: 0 6px 18px rgba(0,0,0,0.12);
 }
+
+/* Title bar */
 .Swindow-title {
     background: var(--code-title-bg-color);
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 0 10px;
-    height: 30px;
+    height: 36px;
     box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
 }
+
 .Swindow-title p {
-    color: var(--text-color-bright);
+    color: var(--text-color-bright, #fff);
     padding: 0;
     text-align: left;
     font-weight: bold;
     margin: 0;
     font-size: 16px;
+    line-height: 1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
+
+/* Console area: no scrolling — content will flow and increase page height */
 .Sconsole {
     width: 100%;
     height: auto;
-    background-color: var(--code-title-bg-color);
+    background-color: var(--code-bg-color);
     color: #fff;
-    overflow: auto;
+    overflow: visible; /* NO scrolling */
+    -webkit-overflow-scrolling: auto;
 }
+
+/* Pre/code block: preserve formatting but wrap long lines so there's no horizontal scroll */
 .Sconsole pre {
     margin: 0;
     padding: 17px;
     background: var(--code-bg-color);
+    white-space: pre-wrap;   /* wrap long lines */
+    overflow: visible;       /* NO scrolling */
+    word-break: break-word;  /* break long tokens if needed */
+    overflow-wrap: anywhere; /* better line breaks for long strings */
 }
+
+/* Code text */
 .Sconsole pre code {
     outline: none;
     color: var(--code-text-color);
     font-size: 14px;
+    line-height: 1.45;
+    display: block;
+}
+
+/* Mobile adjustments */
+@media (max-width: 600px) {
+    .snippet { padding: 12px 0.5rem 18px; }
+    .Swindow { border-radius: 12px; border-width: 4px; width: calc(100% - 1rem); }
+    .Swindow-title { height: 40px; padding: 0 12px; }
+    .Swindow-title p { font-size: 14px; }
+    .Sconsole pre { padding: 12px; font-size: 13px; white-space: pre-wrap; word-break: break-word; overflow-wrap: anywhere; }
+    .Sconsole pre code { font-size: 13px; }
 }

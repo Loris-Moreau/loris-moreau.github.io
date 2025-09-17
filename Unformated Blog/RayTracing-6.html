@@ -299,15 +299,15 @@ int main(int argc, char* argv[])
     <h2 class="underline" style="text-decoration-color: cadetblue;">But How ?</h2>
     
     <h3>We can create this distribution by adding a random unit vector to the normal vector.</h3>
-    <h3>If we take <b style="color: dodgerblue">P</b> as the point of intersection and <b style="color: hotpink">n</b> as the normal of the surface, 
+    <h3>If we take <strong style="color: dodgerblue">P</strong> as the point of intersection and <strong style="color: hotpink">n</strong> as the normal of the surface, 
         we have a surface with 2 sides, that means only two unique unit sphere tangents</h3>
     
     <img loading="lazy" src="../Images/RayTracing/point-of-intersection-of-the-dir.webp" alt="Diffuse Reflection" style="padding-bottom: 5px; width: 40%"/>
     <h5 style="padding-bottom: 25px"><a href="https://www.math-only-math.com/important-properties-of-direct-common-tangents.html" target="_blank">img. Source</a></h5>
 
-    <h3>One sphere will be displaced in the direction of the surface normal, and one sphere will be displaced in the opposite direction<i>(-<b style="color: hotpink">n</b>)</i>.</h3>
-    <h3>This leaves us two spheres that will only just be touching at the intersection point <b style="color: dodgerblue">P</b>.</h3>
-    <h3>One of the sphere has a center of (<b style="color: hotpink">n</b> + <b style="color: dodgerblue">P</b>) and the other has one of (<b style="color: dodgerblue">P</b> - <b style="color: hotpink">n</b>).</h3>
+    <h3>One sphere will be displaced in the direction of the surface normal, and one sphere will be displaced in the opposite direction<i>(-<strong style="color: hotpink">n</strong>)</i>.</h3>
+    <h3>This leaves us two spheres that will only just be touching at the intersection point <strong style="color: dodgerblue">P</strong>.</h3>
+    <h3>One of the sphere has a center of (<strong style="color: hotpink">n</strong> + <strong style="color: dodgerblue">P</b>) and the other has one of (<b style="color: dodgerblue">P</b> - <b style="color: hotpink">n</b>).</h3>
     <h3>The first is considered outside surface and the second inside surface.</h3>
     <p></p>
     <h3>We want to select the tangent unit sphere that is on the same side as the surface of the ray origin.</h3>

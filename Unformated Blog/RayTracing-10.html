@@ -45,7 +45,7 @@
     <h2 class="underline">Optimizing Raytracing in one weekend in C++</h2>
     <h3><a href="https://github.com/Loris-Moreau/RayTracing/tree/Compute-Shader" target="_blank">GitHub Repository</a></h3>
     <h3>Here is the <a href="https://github.com/Loris-Moreau/RayTracing/blob/Compute-Shader/Performance.md" target="_blank">Performance Document</a> where the render times are logged.</h3>
-    <h3>And here's the <a href="ResearchProjBibliography.html" target="_blank">Bibliography</a> for this Research Project.</h3>
+    <h3>And here's the <a href="RayTracing-10_Bibliography.html" target="_blank">Bibliography</a> for this Research Project.</h3>
     
     <p style="padding: 5px"></p>
     
@@ -153,7 +153,7 @@
         <h2 class="underline" style="text-decoration-color: cadetblue; padding-bottom: 10px">Things to Remember : </h2>
         <h3>- If you're using the correct memory layouts when implementing SIMD, the rest of the problems will solve themselves.</h3>
         <h3>- Parallel performance largely depends on the extent to which your program is parallelized.</h3>
-        <h3>- Compiling code with the <b class="quote">-march=native</b> flag generates optimized code for your CPU.</h3>
+        <h3>- Compiling code with the <strong class="quote">-march=native</strong> flag generates optimized code for your CPU.</h3>
     </div>
     <p style="padding: 4px"></p>
     <div>
@@ -176,7 +176,7 @@
         <h3>
             Instead, we use an 
             <a href="https://www.intel.com/content/www/us/en/developer/articles/technical/memory-layout-transformations.html" target="_blank">Array of Structures of Arrays (AoSoA)</a> 
-            layout. In AoSoA, each field is still an array, but its length matches the SIMD lane width <i>(<b class="quote">LANE_WIDTH</b>)</i>.
+            layout. In AoSoA, each field is still an array, but its length matches the SIMD lane width <i>(<strong class="quote">LANE_WIDTH</strong>)</i>.
         </h3>
         <h3>
             If we have more spheres than fit in one SIMD vector, we simply add another “lane” <i>(another fixed-size chunk)</i> to our AoSoA.
@@ -236,9 +236,9 @@ struct LaneVector3
         
         <!-- Final Recorded Time -->
         <h2 style="padding-bottom: 5px">Final recorded Time :</h2>
-        <h3 style="padding-bottom: 0"><b class="quote">case 10: FinalSceneB2(600, 200, 100, 20, 250) :</b></h3>
-        <h3 style="padding-top: 0; padding-bottom: 0"><b class="quote">- Non-Optimized : 5 Hrs</b></h3>
-        <h3  style="padding-top: 0; padding-bottom: 0"><b class="quote">- SIMD Optimized : 2 Hrs 18 Min</b></h3>
+        <h3 style="padding-bottom: 0"><strong class="quote">case 10: FinalSceneB2(600, 200, 100, 20, 250) :</strong></h3>
+        <h3 style="padding-top: 0; padding-bottom: 0"><strong class="quote">- Non-Optimized : 5 Hrs</strong></h3>
+        <h3  style="padding-top: 0; padding-bottom: 0"><strong class="quote">- SIMD Optimized : 2 Hrs 18 Min</strong></h3>
     </div>
     
     <p style="padding: 42px"></p>
@@ -337,7 +337,7 @@ struct LaneVector3
         <h3>
             We could spawn one thread per image row and leverage
             <a href="https://en.wikipedia.org/wiki/Grand_Central_Dispatch" target="_blank">Apple’s Grand Central Dispatch</a> <i>(GCD)</i>.
-            which lets you easily multi-thread your loop using the <b class="quote">dispatch_apply</b> function, 
+            which lets you easily multi-thread your loop using the <strong class="quote">dispatch_apply</strong> function, 
             GCD automatically distributes iterations across all available threads and waits until they're all complete, with no manual synchronization needed.
         </h3>
         <h3>This could work quite well & wouldn't be too hard to implement.</h3>
@@ -807,7 +807,7 @@ glUnmapBuffer(GL_SHADER_STORAGE_BUFFER);</code></pre>
     
     <p style="padding: 25px"></p>
     
-    <h3><a href="ResearchProjBibliography.html" target="_blank">Bibliography</a></h3>
+    <h3><a href="RayTracing-10_Bibliography.html" target="_blank">Bibliography</a></h3>
     
     <p style="padding: 25px"></p>
     

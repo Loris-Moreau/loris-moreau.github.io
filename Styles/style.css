@@ -18,6 +18,8 @@
   --underline-thickness: 0.1em;
   
   --navbar-height: 3rem;
+  
+  --font-family: Arial, Open-Dyslexic, Verdana, Helvetica;
 }
 
 /* Global Reset */
@@ -32,7 +34,7 @@
 }
 
 html {
-  font-family: Arial, Open-Dyslexic, Verdana, Helvetica, monospace;
+  font-family: var(--font-family), monospace;
   color: var(--text-color); /* base text color for the doc */
 }
 
