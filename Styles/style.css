@@ -228,14 +228,12 @@ section:nth-child(3){
   "img-1 img-1 img-4 img-5"; 
   gap: 1em; /* spacing between grid items */
 }
-
 .grid-container img {
   height: 100%;
   width: 100%;
   border-radius: 0.5em;
   transition: 100ms ease; /* small hover transition for interactions */
 }
-
 .grid-container img:hover {
   scale: 1.05; /* slight zoom on hover */
 }
@@ -251,7 +249,6 @@ details summary {
   padding: 1em;
   font-size: 1.7rem;
 }
-
 details p {
   padding: 0 2em 2em 2em;
 }
@@ -260,13 +257,11 @@ footer {
   padding-bottom: 1.5em;
   text-align: center;
 }
-
 footer a {
   margin: 0 1em;
   text-decoration: none;
   color: var(--text-color-bright);
 }
-
 footer a:hover {
   text-decoration: underline;
 }
@@ -295,9 +290,9 @@ footer a:hover {
   /* Make CTA block-level so it is easier to tap on mobile */
   .cta-button {
     margin-top: 0.5em;
-    width: 100%;
+    width: 99%;
   }
-
+  
   /* Convert the grid gallery to a single column for small screens */
   .grid-container {
     display: flex;
