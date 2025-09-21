@@ -7,8 +7,6 @@
     overflow: hidden; /* keeps rounded corners for iframe */
     background: var(--color-section-2);
     border: 0.15em solid black;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.25);
-    transition: transform 220ms ease, box-shadow 220ms ease;
 }
 
 /* Aspect ratio: prefer modern property, fallback to padding-top trick */
