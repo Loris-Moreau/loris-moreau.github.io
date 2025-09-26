@@ -1,2 +1,5 @@
-*.idea
-*.vs
+# Visual Studio user specific files
+.vs/
+
+# Rider user specific files
+.idea/
