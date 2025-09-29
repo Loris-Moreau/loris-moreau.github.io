@@ -137,6 +137,15 @@ h2 {
   font-size: 1.25rem;
 }
 
+/* Quote Element */
+.quote {
+  background: dimgrey;
+  padding: 1px 6px;
+  margin: 0 2px;
+  border-radius: 5px;
+  font-size: 0.97rem;
+}
+
 .cta-button {
   display: inline-block;
   text-decoration: none;
