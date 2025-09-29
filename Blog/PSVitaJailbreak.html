@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>PSVita Jailbreak</title>
+    <link rel="icon" type="image/x-icon" href="../Images/PS%20Img/psvita%20logo.webp">
+
+    <!-- Meta Tags for SEO -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Loris Moreau">
+    <meta name="description" content="PSVita Jailbreak/Homebrew">
+    <meta name="keywords" content="Showcase, Loris, Moreau, Loris Moreau, Programmer, coding adventure, Blog, Post, PSVita, Jailbreak, Homebrew, Hack">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="../Styles/style.css">
+    <link rel="stylesheet" href="../Styles/Code-Quote.css">
+</head>
+
+<body>
+
+<main id="BlogPost" class="post">
+    <header>
+        <!-- Navbar -->
+        <nav style="margin: 0 auto 2em auto;">
+            <ul>
+                <li><a href="../Blog.html">Back</a></li>
+                <li><a href="../index.html" target="_blank">Main</a></li>
+                <li><a href="../Blog.html" target="_blank">Blog</a></li>
+                <li><a href="../Resources.html" target="_blank">Resources</a></li>
+            </ul>
+        </nav>
+
+        <!-- intro -->
+        <div class="flex-container">
+
+            <div class="text-container">
+                <h1>How to Jailbreak a PSVita</h1>
+            </div>
+        </div>
+    </header>
+
+    <!-- content -->
+    <section>
+        <h2 class="underline">How to Jailbreak a PSVita</h2>
+        <p>Welcome, before we start :</p>
+
+        <h2 class="underline" style="text-decoration-color: red">IMPORTANT</h2>
+        <p>
+            This operation is not without risk !
+        </p>
+        <p>
+            First and foremost, running an unapproved homebrew could damage your console <i>(and will void your warranty)</i>.
+        </p>
+        <p>
+            I will not be held responsible for any damage or mishandling on your part.
+            You do so at your own risk and responsibility.
+        </p>
+        <h4><i>It'll be okay as long as you have stable connection, follow the steps, and don't do weird things</i>.</h4>
+
+        <p style="padding: 5px"></p>
+
+        <p>We will be using HENlo</p>
+        <p>HENlo is a jailbreak for the PS Vita, compatible with firmware 3.65 to 3.74, originally unveiled by hacker TheFloW . </p>
+        <p>
+            It's considered more practical than previous hacks because it doesn't require a computer or PSN account <i>(which was necessary with previous methods).</i>
+        </p>
+        <p>
+            It's not permanent, but it's only a temporary restriction until HENkaku Ensō is installed and that VitaDeploy allows you to take advantage of applications and numerous tools.
+        </p>
+        <p>
+            There are two implementations of the HENlo jailbreak : the one from SKGleba that we'll be using and the one from Yoti's Project Amber.
+        </p>
+        <p>
+            They differ in implementation details, but ultimately they both allow you to jailbreak the console and install HENkaku/Enso.
+        </p>
+
+        <p style="padding: 5px"></p>
+
+        <h2 class="underline" style="text-decoration-color: dodgerblue">Requirements</h2>
+        <p style="padding: 0">
+            - A <a href="https://www.amazon.com/s?k=PSVita&rh=n%3A3010601011&dc&ds=v1%3AVwVSBgmf%2FOwBM2lZEXnInbtqh1Ct6d0dBEe%2FwwZ7oEg&crid=BSGN5VWUX2OZ&qid=1734439103&rnid=2941120011&sprefix=psvita%2Caps%2C170&ref=sr_nr_n_1" target="_blank">PSVita</a> <i>(I did it on a PCH-1XXX)</i>
+        </p>
+        <p style="padding: 0">
+            - A computer
+        </p>
+        <p style="padding: 0">
+            - <a href="https://www.amazon.fr/Adaptateur-Version3-0-SD2VITA-Transfert-m%C3%A9moire/dp/B08XZHQBPM/ref=sr_1_4_sspa?__mk_fr_FR=%C3%85M%C3%85%C5%BD%C3%95%C3%91&crid=1UOTV2IPEGWSK&dib=eyJ2IjoiMSJ9.cZZ_n6_RpxAyl4phIQ5dVMwewJKiOjOgqxxQfZCwnDtPTvlPnSKaekL_DeH5WZSgrC8DholfrJ6GSFH-Uf1vzq-4q1mMjnmx3S2dGrW04j_VanqMVAWXvwgtl0TUOLq8CnqVuRy9sY6vcQfitiztHCPcFUQWLWOJi4KCfSnbg79I5FMIZyPE5wUnPRfeFLqYzon8bfEvAaMRhw3dIs1gdDvT0Dd8VTeJx5u-FdgKjoRexjPgtuldqERj1xzGUqyVxq1ALxU97bvPTHYBKxAPVZp3d7f-CYfCLnZ2vtN35sI.EMINoRLhcuPvGNGtWuOE33MMnKOd27y8BU722xcUh-Y&dib_tag=se&keywords=sd2+vita&nsdOptOutParam=true&qid=1734356070&sprefix=sd2+vita%2Caps%2C110&sr=8-4-spons&sp_csd=d2lkZ2V0TmFtZT1zcF9hdGY&psc=1" target="_blank">SD2 Vita adapter</a>
+        </p>
+        <p style="padding: 0">
+            - <a href="https://www.amazon.fr/SanDisk-Cards-Extreme-MICROSDXC-Adapter/dp/B09X7BK27V/ref=pd_bxgy_thbs_d_sccl_1/261-7624769-9963968?pd_rd_w=RENZJ&content-id=amzn1.sym.3dbb4249-7cc8-4963-a362-854c36cc0919&pf_rd_p=3dbb4249-7cc8-4963-a362-854c36cc0919&pf_rd_r=1MH98FYC4Z0TR1C8ZDB0&pd_rd_wg=q53zX&pd_rd_r=b1a69597-0db9-4086-939a-2e1265164626&pd_rd_i=B09X7BK27V&psc=1" target="_blank">microSD Card</a> <i>(I recommend at least 128gb to be safe</i> & <i>don't go over 256gb)</i>
+        </p>
+        <p style="padding: 0">
+            - <a href="https://www.amazon.fr/uni-Adaptateur-Compagnon-Compatible-Chromebook/dp/B08P1T8R46/ref=pd_bxgy_thbs_d_sccl_2/261-7624769-9963968?pd_rd_w=RENZJ&content-id=amzn1.sym.3dbb4249-7cc8-4963-a362-854c36cc0919&pf_rd_p=3dbb4249-7cc8-4963-a362-854c36cc0919&pf_rd_r=1MH98FYC4Z0TR1C8ZDB0&pd_rd_wg=q53zX&pd_rd_r=b1a69597-0db9-4086-939a-2e1265164626&pd_rd_i=B08P1T8R46&psc=1" target="_blank">microSD card reader</a>
+        </p>
+        <p style="padding: 0">
+            - A stable connection <i class="underline" style="text-decoration-color: red">(IMPORTANT)</i>
+        </p>
+
+        <p style="padding: 5px"></p>
+
+        <h2 class="underline" style="text-decoration-color: dodgerblue">Method</h2>
+
+        <p>First if you have any save data I recommend saving it somewhere since we won't use the cartridges anymore.</p>
+        <p>I like starting fresh, so I started on a clean slate, to do so turn off the PS then press "power + PS Button + R", then reboot/Restart the system</p>
+        <img loading="lazy" src="../Images/PS%20Img/vitasavemode.webp" alt="Vita Safe Mode" style="width: 40%"/>
+
+        <p>Next update your console to V3.74</p>
+        <p>To check the version of your console: go to "parameters" all the way down in "system" -> "info" you should see the version.</p>
+
+        <p style="padding: 1px"></p>
+
+        <!-- HENlo download-->
+        <p>Now make sure you have a stable connection</p>
+        <p>Open the web browser, close the popup, go to parameters, scroll down & click on delete cookies & clear history</p>
+        <p>Then write this link :</p>
+        <div class="snippet">
+            <div class="Swindow">
+                <div class="Swindow-title">
+                    <p>Homebrew link</p>
+                </div>
+                <div class="Sconsole">
+                    <pre><code>http://jailbreak.psp2.dev</code></pre>
+                </div>
+            </div>
+        </div>
+        <p>A menu will appear click on unlock, it will ask you if you're sure say yes</p>
+        <h4><i>If this doesn't work you can do it again (remember to clear your history & cookies)</i></h4>
+        <p>The henlo-bootstrap menu will appear after a little bit</p>
+        <img loading="lazy" src="../Images/PS%20Img/henlobootstrap.webp" alt="Boot Strap menu" style="width: 65%">
+        <p>select "install Henkaku" and press X</p>
+        <p>then select "install VitaDeploy" and press X</p>
+        <p>and now select "exit" and press X</p>
+        <p style="padding: 1px"></p>
+        <p>open the "parameters" in "Henkaku setting", enable "unsafe homebrew" & put the spoofed ver. to your current OS, go back & close the "parameters"</p>
+        <div class="row">
+            <div class="column">
+                <img loading="lazy" src="../Images/PS%20Img/psHenkakuSettings.webp" alt="Henkaku Settings" style="width:50%">
+            </div>
+            <div class="column">
+                <img loading="lazy" src="../Images/PS%20Img/spoof%20version.webp" alt="Spoofed Version" style="width:50%">
+            </div>
+        </div>
+
+        <p style="padding: 5px"></p>
+
+        <h2 class="underline" style="text-decoration-color: dodgerblue">Extra Storage</h2>
+        <h4>Do this before opening any of the apps we just downloaded <i>(SharkFood issue)</i></h4>
+
+        <p style="padding: 2px"></p>
+
+        <p class="underline" style="text-decoration-color: royalblue">Step 1: Formatting the microSD card
+        </p>
+        <p>
+            1. Insert the SD2Vita adapter into the GameCard slot. <i>(put the microSD in the SD2Vita first)</i>
+        </p>
+        <p>
+            2. Open VitaDeploy and go to "Miscellaneous"
+        </p>
+        <p>
+            3. Then "Format a storage device"
+        </p>
+        <p>
+            4. Press "Format target storage" and wait for it to finish
+        </p>
+        <img loading="lazy" src="../Images/PS%20Img/format%20storage.webp" alt="Format microSD" style="width: 50%">
+        <p>
+            5. Restart the console
+        </p>
+
+        <p style="padding: 2px"></p>
+
+        <p class="underline" style="text-decoration-color: royalblue">
+            Step 2: Copying files
+        </p>
+        <p>
+            1. From the settings, go to "Devices" then "Storage Devices" and activate "YAMT"
+        </p>
+        <h4><i>If the "devices" option doesn't show up, don't panic go to "VitaDeploy" -> "AppDownload" select "YAMT Installer" then install and open it</i>.</h4>
+        <p>
+            2. Restart the console and open the "VitaDeploy" file manager <i>(or "VitaShell")</i>, making sure that the uma0: partition is visible.
+        </p>
+        <p>
+            3. Go to the ux0: partition and press triangle select all folders & with square deselect "SceIoTrash"
+        </p>
+        <p>
+            4. Press Triangle and select "Copy"
+        </p>
+        <p>
+            5. Go to the uma0: partition, press Triangle, then select "Paste"
+        </p>
+
+        <p style="padding: 2px"></p>
+
+        <p class="underline" style="text-decoration-color: royalblue">
+            Step 3: Setting the microSD card as primary storage
+        </p>
+        <p>
+            1. Go to "Settings", go to "Devices" then "Storage Devices"
+        </p>
+        <p>
+            2. Set ux0: to SD2Vita and uma0: to memory card
+        </p>
+        <img loading="lazy" src="../Images/PS%20Img/storage%20device.webp" alt="Set new storage" style="width: 50%">
+        <p>
+            3. Restart the console, then in the "system settings" it should now display the size of the microSD as the size of the memory card.
+        </p>
+
+        <p style="padding: 5px"></p>
+
+        <p><i class="underline" style="text-decoration-color: royalblue">Little side note :</i> there is an issue with "SharkFood" which stops you from opening "VitaDB"</p>
+        <p>the issue is with a file called "libshacccg.skprx" which you can download <a href="https://www.mediafire.com/file/do8cwqgvg4vr1um/libshacccg.suprx/file">here</a></p>
+        <p>then on the vita in "VitaShell" go to the downloaded file <i>(in ux0)</i>  when on it press triangle & select "move" then go to ur0:data, press triangle and select "paste".</p>
+
+        <p style="padding: 5px"></p>
+
+        <h2 class="underline" style="text-decoration-color: dodgerblue">Back to jail-breaking</h2>
+
+        <p>ok, now open "VitaDeploy" & select "download a different OS" -> "Quick 3.65 install"</p>
+        <img loading="lazy" src="../Images/PS%20Img/InstallOS.webp" alt="Install Different OS" style="width: 50%">
+        <p>wait for it to load & press X to confirm, wait an excruciating 20sec & press X again</p>
+        <p>and now we wait</p>
+        <p>after it finishes downloading check in "parameters" -> "system" -> "system info" it should look like : </p>
+        <img loading="lazy" src="../Images/PS%20Img/psSysInfo.webp" alt="System info" style="width: 50%">
+        <p>all good ?</p>
+        <p>ok, open "VitaDeploy" again, select "App Downloader"</p>
+        <p>select : VitaShell, VitaDB, Adrenaline, PKGj</p>
+        <h4><i>If you have battery issues download the Battery Fixer</i></h4>
+        <div class="row">
+            <div class="column">
+                <img loading="lazy" src="../Images/PS%20Img/appdownloader1.webp" alt="App Download 1" style="width:50%">
+            </div>
+            <div class="column">
+                <img loading="lazy" src="../Images/PS%20Img/appdownloader2.webp" alt="App Download 2" style="width:50%">
+            </div>
+        </div>
+        <p>then click on "Download the selected apps"</p>
+
+        <p style="padding: 5px"></p>
+
+        <p> now we need to block auto updates, "Parameters" -> "System" -> "Auto-start Settings" -> disable the first one</p>
+        <img loading="lazy" src="../Images/PS%20Img/autoupdate.webp" alt="App Download 2" style="width: 50%">
+
+        <p>From this point you could access the PSN, but I personally don't recommend it, as you could get your account banned.</p>
+
+        <p style="padding: 5px"></p>
+
+        <h2 class="underline" style="text-decoration-color: dodgerblue">Adrenaline setup <i>(PSP Emulator)</i></h2>
+        <p>open adrenaline press X and nothing else, then wait</p>
+        <p>reopen adrenaline press X and nothing else, then wait</p>
+        <p>now follow the setup, & you're done.</p>
+        <p>All you're PSP Games will be here.</p>
+
+        <p style="padding: 5px"></p>
+
+        <h2 class="underline" style="text-decoration-color: dodgerblue">Unlimited Games</h2>
+        <p>we will be using PKGj & AutoPlugin2</p>
+        <p>Download AutoPlugin2 from <a href="https://github.com/ONElua/AutoPlugin2" target="_blank">here</a> & put it on the microSD then back into the vita</p>
+        <p>boot it up, go to "vitaShell", in ux0: got to the "AutoPlugin2.vpk" file press X on it to download it say yes, wait, and now you can exit & open the "AutoPlugin2" App</p>
+        <h4><i>ps: The green circle next to plugins means they are installed</i></h4>
+
+        <p style="padding: 2px"></p>
+
+        <p class="underline" style="text-decoration-color: cadetblue">Here is the list of plugins we will install <i>(in order)</i> :</p>
+        <p>
+            - <strong class="underline">Osyscall6</strong>, bypasses the firmware version restriction for Vita games.
+        </p>
+        <p>
+            - <strong class="underline">Adrenaline (fix double touch)</strong>, launches Adrenaline the first time.
+        </p>
+        <p>
+            - <strong class="underline">NoNpDrm</strong>, bypasses DRM protection for Vita games
+        </p>
+        <p>
+            - <strong class="underline">NoPowerLimits</strong>, removes certain restrictions imposed by ScePower
+        </p>
+        <p>
+            - <strong class="underline">NoPsmDrm</strong>, bypasses DRM protection for PSM games
+        </p>
+        <p>
+            - <b class="underline">NoPspEmuDrm</b>, bypasses DRM protection for PSP games
+        </p>
+        <p>
+            - <b class="underline">pngshot</b>, makes screenshots more beautiful
+        </p>
+        <p>
+            - <b class="underline">PSVshell</b>, overclocking tools
+        </p>
+        <p>
+            - <b class="underline">Repatch</b>, for modifying encrypted games
+        </p>
+        <p>
+            - <b class="underline">Shellbat</b>, Percentage of battery in the status bar
+        </p>
+        <p>
+            - <b class="underline">NpDrm_Free</b>, allows you to run official PS1 and PSP NPDRM content
+        </p>
+
+        <p style="padding: 2px"></p>
+
+        <p>once you've done that press O until you're back at the main page and select "exit" this will finalize the plugins installation & restart the console</p>
+        <p>now go to "VitaShell" and go to "ux0:pspemu/seplugins/game.txt" and make sure there is a "1" instead of a "0" at the end of both line if not change it, like so :</p>
+        <h5>sorry for the quality of the image</h5>
+        <img loading="lazy" src="../Images/PS%20Img/pspemugametxt.webp" alt="pspsemu game.txt bug fix" style="width: 50%">
+        <p>you can now exit "VitaShell" & open "PKGj"</p>
+        <p>now you can install all PSVita & PSP games, most PS1 & PSM Games as well as any theme your heart desires <i>("the four seasons" theme is very nice)</i>.</p>
+        <p>Most PSP & PS1 games won't appear as apps on your main page, you will need to open Adrenaline to play them</p>
+        <p>and since "PKGj" is a [mirror] of the PSN Store you can check in "VitaDB" where you have some fan made stuff like ports, emulator & some fun utilities, take a look.</p>
+
+        <p style="padding: 5px"></p>
+
+        <p>It should look a little something like this : </p>
+        <h4><i>The top three are settings and file management & the bottom three are installers</i></h4>
+        <img loading="lazy" src="../Images/PS%20Img/app%20needed.webp" alt="Boot Strap menu" style="width: 50%">
+
+        <p style="padding: 5px"></p>
+
+        <h2 class="underline">My Game Recommendation :</h2>
+        <p class="underline" style="text-decoration-color: cadetblue">
+            PSVita :
+        </p>
+        <p>- Tearaway</p>
+        <p>- Little Big Planet</p>
+        <p>- Lego Games <i>(there are 13 of them)</i></p>
+        <p>- Meta Gear Solid HD <i>(the collection)</i></p>
+        <p>- God of War Collection</p>
+        <p>- F1 2011</p>
+        <p>- Ben 10 Galactic Racing</p>
+        <p>- Killzone Mercenary</p>
+
+        <p style="padding: 10px"></p>
+
+        <p class="underline" style="text-decoration-color: cadetblue">
+            PSP :
+        </p>
+        <p>- Lego Starwars 3 The Clone Wars</p>
+        <p>- The 2D Adventures of Rotating Octopus Character</p>
+        <p>- Sega mega drive collection</p>
+        <p>- Monster Hunter Freedom Unite</p>
+        <p>- WipEout</p>
+        <p>- Dead or Alive : Paradise</p>
+
+        <p style="padding: 10px"></p>
+
+        <p class="underline" style="text-decoration-color: cadetblue">
+            PS1 :
+        </p>
+        <p>- Metal Gear Solid</p>
+        <p>- Spyro 1 trough 3</p>
+        <p>- Crash Bandicoot warped</p>
+        <p>- Rayman</p>
+        <p>- Castelvania: symphony of the night
+        </p>
+
+        <p style="padding: 10px"></p>
+
+        <p class="underline" style="text-decoration-color: cadetblue">
+            Themes :
+        </p>
+        <p>- Four Seasons</p>
+        <p>- Atelier Firis Special Theme</p>
+
+        <p style="padding: 30px"></p>
+
+        <h2 class="underline" style="text-decoration-color: cadetblue">The Resources :</h2>
+        <p><a href="https://www.reddit.com/r/VitaPiracy/comments/10isfc1/comment/j5gjs1u/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button" target="_blank">SharkFood issue.</a></p>
+        <p>If you want a video tutorial look up on YouTube "PSVita hack" & you'll find happiness.</p>
+
+        <h2 class="underline" style="text-decoration-color: cadetblue">Required Items :</h2>
+        <p><a href="https://www.amazon.com/s?k=PSVita&rh=n%3A3010601011&dc&ds=v1%3AVwVSBgmf%2FOwBM2lZEXnInbtqh1Ct6d0dBEe%2FwwZ7oEg&crid=BSGN5VWUX2OZ&qid=1734439103&rnid=2941120011&sprefix=psvita%2Caps%2C170&ref=sr_nr_n_1" target="_blank">PSVita</a></p>
+        <p><a href="https://www.amazon.fr/Adaptateur-Version3-0-SD2VITA-Transfert-m%C3%A9moire/dp/B08XZHQBPM/ref=sr_1_4_sspa?__mk_fr_FR=%C3%85M%C3%85%C5%BD%C3%95%C3%91&crid=1UOTV2IPEGWSK&dib=eyJ2IjoiMSJ9.cZZ_n6_RpxAyl4phIQ5dVMwewJKiOjOgqxxQfZCwnDtPTvlPnSKaekL_DeH5WZSgrC8DholfrJ6GSFH-Uf1vzq-4q1mMjnmx3S2dGrW04j_VanqMVAWXvwgtl0TUOLq8CnqVuRy9sY6vcQfitiztHCPcFUQWLWOJi4KCfSnbg79I5FMIZyPE5wUnPRfeFLqYzon8bfEvAaMRhw3dIs1gdDvT0Dd8VTeJx5u-FdgKjoRexjPgtuldqERj1xzGUqyVxq1ALxU97bvPTHYBKxAPVZp3d7f-CYfCLnZ2vtN35sI.EMINoRLhcuPvGNGtWuOE33MMnKOd27y8BU722xcUh-Y&dib_tag=se&keywords=sd2+vita&nsdOptOutParam=true&qid=1734356070&sprefix=sd2+vita%2Caps%2C110&sr=8-4-spons&sp_csd=d2lkZ2V0TmFtZT1zcF9hdGY&psc=1" target="_blank">SD2 Vita adapter</a></p>
+        <p><a href="https://www.amazon.fr/SanDisk-Cards-Extreme-MICROSDXC-Adapter/dp/B09X7BK27V/ref=pd_bxgy_thbs_d_sccl_1/261-7624769-9963968?pd_rd_w=RENZJ&content-id=amzn1.sym.3dbb4249-7cc8-4963-a362-854c36cc0919&pf_rd_p=3dbb4249-7cc8-4963-a362-854c36cc0919&pf_rd_r=1MH98FYC4Z0TR1C8ZDB0&pd_rd_wg=q53zX&pd_rd_r=b1a69597-0db9-4086-939a-2e1265164626&pd_rd_i=B09X7BK27V&psc=1" target="_blank">microSD Card</a> <i>(I recommend at least 128gb to be safe</i> & <i>don't go over 256gb)</i></p>
+        <p><a href="https://www.amazon.fr/uni-Adaptateur-Compagnon-Compatible-Chromebook/dp/B08P1T8R46/ref=pd_bxgy_thbs_d_sccl_2/261-7624769-9963968?pd_rd_w=RENZJ&content-id=amzn1.sym.3dbb4249-7cc8-4963-a362-854c36cc0919&pf_rd_p=3dbb4249-7cc8-4963-a362-854c36cc0919&pf_rd_r=1MH98FYC4Z0TR1C8ZDB0&pd_rd_wg=q53zX&pd_rd_r=b1a69597-0db9-4086-939a-2e1265164626&pd_rd_i=B08P1T8R46&psc=1" target="_blank">microSD card reader</a></p>
+
+        <!-- The End -->
+        <p style="padding: 15px"></p>
+        <p>Hope everything worked out fine, see you.</p>
+
+        <!-- End original content -->
+    </section>
+
+    <footer>
+        <p style="color: var(--text-color-bright);">17-10-2024</p>
+    </footer>
+</main>
+
+<!-- Navigation buttons (template style) -->
+<div style="text-align:center; margin-top:1rem">
+    <a href="TSP.html" class="cta-button">Previous</a>
+    <a href="../Blog.html" class="cta-button secondary">Entries</a>
+    <a href="../Blog.html" class="cta-button">Next</a>
+</div>
+
+</body>
+</html>
