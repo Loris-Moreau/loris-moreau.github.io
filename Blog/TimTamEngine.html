@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>TimTam Engine</title>
+    <link rel="icon" type="image/x-icon" href="../Images/Tenma.webp">
+
+    <!-- Meta Tags for SEO -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Loris Moreau">
+    <meta name="description" content="TimTam 3D Game Engine">
+    <meta name="keywords" content="Showcase, Loris, Moreau, Loris Moreau, Programmer, coding adventure, Blog, Post, Game Development, Engine, Game Design, 3D, CPP, C++, Editor">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="../Styles/style.css">
+    <link rel="stylesheet" href="../Styles/Code-Quote.css">
+
+    <script src="../Scripts/Carousel.js" defer></script>
+</head>
+
+<body>
+
+<main id="BlogPost" class="post">
+    <header>
+        <!-- Navbar -->
+        <nav style="margin: 0 auto 2em auto;">
+            <ul>
+                <li><a href="../Blog.html">Back</a></li>
+                <li><a href="../index.html" target="_blank">Main</a></li>
+                <li><a href="../Blog.html" target="_blank">Blog</a></li>
+                <li><a href="../Resources.html" target="_blank">Resources</a></li>
+            </ul>
+        </nav>
+
+        <!-- intro -->
+        <div class="flex-container">
+            <img height="200px" loading="lazy" src="../Images/UnderConstruction.webp" alt="TimTam Logo">
+
+            <div class="text-container">
+                <h1>TimTam Engine</h1>
+                <p><a class="cta-button" href="https://github.com/Loris-Moreau/TimTam_3D-Engine" target="_blank">GitHub Repository</a></p>
+            </div>
+        </div>
+    </header>
+
+    <!-- Article content -->
+    <section>
+        <h2 class="underline">Tim Tam Engine</h2>
+        
+        <p>Welcome back, today we become insane.</p>
+        
+        <p style="padding-top: 5px"></p>
+        
+        <div>
+            <p><a href="https://adamsturge.github.io/Engine-Blog/" target="_blank">Interesting Reference on the subject</a></p>
+            <p>This is going to be in the style of a research paper instead of your traditional blog, since I need to write down quite a lot of information,
+                so buckle up and enjoy the ride.</p>
+            <p>Ok, so the format will be as follows: Rather than showing you the full implementation,
+                I will explain the thought processes & show you how I go about resolving this madness.</p>
+            <p>I will try to explain as best I can and put as many <a href="../Resources.html#Engine" target="_blank">resources</a> as possible</p>
+
+            <p style="padding: 5px"></p>
+
+            <h2 id="Theory" class="underline" style="text-decoration-color: royalblue"> It's just a Theory </h2>
+            <p>First, what are we trying to do ?</p>
+            <h4>
+                "A game engine is a software framework primarily designed for the development of video games
+                which generally includes relevant libraries and support programs such as a level editor.
+                The "engine" terminology is akin to the term "software engine" used more widely in the software industry."
+            </h4>
+            <h5><a href="https://en.wikipedia.org/wiki/Game_engine" target="_blank">source.</a></h5>
+            
+            <p></p>
+            
+            <!--
+            <p class="underline" style="text-decoration-color: cadetblue">We want a piece of software that has : </p>
+            <p>1. a level editor <i>(that can save/load levels)</i></p>
+            <p>2. a object importer/loader <i>(be able to load .fbx, .obj, etc...)</i></p>
+            <p>2.2 animations</p>
+            <p>3. be able to play sounds</p>
+            <p>4. optimised physics system</p>
+            <p>5. multithreading/SIMD</p>
+            <p>6. movable player/camera</p>
+            <p>7. NPCs that can be either allies, neutrals or enemies</p>
+            <p>8. Lights <i>(different modes: realtime, god rays, precooked)</i></p>
+            <p>9. different rendering modes <i>(wire mesh, particles, no light, etc...)</i></p>
+            <p>10. Compute shaders</p>
+            <p>11. VFXs</p>
+            <p>12. UI <i>(imgui)</i></p>
+            <p>13. debug menu <i>(real time debug & logger)</i></p>
+            
+            <p></p>
+
+            <p class="underline" style="text-decoration-color: cadetblue">And some extra stuff that would be nice to have : </p>
+            <p>1. chat box that allows console command with a prefix)</p>
+            <p>2. multiplayer system <i>(local/couch co-op)</i></p>
+            <p>3. curve editor</p>-->
+
+            <p id="Requirement" class="underline" style="text-decoration-color: cadetblue">"core" requirements for a basic 2D engine : </p>
+            <div>
+                <p style="padding: 0">- Common elements <i>(vector/point, matrix, quat, color, etc...)</i></p>
+                <p style="padding: 0">- Collision system</p>
+                <p style="padding: 0">- Input handling</p>
+                <p style="padding: 0">- Window management framework</p>
+                <p style="padding: 0">- Graphics system <i>(see below)</i></p>
+                <p style="padding: 0">- File system</p>
+                <p style="padding: 0">- Audio system</p>
+            </div>
+
+            <p></p>
+
+            <p class="underline" style="text-decoration-color: cadetblue">For the graphics part :</p>
+            <div>
+                <p style="padding: 0">- Textured/untextured quads <i>(with/without lighting)</i></p>
+                <p style="padding: 0">- <a href="https://en.wikipedia.org/wiki/Polygonal_chain#Applications" target="_blank">Polylines</a><i>(curves)</i>/beams <i>(and a corresponding editor)</i></p>
+                <p style="padding: 0">- Debug lines/boxes/circles/grids/logger</p>
+                <p style="padding: 0">- Text rendering</p>
+                <p style="padding: 0">- Particle systems</p>
+                <p style="padding: 0">- Streaks</p>
+            </div>
+
+            <p></p>
+
+            <p class="underline" style="text-decoration-color: cadetblue">That would be the absolute minimum a game would need.
+                but we also need : </p>
+            <div>
+                <p style="padding: 0">- World/scene management <i>(level editor)</i></p>
+                <p style="padding: 0">- UI <i>(imgui)</i></p>
+                <p style="padding: 0">- Models/Entities/Agents</p>
+                <p style="padding: 0">- Pathfinding</p>
+                <p style="padding: 0">- Animation</p>
+                <p style="padding: 0">- Event systems</p>
+            </div>
+
+            <p></p>
+
+        </div>
+
+        <!-- The End -->
+        <p style="padding: 15px"></p>
+        <p>Bye, Bye ... I'm gonna go sleep now.</p>
+    </section>
+
+    <footer>
+        <p style="color: var(--text-color-bright);">xx-xx-xxxx</p>
+    </footer>
+</main>
+
+<!-- Nav buttons -->
+<div style="text-align:center; margin-top:1rem">
+    <a href="Workflow.html" class="cta-button">Previous</a>
+    <a href="../Blog.html" class="cta-button secondary">Entries</a>
+    <a href="3DGameEngine.html" class="cta-button">Next</a>
+</div>
+
+</body>
+</html>
