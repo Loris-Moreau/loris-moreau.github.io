@@ -253,10 +253,10 @@ details {
 }
 
 details:hover {
-  scale: 1.04;
+  scale: 1.03;
 }
 
-details:open {
+details:open { /*Rider Returns error here for some reason, Ignore*/
   scale: 1.0;
 }
 
