@@ -249,7 +249,15 @@ details {
   margin-top: 1em;
   background-color: var(--bg-color-2);
   border-radius: 1em;
-  cursor: default; /* disables pointer look; summary still interactive */
+  cursor: pointer; /* disables pointer look; summary still interactive */
+}
+
+details:hover {
+  scale: 1.04;
+}
+
+details:open {
+  scale: 1.0;
 }
 
 details summary {
