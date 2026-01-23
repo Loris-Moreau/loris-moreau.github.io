@@ -67,6 +67,9 @@ nav li:first-child {
   font-weight: bold;
   margin-right: auto; /* pushes remaining nav items to the right */
 }
+nav li {
+  font-weight: bold;
+}
 
 nav a {
   text-decoration: none;
