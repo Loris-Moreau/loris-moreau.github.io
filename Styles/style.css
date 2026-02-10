@@ -1,25 +1,25 @@
 :root { 
   /* Global Variables (these are readable in every css) */
-  --bg-color: rgb(37, 37, 37); /* #252525 */
-  --bg-color-2: rgb(50, 50, 50); /* #323232 */
+  --bg-color: rgb(11, 25, 44); 
+  --bg-color-2:rgb(34, 40, 49); 
   
-  --text-color: rgb(55, 55, 55); /* #373737 */
-  --title-color: rgb(45, 45, 45); /* #2d2d2d */
-  --text-color-bright: rgb(225, 225, 225); /* #e1e1e1 */
+  --text-color: rgb(243, 244, 244); 
+  --title-color: rgb(243, 244, 244); 
+  --text-color-bright: rgb(225, 225, 225); 
   
-  --primary-color: rgb(255, 95, 0); /* #ff5f00 */ /* try #ff3548 */
-  --secondary-color: rgb(220, 15, 255); /* #dc0fff */
+  --primary-color: rgb(255, 101, 0); 
+  --secondary-color: rgb(95, 149, 152); 
   
-  --color-section-1: rgb(125, 125, 125); /* #7d7d7d */
-  --color-section-2: rgb(120, 120, 120); /* #787878 */
-  --color-section-3: rgb(110, 110, 110); /* #6e6e6e */
+  --color-section-1: rgb(57, 62, 70); 
+  --color-section-2: rgb(57, 62, 70); 
+  --color-section-3: var(--color-section-2); 
   
-  --underline-color: var(--primary-color);
-  --underline-thickness: 0.1em;
+  --underline-color: red; 
+  --underline-thickness: 0.1em; 
   
-  --navbar-height: 3rem;
+  --navbar-height: 3rem; 
   
-  --font-family: Arial, Open-Dyslexic, Verdana, Helvetica;
+  --font-family: Arial, Open-Dyslexic, Verdana, Helvetica; 
 }
 
 /* Global Reset */
@@ -50,6 +50,10 @@ h1, h2, h3 {
   padding-top: 0.75em;
 }
 
+p {
+  color: var(--text-color);
+}
+
 nav {
   /*height: var(--navbar-height);*/
   margin: 1em auto 3em auto;
@@ -78,6 +82,7 @@ nav a {
 
 nav a:hover {
   text-decoration: underline;
+  text-decoration-color: var(--underline-color);
 }
 
 /*
@@ -104,7 +109,7 @@ header, section {
   width: min(75em, 100%); /* central column with max width */
   background-color: var(--color-section-1);
   padding: min(2em, 15%);
-  border-radius: 1em;
+  border-radius: 0.5em;
 }
 
 .flex-container {
@@ -118,7 +123,7 @@ header, section {
 
 header img {
   max-width: 100%;
-  border-radius: 1em;
+  border-radius: 0.5em;
   object-fit: cover; /* crop to fill */
   object-position: bottom; /* where the image should be focused */
 }
@@ -183,7 +188,7 @@ h2 {
   height: 7em;
   background-color: var(--color-section-1) ;
   border: 0.15em solid black;
-  border-radius: 1.25em;
+  border-radius: 0.8em;
   display: flex;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -251,7 +256,7 @@ section:nth-child(3){
 details {
   margin-top: 1em;
   background-color: var(--bg-color-2);
-  border-radius: 1em;
+  border-radius: 0.8em;
   cursor: pointer; /* disables pointer look; summary still interactive */
 }
 
@@ -282,6 +287,7 @@ footer a {
 }
 footer a:hover {
   text-decoration: underline;
+  text-decoration-color: var(--underline-color);
 }
 
 @media(max-width: 988px){
@@ -338,7 +344,7 @@ a{
 }
 a:hover {
   text-decoration: underline;
-  text-decoration-color: var(--primary-color); /* highlight underline on hover */
+  text-decoration-color: var(--underline-color);
 }
 
 .underline {
@@ -353,12 +359,12 @@ a:hover {
   flex: 0 1 40%; /* fits into your flex layout like the original <img> */
   max-width: 40%;
   overflow: visible; /* allow controls outside visually; viewport handles clipping */
-  border-radius: 1em; /* visual match with header img */
+  border-radius: 0.25em; /* visual match with header img */
 }
 /* The viewport masks overflow so only one slide is visible at a time */
 .showcase-carousel .carousel-viewport {
   overflow: hidden;
-  border-radius: 1em; /* keep rounded corners consistent */
+  border-radius: 0.25em; /* keep rounded corners consistent */
   box-shadow: none;
 }
 /* Track holds slides horizontally; transform changes move the slides */
@@ -382,7 +388,7 @@ a:hover {
   max-height: 420px; /* keeps tall images reasonable */
   object-fit: cover;
   object-position: center bottom;
-  border-radius: 1em;
+  border-radius: 0.5em;
   display: block;
 }
 /* arrow buttons */
