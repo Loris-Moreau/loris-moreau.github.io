@@ -1,9 +1,9 @@
 /* Responsive video wrapper (simple) */
 .video-wrapper.simple {
     width: min(100%, 75%);
-    max-width: 840px; /* sensible max width */
+    max-width: 840px; /* 840px */
     margin: 1rem auto;
-    border-radius: 1em;
+    border-radius: 0.5em;
     overflow: hidden; /* keeps rounded corners for iframe */
     background: var(--color-section-2);
     border: 0.15em solid black;

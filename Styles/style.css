@@ -273,7 +273,11 @@ details summary {
   font-size: 1.7rem;
 }
 details p {
+  color: var(--text-color-bright); /* Text Color for details */
   padding: 0 2em 2em 2em;
+}
+details a {
+  color: var(--text-color-bright); /* Link Text Color for details */
 }
 
 footer {

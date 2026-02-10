@@ -1,5 +1,5 @@
 :root{
-    --code-title-bg-color: rgb(75, 75, 75);
+    --code-title-bg-color: rgb(65, 65, 65);
     --code-bg-color: rgb(35, 40, 35);
     --code-text-color: rgb(25, 255, 25);
 }
@@ -29,7 +29,7 @@
     width: min(1100px, calc(100% - 2rem)); /* keep desktop cap, avoid horizontal overflow on mobile */
     background: var(--code-title-bg-color);
     border: 5px solid var(--code-title-bg-color);
-    border-radius: 15px;
+    border-radius: 0.5em;
     overflow: visible; /* allow content to expand (no internal scroll) */
     box-shadow: 0 6px 18px rgba(0,0,0,0.12);
 }
