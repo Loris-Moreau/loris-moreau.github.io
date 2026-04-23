@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>R-2 : Setup, Raytracer Output</title>
+    <link rel="icon" type="image/x-icon" href="../Images/Suprise.webp">
+
+    <!-- Meta Tags for SEO -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Loris Moreau">
+    <meta name="description" content="Raytracing in one weekend, setting up the project, Vector3, Ray class and first render output">
+    <meta name="keywords" content="Showcase, Loris, Moreau, Loris Moreau, Programmer, coding adventure, Blog, Post, Raytracing, C++, CPP, Raytracing in one weekend, ppm, render, ray">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="../Styles/style.css">
+    <link rel="stylesheet" href="../Styles/Code-Quote.css">
+
+    <script src="../Scripts/Carousel.js" defer></script>
+</head>
+
+<body>
+
+<main id="BlogPost" class="post">
+    <header>
+        <!-- Navbar -->
+        <nav style="margin: 0 auto 2em auto;">
+            <ul>
+                <li><a href="../Blog.html">Back</a></li>
+                <li><a href="../index.html">Main</a></li>
+                <li><a href="../Blog.html">Blog</a></li>
+                <li><a href="../Resources.html">Resources</a></li>
+            </ul>
+        </nav>
+
+        <!-- Top showcase + intro -->
+        <div class="flex-container">
+            <img height="400px" loading="lazy" src="../Images/RayTracing/Final%20Render%20(B1).webp" alt="Final render of Book 1">
+            <div class="text-container">
+                <h1>R-2 : Setup, Raytracer Output</h1>
+                <p>Setting up the project, writing our first pixels, and building the core utility types: <strong>Vector3</strong>, <strong>Color</strong> and <strong>Ray</strong>.</p>
+                <p>
+                    <a href="https://github.com/Loris-Moreau/RayTracing" target="_blank">GitHub Repository</a>
+                </p>
+            </div>
+        </div>
+    </header>
+
+    <!-- Part 2 / Setup -->
+    <section>
+        <h2 class="underline" style="text-decoration-color: dodgerblue">Part 2, Setting Up</h2>
+
+        <p>
+            You'll need an IDE, I'm using Rider.
+            We'll write the image to a <strong class="quote">.ppm</strong> file, so you might need a plugin to view it
+            <em>("Simple PPM Viewer")</em> or just open it in VS Code, or use a converter.
+        </p>
+
+        <h4>
+            <i class="underline" style="text-decoration-color: cadetblue">Side note :</i>
+            The <strong class="quote">.ppm</strong> format describes the type (we'll use P3), the image resolution, and each pixel's color as 3 ints from 0 to 255.
+        </h4>
+
+        <p>This is the expected result of Book 1 :</p>
+        <figure>
+            <img loading="lazy" src="../Images/RayTracing/Final%20Render%20(B1).webp" alt="Final result of Book 1" style="width: 50%; padding-bottom: 5px;">
+            <figcaption><a href="https://github.com/Loris-Moreau/RayTracing#final-render-of-book-1" target="_blank">img. Source</a></figcaption>
+        </figure>
+
+        <p>Start a new project and write a basic color output to a <strong class="quote">.ppm</strong> file with a loop :</p>
+
+        <div class="snippet">
+            <div class="Swindow">
+                <div class="Swindow-title"><p>Raytracing.cpp</p></div>
+                <div class="Sconsole">
+<pre><code>#include &lt;iostream&gt;
+
+using namespace std;
+
+int main(int argc, char* argv[])
+{
+   // Resolution
+   int width = 256, height = 256;
+   // Image
+   cout &lt;&lt; "P3\n" &lt;&lt; width &lt;&lt; ' ' &lt;&lt; height &lt;&lt; "\n255\n";
+   for(int y = 0; y &lt; height; y++)
+   {
+       for (int x = 0; x &lt; width; x++)
+       {
+           double w = double(x) / (width - 1);  // % of width
+           double h = double(y) / (height - 1); // % of height
+
+           // Back into ints from 0 to 255
+           int r = static_cast&lt;int&gt;(255.999 * w);
+           int g = static_cast&lt;int&gt;(255.999 * h);
+           int b = 255 - r;
+
+           cout &lt;&lt; r &lt;&lt; ' ' &lt;&lt; g &lt;&lt; ' ' &lt;&lt; b &lt;&lt; '\n';
+       }
+   }
+
+   return 0;
+}</code></pre>
+                </div>
+            </div>
+        </div>
+
+        <p>To output this to a file, open the terminal and type :</p>
+
+        <div class="snippet">
+            <div class="Swindow">
+                <div class="Swindow-title"><p>Terminal</p></div>
+                <div class="Sconsole">
+<pre><code>.\x64\Debug\RayTracing.exe > Render.ppm</code></pre>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Utilities -->
+    <section>
+        <h2 class="underline" style="text-decoration-color: royalblue">Utilities, Vector3</h2>
+
+        <p>Let's do some maths <em>(yay!)</em>, first, a simple Vector3 class :</p>
+
+        <div class="snippet">
+            <div class="Swindow">
+                <div class="Swindow-title"><p>Vector3.h</p></div>
+                <div class="Sconsole">
+<pre><code>#pragma once
+
+#include &lt;cmath&gt;
+#include &lt;iostream&gt;
+
+class Vector3
+{
+public:
+   double x, y, z;
+
+   Vector3(): x(0), y(0), z(0){}
+   Vector3(double pX, double pY, double pZ) : x(pX), y(pY), z(pZ){}
+
+   Vector3 operator-() const { return Vector3(-x, -y, -z); }
+   double operator[](int i) const { return i == 0 ? x : (i == 1 ? y : z); }
+   double& operator[](int i) { return i == 0 ? x : (i == 1 ? y : z); }
+
+   Vector3& operator+=(const Vector3& rVec)
+   {
+       x += rVec.x; y += rVec.y; z += rVec.z;
+       return *this;
+   }
+
+   Vector3& operator*=(double t)
+   {
+       x *= t; y *= t; z *= t;
+       return *this;
+   }
+
+   Vector3& operator/=(double t)
+   {
+       x /= t; y /= t; z /= t;
+       return *this;
+   }
+
+   double Length() const { return sqrt(SquaredLength()); }
+   double SquaredLength() const { return x*x + y*y + z*z; }
+};</code></pre>
+                </div>
+            </div>
+        </div>
+
+        <p>Add free operators after the class declaration :</p>
+
+        <div class="snippet">
+            <div class="Swindow">
+                <div class="Swindow-title"><p>Vector3.h</p></div>
+                <div class="Sconsole">
+<pre><code>...
+
+// Alias for Vector3 to increase code readability
+using Position = Vector3;
+
+inline std::ostream& operator&lt;&lt;(std::ostream& rOut, const Vector3& rV)
+{
+   return rOut &lt;&lt; rV.x &lt;&lt; ' ' &lt;&lt; rV.y &lt;&lt; ' ' &lt;&lt; rV.z &lt;&lt; std::endl;
+}
+
+inline Vector3 operator+(const Vector3& rLeft, const Vector3& rRight)
+{
+   return Vector3(rLeft.x + rRight.x, rLeft.y + rRight.y, rLeft.z + rRight.z);
+}
+
+inline Vector3 operator-(const Vector3& rLeft, const Vector3& rRight)
+{
+   return Vector3(rLeft.x - rRight.x, rLeft.y - rRight.y, rLeft.z - rRight.z);
+}
+
+inline Vector3 operator*(const Vector3& rLeft, const Vector3& rRight)
+{
+   return Vector3(rLeft.x * rRight.x, rLeft.y * rRight.y, rLeft.z * rRight.z);
+}
+
+inline Vector3 operator*(const Vector3& rLeft, double scalar)
+{
+   return Vector3(rLeft.x * scalar, rLeft.y * scalar, rLeft.z * scalar);
+}
+
+inline Vector3 operator*(double scalar, const Vector3& rRight)
+{
+   return rRight * scalar;
+}
+
+inline Vector3 operator/(Vector3 vector, double scalar)
+{
+   return (1/scalar) * vector;
+}
+
+inline double Dot(const Vector3& rLeft, const Vector3 rRight)
+{
+   return rLeft.x * rRight.x + rLeft.y * rRight.y + rLeft.z * rRight.z;
+}
+
+inline Vector3 Cross(const Vector3& rLeft, const Vector3& rRight)
+{
+   return Vector3(rLeft.y * rRight.z - rLeft.z * rRight.y,
+                   rLeft.z * rRight.x - rLeft.x * rRight.z,
+                   rLeft.x * rRight.y - rLeft.y * rRight.x);
+}
+
+inline Vector3 Unit(Vector3 vector)
+{
+   return vector / vector.Length();
+}</code></pre>
+                </div>
+            </div>
+        </div>
+
+        <p>Add a color utility file. <em>(Note: Color is not a class, it's an alias used for readability.)</em></p>
+
+        <div class="snippet">
+            <div class="Swindow">
+                <div class="Swindow-title"><p>Color.h</p></div>
+                <div class="Sconsole">
+<pre><code>#pragma once
+#include "Vector3.h"
+
+// New Vector3 alias for color
+using Color = Vector3;
+
+inline void WriteColor(std::ostream& rOut, Color pixel)
+{
+   // Write the translated [0,255] value of each color component.
+   rOut &lt;&lt; static_cast&lt;int&gt;(255.999 * pixel.x) &lt;&lt; ' '
+        &lt;&lt; static_cast&lt;int&gt;(255.999 * pixel.y) &lt;&lt; ' '
+        &lt;&lt; static_cast&lt;int&gt;(255.999 * pixel.z) &lt;&lt; '\n';
+}</code></pre>
+                </div>
+            </div>
+        </div>
+
+        <p>Clean up main and add progress logs. <em>(Don't forget to <strong class="quote">#include "Color.h"</strong>)</em></p>
+
+        <div class="snippet">
+            <div class="Swindow">
+                <div class="Swindow-title"><p>Raytracing.cpp</p></div>
+                <div class="Sconsole">
+<pre><code>...
+
+// Image
+for(int y = 0; y &lt; height; y++)
+{
+   clog &lt;&lt; "Progress : " &lt;&lt; (y*100/height) &lt;&lt; " % \n" &lt;&lt; flush;
+   for (int x = 0; x &lt; width; x++)
+   {
+       Color pixel(double(x) / (width-1),
+          double(y) / (height-1),
+          1 - (double(x) / (width-1)));
+
+       WriteColor(cout, pixel);
+   }
+}
+
+clog &lt;&lt; "Done! You can open your file now :3 \n";
+
+return 0;
+}</code></pre>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ray class -->
+    <section>
+        <h2 class="underline" style="text-decoration-color: royalblue">The Ray Class</h2>
+
+        <p>
+            Rays, like vectors, have an origin and a direction.
+            We can visualize them as a laser shot from a pen to whatever it hits first.
+            That means it could go, in theory, forever into space,
+            and we can know the distance at which the laser hit something
+            <em>(time of travel of light from origin to the hit point)</em>.
+        </p>
+
+        <figure>
+            <img loading="lazy" src="../Images/RayTracing/Raycast_in_FPS.webp" alt="Raycasting in a first-person perspective" style="width: 42%; padding-bottom: 5px;">
+            <figcaption><a href="https://en.wikipedia.org/wiki/Ray_casting" target="_blank">img. Source</a></figcaption>
+        </figure>
+
+        <p>Now we make the Ray class :</p>
+
+        <div class="snippet">
+            <div class="Swindow">
+                <div class="Swindow-title"><p>Ray.h</p></div>
+                <div class="Sconsole">
+<pre><code>#pragma once
+
+#include "Vector3.h"
+
+class Ray
+{
+private:
+   Position mOrigin;
+   Vector3 mDirection;
+public:
+   Ray(){}
+   Ray(const Position& from, const Vector3& towards) : mOrigin(from), mDirection(towards){}
+
+   Position GetOrigin() const { return mOrigin; }
+   Vector3 GetDirection() const { return mDirection; }
+
+   Position At(double time) const
+   {
+       return mOrigin + time * mDirection;
+   }
+};</code></pre>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Firing rays -->
+    <section>
+        <h2 class="underline" style="text-decoration-color: royalblue">Firing the Rays</h2>
+
+        <p>The steps to shoot rays through pixels are :</p>
+        <p>- Calculate the ray from the camera to the pixel.</p>
+        <p>- Determine which object the ray intersects.</p>
+        <p>- Compute a color for the intersection closest to the camera.</p>
+
+        <p>We use a 16:9 resolution to avoid axis confusion and prepare for non-square outputs :</p>
+
+        <div class="snippet">
+            <div class="Swindow">
+                <div class="Swindow-title"><p>Raytracing.cpp</p></div>
+                <div class="Sconsole">
+<pre><code>int main(int argc, char* argv[])
+{
+   // Resolution
+   double resolution = 16.0/9.0;
+   int width = 400, height = static_cast&lt;int&gt;(width / resolution);
+   if(height &lt; 1) height = 1;
+
+   // Viewport
+   double viewportHeight = 2;
+   double viewportWidth = viewportHeight * (static_cast&lt;double&gt;(width)/height);
+
+   // Image
+...</code></pre>
+                </div>
+            </div>
+        </div>
+
+        <h2 style="padding-bottom: 5px">Camera Center</h2>
+
+        <p>Place the camera at (0, 0, 0) with x going right, y going up, and negative z going forward.</p>
+
+        <figure>
+            <img loading="lazy" src="../Images/RayTracing/CameraXYZ.webp" alt="Camera coordinate system" style="width: 45%; padding-bottom: 5px;">
+            <figcaption><a href="https://raytracing.github.io/" target="_blank">img. Source</a></figcaption>
+        </figure>
+
+        <p>Because we build the image from top-left to bottom-right, we invert the Y axis :</p>
+
+        <div class="snippet">
+            <div class="Swindow">
+                <div class="Swindow-title"><p>Raytracing.cpp</p></div>
+                <div class="Sconsole">
+<pre><code>// Viewport
+double viewportHeight = 2;
+double viewportWidth = viewportHeight * (static_cast&lt;double&gt;(width)/height);
+double focalLength = 1;
+Position cameraCenter = Position(0, 0, 0);
+
+Vector3 viewportX = Vector3(viewportWidth, 0, 0);
+Vector3 viewportY = Vector3(0, -viewportHeight, 0); // We invert Y
+
+// Delta vector between pixels
+Vector3 pixelDeltaX = viewportX / width;
+Vector3 pixelDeltaY = viewportY / height;
+
+// Position of the top-left pixel
+Vector3 viewportOrigin = cameraCenter - Vector3(0, 0, focalLength)
+                       - viewportX / 2 - viewportY / 2;
+
+Vector3 originPixelLocation = viewportOrigin + 0.5 * (pixelDeltaX + pixelDeltaY);</code></pre>
+                </div>
+            </div>
+        </div>
+
+        <p>Add a stub <strong class="quote">RayColor</strong> function before main that returns black for now :</p>
+
+        <div class="snippet">
+            <div class="Swindow">
+                <div class="Swindow-title"><p>Raytracing.cpp</p></div>
+                <div class="Sconsole">
+<pre><code>Color RayColor(const Ray& rRay)
+{
+   return Color(0, 0, 0);
+}
+
+int main(int argc, char* argv[])
+{
+   // Resolution
+...</code></pre>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Coloring pixels -->
+    <section>
+        <h2 class="underline" style="text-decoration-color: royalblue">Coloring Pixels</h2>
+
+        <div class="snippet">
+            <div class="Swindow">
+                <div class="Swindow-title"><p>Raytracing.cpp</p></div>
+                <div class="Sconsole">
+<pre><code>...
+
+for (int y = 0; y &lt; height; y++) {
+    clog &lt;&lt; "Progress : " &lt;&lt; (y * 100 / height) &lt;&lt; " %\n" &lt;&lt; flush;
+
+    for (int x = 0; x &lt; width; x++) {
+        Vector3 pixelCenter = originPixelLocation + (x * pixelDeltaX) + (y * pixelDeltaY);
+        Vector3 rayDirection = pixelCenter - cameraCenter;
+        Ray ray(cameraCenter, rayDirection);
+
+        Color pixelColor = RayColor(ray);
+        WriteColor(std::cout, pixelColor);
+    }
+}
+clog &lt;&lt; "Done! :3 \n";
+
+return 0;
+}</code></pre>
+                </div>
+            </div>
+        </div>
+
+        <p>Fill in <strong class="quote">RayColor</strong> with a simple white-to-blue gradient along the Y axis using linear interpolation :</p>
+
+        <div class="snippet">
+            <div class="Swindow">
+                <div class="Swindow-title"><p>Raytracing.cpp</p></div>
+                <div class="Sconsole">
+<pre><code>Color RayColor(const Ray& rRay)
+{
+   Vector3 unitDirection = Unit(rRay.GetDirection());
+   double blue = 0.5 * (unitDirection.y + 1.0);
+   return (1.0 - blue) * Color(1.0, 1.0, 1.0) + blue * Color(0, 0, 1.0);
+}</code></pre>
+                </div>
+            </div>
+        </div>
+
+        <p>Build your file and take a peek. Onward & Upwards!</p>
+    </section>
+
+    <footer>
+        <p style="color: var(--text-color-bright);">16-01-2024</p>
+    </footer>
+</main>
+
+<!-- Navigation -->
+<div style="text-align: center; margin-top: 1rem;">
+    <a href="RayTracing-1.html" class="cta-button">Previous</a>
+    <a href="../Blog.html" class="cta-button secondary">Entries</a>
+    <a href="RayTracing-3.html" class="cta-button">Next</a>
+</div>
+
+</body>
+</html>
