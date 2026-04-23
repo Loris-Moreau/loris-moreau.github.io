@@ -128,6 +128,10 @@ header img {
   object-position: bottom;
 }
 
+img{
+  padding-top: 1em;
+}
+
 .text-container {
   flex: 0 1 34em; /* don't grow, can shrink, preferred 34em */
 }
