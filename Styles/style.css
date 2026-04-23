@@ -1,48 +1,40 @@
-:root { 
-  /* Global Variables (these are readable in every css) */
-  --bg-color: rgb(11, 25, 44); 
-  --bg-color-2:rgb(34, 40, 49); 
-  
-  --text-color: rgb(243, 244, 244); 
-  --title-color: rgb(243, 244, 244); 
-  --text-color-bright: rgb(225, 225, 225); 
-  
-  --primary-color: rgb(255, 101, 0); 
-  --secondary-color: rgb(95, 149, 152); 
-  
-  --color-section-1: rgb(57, 62, 70); 
-  --color-section-2: rgb(57, 62, 70); 
-  --color-section-3: var(--color-section-2); 
-  
-  --underline-color: red; 
-  --underline-thickness: 0.1em; 
-  
-  --navbar-height: 3rem; 
-  
-  --font-family: Arial, Open-Dyslexic, Verdana, Helvetica; 
+:root {
+  --bg-color:           rgb(11,  25,  44);
+  --bg-color-2:         rgb(34,  40,  49);
+
+  --text-color:         rgb(243, 244, 244);
+  --title-color:        rgb(243, 244, 244);
+  --text-color-bright:  rgb(225, 225, 225);
+
+  --primary-color:      rgb(255, 101,   0);
+  --secondary-color:    rgb( 95, 149, 152);
+
+  --color-section-1:    rgb(57, 62, 70);
+  --color-section-2:    rgb(57, 62, 70);
+  --color-section-3:    var(--color-section-2);
+
+  --underline-color:     red;
+  --underline-thickness: 0.1em;
+
+  --navbar-height: 3rem;
+  --font-family:   Arial, Open-Dyslexic, Verdana, Helvetica;
 }
 
-/* Global Reset */
-* {
+/* Global reset */
+*, *::before, *::after {
   margin: 0;
   padding: 0;
-  box-sizing: border-box; /* ensures padding/border included in element size */
-}
-
-@font-face {
-  font-display: swap;
+  box-sizing: border-box;
 }
 
 html {
   font-family: var(--font-family), monospace;
-  color: var(--text-color); /* base text color for the doc */
+  color: var(--text-color);
 }
 
 body {
-  padding: 1em; /* outer spacing around the whole page */
-  background-color: var(--bg-color); /* main page background */
-  justify-content: center;
-  align-items: center;
+  padding: 1em;
+  background-color: var(--bg-color);
 }
 
 h1, h2, h3 {
@@ -54,8 +46,8 @@ p {
   color: var(--text-color);
 }
 
+/* Navbar */
 nav {
-  /*height: var(--navbar-height);*/
   margin: 1em auto 3em auto;
   width: min(90em, 100%);
 }
@@ -63,13 +55,14 @@ nav {
 nav ul {
   display: flex;
   align-items: center;
-  list-style-type: none; /* remove bullets */
-  gap: 2em; /* space between items */
+  list-style-type: none;
+  gap: 2em;
 }
 
+/* First item is the brand/logo spacer - pushes the rest to the right */
 nav li:first-child {
   font-weight: bold;
-  margin-right: auto; /* pushes remaining nav items to the right */
+  margin-right: auto;
 }
 nav li {
   font-weight: bold;
@@ -79,141 +72,28 @@ nav a {
   text-decoration: none;
   color: var(--text-color);
 }
-
 nav a:hover {
   text-decoration: underline;
   text-decoration-color: var(--underline-color);
 }
 
-/*
-aside{
-  height: calc(100vh - var(--navbar-height));
-  top: var(--navbar-height);
-  position: sticky;
-  align-self: start;
-  grid-area: sidebar;
-  color: var(--text-color);
-  margin-left: 2em;
-  align-items: start;
-  text-align: center;
+/* Orange brand name in the nav (first <li> link) */
+.nav-brand {
+  color: var(--primary-color) !important;
+  text-decoration: none !important;
 }
-aside p{
-  font-size: 1em;
-  padding: 0.1em;
+.nav-brand:hover {
+  text-decoration: none !important;
 }
-*/
 
-/* Shared width and padding. Using min() keeps the paddings reasonable on both very wide and narrower screens. */
+/* Layout containers */
+/* Shared centred column with a section background */
 header, section {
   margin: 2em auto;
-  width: min(75em, 100%); /* central column with max width */
+  width: min(75em, 100%);
   background-color: var(--color-section-1);
   padding: min(2em, 15%);
   border-radius: 0.5em;
-}
-
-.flex-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 3em;
-  padding: 2em 0; /*top/bot, left/right */
-}
-
-header img {
-  max-width: 100%;
-  border-radius: 0.5em;
-  object-fit: cover; /* crop to fill */
-  object-position: bottom; /* where the image should be focused */
-}
-
-.text-container{
-  flex: 0 1 34em; /* don't grow, can shrink, preferred width 34em */
-}
-
-h1 {
-  font-size: 2.5rem;
-}
-
-h2 {
-  font-size: 2rem;
-}
-
-.text-container p {
-  margin: 0.75em 0 1em 0;
-  font-size: 1.25rem;
-}
-
-/* Quote Element */
-.quote {
-  background: dimgrey;
-  padding: 1px 6px;
-  margin: 0 2px;
-  border-radius: 5px;
-  font-size: 0.97rem;
-}
-
-.cta-button {
-  display: inline-block;
-  text-decoration: none;
-  color: mintcream; /* text color on buttons */
-  background-color: var(--primary-color);
-  padding: 0.75em 1.25em;
-  border-radius: 0.5em;
-  font-weight: 600;
-}
-.cta-button:hover {
-  transform: scale(1.025);
-}
-.cta-button:active {
-  transform: scale(0.95);
-}
-
-/* Secondary button variant */
-.secondary {
-  background-color: var(--secondary-color);
-}
-.secondary:hover {
-  text-decoration: none;
-  transform: scale(1.025);
-}
-.secondary:active {
-  transform: scale(0.95);
-}
-  
-.card{
-  box-sizing: border-box; /* Include padding/border in width/height */
-  width: 35%;
-  height: 7em;
-  background-color: var(--color-section-1) ;
-  border: 0.15em solid black;
-  border-radius: 0.8em;
-  display: flex;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  /*user-select: none;*/ /* Prevents text selection */
-  font-weight: bolder;
-  color: black;
-  margin: 1em;
-  
-  text-align: center;
-  align-items: center;
-  justify-content: center;
-  
-  text-decoration: none;
-}
-a .card{
-  text-decoration: none;
-}
-.card:hover {
-  border: 0.15em solid lightgray;
-  transform: scale(1.05);
-  text-decoration: none;
-}
-.card:active {
-  transform: scale(0.95); 
-  text-decoration: none;
 }
 
 section {
@@ -227,45 +107,257 @@ section p {
   font-size: 1.25rem;
 }
 
-section:nth-child(3){
+section:nth-child(3) {
   background-color: var(--color-section-3);
 }
 
+/* Side-by-side flexible row - used for carousel + text pairs */
+.flex-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 3em;
+  padding: 5em 0;
+}
+
+header img {
+  max-width: 100%;
+  border-radius: 0.5em;
+  object-fit: cover;
+  object-position: bottom;
+}
+
+.text-container {
+  flex: 0 1 34em; /* don't grow, can shrink, preferred 34em */
+}
+
+/* Typography */
+h1 { 
+  font-size: 2.5rem; 
+}
+h2 { 
+  font-size: 2rem;   
+}
+
+.text-container p {
+  margin: 0.75em 0 1em 0;
+  font-size: 1.25rem;
+}
+
+/* Inline code-style highlight (e.g. benchmarks) */
+.quote {
+  background: dimgrey;
+  padding: 1px 6px;
+  margin: 0 2px;
+  border-radius: 5px;
+  font-size: 0.97rem;
+}
+
+/* CTA Buttons */
+.cta-button {
+  display: inline-block;
+  text-decoration: none;
+  color: mintcream;
+  background-color: var(--primary-color);
+  padding: 0.75em 1.25em;
+  border-radius: 0.5em;
+  font-weight: 600;
+  margin-top: 0.5em;
+  margin-right: 0.25em;
+}
+.cta-button:hover {
+  transform: scale(1.025);
+  text-decoration: none;
+}
+.cta-button:active {
+  transform: scale(0.95);
+}
+
+/* Teal secondary variant */
+.secondary {
+  background-color: var(--secondary-color);
+}
+.secondary:hover {
+  text-decoration: none;
+  transform: scale(1.025);
+}
+.secondary:active {
+  transform: scale(0.95);
+}
+
+/* Skill / tech-stack tags */
+/* Small label above a tag row (e.g. "Languages", "Engines & Tools") */
+.skill-label {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--secondary-color);
+  font-weight: bold;
+  margin: 1em 0 0.35em;
+}
+
+/* Wrapping row of tags */
+.skills-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4em;
+  margin-bottom: 0.5em;
+}
+
+/* Base pill tag */
+.tag {
+  display: inline-block;
+  background-color: var(--bg-color-2);
+  color: var(--text-color-bright);
+  padding: 0.3em 0.85em;
+  border-radius: 99px;
+  font-size: 0.85rem;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+/* Orange variant (primary languages) */
+.tag-primary {
+  background-color: var(--primary-color);
+  color: mintcream;
+  border-color: transparent;
+}
+
+/* Teal variant (engines & tools) */
+.tag-secondary {
+  background-color: var(--secondary-color);
+  color: mintcream;
+  border-color: transparent;
+}
+
+/* Blog card */
+.card {
+  box-sizing: border-box;
+  width: 35%;
+  height: 7em;
+  background-color: var(--color-section-1);
+  border: 0.15em solid rgba(255, 255, 255, 0.08);
+  border-radius: 0.8em;
+  display: flex;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: bolder;
+  color: var(--text-color-bright);
+  margin: 0.4em;
+  
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  
+  text-decoration: none;
+}
+a .card,
+.card:hover,
+.card:active {
+  text-decoration: none;
+}
+.card:hover {
+  border-color: lightgray;
+  transform: scale(1.05);
+}
+.card:active {
+  transform: scale(0.95);
+}
+
+/* Blog entries list (stacked, centred) */
+.blog-entries {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+  margin: 0.5em 0 1.5em;
+}
+
+/* Blog entry cards: wider than the generic .card default */
+.blog-entries .card {
+  width: min(32em, 90%);
+}
+
+/* Blog post page wrapper */
+/* Applied to <main class="post"> in individual blog posts */
+.post {
+  max-width: 75em;
+  margin: 0 auto;
+}
+
+/* Resources - table of contents grid */
+.toc-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(13em, 1fr));
+  gap: 0.5em;
+  margin-top: 1em;
+  text-align: left;
+}
+
+.toc-grid a {
+  display: block;
+  padding: 0.5em 0.85em;
+  background: var(--bg-color-2);
+  border-radius: 0.4em;
+  text-decoration: none;
+  color: var(--text-color-bright);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: background 0.2s, color 0.2s;
+}
+.toc-grid a:hover {
+  background: var(--primary-color);
+  color: mintcream;
+  text-decoration: none;
+  border-color: transparent;
+}
+
+/* Reading recommendations dropdown (Resources page) */
+.reading-rec {
+  width: min(24em, 90%);
+  margin: 0.75em auto 0;
+}
+.reading-rec summary {
+  font-size: 1.25rem;
+}
+.reading-rec p {
+  padding: 0.25em 2em;
+}
+
+/* Grid gallery */
 .grid-container {
   margin-top: 3em;
   margin-bottom: 3em;
   display: grid;
   width: 100%;
-  grid-template-columns: repeat(4, 1fr); /* four equal columns */
-  grid-template-rows: 1fr 1fr;           /* two rows */
-  grid-template-areas: 
-  "img-1 img-1 img-2 img-3"
-  "img-1 img-1 img-4 img-5"; 
-  gap: 1em; /* spacing between grid items */
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: 1fr 1fr;
+  grid-template-areas:
+    "img-1 img-1 img-2 img-3"
+    "img-1 img-1 img-4 img-5";
+  gap: 1em;
 }
 .grid-container img {
   height: 100%;
   width: 100%;
   border-radius: 0.5em;
-  transition: 100ms ease; /* small hover transition for interactions */
+  transition: 100ms ease;
 }
 .grid-container img:hover {
-  scale: 1.05; /* slight zoom on hover */
+  scale: 1.05;
 }
 
+/* FAQ - <details> / <summary> */
 details {
   margin-top: 1em;
   background-color: var(--bg-color-2);
   border-radius: 0.8em;
-  cursor: pointer; /* disables pointer look; summary still interactive */
+  cursor: pointer;
 }
-
-details:hover {
-  scale: 1.03;
+details:hover { 
+  scale: 1.03; 
 }
-
-details[open] { /*Editor Returns error here for some reason, **Ignore** */
-  scale: 1.0;
+details[open]  { 
+  scale: 1.0;  
 }
 
 details summary {
@@ -273,11 +365,11 @@ details summary {
   font-size: 1.7rem;
 }
 details p {
-  color: var(--text-color-bright); /* Text Color for details */
+  color: var(--text-color-bright);
   padding: 0 2em 2em 2em;
 }
 details a {
-  color: var(--text-color-bright); /* Link Text Color for details */
+  color: var(--text-color-bright);
 }
 
 footer {
@@ -294,55 +386,9 @@ footer a:hover {
   text-decoration-color: var(--underline-color);
 }
 
-@media(max-width: 988px){
-  /* Center text inside header when screen narrows */
-  header {
-    text-align: center;
-  }
-  
-  header .text-container {
-    padding-top: 0;
-  }
-}
-
-@media(max-width: 640px) {
-  /* Hide the second nav item on very small screens */
-  /*nav li:nth-child(2){
-    display: none;
-  }*/
-  
-  header {
-    margin-top: 0; /* tighten spacing on tiny screens */
-  }
-
-  /* Make CTA block-level so it is easier to tap on mobile */
-  .cta-button {
-    margin-top: 0.5em;
-    width: 99%;
-  }
-  
-  /* Convert the grid gallery to a single column for small screens */
-  .grid-container {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .text-container p {
-    font-size: 1rem; /* slightly reduce paragraph size for mobile */
-  }
-
-  h2 {
-    font-size: 1.5rem;
-  }
-  /*
-  aside{
-    display: none;
-  }
-  */
-}
-
-a{
-  margin: 0 ;
+/* Global link defaults */
+a {
+  margin: 0;
   text-decoration: underline;
   color: var(--text-color-bright);
 }
@@ -351,33 +397,73 @@ a:hover {
   text-decoration-color: var(--underline-color);
 }
 
+/* Red underline accent helper */
 .underline {
   text-decoration: underline;
   text-decoration-color: var(--underline-color);
   text-decoration-thickness: var(--underline-thickness);
 }
 
-/* ---------- Carousel styles ---------- */
+/* Responsive breakpoints */
+@media (max-width: 988px) {
+  header { 
+    /*text-align: center; */
+  }
+  header .text-container { 
+    padding-top: 0; 
+  }
+}
+
+@media (max-width: 640px) {
+  header { 
+    margin-top: 0; 
+  }
+  
+  /* Full-width tap targets on mobile */
+  .cta-button {
+    margin-top: 0.5em;
+    width: 99%;
+  }
+  
+  .grid-container {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .text-container p { 
+    font-size: 1rem; 
+  }
+  h2 { 
+    font-size: 1.5rem; 
+  }
+  
+  .blog-entries .card { 
+    width: 90%; 
+  }
+}
+
+/* Carousel */
 .showcase-carousel {
-  position: relative; /* for absolutely-positioned controls (arrows) */
-  flex: 0 1 40%; /* fits into your flex layout like the original <img> */
+  position: relative; /* for absolutely-positioned arrow buttons */
+  flex: 0 1 40%;
   max-width: 40%;
-  overflow: visible; /* allow controls outside visually; viewport handles clipping */
-  border-radius: 0.25em; /* visual match with header img */
+  overflow: visible;
+  border-radius: 0.25em;
 }
-/* The viewport masks overflow so only one slide is visible at a time */
+
 .showcase-carousel .carousel-viewport {
-  overflow: hidden;
-  border-radius: 0.25em; /* keep rounded corners consistent */
-  box-shadow: none;
+  overflow: hidden; /* masks all slides except the active one */
+  border-radius: 0.25em;
 }
-/* Track holds slides horizontally; transform changes move the slides */
+
+/* Track holds slides in a horizontal row; transform slides them */
 .carousel-track {
-  display: flex; /* align slides in a row */
-  transition: transform 520ms cubic-bezier(.2,.9,.2,1); /* smooth easing */
-  will-change: transform; /* performance hint for smoother animations */
+  display: flex;
+  transition: transform 520ms cubic-bezier(.2, .9, .2, 1);
+  will-change: transform;
 }
-/* Each slide takes full viewport width so sliding equals 100% steps */
+
+/* Each slide is exactly one viewport wide */
 .carousel-slide {
   min-width: 100%;
   flex: 0 0 100%;
@@ -385,21 +471,22 @@ a:hover {
   align-items: center;
   justify-content: center;
 }
-/* Images reuse header image behavior and limit height so very tall images don't explode layout */
+
 .carousel-slide img {
   width: 100%;
   height: 100%;
-  max-height: 420px; /* keeps tall images reasonable */
+  max-height: 420px; /* prevents very tall images from blowing up layout */
   object-fit: scale-down;
   object-position: center;
   border-radius: 0.5em;
   display: block;
 }
-/* arrow buttons */
+
+/* Arrow navigation buttons */
 .carousel-button {
   position: absolute;
   top: 50%;
-  transform: translateY(-50%); /* vertically center the circular buttons */
+  transform: translateY(-50%);
   border: none;
   background: rgba(0, 0, 0, 0.7);
   color: var(--text-color-bright);
@@ -409,19 +496,24 @@ a:hover {
   cursor: pointer;
   font-weight: 700;
   display: grid;
-  place-items: center; /* center arrow character */
-  gap: 0;
-  z-index: 10; /* above images */
+  place-items: center;
+  z-index: 10;
   transition: transform 120ms ease, background 120ms;
 }
-/* small interaction states for arrows */
-.carousel-button:hover { transform: translateY(-50%) scale(1.05); }
-.carousel-button:active { transform: translateY(-50%) scale(.95); }
-/* position the two arrow buttons */
-.carousel-button.prev { left: 0.5em; }
-.carousel-button.next { right: 0.5em; }
+.carousel-button:hover  { 
+  transform: translateY(-50%) scale(1.05); 
+}
+.carousel-button:active { 
+  transform: translateY(-50%) scale(.95); 
+}
+.carousel-button.prev   { 
+  left: 0.5em;  
+}
+.carousel-button.next   { 
+  right: 0.5em; 
+}
 
-/* dots */
+/* Navigation dots */
 .carousel-dots {
   display: flex;
   gap: 0.5em;
@@ -433,28 +525,35 @@ a:hover {
   height: 10px;
   border-radius: 50%;
   border: none;
-  background: rgba(255,255,255,0.35);
+  background: rgba(255, 255, 255, 0.35);
   cursor: pointer;
   padding: 0;
   transition: transform 120ms;
 }
-/* active dot — uses primary color and slightly larger for visibility */
+/* Active dot uses primary colour and scales up */
 .carousel-dots button[aria-pressed="true"] {
   transform: scale(1.3);
   background: var(--primary-color);
 }
-/* Make the carousel fill its column on smaller screens and soften arrow sizes on tiny screens. */
-@media(max-width: 988px){
+
+/* Carousel responsive overrides */
+@media (max-width: 988px) {
   .showcase-carousel {
     flex-basis: 100%;
     max-width: 100%;
   }
-  .carousel-slide img {
-    max-height: none; /* allow images to behave more naturally on very narrow devices */
+  .carousel-slide img { 
+    max-height: none; 
   }
 }
-/* keep arrows a bit more subtle on tiny screens */
-@media(max-width: 420px){
-  .carousel-button { width: 36px; height: 36px; font-size: 14px; }
-  .carousel-dots { gap: 0.375em; }
+
+@media (max-width: 420px) {
+  .carousel-button { 
+    width: 36px; 
+    height: 36px; 
+    font-size: 14px; 
+  }
+  .carousel-dots   { 
+    gap: 0.375em; 
+  }
 }

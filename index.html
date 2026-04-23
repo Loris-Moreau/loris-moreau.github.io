@@ -1,518 +1,463 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Loris Moreau</title>
-  <link rel="icon" type="image/x-icon" href="Images/icon.webp">
-  <link rel="stylesheet" href="Styles/style.css">
-  <link rel="stylesheet" href="Styles/Video.css">
-  
-  <script src="Scripts/Carousel.js" defer></script>
-  
-  <!-- Meta Tags for SEO -->
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="author" content="Loris Moreau">
-  <meta name="description" content="Main Page of my showcase website">
-  <meta name="keywords" content="Showcase, Loris, Moreau, Loris Moreau, Programmer, Demoreel, coding adventure, 3D Engine">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loris Moreau</title>
+    <link rel="icon" type="image/x-icon" href="Images/icon.webp">
+    <link rel="stylesheet" href="Styles/style.css">
+    <link rel="stylesheet" href="Styles/Video.css">
+    <script src="Scripts/Carousel.js" defer></script>
+    <!-- SEO -->
+    <meta name="author" content="Loris Moreau">
+    <meta name="description" content="Loris Moreau Portfolio, 3C, Gameplay & Graphics Programmer">
+    <meta name="keywords" content="Loris Moreau, Programmer, Gameplay, 3C, Graphics, C++, Unreal Engine, Portfolio, Game Dev, Coding Adventure">
 </head>
 
 <body>
-  <header>
-    <!-- ========== Section 1 Navbar ========== -->
+<header>
+    <!-- Navbar -->
     <nav style="margin-top: 0">
-      <ul>
-        <li><a href="#showcase"></a></li>
-        <li><a href="index.html">Main</a></li>
-        <li><a href="Blog.html">Blog</a></li>
-        <li><a href="Resources.html">Resources</a></li>
-      </ul>
+        <ul>
+            <li><a href="https://loris-moreau.github.io/" class="nav-brand">Loris Moreau</a></li>
+            <li><a href="index.html">Main</a></li>
+            <li><a href="Blog.html">Blog</a></li>
+            <li><a href="Resources.html">Resources</a></li>
+        </ul>
     </nav>
-    
-    <!-- ========== Me ========== -->
+
+    <!-- Hero -->
     <div class="flex-container">
-      <!-- <img height="400px" src="Images/portrait.webp" alt="Loris M Portrait"> -->
-      <div class="text-container">
-        <h1 style="padding-top: 0">Hoi,</h1>
-        <p>I'm Loris Moreau. I'm a <strong>3C</strong>, <strong>Gameplay</strong> and <strong>Graphics Programmer</strong> with an interest in electronics and engines.</p>
-        <a target="_blank" href="https://loris-moreau.itch.io" class="cta-button secondary">Check out my itch.io</a>
-        <a href="#showcase" class="cta-button">Showcase</a>
-        <a href="#faq" class="cta-button secondary">FAQ</a>
-        <a href="#links" class="cta-button secondary">Links</a>
-      </div>
+        <div class="text-container">
+            <h1 style="padding-top: 0">Hoi,</h1>
+            <p>I'm <strong>Loris Moreau</strong>, a <strong>3C</strong>, <strong>Gameplay</strong> <!--and <strong>Graphics Programmer</strong>-->
+                in my final year of a Master's at ArtFx Montpellier.
+                I ship games, build low-level systems, and love diving into rendering and engine architecture.</p>
+
+            <!-- Tech stack - visible immediately for recruiters -->
+            <p class="skill-label">Languages</p>
+            <div class="skills-row">
+                <span class="tag tag-primary">C++</span>
+                <span class="tag tag-primary">C#</span>
+                <span class="tag">GLSL / HLSL</span>
+                <span class="tag">Python</span>
+                <span class="tag">Vex</span>
+                <span class="tag">UE Blueprints</span>
+            </div>
+
+            <p class="skill-label">Engines &amp; Tools</p>
+            <div class="skills-row">
+                <span class="tag tag-secondary">Unreal Engine 5</span>
+                <span class="tag tag-secondary">Unity</span>
+                <span class="tag tag-secondary">Godot</span>
+                <span class="tag">Houdini 19 &amp; 20</span>
+                <span class="tag">OpenGL / Vulkan</span>
+                <span class="tag">GitHub &amp; Perforce</span>
+            </div>
+
+            <p class="skill-label">Specialties</p>
+            <div class="skills-row">
+                <span class="tag">3C</span>
+                <span class="tag">Gameplay</span>
+                <span class="tag">NPC AI</span>
+                <span class="tag">Shaders / VFX</span>
+                <span class="tag">Graphics</span>
+                <span class="tag">Procedural</span>
+                <span class="tag">Engine Dev</span>
+            </div>
+
+            <!-- CTAs -->
+            <p style="text-align:center; margin-top: 2.5em; margin-bottom: -2.5em;">
+                <a href="#showcase" class="cta-button secondary">Showcase</a>
+                <!--<a target="_blank" href="https://loris-moreau.itch.io" class="cta-button secondary">Itch.io</a>-->
+                <a href="#links" class="cta-button secondary">Links</a>
+                <a href="#faq" class="cta-button secondary">FAQ</a>
+                <a href="Loris_Moreau_CV.pdf" target="_blank" class="cta-button">Download CV</a>
+            </p>
+        </div>
     </div>
-  </header>
-  
-  <!-- ========== Demoreel ========== -->
-  <section>
-    <h2 >Latest Demoreel</h2>
-    
-    <!-- Simple responsive iframe -->
+</header>
+
+<!-- Demoreel -->
+<section>
+    <h2>Latest Demoreel</h2>
     <div class="video-wrapper simple">
-      <iframe
-              class="video-iframe"
-              src="https://www.youtube.com/embed/g4oDCv22zHA"
-              title="YouTube video player"
-              frameborder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowfullscreen
-              loading="lazy"
-      ></iframe>
+        <iframe
+                class="video-iframe"
+                src="https://www.youtube.com/embed/g4oDCv22zHA"
+                title="Loris Moreau, Demoreel"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen
+                loading="lazy"
+        ></iframe>
     </div>
-    
-  </section>
-  
-  
-  
-  <!-- ========== Debut Showcase ========== -->
-  <section id="showcase">
+</section>
+
+<!-- Projects -->
+<section id="showcase">
     <h2>Some of my projects:</h2>
-    
-    <!-- Grey Wolf Engine -->
-    <div class="flex-container">
-      
-      <!-- Start of carousel -->
-      <div class="showcase-carousel" role="region" aria-label="Showcase carousel">
-        <button class="carousel-button prev" aria-label="Previous slide">&larr;</button>
-        <div class="carousel-viewport">
-          <div class="carousel-track">
-            <div class="carousel-slide"><img loading="lazy" src="Images/Showcase/GreyWolfEditor-1.webp" alt="TimTam Showcase 1"></div>
-            <div class="carousel-slide"><img loading="lazy" src="Images/Showcase/GreyWolfEditor-2.webp" alt="TimTam Showcase 2"></div>
-            <div class="carousel-slide"><img loading="lazy" src="Images/Showcase/GreyWolfEditor-3.webp" alt="TimTam Showcase 3"></div>
-            <!-- Add or remove .carousel-slide blocks as needed -->
-          </div>
-        </div>
-        <button class="carousel-button next" aria-label="Next slide">&rarr;</button>
-        <div class="carousel-dots" aria-hidden="false"></div>
-      </div>
-      <!-- End of carousel -->
-      
-      <div class="text-container">
-        <!-- Title -->
-        <h1>Grey Wolf Engine</h1>
-        <!-- Description -->
-        <p style="color: var(--text-color-bright);">
-          A 3D game engine with an editor which would allow anyone to easily create shooters, movement or management games and even narrative driven games.
-        </p>
-        <p style="color: var(--text-color-bright);">
-          <strong class="underline">Goals:</strong> I want to create a 3D Game Engine where I can easily develop games like: Doom, Descent, Outer Wilds, Barony, Factorio, Mirrors Edge, Warframe, etc...
-        </p>
-        <a target="_blank" href="https://github.com/Loris-Moreau/Grey-Wolf" class="cta-button">Check out the project</a>
-      </div>
-    </div>
-    
-    <!-- 3D Render Engine -->
-    <div class="flex-container">
-      
-      <!-- Start of carousel -->
-      <div class="showcase-carousel" role="region" aria-label="Showcase carousel">
-        <button class="carousel-button prev" aria-label="Previous slide">&larr;</button>
-        <div class="carousel-viewport">
-          <div class="carousel-track">
-            <div class="carousel-slide"><img loading="lazy" src="Images/Showcase/3D-Engine.gif" alt="3D Engine Showcase"></div>
-            <div class="carousel-slide"><img loading="lazy" src="Images/Showcase/Descent-Game.gif" alt="Descent Game Showcase"></div>
-            <!-- Add or remove .carousel-slide blocks as needed -->
-          </div>
-        </div>
-        <button class="carousel-button next" aria-label="Next slide">&rarr;</button>
-        <div class="carousel-dots" aria-hidden="false"></div>
-      </div>
-      <!-- End of carousel -->
-      
-      <div class="text-container">
-        <!-- Title -->
-        <h1>3D Engine</h1>
-        <!-- Description -->
-        <p style="color: var(--text-color-bright);">
-          This is a 3D Game Engine made in roughly 2 months, & later I worked on it for another 2 weeks to implement a descent like game.
-        </p>
-        <p style="color: var(--text-color-bright);">
-          <strong class="underline">Goals:</strong> Create a rendering engine to learn the inner working of 3D engines & experiment with rendering techniques and the game engine pipeline.
-        </p>
-        <a target="_blank" href="https://github.com/Loris-Moreau/3D-Engine-CPP" class="cta-button">Check out the project</a>
-      </div>
-    </div>    
-    
-    <!-- Raytracing -->
-    <div class="flex-container">
 
-      <!-- Start of carousel -->
-      <div class="showcase-carousel" role="region" aria-label="Showcase carousel">
-        <button class="carousel-button prev" aria-label="Previous slide">&larr;</button>
-        <div class="carousel-viewport">
-          <div class="carousel-track">
-            <div class="carousel-slide"><img loading="lazy" src="Images/RayTracing/Final%20Render%20(B1).webp" alt="Raytracer Showcase"></div>
-            <div class="carousel-slide"><img loading="lazy" src="Images/RayTracing/Cornell's%20Box%20(B2,%20P8).webp" alt="Raytracer Showcase"></div>
-            <div class="carousel-slide"><img loading="lazy" src="Images/RayTracing/Final%20Render%20high-Res%20(B2).webp" alt="Raytracer Showcase"></div>
-            <div class="carousel-slide"><img loading="lazy" src="Images/RayTracing/computeShaderRenderCornell.webp" alt="Raytracer Showcase"></div>
-            <div class="carousel-slide"><img loading="lazy" src="Images/RayTracing/computeShaderRenderB2.webp" alt="Raytracer Showcase"></div>
-            <div class="carousel-slide"><img loading="lazy" src="Images/RayTracing/computeShaderRenderScen01.webp" alt="Raytracer Showcase"></div>
-            <!-- Add or remove .carousel-slide blocks as needed -->
-          </div>
+    <!-- -----———————— Grey Wolf Engine ————————————— -->
+    <div class="flex-container">
+        <div class="showcase-carousel" role="region" aria-label="Grey Wolf Engine screenshots">
+            <button class="carousel-button prev" aria-label="Previous slide">&larr;</button>
+            <div class="carousel-viewport">
+                <div class="carousel-track">
+                    <!--<div class="carousel-slide"><img loading="lazy" src="Images/Showcase/GreyWolfEditor-1.webp" alt="Grey Wolf Engine editor view 1"></div>-->
+                    <div class="carousel-slide"><img loading="lazy" src="Images/Showcase/GreyWolfEditor-2.webp" alt="Grey Wolf Engine editor view 2"></div>
+                    <div class="carousel-slide"><img loading="lazy" src="Images/Showcase/GreyWolfEditor-3.webp" alt="Grey Wolf Engine editor view 3"></div>
+                </div>
+            </div>
+            <button class="carousel-button next" aria-label="Next slide">&rarr;</button>
+            <div class="carousel-dots" aria-hidden="false"></div>
         </div>
-        <button class="carousel-button next" aria-label="Next slide">&rarr;</button>
-        <div class="carousel-dots" aria-hidden="false"></div>
-      </div>
-      <!-- End of carousel -->
-      
-      <div class="text-container">
-        <!-- Title -->
-        <h1>Raytracing</h1>
-        <!-- Description -->
-        <p style="color: var(--text-color-bright);">
-          My Adventure following the "Raytracing in one weekend series" and then optimizing it using compute shaders, SIMD & Multithreading.
-        </p>
-        <p style="color: var(--text-color-bright);">
-          <strong class="underline">Goals:</strong> The goal was to make a raytracer, but I then realised how slow and calculation intensive it was, 
-          so I optimized as much as necessary <i>(from 5hrs to just a few seconds)</i>.
-        </p>
-        <a target="_blank" href="https://github.com/Loris-Moreau/RayTracing" class="cta-button">Check out the project</a>
-      </div>
+        <div class="text-container">
+            <h1>Grey Wolf Engine</h1>
+            <p style="color: var(--text-color-bright);">
+                A 3D game engine built from scratch in C++ with an integrated editor, targeting shooters, exploration games, management sims, and narrative titles.
+            </p>
+            <p style="color: var(--text-color-bright);">
+                <strong class="underline">Goals:</strong> Build a personal engine flexible enough for games like Doom, Outer Wilds, Factorio, and Mirrors Edge, while learning every layer of the engine pipeline.
+            </p>
+            <a target="_blank" href="https://github.com/Loris-Moreau/Grey-Wolf" class="cta-button">GitHub Repository</a>
+        </div>
     </div>
-    
-    <!-- ArcBound -->
+
+    <!-- ————————————— 3D Engine ————————————— -->
+    <div class="flex-container">
+        <div class="showcase-carousel" role="region" aria-label="3D Engine demos">
+            <button class="carousel-button prev" aria-label="Previous slide">&larr;</button>
+            <div class="carousel-viewport">
+                <div class="carousel-track">
+                    <div class="carousel-slide"><img loading="lazy" src="Images/Showcase/3D-Engine.gif" alt="3D Engine demo"></div>
+                    <div class="carousel-slide"><img loading="lazy" src="Images/Showcase/Descent-Game.gif" alt="Descent-style game built on the engine"></div>
+                </div>
+            </div>
+            <button class="carousel-button next" aria-label="Next slide">&rarr;</button>
+            <div class="carousel-dots" aria-hidden="false"></div>
+        </div>
+        <div class="text-container">
+            <h1>3D Engine <i>(C++)</i></h1>
+            <p style="color: var(--text-color-bright);">
+                A 3D game engine built in roughly 2 months, then extended to ship a Descent-inspired game using the same codebase.
+            </p>
+            <p style="color: var(--text-color-bright);">
+                <strong class="underline">Goals:</strong> Learn about 3D engines, rendering pipeline, and core game systems.
+            </p>
+            <a target="_blank" href="https://github.com/Loris-Moreau/3D-Engine-CPP" class="cta-button">GitHub Repository</a>
+        </div>
+    </div>
+
+    <!-- ————————————— Raytracer to Compute Shaders ————————————— -->
+    <div class="flex-container">
+        <div class="showcase-carousel" role="region" aria-label="Raytracer renders">
+            <button class="carousel-button prev" aria-label="Previous slide">&larr;</button>
+            <div class="carousel-viewport">
+                <div class="carousel-track">
+                    <div class="carousel-slide"><img loading="lazy" src="Images/RayTracing/Final%20Render%20(B1).webp" alt="Final render, Book 1"></div>
+                    <div class="carousel-slide"><img loading="lazy" src="Images/RayTracing/Cornell's%20Box%20(B2,%20P8).webp" alt="Cornell Box render"></div>
+                    <div class="carousel-slide"><img loading="lazy" src="Images/RayTracing/Final%20Render%20high-Res%20(B2).webp" alt="High-res final render, Book 2"></div>
+                    <div class="carousel-slide"><img loading="lazy" src="Images/RayTracing/computeShaderRenderCornell.webp" alt="Compute shader Cornell render"></div>
+                    <div class="carousel-slide"><img loading="lazy" src="Images/RayTracing/computeShaderRenderB2.webp" alt="Compute shader render B2"></div>
+                    <div class="carousel-slide"><img loading="lazy" src="Images/RayTracing/computeShaderRenderScene01.webp" alt="Compute shader scene 01"></div>
+                </div>
+            </div>
+            <button class="carousel-button next" aria-label="Next slide">&rarr;</button>
+            <div class="carousel-dots" aria-hidden="false"></div>
+        </div>
+        <div class="text-container">
+            <h1>Raytracer, Compute Shaders</h1>
+            <p style="color: var(--text-color-bright);">
+                Built a full path tracer following the <i>Ray Tracing in One Week</i> series, then pushed render times from <strong>5 hours down to seconds</strong> using Compute Shaders, SIMD, and multi-threading.
+            </p>
+            <p style="color: var(--text-color-bright);">
+                <strong class="underline">Goals:</strong> Understand rendering fundamentals, then systematically profile and optimize, covering parallel computing, SIMD intrinsics, and GPU compute pipelines.
+            </p>
+            <a target="_blank" href="https://github.com/Loris-Moreau/RayTracing" class="cta-button">GitHub Repository</a>
+            <a href="Blog/Raytracing-10.html" class="cta-button secondary">Read the blog post</a>
+        </div>
+    </div>
+
     <!-- TODO: Add ArcBound Showcase -->
-    
-    <!-- Warframe Prototype -->
     <!-- TODO: Add Warframe Prototype Showcase -->
-    
-    <!-- Horror Red -->
     <!-- TODO: Add Horror Red Showcase -->
-    
-    <!-- UE AI -->
+
+    <!-- ————————————— UE AI System ————————————— -->
     <div class="flex-container">
-      
-      <!-- Start of carousel -->
-      <div class="showcase-carousel" role="region" aria-label="Showcase carousel">
-        <button class="carousel-button prev" aria-label="Previous slide">&larr;</button>
-        <div class="carousel-viewport">
-          <div class="carousel-track">
-            <div class="carousel-slide"><img loading="lazy" src="Images/Showcase/UE-AI-4.webp" alt="UE AI System Showcase"></div>
-            <div class="carousel-slide"><img loading="lazy" src="Images/Showcase/UE-AI-5.webp" alt="UE AI System Showcase"></div>
-            <div class="carousel-slide"><img loading="lazy" src="Images/Showcase/UE-AI-6.webp" alt="UE AI System Showcase"></div>
-            <div class="carousel-slide"><img loading="lazy" src="Images/Showcase/UE-AI-1.webp" alt="UE AI System Showcase"></div>
-            <div class="carousel-slide"><img loading="lazy" src="Images/Showcase/UE-AI-3.webp" alt="UE AI System Showcase"></div>
-            <div class="carousel-slide"><img loading="lazy" src="Images/Showcase/UE-AI-2.webp" alt="UE AI System Showcase"></div>
-            <!-- Add or remove .carousel-slide blocks as needed -->
-          </div>
+        <div class="showcase-carousel" role="region" aria-label="UE AI System screenshots">
+            <button class="carousel-button prev" aria-label="Previous slide">&larr;</button>
+            <div class="carousel-viewport">
+                <div class="carousel-track">
+                    <div class="carousel-slide"><img loading="lazy" src="Images/Showcase/UE-AI-4.webp" alt="AI patrol and detection"></div>
+                    <div class="carousel-slide"><img loading="lazy" src="Images/Showcase/UE-AI-5.webp" alt="AI in level"></div>
+                    <div class="carousel-slide"><img loading="lazy" src="Images/Showcase/UE-AI-6.webp" alt="AI sight cones debug view"></div>
+                    <div class="carousel-slide"><img loading="lazy" src="Images/Showcase/UE-AI-1.webp" alt="AI overview"></div>
+                    <div class="carousel-slide"><img loading="lazy" src="Images/Showcase/UE-AI-3.webp" alt="AI encounter setup"></div>
+                    <div class="carousel-slide"><img loading="lazy" src="Images/Showcase/UE-AI-2.webp" alt="AI debug view"></div>
+                </div>
+            </div>
+            <button class="carousel-button next" aria-label="Next slide">&rarr;</button>
+            <div class="carousel-dots" aria-hidden="false"></div>
         </div>
-        <button class="carousel-button next" aria-label="Next slide">&rarr;</button>
-        <div class="carousel-dots" aria-hidden="false"></div>
-      </div>
-      <!-- End of carousel -->
-      
-      <div class="text-container">
-        <!-- Title -->
-        <h1>UE AI System</h1>
-        <!-- Description -->
-        <p style="color: var(--text-color-bright);">
-          Unreal Engine 5 AI System
-        </p>
-        <p style="color: var(--text-color-bright);">
-          <strong class="underline">Goals:</strong> Make an AI that would feel like an actual person without making the game too difficult.
-        </p>
-        <a target="_blank" href="https://github.com/Loris-Moreau/Enemy_AI" class="cta-button">Check out the project</a>
-      </div>
-    </div>    
-    
-    <!-- JohnCure -->
+        <div class="text-container">
+            <h1>UE5 AI System</h1>
+            <p style="color: var(--text-color-bright);">
+                A behaviour-tree driven NPC AI in Unreal Engine 5 with sight &amp; hearing detection, dynamic patrol routes, and adaptive difficulty.
+            </p>
+            <p style="color: var(--text-color-bright);">
+                <strong class="underline">Goals:</strong> Make an AI that reacts believably to the player while staying fun to fight,
+                striking the right balance between challenge and fairness.
+            </p>
+            <a target="_blank" href="https://github.com/Loris-Moreau/Enemy_AI" class="cta-button">GitHub Repository</a>
+        </div>
+    </div>
+
     <!-- TODO: Add JohnCure Showcase -->
-    
-    <!-- Conway -->
+
+    <!-- ————————————— Conway's Game of Life ————————————— -->
     <div class="flex-container">
-
-      <!-- Start of carousel -->
-      <div class="showcase-carousel" role="region" aria-label="Showcase carousel">
-        <button class="carousel-button prev" aria-label="Previous slide">&larr;</button>
-        <div class="carousel-viewport">
-          <div class="carousel-track">
-            <div class="carousel-slide"><img loading="lazy" src="Images/Showcase/GliderGun.webp" alt="Game of life Glider gun Showcase"></div>
-            <div class="carousel-slide"><img loading="lazy" src="Images/Showcase/GliderGun.gif" alt="Game of life Glider gun Showcase"></div>
-            <!-- Add or remove .carousel-slide blocks as needed -->
-          </div>
+        <div class="showcase-carousel" role="region" aria-label="Conway's Game of Life screenshots">
+            <button class="carousel-button prev" aria-label="Previous slide">&larr;</button>
+            <div class="carousel-viewport">
+                <div class="carousel-track">
+                    <div class="carousel-slide"><img loading="lazy" src="Images/Showcase/GliderGun.webp" alt="Glider Gun still"></div>
+                    <div class="carousel-slide"><img loading="lazy" src="Images/Showcase/GliderGun.gif" alt="Glider Gun animated"></div>
+                </div>
+            </div>
+            <button class="carousel-button next" aria-label="Next slide">&rarr;</button>
+            <div class="carousel-dots" aria-hidden="false"></div>
         </div>
-        <button class="carousel-button next" aria-label="Next slide">&rarr;</button>
-        <div class="carousel-dots" aria-hidden="false"></div>
-      </div>
-      <!-- End of carousel -->
-
-      <div class="text-container">
-        <!-- Title -->
-        <h1>Conways Game of Life</h1>
-        <!-- Description -->
-        <p style="color: var(--text-color-bright);">
-          A C++ implementation of Conway's Game of Life using a sparse data structure for an infinite grid & built with GLFW, Glad, ImGui, and OpenGL.
-        </p>
-        <p style="color: var(--text-color-bright);">
-          <strong class="underline">Goals:</strong> The goal was to learn ImGui and dabble in OpenGl as well as 0 player Games, I've always found conway's Game of Life interesting;
-          being able to make a Turing complete Program with so few rules.
-        </p>
-        <a target="_blank" href="https://github.com/Loris-Moreau/Game-of-Life" class="cta-button">Check out the project</a>
-      </div>
-    </div>
-    
-    <!-- Houdini -->
-    <div class="flex-container">
-
-      <!-- Start of carousel -->
-      <div class="showcase-carousel" role="region" aria-label="Showcase carousel">
-        <button class="carousel-button prev" aria-label="Previous slide">&larr;</button>
-        <div class="carousel-viewport">
-          <div class="carousel-track">
-            <div class="carousel-slide"><img loading="lazy" src="Images/Showcase/Houdini-Showcase.gif" alt="Houdini Showcase"></div>
-            <div class="carousel-slide"><img loading="lazy" src="Images/Showcase/Quartz%20Test%202.webp" alt="Houdini Quartz Showcase"></div>
-            <!-- Add or remove .carousel-slide blocks as needed -->
-          </div>
+        <div class="text-container">
+            <h1>Conway's Game of Life</h1>
+            <p style="color: var(--text-color-bright);">
+                A C++ implementation using a sparse data structure for an infinite grid, built with GLFW, Glad, ImGui, and OpenGL.
+            </p>
+            <p style="color: var(--text-color-bright);">
+                <strong class="underline">Goals:</strong> Learn ImGui and OpenGL, and explore cellular automata, always fascinated that such simple rules can produce a Turing complete system.
+            </p>
+            <a target="_blank" href="https://github.com/Loris-Moreau/Game-of-Life" class="cta-button">GitHub Repository</a>
         </div>
-        <button class="carousel-button next" aria-label="Next slide">&rarr;</button>
-        <div class="carousel-dots" aria-hidden="false"></div>
-      </div>
-      <!-- End of carousel -->
-
-      <div class="text-container">
-        <!-- Title -->
-        <h1>Houdini Tools</h1>
-        <!-- Description -->
-        <p style="color: var(--text-color-bright);">
-          Houdini tools made to learn the software and once again experiment with it.
-        </p>
-        <p style="color: var(--text-color-bright);">
-          <strong class="underline">Goals:</strong> Learn, experiment and make cool stuff along the way that I could bring into Game my games.
-        </p>
-        <!-- <a target="_blank" href="https://github.com/Loris-Moreau" class="cta-button">Check out the project</a> -->
-      </div>
-    </div>
-    
-    <!-- UE VFXs -->
-    <div class="flex-container">
-
-      <!-- Start of carousel -->
-      <div class="showcase-carousel" role="region" aria-label="Showcase carousel">
-        <button class="carousel-button prev" aria-label="Previous slide">&larr;</button>
-        <div class="carousel-viewport">
-          <div class="carousel-track">
-            <div class="carousel-slide"><img loading="lazy" src="Images/Showcase/UE-VFX-1.webp" alt="UE VFXs Showcase"></div>
-            <div class="carousel-slide"><img loading="lazy" src="Images/Showcase/UE-VFX-2.webp" alt="UE VFXs Showcase"></div>
-            <div class="carousel-slide"><img loading="lazy" src="Images/Showcase/UE-VFX-3.webp" alt="UE VFXs Showcase"></div>
-            <div class="carousel-slide"><img loading="lazy" src="Images/Showcase/UE-VFX-4.webp" alt="UE VFXs Showcase"></div>
-            <div class="carousel-slide"><img loading="lazy" src="Images/Showcase/UE-VFX-5.webp" alt="UE VFXs Showcase"></div>
-            <div class="carousel-slide"><img loading="lazy" src="Images/Showcase/UE-VFX-6.webp" alt="UE VFXs Showcase"></div>
-            <!-- Add or remove .carousel-slide blocks as needed -->
-          </div>
-        </div>
-        <button class="carousel-button next" aria-label="Next slide">&rarr;</button>
-        <div class="carousel-dots" aria-hidden="false"></div>
-      </div>
-      <!-- End of carousel -->
-      
-      <div class="text-container">
-        <!-- Title -->
-        <h1>UE VFXs</h1>
-        <!-- Description -->
-        <p style="color: var(--text-color-bright);">
-          A lot of shaders & VFXs in Unreal Engine 5.
-        </p>
-        <p style="color: var(--text-color-bright);">
-          <strong class="underline">Goals:</strong> Make and experiment with shaders that I could use in my projects.
-        </p>
-        <!-- <a target="_blank" href="https://github.com/Loris-Moreau" class="cta-button">Check out the project</a> -->
-      </div>
-    </div>    
-    
-    <!-- Unity VFXs -->
-    <div class="flex-container">
-
-      <!-- Start of carousel -->
-      <div class="showcase-carousel" role="region" aria-label="Showcase carousel">
-        <button class="carousel-button prev" aria-label="Previous slide">&larr;</button>
-        <div class="carousel-viewport">
-          <div class="carousel-track">
-            <div class="carousel-slide"><img loading="lazy" src="Images/Showcase/Unity-Adv-Shaders.gif" alt="Unity VFXs Showcase"></div>
-            <div class="carousel-slide"><img loading="lazy" src="Images/Showcase/Unity-Shader.gif" alt="Unity VFXs Showcase"></div>
-            <!-- Add or remove .carousel-slide blocks as needed -->
-          </div>
-        </div>
-        <button class="carousel-button next" aria-label="Next slide">&rarr;</button>
-        <div class="carousel-dots" aria-hidden="false"></div>
-      </div>
-      <!-- End of carousel -->
-      
-      <div class="text-container">
-        <!-- Title -->
-        <h1>Unity VFXs</h1>
-        <!-- Description -->
-        <p style="color: var(--text-color-bright);">
-          A bunch of shaders in Unity to test out its capabilities.
-        </p>
-        <p style="color: var(--text-color-bright);">
-          <strong class="underline">Goals:</strong> Make shaders that I could use in my Games & test out the shaders system of unity.
-        </p>
-        <a target="_blank" href="https://github.com/Loris-Moreau/Advanced-Shaders" class="cta-button">Check out the project</a>
-      </div>
-    </div>    
-    
-    <!-- Windows Adventure -->
-    <div class="flex-container">
-
-      <!-- Start of carousel -->
-      <div class="showcase-carousel" role="region" aria-label="Showcase carousel">
-        <button class="carousel-button prev" aria-label="Previous slide">&larr;</button>
-        <div class="carousel-viewport">
-          <div class="carousel-track">
-            <div class="carousel-slide"><img loading="lazy" src="Images/Showcase/WA1.webp" alt="Windows Adventure Showcase"></div>
-            <div class="carousel-slide"><img loading="lazy" src="Images/Showcase/WA2.webp" alt="Windows Adventure Showcase"></div>
-            <div class="carousel-slide"><img loading="lazy" src="Images/Showcase/WA3.webp" alt="Windows Adventure Showcase"></div>
-            <!-- Add or remove .carousel-slide blocks as needed -->
-          </div>
-        </div>
-        <button class="carousel-button next" aria-label="Next slide">&rarr;</button>
-        <div class="carousel-dots" aria-hidden="false"></div>
-      </div>
-      <!-- End of carousel -->
-      
-      <div class="text-container">
-        <!-- Title -->
-        <h1>Windows Adventure <i>(Godot)</i></h1>
-        <!-- Description -->
-        <p style="color: var(--text-color-bright);">
-          It's a platformer in which windows will appear along your path some to help and other just to block your view.
-        </p>
-        <p style="color: var(--text-color-bright);">
-          <strong class="underline">Goals:</strong> Learn Godot and experiment with the window management system.
-        </p>
-        <a target="_blank" href="https://loris-moreau.itch.io/windows-adventure" class="cta-button">Check out the project</a>
-      </div>
-    </div>    
-    
-    <!-- GGJ 2024 Battle Boules Arena -->
-    <div class="flex-container">
-
-      <!-- Start of carousel -->
-      <div class="showcase-carousel" role="region" aria-label="Showcase carousel">
-        <button class="carousel-button prev" aria-label="Previous slide">&larr;</button>
-        <div class="carousel-viewport">
-          <div class="carousel-track">
-            <div class="carousel-slide"><img loading="lazy" src="Images/Showcase/BBA-1.webp" alt="Battle Boules Arena Showcase"></div>
-            <div class="carousel-slide"><img loading="lazy" src="Images/Showcase/BBALogo.webp" alt="Battle Boules Arena Showcase"></div>
-            <!-- Add or remove .carousel-slide blocks as needed -->
-          </div>
-        </div>
-        <button class="carousel-button next" aria-label="Next slide">&rarr;</button>
-        <div class="carousel-dots" aria-hidden="false"></div>
-      </div>
-      <!-- End of carousel -->
-      
-      <div class="text-container">
-        <!-- Title -->
-        <h1>GGJ24 Battle Boules Arena</h1>
-        <!-- Description -->
-        <p style="color: var(--text-color-bright);">
-          It's a multiplayer where you play with your friends and bump your balls together until there's only one left.
-        </p>
-        <p style="color: var(--text-color-bright);">
-          <strong class="underline">Goals:</strong> The theme of this Jam was <strong>"Make Me Laugh"</strong> 
-          and we decided to make a 2 to 4 player arcade type game like a Mario Party/Gang Beast minigame.
-        </p>
-        <a target="_blank" href="https://globalgamejam.org/games/2024/battle-boule-arena-4-0" class="cta-button">Check out the project</a>
-      </div>
     </div>
 
-    <!-- GGJ 2026 Sharkour -->
+    <!-- ————————————— Houdini Tools ————————————— -->
     <div class="flex-container">
-
-      <!-- Start of carousel -->
-      <div class="showcase-carousel" role="region" aria-label="Showcase carousel">
-        <button class="carousel-button prev" aria-label="Previous slide">&larr;</button>
-        <div class="carousel-viewport">
-          <div class="carousel-track">
-            <div class="carousel-slide"><img loading="lazy" src="Images/Showcase/Sharkour-1.webp" alt="GGJ26 Sharkour Showcase"></div>
-            <div class="carousel-slide"><img loading="lazy" src="Images/Showcase/Sharkour-2.webp" alt="GGJ26 Sharkour Showcase"></div>
-            <div class="carousel-slide"><img loading="lazy" src="Images/Showcase/Sharkour-3.webp" alt="GGJ26 Sharkour Showcase"></div>
-            <!-- Add or remove .carousel-slide blocks as needed -->
-          </div>
+        <div class="showcase-carousel" role="region" aria-label="Houdini Tools showcase">
+            <button class="carousel-button prev" aria-label="Previous slide">&larr;</button>
+            <div class="carousel-viewport">
+                <div class="carousel-track">
+                    <div class="carousel-slide"><img loading="lazy" src="Images/Showcase/Houdini-Showcase.gif" alt="Houdini procedural effects"></div>
+                    <div class="carousel-slide"><img loading="lazy" src="Images/Showcase/Quartz%20Test%202.webp" alt="Houdini quartz simulation"></div>
+                </div>
+            </div>
+            <button class="carousel-button next" aria-label="Next slide">&rarr;</button>
+            <div class="carousel-dots" aria-hidden="false"></div>
         </div>
-        <button class="carousel-button next" aria-label="Next slide">&rarr;</button>
-        <div class="carousel-dots" aria-hidden="false"></div>
-      </div>
-      <!-- End of carousel -->
-
-      <div class="text-container">
-        <!-- Title -->
-        <h1>GGJ26 Sharkour</h1>
-        <!-- Description -->
-        <p style="color: var(--text-color-bright);">
-          Single player traversal game, where you run away from floating shark and avoid the digital sea.
-        </p>
-        <p style="color: var(--text-color-bright);">
-          <strong class="underline">Goals:</strong> The theme of this Jam was <strong>"Mask"</strong> 
-          so we made appearing/disappearing platforms depending on the mask you wear
-        </p>
-        <a target="_blank" href="https://globalgamejam.org/games/2026/sharkour-3" class="cta-button">Check out the project</a>
-      </div>
+        <div class="text-container">
+            <h1>Houdini Tools</h1>
+            <p style="color: var(--text-color-bright);">
+                Procedural tools and simulations built in Houdini 19 &amp; 20, exploring VEX, SOPs, and DOPs to create game ready assets and effects.
+            </p>
+            <p style="color: var(--text-color-bright);">
+                <strong class="underline">Goals:</strong> Learn procedural content generation and build reusable tools that I can bring directly into my games.
+            </p>
+            <a href="Blog.html#VFX" class="cta-button secondary">Related blog posts</a>
+        </div>
     </div>
-    
+
+    <!-- ————————————— UE VFX & Shaders ————————————— -->
+    <div class="flex-container">
+        <div class="showcase-carousel" role="region" aria-label="UE5 VFX showcase">
+            <button class="carousel-button prev" aria-label="Previous slide">&larr;</button>
+            <div class="carousel-viewport">
+                <div class="carousel-track">
+                    <div class="carousel-slide"><img loading="lazy" src="Images/Showcase/UE-VFX-1.webp" alt="UE5 VFX 1"></div>
+                    <div class="carousel-slide"><img loading="lazy" src="Images/Showcase/UE-VFX-2.webp" alt="UE5 VFX 2"></div>
+                    <div class="carousel-slide"><img loading="lazy" src="Images/Showcase/UE-VFX-3.webp" alt="UE5 VFX 3"></div>
+                    <div class="carousel-slide"><img loading="lazy" src="Images/Showcase/UE-VFX-4.webp" alt="UE5 VFX 4"></div>
+                    <div class="carousel-slide"><img loading="lazy" src="Images/Showcase/UE-VFX-5.webp" alt="UE5 VFX 5"></div>
+                    <div class="carousel-slide"><img loading="lazy" src="Images/Showcase/UE-VFX-6.webp" alt="UE5 VFX 6"></div>
+                </div>
+            </div>
+            <button class="carousel-button next" aria-label="Next slide">&rarr;</button>
+            <div class="carousel-dots" aria-hidden="false"></div>
+        </div>
+        <div class="text-container">
+            <h1>UE5 VFX &amp; Shaders</h1>
+            <p style="color: var(--text-color-bright);">
+                Shaders, materials, and visual effects in Unreal Engine 5 using Niagara and custom HLSL, covering particle systems, post-process effects, and material functions.
+            </p>
+            <p style="color: var(--text-color-bright);">
+                <strong class="underline">Goals:</strong> Experiment with real-time VFX and build a personal shader library usable across game projects.
+            </p>
+            <a href="Blog.html#VFX" class="cta-button secondary">Related blog posts</a>
+        </div>
+    </div>
+
+    <!-- ————————————— Unity Shaders ————————————— -->
+    <div class="flex-container">
+        <div class="showcase-carousel" role="region" aria-label="Unity VFX showcase">
+            <button class="carousel-button prev" aria-label="Previous slide">&larr;</button>
+            <div class="carousel-viewport">
+                <div class="carousel-track">
+                    <div class="carousel-slide"><img loading="lazy" src="Images/Showcase/Unity-Adv-Shaders.gif" alt="Unity advanced shaders"></div>
+                    <div class="carousel-slide"><img loading="lazy" src="Images/Showcase/Unity-Shader.gif" alt="Unity shader demo"></div>
+                </div>
+            </div>
+            <button class="carousel-button next" aria-label="Next slide">&rarr;</button>
+            <div class="carousel-dots" aria-hidden="false"></div>
+        </div>
+        <div class="text-container">
+            <h1>Unity VFX &amp; Shaders</h1>
+            <p style="color: var(--text-color-bright);">
+                Shaders and visual effects in Unity testing the Shader Graph and custom HLSL pipeline.
+            </p>
+            <p style="color: var(--text-color-bright);">
+                <strong class="underline">Goals:</strong> Build reusable shaders and compare Unity's pipeline to Unreal's material system.
+            </p>
+            <a target="_blank" href="https://github.com/Loris-Moreau/Advanced-Shaders" class="cta-button">GitHub Repository</a>
+        </div>
+    </div>
+
+    <!-- ————————————— Windows Adventure ————————————— -->
+    <div class="flex-container">
+        <div class="showcase-carousel" role="region" aria-label="Windows Adventure screenshots">
+            <button class="carousel-button prev" aria-label="Previous slide">&larr;</button>
+            <div class="carousel-viewport">
+                <div class="carousel-track">
+                    <div class="carousel-slide"><img loading="lazy" src="Images/Showcase/WA1.webp" alt="Windows Adventure level 1"></div>
+                    <div class="carousel-slide"><img loading="lazy" src="Images/Showcase/WA2.webp" alt="Windows Adventure level 2"></div>
+                    <div class="carousel-slide"><img loading="lazy" src="Images/Showcase/WA3.webp" alt="Windows Adventure level 3"></div>
+                </div>
+            </div>
+            <button class="carousel-button next" aria-label="Next slide">&rarr;</button>
+            <div class="carousel-dots" aria-hidden="false"></div>
+        </div>
+        <div class="text-container">
+            <h1>Windows Adventure <i>(Godot)</i></h1>
+            <p style="color: var(--text-color-bright);">
+                A platformer where OS windows appear along your path, some help, others just block the view. A quick prototype to experiment with Godot's window management API as a game mechanic.
+            </p>
+            <p style="color: var(--text-color-bright);">
+                <strong class="underline">Goals:</strong> Learn Godot and explore unconventional UI as a gameplay element.
+            </p>
+            <a target="_blank" href="https://loris-moreau.itch.io/windows-adventure" class="cta-button">Play on Itch.io</a>
+        </div>
+    </div>
+
+    <!-- ————————————— GGJ 2024, Battle Boules Arena ————————————— -->
+    <div class="flex-container">
+        <div class="showcase-carousel" role="region" aria-label="Battle Boules Arena screenshots">
+            <button class="carousel-button prev" aria-label="Previous slide">&larr;</button>
+            <div class="carousel-viewport">
+                <div class="carousel-track">
+                    <div class="carousel-slide"><img loading="lazy" src="Images/Showcase/BBA-1.webp" alt="Battle Boules Arena gameplay"></div>
+                    <div class="carousel-slide"><img loading="lazy" src="Images/Showcase/BBALogo.webp" alt="Battle Boules Arena logo"></div>
+                </div>
+            </div>
+            <button class="carousel-button next" aria-label="Next slide">&rarr;</button>
+            <div class="carousel-dots" aria-hidden="false"></div>
+        </div>
+        <div class="text-container">
+            <h1>GGJ24, Battle Boules Arena</h1>
+            <p style="color: var(--text-color-bright);">
+                A 2 to 4 player arcade game made in 48 hours at the Global Game Jam 2024.<br>
+                Bump your balls together until only one player is left.
+            </p>
+            <p style="color: var(--text-color-bright);">
+                <strong class="underline">Theme:</strong> <i>"Make Me Laugh"</i>, a local multiplayer party game in the spirit of Mario Party / Gang Beasts.
+            </p>
+            <a target="_blank" href="https://globalgamejam.org/games/2024/battle-boule-arena-4-0" class="cta-button">View on GGJ</a>
+        </div>
+    </div>
+
+    <!-- ————————————— GGJ 2026, Sharkour ————————————— -->
+    <div class="flex-container">
+        <div class="showcase-carousel" role="region" aria-label="Sharkour screenshots">
+            <button class="carousel-button prev" aria-label="Previous slide">&larr;</button>
+            <div class="carousel-viewport">
+                <div class="carousel-track">
+                    <div class="carousel-slide"><img loading="lazy" src="Images/Showcase/Sharkour-1.webp" alt="Sharkour gameplay 1"></div>
+                    <div class="carousel-slide"><img loading="lazy" src="Images/Showcase/Sharkour-2.webp" alt="Sharkour gameplay 2"></div>
+                    <div class="carousel-slide"><img loading="lazy" src="Images/Showcase/Sharkour-3.webp" alt="Sharkour gameplay 3"></div>
+                </div>
+            </div>
+            <button class="carousel-button next" aria-label="Next slide">&rarr;</button>
+            <div class="carousel-dots" aria-hidden="false"></div>
+        </div>
+        <div class="text-container">
+            <h1>GGJ26, Sharkour</h1>
+            <p style="color: var(--text-color-bright);">
+                Single-player traversal game: run from a floating shark and avoid the digital sea. Platforms appear and disappear depending on which mask you equip.
+            </p>
+            <p style="color: var(--text-color-bright);">
+                <strong class="underline">Theme:</strong> <i>"Mask"</i>, the mask you wear reveals or hides different platforms, making traversal a puzzle of perspective.
+            </p>
+            <a target="_blank" href="https://globalgamejam.org/games/2026/sharkour-3" class="cta-button">View on GGJ</a>
+        </div>
+    </div>
+
     <p style="padding: 1em"></p>
-    
-    <a target="_blank" href="https://loris-moreau.itch.io" class="cta-button secondary">More on my Itch.io</a>
-  </section>
-  
-  <!-- ========== FAQ ========== -->
-  <section id="faq" style="color: var(--text-color-bright);">
+    <a target="_blank" href="https://loris-moreau.itch.io" class="cta-button secondary">More on Itch.io</a>
+</section>
+
+<!-- FAQ -->
+<section id="faq" style="color: var(--text-color-bright);">
     <h2>Common Questions</h2>
+
     <details>
-      <summary>Current occupation ?</summary>
-      <p style="padding-bottom: 0;">I'm currently working on a <b>5th year project</b> to get my master’s degree in programming.</p>
-      <p>And looking for an <b>internship/job</b>.</p>
+        <summary>Current occupation?</summary>
+        <p style="padding-bottom: 0;">I'm in my <b>final year</b> of a Master's degree in Gameplay Programming at ArtFx Montpellier.</p>
+        <p>I'm actively looking for an <b>internship</b> or <b>junior programmer position</b>.</p>
     </details>
+
     <details>
-      <summary>What languages/programs do you know ?</summary>
-      <p style="padding-bottom: 0;"><b>For programming, I know :</b> C++, C#, GLSL/HLSL, Python, Vex, Unreal C++, Unreal Blueprint, OpenGl/Vulkan, Houdini 19 & 20
-      </p>
-      <p><b>For talking :</b> English, French and a little bit of japanese & chinese</p>
+        <summary>What languages &amp; tools do you know?</summary>
+        <p style="padding-bottom: 0;"><b>Programming:</b> C++, C#, GLSL/HLSL, Python, Vex, Unreal C++, UE Blueprints, OpenGL/Vulkan</p>
+        <p style="padding-bottom: 0;"><b>Engines &amp; Tools:</b> Unreal Engine 5, Unity, Godot, Houdini 19 &amp; 20, Visual Studio, JetBrains Rider, Perforce, GitHub</p>
+        <p><b>Spoken languages:</b> French (native), English (native, C1), a little Japanese &amp; Chinese</p>
     </details>
+
     <details>
-      <summary>Favourite games ?</summary>
-      <p style="padding-bottom: 0;"><b>My favourite games are:</b> </p>
-      <p>Outer Wilds - Mirrors edge <i>(1 & 2)</i> - Assetto Corsa Competizione - Assasin's Creed <i>(3, unity, black flag)</i> - Dark Souls 3 - 
-        Bloodborne - Disco Elysium - Far Cry Primal - Star Wars Force Unleashed - Warframe - Darktide - and holocure.</p>
+        <summary>Favourite games?</summary>
+        <p>Outer Wilds; Mirrors Edge <i>(1 &amp; 2)</i>; Assetto Corsa Competizione; Assassin's Creed <i>(3, Unity, Black Flag)</i>;
+            Dark Souls 3; Bloodborne; Disco Elysium; Far Cry Primal; Star Wars Force Unleashed; Warframe; Darktide; Holocure.</p>
     </details>
+
     <details>
-      <summary>Do you have pets ?</summary>
-      <p>YES, I have two lovely dogs, and I am thinking about getting a snake or a skink <i>(lizard)</i>, I also have a bunch of succulents <i>(4, but they keep multiplying)</i></p>
+        <summary>Do you have pets?</summary>
+        <p>Yes! Two lovely dogs, and I'm thinking about getting a snake or a skink <i>(lizard)</i>. I also have a growing collection of succulents <i>(4, but they keep multiplying)</i>.</p>
     </details>
+
     <details>
-      <summary>What's  a game that you want to make ?</summary>
-      <!-- <p>The numbing that slowly scratches through my skull</p> -->
-      <p>I would like to make a game like <strong>mirrors edge</strong> but where  the <strong>faces of enemies are blurred out</strong> 
-        <i>(glitch effect as if you can't seem to understand a face)</i> <strong>and their voices are distorted</strong> 
-        <i>(some sort of alien language, distorted and demon sounding)</i>, 
-        and you character is schizo and has hallucination of people being there when there is no one <i>(just in the corner of their eye)</i>.
-      </p>
+        <summary>A game you want to make?</summary>
+        <p>A game like <strong>Mirrors Edge</strong> where enemy <strong>faces are glitched out</strong> <i>(as if you can't process them)</i>,
+            their <strong>voices are distorted</strong> <i>(alien, demon-sounding)</i>,
+            and the player character has hallucinations of people in the corners of their vision.</p>
     </details>
+
     <details>
-      <summary>How can I contact you ?</summary>
-      <p>You can contact me through my
-        <a target="_blank" href="https://linkedin.com/in/loris-moreau">LinkedIn</a>.</p>
+        <summary>How can I contact you?</summary>
+        <p>Reach me on <a target="_blank" href="https://linkedin.com/in/loris-moreau">LinkedIn</a>,
+            or download my <a href="Loris_Moreau_CV.pdf" target="_blank">CV</a> for direct contact details.</p>
     </details>
+
     <details>
-      <summary>Todo list</summary>
-      <p>You can see my plans and what I've done
-        <a target="_blank" href="https://github.com/Loris-Moreau/TODO">here</a>.</p>
+        <summary>Todo list</summary>
+        <p>See my plans and what I've already done <a target="_blank" href="https://github.com/Loris-Moreau/TODO">here</a>.</p>
     </details>
-  </section>
-  
-  <!-- ========== Footer ========== -->
-  <footer id="links">
+</section>
+
+<!--Footer -->
+<footer id="links">
     <div style="padding-top: 1.5em; padding-bottom: 2.25em;">
-      <a href="#" class="cta-button secondary" >Top</a>
+        <a href="#" class="cta-button secondary">Top</a>
     </div>
-    
     <a target="_blank" href="https://linkedin.com/in/loris-moreau">LinkedIn</a>
     <a target="_blank" href="https://github.com/Loris-Moreau">GitHub</a>
     <a target="_blank" href="https://loris-moreau.itch.io">Itch.io</a>
-    <a target="_blank" href="https://www.youtube.com/@LorisMoreau">Youtube</a>
-  </footer>
+    <a href="Loris_Moreau_CV.pdf" target="_blank">Download CV</a>
+</footer>
 
 </body>
-
 </html>

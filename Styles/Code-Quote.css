@@ -58,7 +58,7 @@
     text-overflow: ellipsis;
 }
 
-/* Console area: no scrolling — content will flow and increase page height */
+/* Console area: no scrolling - content will flow and increase page height */
 .Sconsole {
     width: 100%;
     height: auto;
