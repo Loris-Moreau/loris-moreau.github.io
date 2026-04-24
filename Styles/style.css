@@ -234,6 +234,13 @@ h2 {
   border-color: transparent;
 }
 
+/* Third variant (Specialties) */
+.tag-tertiary {
+  background-color: rebeccapurple;
+  color: mintcream;
+  border-color: transparent;
+}
+
 /* Blog card */
 .card {
   box-sizing: border-box;
