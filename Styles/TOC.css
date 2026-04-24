@@ -1,0 +1,117 @@
+/* Resources - table of contents grid */
+#toc{
+    display: none;
+}
+
+.toc-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(13em, 1fr));
+    gap: 0.5em;
+    margin-top: 1em;
+    text-align: left;
+}
+
+.toc-grid a {
+    display: block;
+    padding: 0.5em 0.85em;
+    background: var(--bg-color-2);
+    border-radius: 0.4em;
+    text-decoration: none;
+    color: var(--text-color-bright);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    transition: background 0.2s, color 0.2s;
+}
+
+.toc-grid a:hover {
+    background: var(--primary-color);
+    color: mintcream;
+    text-decoration: none;
+    border-color: transparent;
+}
+
+/* 
+   Sticky sidebar TOC
+   Appears on the left once the top #toc section
+   scrolls off screen. Hidden on narrow viewports where
+   there isn't enough room beside the main content. 
+*/
+
+#toc-sidebar {
+    position: fixed;
+    left: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+
+    /* Size */
+    width: 13em;
+    max-height: 90vh;
+    overflow-y: auto;
+
+    /* Look */
+    background-color: var(--bg-color-2);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 0.75em;
+    padding: 0.75em 0.5em;
+
+    /* Hidden by default — fades in + slides in when JS adds .visible */
+    /*opacity: 0;*/
+    pointer-events: auto;
+    /*translate: -0.5rem 0;*/
+    /*transition: opacity 300ms ease, translate 300ms ease;*/
+}
+/*
+#toc-sidebar.visible {
+    opacity: 1;
+    pointer-events: auto;
+    translate: 0 0;
+}
+*/
+/* Individual sidebar links */
+#toc-sidebar a {
+    display: block;
+    padding: 0.3em 0.7em;
+    border-radius: 0.4em;
+    font-size: 0.82rem;
+    color: var(--text-color-bright);
+    text-decoration: none;
+    border: none;
+    transition: background 150ms, color 150ms;
+    line-height: 1.4;
+}
+
+#toc-sidebar a:hover {
+    background: rgba(255, 255, 255, 0.25);
+    text-decoration: none;
+    color: var(--text-color);
+}
+
+/* Highlighted when that section is in view */
+#toc-sidebar a.active {
+    background: var(--primary-color);
+    color: mintcream;
+    font-weight: 600;
+}
+
+/* Thin scrollbar inside the sidebar */
+#toc-sidebar::-webkit-scrollbar {
+    width: 4px;
+}
+
+#toc-sidebar::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+#toc-sidebar::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 2px;
+}
+
+/* Hide when viewport is too narrow to fit the sidebar beside the 75em centred main content, show section toc*/
+@media (max-width: 1550px) {
+    #toc-sidebar {
+        display: none;
+    }
+    #toc{
+        display: block;
+    }
+}

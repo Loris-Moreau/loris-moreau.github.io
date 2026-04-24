@@ -296,32 +296,6 @@ a .card,
   margin: 0 auto;
 }
 
-/* Resources - table of contents grid */
-.toc-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(13em, 1fr));
-  gap: 0.5em;
-  margin-top: 1em;
-  text-align: left;
-}
-
-.toc-grid a {
-  display: block;
-  padding: 0.5em 0.85em;
-  background: var(--bg-color-2);
-  border-radius: 0.4em;
-  text-decoration: none;
-  color: var(--text-color-bright);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  transition: background 0.2s, color 0.2s;
-}
-.toc-grid a:hover {
-  background: var(--primary-color);
-  color: mintcream;
-  text-decoration: none;
-  border-color: transparent;
-}
-
 /* Reading recommendations dropdown (Resources page) */
 .reading-rec {
   width: min(24em, 90%);

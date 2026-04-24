@@ -1,6 +1,8 @@
-﻿/* Initialize all carousels on the page.
-    Each carousel gets its own state and timer so multiple instances work independently. */
-    (function () {
+﻿/* 
+    Initialize all carousels on the page.
+    Each carousel gets its own state and timer so multiple instances work independently. 
+*/
+(function () {
     const CAROUSEL_SELECTOR = '.showcase-carousel';
     const AUTOPLAY_MS = 4500;
 
@@ -36,8 +38,7 @@
 
     function goTo(index, withTransition = true) {
     // clamp/cycle index
-    const clamped = (index + slides.length) % slides.length;
-    current = clamped;
+    current = (index + slides.length) % slides.length;
     if (!withTransition) track.style.transition = 'none';
     else track.style.transition = '';
     const x = -current * 100;
@@ -113,4 +114,3 @@
     const carousels = Array.from(document.querySelectorAll(CAROUSEL_SELECTOR));
     carousels.forEach(initCarousel);
 })();
-    
