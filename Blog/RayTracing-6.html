@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>R-6 : Diffuse Material</title>
+    <link rel="icon" type="image/x-icon" href="../Images/Suprise.webp">
+
+    <!-- Meta Tags for SEO -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Loris Moreau">
+    <meta name="description" content="Raytracing in one weekend: diffuse materials, ray bouncing, and gamma correction">
+    <meta name="keywords" content="Showcase, Loris, Moreau, Loris Moreau, Programmer, coding adventure, Blog, Post, Raytracing, C++, CPP, Raytracing in one weekend, diffuse, material, gamma correction, bounce">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="../Styles/style.css">
+    <link rel="stylesheet" href="../Styles/Code-Quote.css">
+
+    <script src="../Scripts/Carousel.js" defer></script>
+</head>
+
+<body>
+
+<main id="BlogPost" class="post">
+    <header>
+        <!-- Navbar -->
+        <nav style="margin: 0 auto 2em auto;">
+            <ul>
+                <li><a href="../Blog.html">Back</a></li>
+                <li><a href="../index.html">Main</a></li>
+                <li><a href="../Blog.html">Blog</a></li>
+                <li><a href="../Resources.html">Resources</a></li>
+            </ul>
+        </nav>
+
+        <!-- Top showcase + intro -->
+        <div class="flex-container">
+            <div class="text-container">
+                <h1>R-6 : Diffuse Material</h1>
+                <p>
+                    Adding the first real material, diffuse <i>(matte)</i> surfaces.
+                    Rays bounce off randomly and lose energy with each bounce,
+                    producing the soft shadowing that makes raytracing look so good.
+                </p>
+                <p>
+                    <a href="https://github.com/Loris-Moreau/RayTracing" target="_blank">GitHub Repository</a>
+                </p>
+            </div>
+            <img height="400px" loading="lazy" src="../Images/RayTracing/DiffuseMatRender.webp" alt="Diffuse sphere render">
+        </div>
+    </header>
+
+    <!-- What is diffuse? -->
+    <section>
+        <h2 class="underline" style="text-decoration-color: dodgerblue">Part 6: Diffuse Material</h2>
+
+        <p>
+            Diffuse objects don't emit light, they take on the color of their surroundings,
+            modulated by their own inherent color.
+        </p>
+        <p>
+            Light that hits a diffuse surface is scattered randomly in any direction.
+            If a ray bounces deep into a crevice, the odds of it escaping are low,
+            so those areas appear darker, producing natural-looking shadows.
+        </p>
+
+        <figure>
+            <img loading="lazy" src="../Images/RayTracing/DiffuseSphere.webp" alt="Diffuse sphere" style="width: 40%; padding-bottom: 5px;">
+            <figcaption><a href="https://raytracing.github.io/" target="_blank">img. Source</a></figcaption>
+        </figure>
+    </section>
+
+    <!-- Random unit vector helpers -->
+    <section>
+        <h2 class="underline" style="text-decoration-color: royalblue">Random Vector Utilities</h2>
+
+        <p>Add these helpers to <strong class="quote">Vector3.h</strong> :</p>
+
+        <div class="snippet">
+            <div class="Swindow">
+                <div class="Swindow-title"><p>Vector3.h</p></div>
+                <div class="Sconsole">
+<pre><code>#include "Utility.h"
+
+...
+
+inline Vector3 Random()
+{
+    return Vector3(RandomDouble(), RandomDouble(), RandomDouble());
+}
+
+inline Vector3 Random(double min, double max)
+{
+    return Vector3(RandomDouble(min,max), RandomDouble(min,max), RandomDouble(min,max));
+}
+
+// Rejection sampling: discard vectors outside the unit sphere
+inline Vector3 RandomInUnitSphere()
+{
+    while (true)
+    {
+        Vector3 p = Random(-1, 1);
+        if (p.SquaredLength() &lt; 1) return p;
+    }
+}
+
+// Normalized version: point on the surface of the unit sphere
+inline Vector3 RandomUnitVector()
+{
+    return Unit(RandomInUnitSphere());
+}
+
+// Only return a vector pointing away from the surface (same hemisphere as normal)
+inline Vector3 RandomOnHemisphere(const Vector3& normal)
+{
+    Vector3 onUnitSphere = RandomUnitVector();
+    return (Dot(onUnitSphere, normal) > 0.0) ? onUnitSphere : -onUnitSphere;
+}</code></pre>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- RayColor with bouncing -->
+    <section>
+        <h2 class="underline" style="text-decoration-color: royalblue">Bouncing Rays: RayColor</h2>
+
+        <p>
+            Rays bounce recursively. We add a <strong>depth</strong> limit so the recursion terminates,
+            and attenuate by 50% on each bounce to simulate energy loss :
+        </p>
+
+        <div class="snippet">
+            <div class="Swindow">
+                <div class="Swindow-title"><p>Camera.h</p></div>
+                <div class="Sconsole">
+<pre><code>class Camera
+{
+public:
+    Camera() = default;
+    Camera(double imageWidth, double ratio, int samplePerPixel = 10, int maxDepth = 10):
+        aspectRatio(ratio), width(imageWidth),
+        sampleCount(samplePerPixel), maxBounceDepth(maxDepth){}
+
+    void Render(const Hittable& rWorld);
+
+private:
+    int height, sampleCount, maxBounceDepth;
+    double aspectRatio, width;
+    Position center, originPixelLocation;
+    Vector3 pixelDeltaX, pixelDeltaY;
+
+    void Initialize();
+    Color RayColor(const Ray& rRay, int depth, const Hittable& rWorld) const;
+    Ray GetRay(int x, int y) const;
+    Vector3 PixelSampleSquared() const;
+};</code></pre>
+                </div>
+            </div>
+        </div>
+
+        <div class="snippet">
+            <div class="Swindow">
+                <div class="Swindow-title"><p>Camera.cpp</p></div>
+                <div class="Sconsole">
+<pre><code>Color Camera::RayColor(const Ray& rRay, int depth, const Hittable& rWorld) const
+{
+    // No more light is gathered past the bounce limit
+    if (depth &lt;= 0) return Color(0, 0, 0);
+
+    HitInfo hitInfo;
+    if (rWorld.Hit(rRay, Interval(0.001, infinity), hitInfo))
+    {
+        // Scatter the ray in a random direction on the hemisphere
+        Vector3 direction = hitInfo.normal + RandomUnitVector();
+        return 0.5 * RayColor(Ray(hitInfo.coordinates, direction), depth - 1, rWorld);
+    }
+
+    // Background gradient: white to sky blue
+    Vector3 unitDirection = Unit(rRay.GetDirection());
+    double blue = 0.5 * (unitDirection.y + 1.0);
+    return (1.0 - blue) * Color(1.0, 1.0, 1.0) + blue * Color(0.5, 0.7, 1.0);
+}</code></pre>
+                </div>
+            </div>
+        </div>
+
+        <p>
+            Note: The interval now starts at <strong class="quote">0.001</strong> instead of <strong class="quote">0</strong>.
+            This avoids <i>shadow acne</i>, a floating point issue where a ray re-intersects the surface it just bounced off.
+        </p>
+
+        <p>Update the Render loop to pass the bounce depth :</p>
+
+        <div class="snippet">
+            <div class="Swindow">
+                <div class="Swindow-title"><p>Camera.cpp</p></div>
+                <div class="Sconsole">
+<pre><code>for(int sample = 0; sample &lt; sampleCount; sample++)
+{
+    Ray ray = GetRay(x, y);
+    pixel += RayColor(ray, maxBounceDepth, rWorld);
+}</code></pre>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gamma correction -->
+    <section>
+        <h2 class="underline" style="text-decoration-color: royalblue">Gamma Correction</h2>
+
+        <p>
+            The render looks darker than it should because monitors display colors on a gamma-corrected
+            (non-linear) scale. We transform the linear light values using <em>gamma 2</em>, 
+            a square root, before writing them out :
+        </p>
+
+        <div class="snippet">
+            <div class="Swindow">
+                <div class="Swindow-title"><p>Color.h</p></div>
+                <div class="Sconsole">
+<pre><code>inline double LinearToGamma(double linearComponent)
+{
+    return linearComponent > 0 ? sqrt(linearComponent) : 0;
+}
+
+inline void WriteColor(std::ostream& out, Color pixel, int sampleCount)
+{
+    double scale = 1.0 / sampleCount;
+
+    double r = LinearToGamma(pixel.x * scale);
+    double g = LinearToGamma(pixel.y * scale);
+    double b = LinearToGamma(pixel.z * scale);
+
+    static const Interval intensity(0.000, 0.999);
+    out &lt;&lt; static_cast&lt;int&gt;(255.999 * intensity.Clamp(r)) &lt;&lt; ' '
+        &lt;&lt; static_cast&lt;int&gt;(255.999 * intensity.Clamp(g)) &lt;&lt; ' '
+        &lt;&lt; static_cast&lt;int&gt;(255.999 * intensity.Clamp(b)) &lt;&lt; '\n';
+}</code></pre>
+                </div>
+            </div>
+        </div>
+
+        <p>With that fix the spheres look a lot more realistic. Onwards!</p>
+
+        <figure>
+            <img loading="lazy" src="../Images/RayTracing/GammaCorrection.webp" alt="Diffuse sphere with gamma correction" style="width: 40%; padding-bottom: 5px;">
+            <img loading="lazy" src="../Images/RayTracing/CorrectedGammaProgression.webp" alt="Diffuse sphere with gamma correction" style="width: 40%; padding-bottom: 5px;">
+            <figcaption>After gamma correction it's noticeably brighter and more natural.</figcaption>
+        </figure>
+    </section>
+
+    <footer>
+        <p style="color: var(--text-color-bright);">22-01-2024</p>
+    </footer>
+</main>
+
+<!-- Navigation -->
+<div style="text-align: center; margin-top: 1rem;">
+    <a href="RayTracing-5.html" class="cta-button">Previous</a>
+    <a href="../Blog.html" class="cta-button secondary">Entries</a>
+    <a href="RayTracing-7.html" class="cta-button">Next</a>
+</div>
+
+</body>
+</html>

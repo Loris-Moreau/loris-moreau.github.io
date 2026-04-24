@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>R-9 : Positionable Camera: End of Book 1</title>
+    <link rel="icon" type="image/x-icon" href="../Images/Suprise.webp">
+
+    <!-- Meta Tags for SEO -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Loris Moreau">
+    <meta name="description" content="Raytracing in one weekend: positionable camera, field of view, defocus blur and the final Book 1 render">
+    <meta name="keywords" content="Showcase, Loris, Moreau, Loris Moreau, Programmer, coding adventure, Blog, Post, Raytracing, C++, CPP, Raytracing in one weekend, camera, field of view, defocus blur, depth of field, final render, book 1">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="../Styles/style.css">
+    <link rel="stylesheet" href="../Styles/Code-Quote.css">
+
+    <script src="../Scripts/Carousel.js" defer></script>
+</head>
+
+<body>
+
+<main id="BlogPost" class="post">
+    <header>
+        <!-- Navbar -->
+        <nav style="margin: 0 auto 2em auto;">
+            <ul>
+                <li><a href="../Blog.html">Back</a></li>
+                <li><a href="../index.html">Main</a></li>
+                <li><a href="../Blog.html">Blog</a></li>
+                <li><a href="../Resources.html">Resources</a></li>
+            </ul>
+        </nav>
+
+        <!-- Top showcase + intro -->
+        <div class="flex-container">
+            <div class="text-container">
+                <h1>R-9 : Positionable Camera <em>(End of Book 1)</em></h1>
+                <p>
+                    Adding a full camera model with <strong>field of view</strong>,
+                    <br>
+                    arbitrary <strong>look-from / look-at</strong> positioning,
+                    <br>
+                    and <strong>defocus blur</strong> (depth of field), then rendering the final scene.
+                </p>
+                <p>
+                    <a href="https://github.com/Loris-Moreau/RayTracing" target="_blank">GitHub Repository</a>
+                </p>
+            </div>
+            <img height="400px" loading="lazy" src="../Images/RayTracing/Final%20Render%20(B1).webp" alt="Final render of Book 1">
+        </div>
+    </header>
+
+    <!-- Field of view -->
+    <section>
+        <h2 class="underline" style="text-decoration-color: dodgerblue">Part 9: Positionable Camera</h2>
+
+        <h2 class="underline" style="text-decoration-color: royalblue">Field of View</h2>
+
+        <p>
+            Field of view (FOV) is the angle the camera sees from top to bottom.
+            We express it in degrees and derive the viewport height from it :
+        </p>
+
+        <div class="snippet">
+            <div class="Swindow">
+                <div class="Swindow-title"><p>Camera.h</p></div>
+                <div class="Sconsole">
+<pre><code>class Camera
+{
+public:
+    double vFov         = 90;    // Vertical field-of-view in degrees
+    Position lookFrom   = Position(0, 0, 0);  // Camera position
+    Position lookAt     = Position(0, 0, -1); // Target point
+    Vector3  vUp        = Vector3(0, 1, 0);   // Camera-relative "up"
+
+    double defocusAngle = 0;  // Variation angle of rays through each pixel
+    double focusDistance = 10; // Distance from camera to the focus plane
+
+    int width           = 100;
+    int sampleCount     = 10;
+    int maxBounceDepth  = 10;
+    double aspectRatio  = 1.0;
+
+    void Render(const Hittable& rWorld);
+
+private:
+    int    height;
+    double theta, h;
+    double viewportHeight, viewportWidth;
+    double defocusDiskU, defocusDiskV;
+
+    Position center, originPixelLocation;
+    Vector3  pixelDeltaX, pixelDeltaY;
+    Vector3  u, v, w; // camera basis vectors
+
+    void     Initialize();
+    Color    RayColor(const Ray& rRay, int depth, const Hittable& rWorld) const;
+    Ray      GetRay(int x, int y) const;
+    Vector3  PixelSampleSquared() const;
+    Position DefocusDiskSample() const;
+};</code></pre>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Camera orientation -->
+    <section>
+        <h2 class="underline" style="text-decoration-color: royalblue">Camera Orientation</h2>
+
+        <p>
+            We build an orthonormal basis from the look direction and the world-up vector.
+            <strong>w</strong> points toward the camera (opposite the look direction),
+            <strong>u</strong> points right, and <strong>v</strong> points up in camera space :
+        </p>
+
+        <figure>
+            <img loading="lazy" src="../Images/RayTracing/CameraXYZ.webp" alt="Camera orientation diagram" style="width: 40%; padding-bottom: 5px;">
+            <figcaption><a href="https://raytracing.github.io/" target="_blank">img. Source</a></figcaption>
+        </figure>
+
+        <div class="snippet">
+            <div class="Swindow">
+                <div class="Swindow-title"><p>Camera.cpp: Initialize()</p></div>
+                <div class="Sconsole">
+<pre><code>void Camera::Initialize()
+{
+    height = static_cast&lt;int&gt;(width / aspectRatio);
+    if (height &lt; 1) height = 1;
+    center = lookFrom;
+
+    // Derive viewport dimensions from vFov
+    theta          = DegToRad(vFov);
+    h              = tan(theta / 2);
+    viewportHeight = 2 * h * focusDistance;
+    viewportWidth  = viewportHeight * (static_cast&lt;double&gt;(width) / height);
+
+    // Camera basis vectors
+    w = Unit(lookFrom - lookAt);
+    u = Unit(Cross(vUp, w));
+    v = Cross(w, u);
+
+    // Viewport edge vectors
+    Vector3 viewportU = viewportWidth  * u;
+    Vector3 viewportV = viewportHeight * -v;
+
+    pixelDeltaX = viewportU / width;
+    pixelDeltaY = viewportV / height;
+
+    Vector3 viewportOrigin = center
+                           - (focusDistance * w)
+                           - viewportU / 2
+                           - viewportV / 2;
+    originPixelLocation = viewportOrigin + 0.5 * (pixelDeltaX + pixelDeltaY);
+
+    // Defocus disk basis vectors
+    double defocusRadius = focusDistance * tan(DegToRad(defocusAngle / 2));
+    defocusDiskU = u * defocusRadius;
+    defocusDiskV = v * defocusRadius;
+}</code></pre>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Defocus blur -->
+    <section>
+        <h2 class="underline" style="text-decoration-color: royalblue">Defocus Blur (Depth of Field)</h2>
+        
+        <p>
+            Real cameras focus on a plane at a given distance. Objects in front of or behind that plane
+            are blurred. We simulate this by scattering each ray's origin within a small disk
+            centered on the camera, the <em>defocus disk</em> :
+        </p>
+        
+        <div class="snippet">
+            <div class="Swindow">
+                <div class="Swindow-title"><p>Vector3.h: random in unit disk</p></div>
+                <div class="Sconsole">
+<pre><code>inline Vector3 RandomInUnitDisk()
+{
+    while (true)
+    {
+        Vector3 p = Vector3(RandomDouble(-1, 1), RandomDouble(-1, 1), 0);
+        if (p.SquaredLength() &lt; 1) return p;
+    }
+}</code></pre>
+                </div>
+            </div>
+        </div>
+
+        <div class="snippet">
+            <div class="Swindow">
+                <div class="Swindow-title"><p>Camera.cpp</p></div>
+                <div class="Sconsole">
+<pre><code>Ray Camera::GetRay(int x, int y) const
+{
+    Vector3 pixelCenter = originPixelLocation + (x * pixelDeltaX) + (y * pixelDeltaY);
+    Vector3 pixelSample = pixelCenter + PixelSampleSquared();
+
+    // Scatter ray origin across the defocus disk for depth-of-field
+    Position rayOrigin = (defocusAngle &lt;= 0) ? center : DefocusDiskSample();
+    Vector3  rayDirection = pixelSample - rayOrigin;
+
+    return Ray(rayOrigin, rayDirection);
+}
+
+Position Camera::DefocusDiskSample() const
+{
+    Vector3 p = RandomInUnitDisk();
+    return center + (p[0] * defocusDiskU) + (p[1] * defocusDiskV);
+}</code></pre>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final scene -->
+    <section>
+        <h2 class="underline" style="text-decoration-color: royalblue">Final Scene: Book 1</h2>
+
+        <p>
+            The final scene places hundreds of randomly colored spheres on a ground plane,
+            with three feature spheres in the center. Set the camera to look across the scene
+            with a shallow depth of field :
+        </p>
+
+        <div class="snippet">
+            <div class="Swindow">
+                <div class="Swindow-title"><p>Raytracing.cpp</p></div>
+                <div class="Sconsole">
+<pre><code>int main()
+{
+    HittableCollection world;
+
+    auto matGround = make_shared&lt;Lambertian&gt;(Color(0.5, 0.5, 0.5));
+    world.Add(make_shared&lt;Sphere&gt;(Position(0,-1000,0), 1000, matGround));
+
+    // Random small spheres
+    for (int a = -11; a &lt; 11; a++)
+    {
+        for (int b = -11; b &lt; 11; b++)
+        {
+            double chooseMat = RandomDouble();
+            Position center(a + 0.9*RandomDouble(), 0.2, b + 0.9*RandomDouble());
+
+            if ((center - Position(4,0.2,0)).Length() &gt; 0.9)
+            {
+                shared_ptr&lt;Material&gt; sphereMat;
+                if (chooseMat &lt; 0.8) {
+                    // Diffuse
+                    auto albedo = Color::Random() * Color::Random();
+                    sphereMat = make_shared&lt;Lambertian&gt;(albedo);
+                } else if (chooseMat &lt; 0.95) {
+                    // Metal
+                    auto albedo = Color::Random(0.5, 1);
+                    auto fuzz   = RandomDouble(0, 0.5);
+                    sphereMat = make_shared&lt;Metal&gt;(albedo, fuzz);
+                } else {
+                    // Glass
+                    sphereMat = make_shared&lt;Dielectric&gt;(1.5);
+                }
+                world.Add(make_shared&lt;Sphere&gt;(center, 0.2, sphereMat));
+            }
+        }
+    }
+
+    // Feature spheres
+    world.Add(make_shared&lt;Sphere&gt;(Position( 0, 1, 0), 1.0, make_shared&lt;Dielectric&gt;(1.5)));
+    world.Add(make_shared&lt;Sphere&gt;(Position(-4, 1, 0), 1.0, make_shared&lt;Lambertian&gt;(Color(0.4, 0.2, 0.1))));
+    world.Add(make_shared&lt;Sphere&gt;(Position( 4, 1, 0), 1.0, make_shared&lt;Metal&gt;(Color(0.7, 0.6, 0.5), 0.0)));
+
+    Camera camera;
+    camera.aspectRatio   = 16.0 / 9.0;
+    camera.width         = 1200;
+    camera.sampleCount   = 500;
+    camera.maxBounceDepth= 50;
+
+    camera.vFov          = 20;
+    camera.lookFrom      = Position(13, 2, 3);
+    camera.lookAt        = Position( 0, 0, 0);
+    camera.vUp           = Vector3(0, 1, 0);
+
+    camera.defocusAngle  = 0.6;
+    camera.focusDistance = 10.0;
+
+    camera.Render(world);
+    return 0;
+}</code></pre>
+                </div>
+            </div>
+        </div>
+
+        <p>
+            Crank up samples and depth, grab a coffee, and let it run.
+            <em>(High quality settings will take a while, this is the CPU raytracer, after all.)</em>
+        </p>
+
+        <figure>
+            <img loading="lazy" src="../Images/RayTracing/Final%20Render%20(B1).webp" alt="Final render of Book 1" style="width: 55%; padding-bottom: 5px;">
+            <figcaption>
+                Final render: Book 1.
+                <a href="https://github.com/Loris-Moreau/RayTracing" target="_blank">Reference</a>
+            </figcaption>
+        </figure>
+
+        <p>
+            That's it for Book 1! The next series of posts covers Book 2
+            <em>(lights, textures, volumes, BVH)</em> and beyond, all the way to
+            porting the whole thing to <strong>Compute Shaders</strong> for real-time speeds.
+        </p>
+    </section>
+
+    <footer>
+        <p style="color: var(--text-color-bright);">26-01-2024</p>
+    </footer>
+</main>
+
+<!-- Navigation -->
+<div style="text-align: center; margin-top: 1rem;">
+    <a href="RayTracing-8.html" class="cta-button">Previous</a>
+    <a href="../Blog.html" class="cta-button secondary">Entries</a>
+    <a href="Raytracing-10.html" class="cta-button">Next</a>
+</div>
+
+</body>
+</html>

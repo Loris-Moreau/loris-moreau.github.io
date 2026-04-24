@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>R-8 : Dielectrics: Glass</title>
+    <link rel="icon" type="image/x-icon" href="../Images/Suprise.webp">
+
+    <!-- Meta Tags for SEO -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Loris Moreau">
+    <meta name="description" content="Raytracing in one weekend: dielectric materials, refraction, and the Schlick approximation">
+    <meta name="keywords" content="Showcase, Loris, Moreau, Loris Moreau, Programmer, coding adventure, Blog, Post, Raytracing, C++, CPP, Raytracing in one weekend, glass, dielectric, refraction, Snell, Schlick">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="../Styles/style.css">
+    <link rel="stylesheet" href="../Styles/Code-Quote.css">
+
+    <script src="../Scripts/Carousel.js" defer></script>
+</head>
+
+<body>
+
+<main id="BlogPost" class="post">
+    <header>
+        <!-- Navbar -->
+        <nav style="margin: 0 auto 2em auto;">
+            <ul>
+                <li><a href="../Blog.html">Back</a></li>
+                <li><a href="../index.html">Main</a></li>
+                <li><a href="../Blog.html">Blog</a></li>
+                <li><a href="../Resources.html">Resources</a></li>
+            </ul>
+        </nav>
+
+        <!-- Top showcase + intro -->
+        <div class="flex-container">
+            <!--<img height="400px" loading="lazy" src="../Images/RayTracing/GlassSphere.webp" alt="Glass sphere render">-->
+            <div class="text-container">
+                <h1>R-8 : Dielectrics <em>(Glass)</em></h1>
+                <p>
+                    Implementing glass and transparent materials using Snell's law of refraction
+                    and the Schlick approximation for realistic reflectance at grazing angles.
+                </p>
+                <p>
+                    <a href="https://github.com/Loris-Moreau/RayTracing" target="_blank">GitHub Repository</a>
+                </p>
+            </div>
+        </div>
+    </header>
+
+    <!-- What are dielectrics -->
+    <section>
+        <h2 class="underline" style="text-decoration-color: dodgerblue">Part 8: Dielectrics</h2>
+
+        <p>
+            Dielectric materials, like glass and water, both reflect and refract light.
+            When a ray hits the surface we randomly pick one behaviour, over many samples the average
+            produces the correct result.
+        </p>
+    </section>
+
+    <!-- Snell's Law -->
+    <section>
+        <h2 class="underline" style="text-decoration-color: royalblue">Snell's Law</h2>
+
+        <p>
+            Refraction is described by <strong>Snell's Law</strong> :
+            <em>η · sin(θ) = η′ · sin(θ′)</em>
+            where η and η′ are the refractive indices of the two media.
+        </p>
+
+        <figure>
+            <img loading="lazy" src="../Images/RayTracing/SnellsLaw.webp" alt="Snell's Law diagram" style="width: 20%; padding-bottom: 5px;">
+            <figcaption><a href="https://en.wikipedia.org/wiki/Snell%27s_law" target="_blank">img. Source</a></figcaption>
+        </figure>
+
+        <p>
+            We split the refracted ray into its perpendicular and parallel components
+            relative to the surface normal :
+        </p>
+
+        <p>R′⊥ = (η/η′)(R + cos(θ) · n)</p>
+        <p>R′∥ = −√(1 − |R′⊥|²) · n</p>
+
+        <p>Add the <strong class="quote">Refract</strong> helper to <strong class="quote">Vector3.h</strong> :</p>
+
+        <div class="snippet">
+            <div class="Swindow">
+                <div class="Swindow-title"><p>Vector3.h</p></div>
+                <div class="Sconsole">
+<pre><code>inline Vector3 Refract(const Vector3& uv, const Vector3& n, double etaOverEtaPrime)
+{
+    double cosTheta = fmin(Dot(-uv, n), 1.0);
+    Vector3 rOutPerp     = etaOverEtaPrime * (uv + cosTheta * n);
+    Vector3 rOutParallel = -sqrt(fabs(1.0 - rOutPerp.SquaredLength())) * n;
+    return rOutPerp + rOutParallel;
+}</code></pre>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Total internal reflection -->
+    <section>
+        <h2 class="underline" style="text-decoration-color: royalblue">Total Internal Reflection</h2>
+
+        <p>
+            When a ray travels from a denser medium to a less dense one at a steep angle,
+            refraction is impossible, the ray reflects entirely.
+            We detect this when sin(θ′) > 1 and fall back to reflection :
+        </p>
+
+        <div class="snippet">
+            <div class="Swindow">
+                <div class="Swindow-title"><p>Material.h</p></div>
+                <div class="Sconsole">
+<pre><code>class Dielectric : public Material
+{
+private:
+    double mRefractionIndex; // η for this material (e.g. 1.5 for glass)
+
+    static double Reflectance(double cosine, double refractionIndex)
+    {
+        // Schlick's approximation for reflectance
+        double r0 = (1 - refractionIndex) / (1 + refractionIndex);
+        r0 = r0 * r0;
+        return r0 + (1 - r0) * pow((1 - cosine), 5);
+    }
+
+public:
+    Dielectric(double refractionIndex) : mRefractionIndex(refractionIndex){}
+
+    bool Scatter(
+        const Ray& rRayIn, const HitInfo& rHitInfo,
+        Color& attenuation, Ray& rScattered
+    ) const override
+    {
+        attenuation = Color(1.0, 1.0, 1.0); // glass absorbs nothing
+
+        // Air → material or material → air depending on face direction
+        double ri = rHitInfo.frontFace ? (1.0 / mRefractionIndex) : mRefractionIndex;
+
+        Vector3 unitDirection = Unit(rRayIn.GetDirection());
+        double cosTheta = fmin(Dot(-unitDirection, rHitInfo.normal), 1.0);
+        double sinTheta = sqrt(1.0 - cosTheta * cosTheta);
+
+        bool cannotRefract = ri * sinTheta > 1.0;
+        Vector3 direction;
+
+        if (cannotRefract || Reflectance(cosTheta, ri) > RandomDouble())
+            direction = Reflect(unitDirection, rHitInfo.normal);
+        else
+            direction = Refract(unitDirection, rHitInfo.normal, ri);
+
+        rScattered = Ray(rHitInfo.coordinates, direction);
+        return true;
+    }
+};</code></pre>
+                </div>
+            </div>
+        </div>
+
+        <p>
+            The <strong>Schlick approximation</strong> makes glass reflectance increase at grazing angles, 
+            a cheap but very convincing approximation of the full Fresnel equations.
+        </p>
+    </section>
+
+    <!-- Scene setup -->
+    <section>
+        <h2 class="underline" style="text-decoration-color: royalblue">Scene Setup</h2>
+
+        <p>A hollow glass sphere is made by placing a negative-radius sphere inside a positive one :</p>
+
+        <div class="snippet">
+            <div class="Swindow">
+                <div class="Swindow-title"><p>Raytracing.cpp</p></div>
+                <div class="Sconsole">
+<pre><code>int main()
+{
+    // Materials
+    auto matGround  = make_shared&lt;Lambertian&gt;(Color(0.8, 0.8, 0.0));
+    auto matCenter  = make_shared&lt;Lambertian&gt;(Color(0.1, 0.2, 0.5));
+    auto matLeft    = make_shared&lt;Dielectric&gt;(1.50); // glass
+    auto matBubble  = make_shared&lt;Dielectric&gt;(1.00 / 1.50); // air inside glass
+    auto matRight   = make_shared&lt;Metal&gt;(Color(0.8, 0.6, 0.2), 1.0);
+
+    // World
+    HittableCollection world;
+    world.Add(make_shared&lt;Sphere&gt;(Position( 0.0, -100.5, -1.0), 100.0, matGround));
+    world.Add(make_shared&lt;Sphere&gt;(Position( 0.0,    0.0, -1.2),   0.5, matCenter));
+    world.Add(make_shared&lt;Sphere&gt;(Position(-1.0,    0.0, -1.0),   0.5, matLeft));
+    world.Add(make_shared&lt;Sphere&gt;(Position(-1.0,    0.0, -1.0),   0.4, matBubble)); // hollow interior
+    world.Add(make_shared&lt;Sphere&gt;(Position( 1.0,    0.0, -1.0),   0.5, matRight));
+
+    // Render
+    Camera camera(400, 16.0/9.0, 100, 50);
+    camera.Render(world);
+    return 0;
+}</code></pre>
+                </div>
+            </div>
+        </div>
+        <!--
+        <figure>
+            <img loading="lazy" src="../Images/RayTracing/GlassSphere.webp" alt="Glass sphere final render" style="width: 40%; padding-bottom: 5px;">
+            <figcaption>Glass sphere with Schlick reflectance and hollow bubble interior.</figcaption>
+        </figure>
+        -->
+        <p>Three material types down. One more post to go to finish Book 1: the positionable camera!</p>
+    </section>
+
+    <footer>
+        <p style="color: var(--text-color-bright);">24-01-2024</p>
+    </footer>
+</main>
+
+<!-- Navigation -->
+<div style="text-align: center; margin-top: 1rem;">
+    <a href="RayTracing-7.html" class="cta-button">Previous</a>
+    <a href="../Blog.html" class="cta-button secondary">Entries</a>
+    <a href="RayTracing-9.html" class="cta-button">Next</a>
+</div>
+
+</body>
+</html>
