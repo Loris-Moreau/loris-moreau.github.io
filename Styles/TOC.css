@@ -1,6 +1,10 @@
-/* Resources - table of contents grid */
-#toc{
-    display: none;
+/* 
+    TOC.css — shared styles for sidebar and top TOC grid 
+*/
+
+/* Resources — top TOC grid */
+#toc {
+    display: none; /* hidden by default; shown via media query on narrow screens */
 }
 
 .toc-grid {
@@ -29,12 +33,9 @@
     border-color: transparent;
 }
 
-/* 
-   Sticky sidebar TOC
-   Appears on the left once the top #toc section
-   scrolls off screen. Hidden on narrow viewports where
-   there isn't enough room beside the main content. 
-*/
+/* =====================================================
+   Sticky sidebar
+===================================================== */
 
 #toc-sidebar {
     position: fixed;
@@ -53,19 +54,30 @@
     border-radius: 0.75em;
     padding: 0.75em 0.5em;
 
-    /* Hidden by default — fades in + slides in when JS adds .visible */
-    /*opacity: 0;*/
+    /* Visible by default (Blog.html — no sentinel, always shown) */
+    opacity: 1;
     pointer-events: auto;
-    /*translate: -0.5rem 0;*/
-    /*transition: opacity 300ms ease, translate 300ms ease;*/
+    translate: 0 0;
+    transition: opacity 300ms ease, translate 300ms ease;
 }
+
 /*
-#toc-sidebar.visible {
+  Resources.html: JS adds .hide-until-scroll on load because the
+  page has a #toc sentinel. The sidebar starts hidden and slides in
+  once the sentinel scrolls off screen (JS then adds .visible).
+*/
+#toc-sidebar.hide-until-scroll {
+    opacity: 0;
+    pointer-events: none;
+    translate: -0.5rem 0;
+}
+
+#toc-sidebar.hide-until-scroll.visible {
     opacity: 1;
     pointer-events: auto;
     translate: 0 0;
 }
-*/
+
 /* Individual sidebar links */
 #toc-sidebar a {
     display: block;
@@ -93,25 +105,18 @@
 }
 
 /* Thin scrollbar inside the sidebar */
-#toc-sidebar::-webkit-scrollbar {
-    width: 4px;
-}
-
-#toc-sidebar::-webkit-scrollbar-track {
-    background: transparent;
-}
-
-#toc-sidebar::-webkit-scrollbar-thumb {
+#toc-sidebar::-webkit-scrollbar        { width: 4px; }
+#toc-sidebar::-webkit-scrollbar-track  { background: transparent; }
+#toc-sidebar::-webkit-scrollbar-thumb  {
     background: rgba(255, 255, 255, 0.2);
     border-radius: 2px;
 }
 
-/* Hide when viewport is too narrow to fit the sidebar beside the 75em centred main content, show section toc*/
+/* =====================================================
+   Responsive — narrow screens
+   Hide sidebar, show the top grid TOC (Resources only)
+===================================================== */
 @media (max-width: 1550px) {
-    #toc-sidebar {
-        display: none;
-    }
-    #toc{
-        display: block;
-    }
+    #toc-sidebar { display: none; }
+    #toc         { display: block; }
 }
